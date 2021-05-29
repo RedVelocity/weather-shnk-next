@@ -1,8 +1,12 @@
 import axios from 'axios';
+const HOST =
+  process.env.NODE_ENV === 'production'
+    ? 'https://weather-shnk-next.vercel.app/'
+    : 'http://localhost:3000';
 
 export const getWeather = async (latitude, longitude) => {
   // const exclude = "[minutely,flags]";
-  const API_ENDPOINT = `http://localhost:3000/api/getWeather?latitude=${latitude}&longitude=${longitude}`;
+  const API_ENDPOINT = `${HOST}/api/getWeather?latitude=${latitude}&longitude=${longitude}`;
   try {
     const { data } = await axios.get(API_ENDPOINT);
     return data;
@@ -12,7 +16,7 @@ export const getWeather = async (latitude, longitude) => {
 };
 
 export const getLocation = async (latitude, longitude) => {
-  const API_ENDPOINT = `http://localhost:3000/api/getLocation?latitude=${latitude}&longitude=${longitude}`;
+  const API_ENDPOINT = `${HOST}/api/getLocation?latitude=${latitude}&longitude=${longitude}`;
   try {
     const { data } = await axios.get(API_ENDPOINT);
     return data.features[0].place_name;
@@ -22,7 +26,7 @@ export const getLocation = async (latitude, longitude) => {
 };
 
 export const getSuggestions = async (latitude, longitude, place) => {
-  const API_ENDPOINT = `http://localhost:3000/api/getSuggestions?latitude=${latitude}&longitude=${longitude}&place=${place}`;
+  const API_ENDPOINT = `${HOST}/api/getSuggestions?latitude=${latitude}&longitude=${longitude}&place=${place}`;
 
   try {
     const { data } = await axios.get(API_ENDPOINT);
@@ -33,7 +37,7 @@ export const getSuggestions = async (latitude, longitude, place) => {
 };
 
 export const getTimezone = async (latitude, longitude) => {
-  const API_ENDPOINT = `http://localhost:3000/api/getTimezone?latitude=${latitude}&longitude=${longitude}`;
+  const API_ENDPOINT = `${HOST}/api/getTimezone?latitude=${latitude}&longitude=${longitude}`;
 
   try {
     const { data } = await axios.get(API_ENDPOINT);
