@@ -1,9 +1,6 @@
 import axios from 'axios';
 
-const HOST =
-  process.env.NODE_ENV === 'production'
-    ? 'https://weather-next.shnk.tech/'
-    : 'http://localhost:3000';
+const HOST ='';
 
 export const getWeather = async (latitude, longitude) => {
   // const exclude = "[minutely,flags]";
