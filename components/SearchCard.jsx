@@ -64,6 +64,7 @@ const SearchCard = () => {
           value={searchInput}
           onChange={(e) => setSearchInput(e.target.value)}
           onFocus={() => setShowSuggestions(true)}
+          onBlur={() => setShowSuggestions(false)}
         />
         {suggestions.length > 0 && (
           <div
