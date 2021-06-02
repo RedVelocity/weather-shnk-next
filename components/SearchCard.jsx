@@ -20,7 +20,7 @@ const SearchCard = () => {
   useEffect(
     () => {
       if (debouncedSearchTerm) {
-        const handleSearch = async () => {
+        const handleInputChange = async () => {
           const features = await getSuggestions(
             location.curLat,
             location.curLon,
@@ -28,7 +28,7 @@ const SearchCard = () => {
           );
           setSuggestions(features);
         };
-        handleSearch();
+        handleInputChange();
       } else {
         setSuggestions([]);
       }
@@ -37,7 +37,7 @@ const SearchCard = () => {
     [debouncedSearchTerm] // Only call effect if debounced search term changes
   );
 
-  const handleInputChange = async (e) => {
+  const handleSelect = async (e) => {
     const loc = suggestions.find((suggestion) => suggestion.id === e.target.id);
     setLocation({
       ...location,
@@ -64,7 +64,6 @@ const SearchCard = () => {
           value={searchInput}
           onChange={(e) => setSearchInput(e.target.value)}
           onFocus={() => setShowSuggestions(true)}
-          onBlur={() => setShowSuggestions(false)}
         />
         {suggestions.length > 0 && (
           <div
@@ -78,7 +77,7 @@ const SearchCard = () => {
                   className={`hover-${theme} cursor-pointer px-2 py-1 rounded-xl mx-1`}
                   key={suggestion.id}
                   id={suggestion.id}
-                  onClick={handleInputChange}
+                  onClick={handleSelect}
                 >
                   <h3 className="text-lg underline pointer-events-none text-bold">
                     {suggestion.text_en}
