@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from 'react';
+import dayjs from 'dayjs';
 import { Line } from 'react-chartjs-2';
 import { WeatherContext } from '../context/weatherProvider';
-import dayjs from 'dayjs';
 
 const options = {
   responsive: true,

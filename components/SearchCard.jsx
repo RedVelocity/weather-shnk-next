@@ -1,14 +1,15 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { getSuggestions, getWeather } from '../API';
+import { getSuggestions } from '../API';
 import { LocationContext } from '../context/locationProvider';
 import { WeatherContext } from '../context/weatherProvider';
 import useDebounce from '../hooks/useDebounce';
+import SuggestionsList from './SuggestionsList';
 
 const SearchCard = () => {
-  const { weatherData, setWeatherData } = useContext(WeatherContext);
+  const { weatherData } = useContext(WeatherContext);
   const { setLocation, location } = useContext(LocationContext);
   const [suggestions, setSuggestions] = useState([]);
-  const [showSuggestions, setShowSuggestions] = useState(true);
+  const [showSuggestions, setShowSuggestions] = useState(false);
   const [searchInput, setSearchInput] = useState('');
   const debouncedSearchTerm = useDebounce(searchInput, 500);
 
@@ -46,11 +47,6 @@ const SearchCard = () => {
       longitude: loc.geometry.coordinates[0],
     });
     setShowSuggestions(false);
-    const weather = await getWeather(
-      loc.geometry.coordinates[1],
-      loc.geometry.coordinates[0]
-    );
-    weather !== 0 && setWeatherData(weather);
   };
 
   return (
@@ -66,31 +62,13 @@ const SearchCard = () => {
           onFocus={() => setShowSuggestions(true)}
         />
         {suggestions.length > 0 && (
-          <div
-            className={`absolute transition duration-300 bg-white w-full rounded-xl shadow p-2 z-10 ${
-              !showSuggestions && 'opacity-0 invisible'
-            }`}
-          >
-            <ul className="overflow-x-hidden max-h-64">
-              {suggestions.map((suggestion) => (
-                <li
-                  className={`hover-${theme} cursor-pointer px-2 py-1 rounded-xl mx-1`}
-                  key={suggestion.id}
-                  id={suggestion.id}
-                  onClick={handleSelect}
-                >
-                  <h3 className="text-lg underline pointer-events-none text-bold">
-                    {suggestion.text_en}
-                  </h3>
-                  {suggestion.context.map((ctx, index) =>
-                    suggestion.context.length === index + 1
-                      ? `${ctx.text_en}.`
-                      : `${ctx.text_en}, `
-                  )}
-                </li>
-              ))}
-            </ul>
-          </div>
+          <SuggestionsList
+            suggestions={suggestions}
+            showSuggestions={showSuggestions}
+            setShowSuggestions={setShowSuggestions}
+            handleSelect={handleSelect}
+            theme={theme}
+          />
         )}
       </div>
     </div>

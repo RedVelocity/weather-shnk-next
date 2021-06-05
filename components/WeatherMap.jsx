@@ -39,7 +39,6 @@ const WeatherMap = () => {
     map.current.setZoom(10);
     marker = new mapboxgl.Marker({ color: '#EF4444' });
     marker.setLngLat([longitude, latitude]).addTo(map.current);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [longitude, latitude]);
 
   return <div className="card h-96" ref={mapContainerRef}></div>;

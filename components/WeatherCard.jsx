@@ -17,7 +17,6 @@ const WeatherCard = () => {
     if ('geolocation' in navigator) {
       navigator.geolocation.getCurrentPosition(async (position) => {
         const { latitude: lat, longitude: lon } = position.coords;
-        const weather = await getWeather(lat, lon);
         const locationName = await getLocation(lat, lon);
         setLocation({
           name: locationName,
@@ -26,10 +25,19 @@ const WeatherCard = () => {
           curLat: lat,
           curLon: lon,
         });
-        weather !== 0 && setWeatherData(weather);
       });
-    } // eslint-disable-next-line
+    }
   }, []);
+
+  useEffect(() => {
+    (async () => {
+      if (location.name !== '-- Grant Location Access') {
+        const weather = await getWeather(location.latitude, location.longitude);
+        weather !== 0 && setWeatherData(weather);
+      }
+    })();
+  }, [location]);
+
   return (
     <div
       className={`grid md:col-start-1 card p-4 font-semibold transition-colors duration-1000 ease-in-out ${theme}`}
