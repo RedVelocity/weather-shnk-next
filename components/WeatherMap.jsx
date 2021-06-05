@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useRef } from 'react';
+import { useContext, useEffect, useRef } from 'react';
 import mapboxgl from 'mapbox-gl';
 
 import 'mapbox-gl/dist/mapbox-gl.css';
@@ -26,8 +26,8 @@ const WeatherMap = () => {
     // add navigation control (the +/- zoom buttons)
     map.current.addControl(new mapboxgl.NavigationControl(), 'bottom-right');
     // clean up on unmount
+    // eslint-disable-next-line consistent-return
     return () => map.current.remove();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
@@ -41,7 +41,7 @@ const WeatherMap = () => {
     marker.setLngLat([longitude, latitude]).addTo(map.current);
   }, [longitude, latitude]);
 
-  return <div className="card h-96" ref={mapContainerRef}></div>;
+  return <div className="card h-96" ref={mapContainerRef} />;
 };
 
 export default WeatherMap;

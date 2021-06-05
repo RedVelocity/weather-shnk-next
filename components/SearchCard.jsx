@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { getPlaces } from '../API';
 import { LocationContext } from '../context/locationProvider';
 import { WeatherContext } from '../context/weatherProvider';
@@ -34,7 +34,6 @@ const SearchCard = () => {
         setPlacesList([]);
       }
     },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
     [debouncedSearchTerm] // Only call effect if debounced search term changes
   );
 

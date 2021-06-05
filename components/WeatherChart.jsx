@@ -46,10 +46,10 @@ const options = {
 
 const WeatherChart = () => {
   const { weatherData } = useContext(WeatherContext);
-  const labels = [],
-    low = [],
-    average = [],
-    high = [];
+  const labels = [];
+  const low = [];
+  const average = [];
+  const high = [];
   weatherData.daily?.forEach((daily) => {
     labels.push(dayjs.unix(daily.dt).format('dd-DD'));
     low.push(Math.round(daily.temp.min));
@@ -91,18 +91,17 @@ const WeatherChart = () => {
       document.body
     ).getPropertyValue('--hot');
 
-    data.datasets.map((dataset) => {
-      dataset.hoverBackgroundColor = '#DDD';
-    });
+    // eslint-disable-next-line no-param-reassign
+    data.datasets.forEach((dataset) => (dataset.hoverBackgroundColor = '#DDD'));
   }, []);
 
   return (
     <div className="flex flex-col min-h-full px-6 py-4 text-gray-200 card justify-evenly bg-dark">
       <h1 className="mb-4 text-xl font-semibold tracking-wide capitalize">
         {weatherData.daily[0] &&
-          weatherData.daily[0].weather[0].description +
-            ' on ' +
-            dayjs.unix(weatherData.daily[0].dt).format('dddd')}
+          `${weatherData.daily[0].weather[0].description} on ${dayjs
+            .unix(weatherData.daily[0].dt)
+            .format('dddd')}`}
       </h1>
       <Bar height={100} data={data} options={options} />
     </div>

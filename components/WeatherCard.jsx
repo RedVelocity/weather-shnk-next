@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import { useContext, useEffect } from 'react';
 import weatherIcons from '../assets/svg/weatherIcons';
 import { WeatherContext } from '../context/weatherProvider';
 import { getLocation, getWeather } from '../API';

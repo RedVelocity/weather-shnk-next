@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 
 const PopupList = ({
   list,
@@ -24,7 +24,7 @@ const PopupList = ({
     showPopupList && (
       <div
         ref={listNode}
-        className={`absolute bg-white w-full rounded-xl shadow p-2 z-10`}
+        className="absolute z-10 w-full p-2 bg-white shadow rounded-xl"
       >
         <ul className="overflow-x-hidden max-h-64">
           {list.map((listItem) => (
@@ -33,6 +33,7 @@ const PopupList = ({
               key={listItem.id}
               id={listItem.id}
               onClick={handleSelect}
+              role="presentation"
             >
               <h3 className="text-lg underline pointer-events-none">
                 {listItem.place_name}
