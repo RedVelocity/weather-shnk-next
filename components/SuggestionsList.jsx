@@ -37,7 +37,7 @@ const SuggestionsList = ({
               id={suggestion.id}
               onClick={handleSelect}
             >
-              <h3 className="text-lg font-semibold underline pointer-events-none">
+              <h3 className="text-lg underline pointer-events-none">
                 {suggestion.place_name}
               </h3>
               {suggestion.place_locality}
