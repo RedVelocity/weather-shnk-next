@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from 'react';
 import dayjs from 'dayjs';
-import { Line } from 'react-chartjs-2';
+import { Bar } from 'react-chartjs-2';
 import { WeatherContext } from '../context/weatherProvider';
 
 const options = {
@@ -8,10 +8,10 @@ const options = {
   maintainAspectRatio: true,
   legend: {
     display: false,
-    labels: {
-      fontFamily: ['Montserrat', 'sans-serif'],
-    },
-    position: 'bottom',
+    // labels: {
+    //   fontFamily: ['Montserrat', 'sans-serif'],
+    // },
+    // position: 'bottom',
   },
   scales: {
     xAxes: [
@@ -36,8 +36,8 @@ const options = {
           fontFamily: ['Montserrat', 'sans-serif'],
           fontSize: 13,
           stepSize: 5,
-          callback: (tick, index, values) =>
-            index === values.length - 1 ? '' : tick,
+          // callback: (tick, index, values) =>
+          //   index === values.length - 1 ? '' : tick,
         },
       },
     ],
@@ -62,34 +62,38 @@ const WeatherChart = () => {
       {
         label: 'Low',
         data: low,
-        fill: false,
-        borderWidth: 3,
+        fill: true,
+        // borderWidth: 3,
       },
       {
         label: 'Average',
         data: average,
-        fill: false,
-        borderWidth: 3,
+        fill: true,
+        // borderWidth: 3,
       },
       {
         label: 'High',
         data: high,
-        fill: false,
-        borderWidth: 3,
+        fill: true,
+        // borderWidth: 3,
       },
     ],
   };
 
   useEffect(() => {
-    data.datasets[0].borderColor = getComputedStyle(
+    data.datasets[0].backgroundColor = getComputedStyle(
       document.body
     ).getPropertyValue('--cool');
-    data.datasets[1].borderColor = getComputedStyle(
+    data.datasets[1].backgroundColor = getComputedStyle(
       document.body
     ).getPropertyValue('--mild');
-    data.datasets[2].borderColor = getComputedStyle(
+    data.datasets[2].backgroundColor = getComputedStyle(
       document.body
     ).getPropertyValue('--hot');
+
+    data.datasets.map((dataset) => {
+      dataset.hoverBackgroundColor = '#DDD';
+    });
   }, []);
 
   return (
@@ -100,7 +104,7 @@ const WeatherChart = () => {
             ' on ' +
             dayjs.unix(weatherData.daily[0].dt).format('dddd')}
       </h1>
-      <Line height={100} data={data} options={options} />
+      <Bar height={100} data={data} options={options} />
     </div>
   );
 };
