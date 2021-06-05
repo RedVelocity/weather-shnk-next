@@ -9,10 +9,7 @@ const SuggestionsList = ({
 }) => {
   const listNode = useRef(null);
   const handleClick = (e) => {
-    if (
-      listNode.current?.contains(e.target) ||
-      e.target.placeholder === 'Place Name'
-    ) {
+    if (listNode.current?.contains(e.target) || e.target.id === 'popup-input') {
       return;
     }
     // hide list on outside click
@@ -40,14 +37,10 @@ const SuggestionsList = ({
               id={suggestion.id}
               onClick={handleSelect}
             >
-              <h3 className="text-lg underline pointer-events-none text-bold">
-                {suggestion.text_en}
+              <h3 className="text-lg font-semibold underline pointer-events-none">
+                {suggestion.place_name}
               </h3>
-              {suggestion.context.map((ctx, index) =>
-                suggestion.context.length === index + 1
-                  ? `${ctx.text_en}.`
-                  : `${ctx.text_en}, `
-              )}
+              {suggestion.place_locality}
             </li>
           ))}
         </ul>

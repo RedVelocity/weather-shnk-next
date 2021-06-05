@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { getSuggestions } from '../API';
+import { getPlaces } from '../API';
 import { LocationContext } from '../context/locationProvider';
 import { WeatherContext } from '../context/weatherProvider';
 import useDebounce from '../hooks/useDebounce';
@@ -22,12 +22,12 @@ const SearchCard = () => {
     () => {
       if (debouncedSearchTerm) {
         const handleInputChange = async () => {
-          const features = await getSuggestions(
+          const places = await getPlaces(
             location.curLat,
             location.curLon,
             debouncedSearchTerm
           );
-          setSuggestions(features);
+          setSuggestions(places);
         };
         handleInputChange();
       } else {
@@ -38,13 +38,13 @@ const SearchCard = () => {
     [debouncedSearchTerm] // Only call effect if debounced search term changes
   );
 
-  const handleSelect = async (e) => {
+  const handleSelect = (e) => {
     const loc = suggestions.find((suggestion) => suggestion.id === e.target.id);
     setLocation({
       ...location,
       name: e.target.innerText,
-      latitude: loc.geometry.coordinates[1],
-      longitude: loc.geometry.coordinates[0],
+      latitude: loc.coordinates[1],
+      longitude: loc.coordinates[0],
     });
     setShowSuggestions(false);
   };
@@ -57,6 +57,7 @@ const SearchCard = () => {
           className="w-full p-2 mb-4 bg-gray-200 rounded shadow-lg focus:outline-none focus:ring focus:ring-blue-400"
           type="text"
           placeholder="Place Name"
+          id="popup-input"
           value={searchInput}
           onChange={(e) => setSearchInput(e.target.value)}
           onFocus={() => setShowSuggestions(true)}

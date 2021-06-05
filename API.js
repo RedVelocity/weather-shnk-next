@@ -23,12 +23,11 @@ export const getLocation = async (latitude, longitude) => {
   }
 };
 
-export const getSuggestions = async (latitude, longitude, place) => {
-  const API_ENDPOINT = `${HOST}/getSuggestions?latitude=${latitude}&longitude=${longitude}&place=${place}`;
-
+export const getPlaces = async (latitude, longitude, searchTerm) => {
+  const API_ENDPOINT = `${HOST}/getPlaces?latitude=${latitude}&longitude=${longitude}&searchTerm=${searchTerm}`;
   try {
     const { data } = await axios.get(API_ENDPOINT);
-    return data.features;
+    return data;
   } catch (error) {
     return 0;
   }
@@ -36,7 +35,6 @@ export const getSuggestions = async (latitude, longitude, place) => {
 
 export const getTimezone = async (latitude, longitude) => {
   const API_ENDPOINT = `${HOST}/getTimezone?latitude=${latitude}&longitude=${longitude}`;
-
   try {
     const { data } = await axios.get(API_ENDPOINT);
     return data;
