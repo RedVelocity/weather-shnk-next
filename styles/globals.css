@@ -6,6 +6,13 @@
   }
 }
 
+body {
+  @apply bg-gray-300;
+}
+#__next {
+  @apply flex flex-col;
+}
+
 :root {
   --cool: #00bbff;
   --mild: #f090cc;
@@ -14,35 +21,30 @@
   /* --dark: #002255; */
 }
 
-.card {
-  @apply rounded-l rounded-br shadow rounded-tr-xl;
-}
+@layer components {
+  .card {
+    @apply rounded-l rounded-br shadow rounded-tr-xl;
+  }
 
-body {
-  @apply bg-gray-300;
-}
-#root {
-  @apply flex flex-col min-h-screen;
-}
+  .hot {
+    @apply bg-hot;
+  }
+  .cold {
+    @apply bg-cool;
+  }
+  .mild {
+    @apply bg-mild;
+  }
 
-.hot {
-  @apply bg-hot;
-}
-.cold {
-  @apply bg-cool;
-}
-.mild {
-  @apply bg-mild;
-}
-
-.hover-hot {
-  @apply hover:bg-hot;
-}
-.hover-cold {
-  @apply hover:bg-cool;
-}
-.hover-mild {
-  @apply hover:bg-mild;
+  .hover-hot {
+    @apply hover:bg-hot;
+  }
+  .hover-cold {
+    @apply hover:bg-cool;
+  }
+  .hover-mild {
+    @apply hover:bg-mild;
+  }
 }
 
 .skeleton-box {

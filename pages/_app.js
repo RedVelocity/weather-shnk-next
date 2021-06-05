@@ -10,9 +10,7 @@ function MyApp({ Component, pageProps }) {
     <LocationProvider>
       <WeatherProvider>
         <Header />
-        <div className="flex-1 w-full max-w-screen-lg mx-auto">
-          <Component {...pageProps} />
-        </div>
+        <Component {...pageProps} />
         <Footer />
       </WeatherProvider>
     </LocationProvider>

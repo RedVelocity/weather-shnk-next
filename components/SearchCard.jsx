@@ -3,13 +3,13 @@ import { getPlaces } from '../API';
 import { LocationContext } from '../context/locationProvider';
 import { WeatherContext } from '../context/weatherProvider';
 import useDebounce from '../hooks/useDebounce';
-import SuggestionsList from './SuggestionsList';
+import PopupList from './PopupList';
 
 const SearchCard = () => {
   const { weatherData } = useContext(WeatherContext);
   const { setLocation, location } = useContext(LocationContext);
-  const [suggestions, setSuggestions] = useState([]);
-  const [showSuggestions, setShowSuggestions] = useState(false);
+  const [placesList, setPlacesList] = useState([]);
+  const [showPopupList, setShowPopupList] = useState(false);
   const [searchInput, setSearchInput] = useState('');
   const debouncedSearchTerm = useDebounce(searchInput, 500);
 
@@ -27,11 +27,11 @@ const SearchCard = () => {
             location.curLon,
             debouncedSearchTerm
           );
-          setSuggestions(places);
+          setPlacesList(places);
         };
         handleInputChange();
       } else {
-        setSuggestions([]);
+        setPlacesList([]);
       }
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -39,14 +39,14 @@ const SearchCard = () => {
   );
 
   const handleSelect = (e) => {
-    const loc = suggestions.find((suggestion) => suggestion.id === e.target.id);
+    const loc = placesList.find((suggestion) => suggestion.id === e.target.id);
     setLocation({
       ...location,
       name: e.target.innerText,
       latitude: loc.coordinates[1],
       longitude: loc.coordinates[0],
     });
-    setShowSuggestions(false);
+    setShowPopupList(false);
   };
 
   return (
@@ -56,17 +56,18 @@ const SearchCard = () => {
         <input
           className="w-full p-2 mb-4 bg-gray-200 rounded shadow-lg focus:outline-none focus:ring focus:ring-blue-400"
           type="text"
+          autoComplete="off"
           placeholder="Place Name"
           id="popup-input"
           value={searchInput}
           onChange={(e) => setSearchInput(e.target.value)}
-          onFocus={() => setShowSuggestions(true)}
+          onFocus={() => setShowPopupList(true)}
         />
-        {suggestions.length > 0 && (
-          <SuggestionsList
-            suggestions={suggestions}
-            showSuggestions={showSuggestions}
-            setShowSuggestions={setShowSuggestions}
+        {placesList.length > 0 && (
+          <PopupList
+            list={placesList}
+            showPopupList={showPopupList}
+            setShowPopupList={setShowPopupList}
             handleSelect={handleSelect}
             theme={theme}
           />

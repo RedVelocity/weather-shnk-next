@@ -1,9 +1,9 @@
 import React, { useEffect, useRef } from 'react';
 
-const SuggestionsList = ({
-  suggestions,
-  showSuggestions,
-  setShowSuggestions,
+const PopupList = ({
+  list,
+  showPopupList,
+  setShowPopupList,
   handleSelect,
   theme,
 }) => {
@@ -13,34 +13,31 @@ const SuggestionsList = ({
       return;
     }
     // hide list on outside click
-    setShowSuggestions(false);
+    setShowPopupList(false);
   };
 
   useEffect(() => {
-    document.addEventListener('mousedown', handleClick);
-    return () => document.removeEventListener('mousedown', handleClick);
+    document.addEventListener('mousedown', handleClick, false);
+    return () => document.removeEventListener('mousedown', handleClick, false);
   }, []);
-
   return (
-    showSuggestions && (
+    showPopupList && (
       <div
         ref={listNode}
-        className={`absolute transition duration-300 bg-white w-full rounded-xl shadow p-2 z-10 ${
-          !showSuggestions && 'hidden'
-        }`}
+        className={`absolute bg-white w-full rounded-xl shadow p-2 z-10`}
       >
         <ul className="overflow-x-hidden max-h-64">
-          {suggestions.map((suggestion) => (
+          {list.map((listItem) => (
             <li
               className={`hover-${theme} cursor-pointer px-2 py-1 rounded-xl mx-1`}
-              key={suggestion.id}
-              id={suggestion.id}
+              key={listItem.id}
+              id={listItem.id}
               onClick={handleSelect}
             >
               <h3 className="text-lg underline pointer-events-none">
-                {suggestion.place_name}
+                {listItem.place_name}
               </h3>
-              {suggestion.place_locality}
+              {listItem.place_locality}
             </li>
           ))}
         </ul>
@@ -49,4 +46,4 @@ const SuggestionsList = ({
   );
 };
 
-export default SuggestionsList;
+export default PopupList;
