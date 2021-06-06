@@ -6,17 +6,12 @@ import useDebounce from '../hooks/useDebounce';
 import PopupList from './PopupList';
 
 const SearchCard = () => {
-  const { weatherData } = useContext(WeatherContext);
+  const { theme } = useContext(WeatherContext);
   const { setLocation, location } = useContext(LocationContext);
   const [placesList, setPlacesList] = useState([]);
   const [showPopupList, setShowPopupList] = useState(false);
   const [searchInput, setSearchInput] = useState('');
   const debouncedSearchTerm = useDebounce(searchInput, 500);
-
-  let theme;
-  if (weatherData.current?.feels_like <= 15) theme = 'cold';
-  else if (weatherData.current?.feels_like <= 28) theme = 'mild';
-  else theme = 'hot';
 
   useEffect(
     () => {

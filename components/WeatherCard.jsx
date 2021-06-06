@@ -5,13 +5,8 @@ import { getLocation, getWeather } from '../API';
 import { LocationContext } from '../context/locationProvider';
 
 const WeatherCard = () => {
-  const { weatherData, setWeatherData } = useContext(WeatherContext);
+  const { weatherData, setWeatherData, theme } = useContext(WeatherContext);
   const { location, setLocation } = useContext(LocationContext);
-
-  let theme;
-  if (weatherData.current?.feels_like <= 15) theme = 'cold';
-  else if (weatherData.current?.feels_like <= 28) theme = 'mild';
-  else theme = 'hot';
 
   useEffect(() => {
     if ('geolocation' in navigator) {

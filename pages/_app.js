@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable react/jsx-filename-extension */
 import '../styles/globals.css';
 import '../styles/tailwind.css';

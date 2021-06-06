@@ -1,4 +1,6 @@
-import React, { createContext, useState } from 'react';
+/* eslint-disable react/jsx-filename-extension */
+import { createContext, useState } from 'react';
+import PropTypes from 'prop-types';
 
 const LocationContext = createContext(undefined);
 
@@ -21,6 +23,10 @@ const LocationProvider = ({ children }) => {
       {children}
     </LocationContext.Provider>
   );
+};
+
+LocationProvider.propTypes = {
+  children: PropTypes.node.isRequired,
 };
 
 export { LocationProvider, LocationContext };

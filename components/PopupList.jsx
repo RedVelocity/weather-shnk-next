@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react';
+import PropTypes from 'prop-types';
 
 const PopupList = ({
   list,
@@ -45,6 +46,20 @@ const PopupList = ({
       </div>
     )
   );
+};
+
+PopupList.propTypes = {
+  list: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      place_name: PropTypes.string.isRequired,
+      place_locality: PropTypes.string.isRequired,
+    })
+  ).isRequired,
+  showPopupList: PropTypes.bool.isRequired,
+  setShowPopupList: PropTypes.func.isRequired,
+  handleSelect: PropTypes.func.isRequired,
+  theme: PropTypes.string.isRequired,
 };
 
 export default PopupList;
