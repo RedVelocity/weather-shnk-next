@@ -25,26 +25,26 @@ body {
   .card {
     @apply rounded-l rounded-br shadow rounded-tr-xl;
   }
+}
 
-  .hot {
-    @apply bg-hot;
-  }
-  .cold {
-    @apply bg-cool;
-  }
-  .mild {
-    @apply bg-mild;
-  }
+.hot {
+  @apply bg-hot;
+}
+.cold {
+  @apply bg-cool;
+}
+.mild {
+  @apply bg-mild;
+}
 
-  .hover-hot {
-    @apply hover:bg-hot;
-  }
-  .hover-cold {
-    @apply hover:bg-cool;
-  }
-  .hover-mild {
-    @apply hover:bg-mild;
-  }
+.hover-hot {
+  @apply hover:bg-hot;
+}
+.hover-cold {
+  @apply hover:bg-cool;
+}
+.hover-mild {
+  @apply hover:bg-mild;
 }
 
 .skeleton-box {
