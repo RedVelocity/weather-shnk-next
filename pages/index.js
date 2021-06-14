@@ -12,6 +12,7 @@ const Home = () => (
       <title>SHNK | Weather</title>
       <link rel="icon" type="image/png" href="/weather-icon.png" />
       <meta charSet="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <meta name="description" content="Weather lookup from SHNK" />
       <meta name="keywords" content="weather, javascript, html, css" />
       <meta name="author" content="shnk.tech" />

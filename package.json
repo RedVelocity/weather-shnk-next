@@ -8,14 +8,15 @@
     "start": "next start"
   },
   "dependencies": {
-    "next": "10.2.3",
-    "react": "17.0.2",
-    "react-dom": "17.0.2",
     "axios": "^0.21.1",
     "chart.js": "^2.9.4",
     "dayjs": "^1.10.4",
+    "framer-motion": "^4.1.17",
     "mapbox-gl": "^2.2.0",
-    "react-chartjs-2": "^2.11.1"
+    "next": "10.2.3",
+    "react": "17.0.2",
+    "react-chartjs-2": "^2.11.1",
+    "react-dom": "17.0.2"
   },
   "devDependencies": {
     "autoprefixer": "^10.2.6",
