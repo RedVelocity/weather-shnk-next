@@ -8,10 +8,6 @@ const options = {
   maintainAspectRatio: true,
   legend: {
     display: false,
-    // labels: {
-    //   fontFamily: ['Montserrat', 'sans-serif'],
-    // },
-    // position: 'bottom',
   },
   scales: {
     xAxes: [
@@ -36,8 +32,6 @@ const options = {
           fontFamily: ['Montserrat', 'sans-serif'],
           fontSize: 13,
           stepSize: 5,
-          // callback: (tick, index, values) =>
-          // index === values.length - 1 ? '' : tick,
         },
       },
     ],
@@ -63,19 +57,16 @@ const WeatherChart = () => {
         label: 'Low',
         data: lowTempData,
         fill: true,
-        // borderWidth: 3,
       },
       {
         label: 'Average',
         data: averageTempData,
         fill: true,
-        // borderWidth: 3,
       },
       {
         label: 'High',
         data: highTempData,
         fill: true,
-        // borderWidth: 3,
       },
     ],
   };
@@ -90,19 +81,19 @@ const WeatherChart = () => {
     data.datasets[2].backgroundColor = getComputedStyle(
       document.body
     ).getPropertyValue('--hot');
-
     // eslint-disable-next-line no-param-reassign
     data.datasets.forEach((dataset) => (dataset.hoverBackgroundColor = '#DDD'));
   }, []);
 
   return (
     <div className="flex flex-col min-h-full px-6 py-4 text-gray-200 card justify-evenly bg-dark">
-      <h1 className="mb-4 text-xl font-semibold tracking-wide capitalize">
-        {weatherData.daily[0] &&
-          `${weatherData.daily[0].weather[0].description} on ${dayjs
+      {weatherData.daily[0] && (
+        <h1 className="mb-4 text-xl font-semibold tracking-wide capitalize">
+          {`${weatherData.daily[0].weather[0].description} on ${dayjs
             .unix(weatherData.daily[0].dt)
             .format('dddd')}`}
-      </h1>
+        </h1>
+      )}
       <Bar height={100} data={data} options={options} />
     </div>
   );
