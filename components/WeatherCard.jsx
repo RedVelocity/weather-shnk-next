@@ -11,22 +11,23 @@ const WeatherCard = () => {
   useEffect(() => {
     if ('geolocation' in navigator) {
       navigator.geolocation.getCurrentPosition(async (position) => {
-        const { latitude: lat, longitude: lon } = position.coords;
-        const locationName = await getLocation(lat, lon);
-        setLocation({
-          name: locationName,
-          latitude: lat,
-          longitude: lon,
-          curLat: lat,
-          curLon: lon,
-        });
+        const { latitude, longitude } = position.coords;
+        const locationName = await getLocation(latitude, longitude);
+        locationName !== 0 &&
+          setLocation({
+            name: locationName,
+            latitude,
+            longitude,
+            curLat: latitude,
+            curLon: longitude,
+          });
       });
     }
   }, []);
 
   useEffect(() => {
     (async () => {
-      if (location.name !== '-- Grant Location Access') {
+      if (location.name !== '-- Search Place Name') {
         const weather = await getWeather(location.latitude, location.longitude);
         weather !== 0 && setWeatherData(weather);
       }

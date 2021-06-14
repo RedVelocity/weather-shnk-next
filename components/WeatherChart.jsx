@@ -37,7 +37,7 @@ const options = {
           fontSize: 13,
           stepSize: 5,
           // callback: (tick, index, values) =>
-          //   index === values.length - 1 ? '' : tick,
+          // index === values.length - 1 ? '' : tick,
         },
       },
     ],
@@ -47,33 +47,33 @@ const options = {
 const WeatherChart = () => {
   const { weatherData } = useContext(WeatherContext);
   const labels = [];
-  const low = [];
-  const average = [];
-  const high = [];
+  const lowTempData = [];
+  const averageTempData = [];
+  const highTempData = [];
   weatherData.daily?.forEach((daily) => {
     labels.push(dayjs.unix(daily.dt).format('dd-DD'));
-    low.push(Math.round(daily.temp.min));
-    average.push(Math.round((daily.temp.max + daily.temp.min) / 2));
-    high.push(Math.round(daily.temp.max));
+    lowTempData.push(Math.round(daily.temp.min));
+    averageTempData.push(Math.round((daily.temp.max + daily.temp.min) / 2));
+    highTempData.push(Math.round(daily.temp.max));
   });
   const data = {
     labels,
     datasets: [
       {
         label: 'Low',
-        data: low,
+        data: lowTempData,
         fill: true,
         // borderWidth: 3,
       },
       {
         label: 'Average',
-        data: average,
+        data: averageTempData,
         fill: true,
         // borderWidth: 3,
       },
       {
         label: 'High',
-        data: high,
+        data: highTempData,
         fill: true,
         // borderWidth: 3,
       },

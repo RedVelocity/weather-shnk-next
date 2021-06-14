@@ -6,7 +6,7 @@ const LocationContext = createContext(undefined);
 
 const LocationProvider = ({ children }) => {
   const [location, setLocation] = useState({
-    name: '-- Grant Location Access',
+    name: '-- Search Place Name',
     latitude: 0,
     longitude: 0,
     curLat: 0,
