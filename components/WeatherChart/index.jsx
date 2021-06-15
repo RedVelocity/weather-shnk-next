@@ -23,10 +23,10 @@ const WeatherChart = () => {
         </>
       ) : (
         <>
-          <span className="w-full h-8 rounded bg-gradient-to-r from-gray-400 to-gray-500" />
-          <span className="w-full h-8 rounded bg-gradient-to-r from-gray-400 to-gray-500" />
-          <span className="w-full h-8 rounded bg-gradient-to-r from-gray-400 to-gray-500" />
-          <span className="w-full h-8 rounded bg-gradient-to-r from-gray-400 to-gray-500" />
+          <span className="w-full h-6 rounded bg-gradient-to-r from-gray-400 to-gray-500" />
+          <span className="w-full h-6 rounded bg-gradient-to-r from-gray-400 to-gray-500" />
+          <span className="w-full h-6 rounded bg-gradient-to-r from-gray-400 to-gray-500" />
+          <span className="w-full h-6 rounded bg-gradient-to-r from-gray-400 to-gray-500" />
         </>
       )}
     </div>
