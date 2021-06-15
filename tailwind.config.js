@@ -1,3 +1,5 @@
+const { cool, mild, hot, dark } = require('./styles/colors');
+
 module.exports = {
   mode: ['jit'],
   purge: ['./pages/**/*.{js,ts,jsx,tsx}', './components/**/*.{js,ts,jsx,tsx}'],
@@ -5,10 +7,10 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        cool: 'var(--cool)',
-        mild: 'var(--mild)',
-        hot: 'var(--hot)',
-        dark: 'var(--dark)',
+        cool,
+        mild,
+        hot,
+        dark,
       },
       fontFamily: {
         sans: ['Montserrat', 'sans serif'],

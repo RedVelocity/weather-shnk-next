@@ -1,7 +1,8 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext } from 'react';
 import dayjs from 'dayjs';
 import { Bar } from 'react-chartjs-2';
 import { WeatherContext } from '../context/weatherProvider';
+import colors from '../styles/colors';
 
 const options = {
   responsive: true,
@@ -57,44 +58,38 @@ const WeatherChart = () => {
         label: 'Low',
         data: lowTempData,
         fill: true,
+        backgroundColor: colors.cool,
+        hoverBackgroundColor: '#DDD',
       },
       {
         label: 'Average',
         data: averageTempData,
         fill: true,
+        backgroundColor: colors.mild,
+        hoverBackgroundColor: '#DDD',
       },
       {
         label: 'High',
         data: highTempData,
         fill: true,
+        backgroundColor: colors.hot,
+        hoverBackgroundColor: '#DDD',
       },
     ],
   };
 
-  useEffect(() => {
-    data.datasets[0].backgroundColor = getComputedStyle(
-      document.body
-    ).getPropertyValue('--cool');
-    data.datasets[1].backgroundColor = getComputedStyle(
-      document.body
-    ).getPropertyValue('--mild');
-    data.datasets[2].backgroundColor = getComputedStyle(
-      document.body
-    ).getPropertyValue('--hot');
-    // eslint-disable-next-line no-param-reassign
-    data.datasets.forEach((dataset) => (dataset.hoverBackgroundColor = '#DDD'));
-  }, []);
-
   return (
     <div className="flex flex-col min-h-full px-6 py-4 text-gray-200 card justify-evenly bg-dark">
       {weatherData.daily[0] && (
-        <h1 className="mb-4 text-xl font-semibold tracking-wide capitalize">
-          {`${weatherData.daily[0].weather[0].description} on ${dayjs
-            .unix(weatherData.daily[0].dt)
-            .format('dddd')}`}
-        </h1>
+        <>
+          <h1 className="mb-4 text-xl font-semibold tracking-wide capitalize">
+            {`${weatherData.daily[0].weather[0].description} on ${dayjs
+              .unix(weatherData.daily[0].dt)
+              .format('dddd')}`}
+          </h1>
+          <Bar height={100} data={data} options={options} />
+        </>
       )}
-      <Bar height={100} data={data} options={options} />
     </div>
   );
 };
