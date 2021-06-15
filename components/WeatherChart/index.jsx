@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import dayjs from 'dayjs';
 import { Bar } from 'react-chartjs-2';
 
+import Skeleton from '../Skeleton';
 import { WeatherContext } from '../../context/weatherProvider';
 import { options, shapeChartData } from './config';
 
@@ -23,10 +24,10 @@ const WeatherChart = () => {
         </>
       ) : (
         <>
-          <span className="w-full h-6 rounded bg-gradient-to-r from-gray-400 to-gray-500" />
-          <span className="w-full h-6 rounded bg-gradient-to-r from-gray-400 to-gray-500" />
-          <span className="w-full h-6 rounded bg-gradient-to-r from-gray-400 to-gray-500" />
-          <span className="w-full h-6 rounded bg-gradient-to-r from-gray-400 to-gray-500" />
+          <Skeleton />
+          <Skeleton />
+          <Skeleton />
+          <Skeleton />
         </>
       )}
     </div>
