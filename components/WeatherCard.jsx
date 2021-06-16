@@ -1,4 +1,5 @@
 import { useContext, useEffect } from 'react';
+import { motion } from 'framer-motion';
 import weatherIcons from '../assets/svg/weatherIcons';
 import { WeatherContext } from '../context/weatherProvider';
 import { getLocation, getWeather } from '../API';
@@ -36,25 +37,26 @@ const WeatherCard = () => {
 
   return (
     <div
-      className={`grid md:col-start-1 card p-4 font-semibold transition-colors duration-1000 ease-in-out ${theme}`}
+      className={`grid card p-4 font-semibold transition-colors duration-1000 ease-in-out ${theme}`}
     >
       <>
         <div className="flex items-center gap-6 p-4 text-center justify-evenly">
-          <img
+          <motion.img
+            layout="position"
             className="w-20 h-20"
             alt="icon"
             src={weatherIcons[weatherData.current.weather[0].icon]}
           />
-          <h1 className="text-2xl font-bold capitalize">
+          <motion.h1 layout className="text-2xl font-bold capitalize">
             {weatherData.current.weather[0].description}
-          </h1>
-          <div>
+          </motion.h1>
+          <motion.div layout>
             Currently
             <h1 className="text-4xl">
               {Math.round(weatherData.current?.temp)}°C
             </h1>
-          </div>
-        </div>{' '}
+          </motion.div>
+        </div>
         <span className="p-2 text-sm tracking-wide text-center bg-gray-200 rounded">
           Feels Like: {Math.round(weatherData.current.feels_like)}°C | Humidity:{' '}
           {weatherData.current.humidity} | UV: {weatherData.current.uvi}

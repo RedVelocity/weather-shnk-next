@@ -12,7 +12,7 @@ const WeatherChart = () => {
   if (weatherData.daily) data = shapeChartData(weatherData);
 
   return (
-    <div className="flex flex-col min-h-full px-6 py-4 space-y-2 text-gray-200 card justify-evenly bg-dark">
+    <div className="flex flex-col min-h-full px-6 py-4 space-y-4 text-gray-200 md:space-y-0 card justify-evenly bg-dark">
       {weatherData.daily[0] ? (
         <>
           <h1 className="mb-4 text-xl font-semibold tracking-wide capitalize">
