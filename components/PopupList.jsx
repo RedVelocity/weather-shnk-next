@@ -16,6 +16,7 @@ const variants = {
     height: 0,
   },
 };
+
 const PopupList = ({
   list,
   showPopupList,
@@ -42,7 +43,6 @@ const PopupList = ({
         <motion.div
           ref={listNode}
           className="absolute z-10 w-full p-2 bg-white shadow rounded-xl"
-          key="popup-list"
           variants={variants}
           initial="initial"
           animate="animate"

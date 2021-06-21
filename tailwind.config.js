@@ -1,4 +1,4 @@
-const { cool, mild, hot, dark } = require('./styles/colors');
+const colors = require('./styles/colors');
 
 module.exports = {
   mode: ['jit'],
@@ -6,12 +6,7 @@ module.exports = {
   darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {
-      colors: {
-        cool,
-        mild,
-        hot,
-        dark,
-      },
+      colors,
       fontFamily: {
         sans: ['Montserrat', 'sans serif'],
       },

@@ -23,12 +23,7 @@ const WeatherChart = () => {
           <Bar height={100} data={data} options={options} />
         </>
       ) : (
-        <>
-          <Skeleton />
-          <Skeleton />
-          <Skeleton />
-          <Skeleton />
-        </>
+        <Skeleton rows={4} />
       )}
     </div>
   );

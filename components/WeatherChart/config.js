@@ -1,5 +1,5 @@
 import dayjs from 'dayjs';
-import colors from '../../styles/colors';
+import { cool, mild, hot } from '../../styles/colors';
 
 export const options = {
   responsive: true,
@@ -54,21 +54,21 @@ export const shapeChartData = (weatherData) => {
         label: 'Low',
         fill: true,
         data: lowTempData,
-        backgroundColor: colors.cool,
+        backgroundColor: cool,
         hoverBackgroundColor: '#DDD',
       },
       {
         label: 'Average',
         fill: true,
         data: averageTempData,
-        backgroundColor: colors.mild,
+        backgroundColor: mild,
         hoverBackgroundColor: '#DDD',
       },
       {
         label: 'High',
         fill: true,
         data: highTempData,
-        backgroundColor: colors.hot,
+        backgroundColor: hot,
         hoverBackgroundColor: '#DDD',
       },
     ],
