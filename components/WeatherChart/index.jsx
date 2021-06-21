@@ -12,10 +12,10 @@ const WeatherChart = () => {
   if (weatherData.daily) data = shapeChartData(weatherData);
 
   return (
-    <div className="flex flex-col min-h-full px-6 py-4 text-gray-200 card justify-evenly bg-dark">
+    <div className="flex flex-col min-h-full gap-4 px-6 py-4 text-gray-200 card justify-evenly bg-dark">
       {weatherData.daily[0] ? (
         <>
-          <h1 className="mb-4 text-lg font-semibold capitalize md:text-xl">
+          <h1 className="text-lg font-semibold capitalize md:text-xl">
             {`${weatherData.daily[0].weather[0].description} on ${dayjs
               .unix(weatherData.daily[0].dt)
               .format('dddd')}`}
