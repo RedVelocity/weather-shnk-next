@@ -1,14 +1,21 @@
 import { useContext, useEffect } from 'react';
 import { motion } from 'framer-motion';
+
 import weatherIcons from '../assets/svg/weatherIcons';
 import { WeatherContext } from '../context/weatherProvider';
 import { getLocation, getWeather } from '../API';
 import { LocationContext } from '../context/locationProvider';
 
 const WeatherCard = () => {
-  const { weatherData, setWeatherData, theme } = useContext(WeatherContext);
+  const {
+    weatherData: { current },
+    setWeatherData,
+    theme,
+  } = useContext(WeatherContext);
   const { location, setLocation } = useContext(LocationContext);
-
+  let temp = '--';
+  let additionalInfo = '--';
+  // Set location data if location access is provided
   useEffect(() => {
     if ('geolocation' in navigator) {
       navigator.geolocation.getCurrentPosition(async (position) => {
@@ -25,7 +32,7 @@ const WeatherCard = () => {
       });
     }
   }, []);
-
+  // Update weather on location change
   useEffect(() => {
     (async () => {
       if (location.name !== '-- Search Place Name') {
@@ -35,40 +42,42 @@ const WeatherCard = () => {
     })();
   }, [location]);
 
+  if (current.weather.description !== '--') {
+    temp = `${Math.round(current.temp)}°C`;
+    additionalInfo = `Feels Like: ${Math.round(
+      current.feels_like
+    )}°C | Humidity: ${current.humidity} | UV: ${current.uvi}`;
+  }
+
   return (
     <div
-      className={`grid card p-4 font-semibold transition-colors duration-1000 ease-in-out ${theme}`}
+      className={`card p-4 font-semibold transition-colors duration-1000 ease-in-out ${theme}`}
     >
-      <>
-        <div className="flex items-center gap-6 p-4 text-center justify-evenly">
-          <motion.img
-            layout="position"
-            className="w-20 h-20"
-            alt="icon"
-            src={weatherIcons[weatherData.current.weather[0].icon]}
-          />
-          <motion.h1 layout className="text-2xl font-bold capitalize">
-            {weatherData.current.weather[0].description}
-          </motion.h1>
-          <motion.div layout>
-            Currently
-            <h1 className="text-4xl">
-              {Math.round(weatherData.current?.temp)}°C
-            </h1>
-          </motion.div>
-        </div>
-        <span className="p-2 text-sm tracking-wide text-center bg-gray-200 rounded">
-          Feels Like: {Math.round(weatherData.current.feels_like)}°C | Humidity:{' '}
-          {weatherData.current.humidity} | UV: {weatherData.current.uvi}
-        </span>
-        <div className="flex items-center pt-4 space-x-2 text-sm">
-          <img
-            alt="location"
-            src="https://img.icons8.com/material-outlined/20/000000/marker.png"
-          />
-          <h5 className="ml-1">{location.name}</h5>
-        </div>
-      </>
+      <div className="flex items-center gap-6 p-4 text-center justify-evenly">
+        <motion.img
+          layout="position"
+          className="w-20 h-20"
+          alt="icon"
+          src={weatherIcons[current.weather.icon]}
+        />
+        <motion.h1 layout className="text-2xl font-bold capitalize">
+          {current.weather.description}
+        </motion.h1>
+        <motion.div layout>
+          Currently
+          <h1 className="text-4xl">{temp}</h1>
+        </motion.div>
+      </div>
+      <span className="block p-2 text-sm tracking-wide text-center bg-gray-200 rounded">
+        {additionalInfo}
+      </span>
+      <div className="flex items-center pt-4 space-x-2 text-sm">
+        <img
+          alt="location"
+          src="https://img.icons8.com/material-outlined/20/000000/marker.png"
+        />
+        <h5 className="ml-1">{location.name}</h5>
+      </div>
     </div>
   );
 };

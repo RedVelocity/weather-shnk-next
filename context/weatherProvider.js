@@ -8,9 +8,7 @@ const WeatherProvider = ({ children }) => {
   const [theme, setTheme] = useState('cold');
   const [weatherData, setWeatherData] = useState({
     current: {
-      feels_like: 0,
-      temp: 0,
-      weather: [{ icon: '01d', description: '--' }],
+      weather: { icon: '01d', description: '--' },
     },
     daily: [],
   });

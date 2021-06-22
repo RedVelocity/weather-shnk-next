@@ -26,5 +26,6 @@ module.exports = {
     'react/jsx-filename-extension': 1,
     'react/jsx-props-no-spreading': 0,
     'react/react-in-jsx-scope': 0,
+    'react/no-array-index-key': 1,
   },
 };

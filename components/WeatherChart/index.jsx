@@ -16,7 +16,7 @@ const WeatherChart = () => {
       {weatherData.daily[0] ? (
         <>
           <h1 className="text-lg font-semibold capitalize md:text-xl">
-            {`${weatherData.daily[0].weather[0].description} on ${dayjs
+            {`${weatherData.daily[0].weather.description} on ${dayjs
               .unix(weatherData.daily[0].dt)
               .format('dddd')}`}
           </h1>
