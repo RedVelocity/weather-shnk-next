@@ -7,7 +7,7 @@ export default async (req, res) => {
   try {
     const { data } = await axios.get(API_ENDPOINT);
     // console.log(data, 'data');
-    res.status(200).json(data);
+    res.status(200).json(data.features[0].place_name);
   } catch (error) {
     res.status(422).json({ data: String(error) });
   }
