@@ -1,7 +1,7 @@
 import dayjs from 'dayjs';
 import { cool, mild, hot } from '../../styles/colors';
 
-export const options = {
+const options = {
   responsive: true,
   maintainAspectRatio: true,
   legend: {
@@ -36,7 +36,7 @@ export const options = {
   },
 };
 
-export const shapeChartData = (weatherData) => {
+const shapeChartData = (weatherData) => {
   const labels = [];
   const lowTempData = [];
   const averageTempData = [];
@@ -47,7 +47,8 @@ export const shapeChartData = (weatherData) => {
     averageTempData.push(Math.round((daily.temp.max + daily.temp.min) / 2));
     highTempData.push(Math.round(daily.temp.max));
   });
-  return {
+  options.scales.yAxes[0].ticks.suggestedMin = Math.min(...lowTempData) - 5;
+  const data = {
     labels,
     datasets: [
       {
@@ -73,4 +74,7 @@ export const shapeChartData = (weatherData) => {
       },
     ],
   };
+  return [data, options];
 };
+
+export default shapeChartData;

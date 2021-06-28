@@ -16,7 +16,7 @@ const WeatherProvider = ({ children }) => {
   useEffect(() => {
     if (weatherData.current?.temp <= 15) setTheme('cold');
     else if (weatherData.current?.temp <= 27) setTheme('mild');
-    else setTheme('hot');
+    else if (weatherData.current?.temp > 27) setTheme('hot');
   }, [weatherData.current?.temp]);
 
   return (

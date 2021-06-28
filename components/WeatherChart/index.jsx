@@ -4,12 +4,13 @@ import { Bar } from 'react-chartjs-2';
 
 import Skeleton from '../Skeleton';
 import { WeatherContext } from '../../context/weatherProvider';
-import { options, shapeChartData } from './config';
+import shapeChartData from './config';
 
 const WeatherChart = () => {
   let data = {};
+  let options = {};
   const { weatherData } = useContext(WeatherContext);
-  if (weatherData.daily) data = shapeChartData(weatherData);
+  if (weatherData.daily) [data, options] = shapeChartData(weatherData);
 
   return (
     <div className="flex flex-col min-h-full gap-4 px-6 py-4 text-gray-200 card justify-evenly bg-dark">
