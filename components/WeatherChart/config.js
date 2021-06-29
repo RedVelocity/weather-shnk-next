@@ -1,6 +1,7 @@
 import dayjs from 'dayjs';
 import { cool, mild, hot } from '../../styles/colors';
 
+const stepSize = 5;
 const options = {
   responsive: true,
   maintainAspectRatio: true,
@@ -29,7 +30,7 @@ const options = {
           fontColor: 'lightgray',
           fontFamily: ['Montserrat', 'sans-serif'],
           fontSize: 13,
-          stepSize: 5,
+          stepSize,
         },
       },
     ],
@@ -47,7 +48,10 @@ const shapeChartData = (weatherData) => {
     averageTempData.push(Math.round((daily.temp.max + daily.temp.min) / 2));
     highTempData.push(Math.round(daily.temp.max));
   });
-  options.scales.yAxes[0].ticks.suggestedMin = Math.min(...lowTempData) - 5;
+  // Set min step for bar chart based on lowtemp value
+  const min = Math.min(...lowTempData);
+  options.scales.yAxes[0].ticks.suggestedMin =
+    min % stepSize === 0 ? min - stepSize : min - (min % stepSize);
   const data = {
     labels,
     datasets: [
