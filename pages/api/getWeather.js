@@ -2,9 +2,10 @@ import axios from 'axios';
 
 export default async (req, res) => {
   const { latitude, longitude } = req.query;
-  let formattedData = {};
-  const API_ENDPOINT = `https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&exclude=minutely,hourly,alerts&appid=${process.env.NEXT_PUBLIC_OWM_KEY}&units=metric`;
+  const exclude = 'minutely,hourly,alerts';
+  const API_ENDPOINT = `https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&exclude=${exclude}&appid=${process.env.NEXT_PUBLIC_OWM_KEY}&units=metric`;
 
+  let formattedData = {};
   try {
     const {
       data: { daily, current },

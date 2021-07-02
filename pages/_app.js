@@ -4,8 +4,8 @@ import Head from 'next/head';
 import '../styles/globals.css';
 import '../styles/tailwind.css';
 
-import { LocationProvider } from '../context/locationProvider';
-import { WeatherProvider } from '../context/weatherProvider';
+import { LocationProvider } from '../utils/context/locationProvider';
+import { WeatherProvider } from '../utils/context/weatherProvider';
 import Header from '../components/header';
 import Footer from '../components/footer';
 

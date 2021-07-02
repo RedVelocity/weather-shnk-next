@@ -1,10 +1,10 @@
-import React, { useContext } from 'react';
+import { useContext } from 'react';
 import dayjs from 'dayjs';
 import { Bar } from 'react-chartjs-2';
 
 import Skeleton from '../Skeleton';
-import { WeatherContext } from '../../context/weatherProvider';
 import shapeChartData from './config';
+import { WeatherContext } from '../../utils/context/weatherProvider';
 
 const WeatherChart = () => {
   let data = {};

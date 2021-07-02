@@ -2,9 +2,9 @@ import { useContext, useEffect } from 'react';
 import { motion } from 'framer-motion';
 
 import weatherIcons from '../assets/svg/weatherIcons';
-import { WeatherContext } from '../context/weatherProvider';
-import { getLocation, getWeather } from '../API';
-import { LocationContext } from '../context/locationProvider';
+import { WeatherContext } from '../utils/context/weatherProvider';
+import { getLocation, getWeather } from '../utils/API';
+import { LocationContext } from '../utils/context/locationProvider';
 
 const WeatherCard = () => {
   const {

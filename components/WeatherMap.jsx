@@ -2,7 +2,7 @@ import { useContext, useEffect, useRef } from 'react';
 import mapboxgl from 'mapbox-gl';
 
 import 'mapbox-gl/dist/mapbox-gl.css';
-import { LocationContext } from '../context/locationProvider';
+import { LocationContext } from '../utils/context/locationProvider';
 
 mapboxgl.accessToken = process.env.NEXT_PUBLIC_MAPBOX_KEY;
 let marker; // current marker
