@@ -24,12 +24,12 @@ const PopupList = ({
   handleSelect,
   theme,
 }) => {
+  // hide list on outside click
   const listNode = useRef(null);
   const handleClick = (e) => {
     if (listNode.current?.contains(e.target) || e.target.id === 'popup-input') {
       return;
     }
-    // hide list on outside click
     setShowPopupList(false);
   };
 
@@ -37,6 +37,7 @@ const PopupList = ({
     document.addEventListener('mousedown', handleClick, false);
     return () => document.removeEventListener('mousedown', handleClick, false);
   }, []);
+
   return (
     <AnimatePresence>
       {showPopupList && (
