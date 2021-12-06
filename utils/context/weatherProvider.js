@@ -1,6 +1,8 @@
 /* eslint-disable react/jsx-filename-extension */
-import { createContext, useState, useEffect } from 'react';
+import { createContext, useState, useEffect, useContext } from 'react';
 import PropTypes from 'prop-types';
+import { LocationContext } from './locationProvider';
+import { getWeather } from '../API';
 
 const WeatherContext = createContext(undefined);
 
@@ -10,9 +12,18 @@ const WeatherProvider = ({ children }) => {
     current: {
       weather: { icon: '01d', description: '--' },
     },
-    daily: [],
   });
-
+  // Update weather on location change
+  const { location } = useContext(LocationContext);
+  useEffect(() => {
+    (async () => {
+      if (location.name !== '-- Search Place Name') {
+        const weather = await getWeather(location.latitude, location.longitude);
+        weather !== 0 && setWeatherData(weather);
+      }
+    })();
+  }, [location]);
+  // Update theme based on temp
   useEffect(() => {
     if (weatherData.current?.temp <= 15) setTheme('cold');
     else if (weatherData.current?.temp <= 27) setTheme('mild');
@@ -23,7 +34,6 @@ const WeatherProvider = ({ children }) => {
     <WeatherContext.Provider
       value={{
         weatherData,
-        setWeatherData,
         theme,
       }}
     >

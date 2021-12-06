@@ -1,46 +1,20 @@
-import { useContext, useEffect } from 'react';
+import { useContext } from 'react';
 import { motion } from 'framer-motion';
 
 import weatherIcons from '../assets/svg/weatherIcons';
 import { WeatherContext } from '../utils/context/weatherProvider';
-import { getLocation, getWeather } from '../utils/API';
 import { LocationContext } from '../utils/context/locationProvider';
 
 const WeatherCard = () => {
   const {
+    location: { name: locationName },
+  } = useContext(LocationContext);
+  const {
     weatherData: { current },
-    setWeatherData,
     theme,
   } = useContext(WeatherContext);
-  const { location, setLocation } = useContext(LocationContext);
   let temp = '--';
   let additionalInfo = '--';
-  // Set location data if location access is provided
-  useEffect(() => {
-    if ('geolocation' in navigator) {
-      navigator.geolocation.getCurrentPosition(async (position) => {
-        const { latitude, longitude } = position.coords;
-        const locationName = await getLocation(latitude, longitude);
-        locationName !== 0 &&
-          setLocation({
-            name: locationName,
-            latitude,
-            longitude,
-            curLat: latitude,
-            curLon: longitude,
-          });
-      });
-    }
-  }, []);
-  // Update weather on location change
-  useEffect(() => {
-    (async () => {
-      if (location.name !== '-- Search Place Name') {
-        const weather = await getWeather(location.latitude, location.longitude);
-        weather !== 0 && setWeatherData(weather);
-      }
-    })();
-  }, [location]);
 
   if (current.weather.description !== '--') {
     temp = `${Math.round(current.temp)}°C`;
@@ -76,7 +50,7 @@ const WeatherCard = () => {
           alt="location"
           src="https://img.icons8.com/material-outlined/20/000000/marker.png"
         />
-        <h5 className="ml-1">{location.name}</h5>
+        <h5 className="ml-1">{locationName}</h5>
       </div>
     </div>
   );
