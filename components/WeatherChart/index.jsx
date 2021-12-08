@@ -17,7 +17,7 @@ const WeatherChart = () => {
             {title}
           </h1>
           <Bar
-            height={getCurrentBreakpoint() === 'sm' ? 150 : 100}
+            height={getCurrentBreakpoint() === 'sm' ? 130 : 100}
             data={data}
             options={options}
           />
