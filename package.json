@@ -28,6 +28,7 @@
     "eslint-plugin-prettier": "^3.4.0",
     "eslint-plugin-react": "^7.24.0",
     "next-images": "^1.7.0",
+    "next-pwa": "^5.4.4",
     "postcss": "^8.3.0",
     "tailwindcss": "^2.1.2"
   }

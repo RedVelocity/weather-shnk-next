@@ -14,10 +14,13 @@ function MyApp({ Component, pageProps }) {
     <>
       <Head>
         <title>SHNK | Weather</title>
-        <link rel="icon" type="image/png" href="/weather-icon.png" />
         <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="description" content="Weather app from SHNK" />
+        <meta name="theme-color" content="#fff" />
+        <link rel="icon" type="image/png" href="/weather-icon.png" />
+        <link rel="manifest" href="/manifest.json" />
+        <link rel="apple-touch-icon" href="/weather-icon.png" />
         <meta
           name="keywords"
           content="weather, javascript, html, css, react, nextjs"
