@@ -14,6 +14,7 @@
     "framer-motion": "^4.1.17",
     "mapbox-gl": "^2.2.0",
     "next": "10.2.3",
+    "next-pwa": "^5.4.4",
     "react": "17.0.2",
     "react-chartjs-2": "^2.11.1",
     "react-dom": "17.0.2"
@@ -28,7 +29,6 @@
     "eslint-plugin-prettier": "^3.4.0",
     "eslint-plugin-react": "^7.24.0",
     "next-images": "^1.7.0",
-    "next-pwa": "^5.4.4",
     "postcss": "^8.3.0",
     "tailwindcss": "^2.1.2"
   }
