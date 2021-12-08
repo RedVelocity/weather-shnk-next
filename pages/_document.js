@@ -12,6 +12,7 @@ class MyDocument extends Document {
       <Html>
         <Head>
           <meta name="theme-color" content="#fff" />
+          <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
           <link rel="icon" type="image/png" href="/weather-icon.png" />
           <link rel="manifest" href="/manifest.json" />
           <link rel="apple-touch-icon" href="/weather-icon.png" />
