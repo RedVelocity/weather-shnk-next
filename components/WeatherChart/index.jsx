@@ -13,7 +13,7 @@ const WeatherChart = () => {
     <div className="flex flex-col min-h-full gap-4 px-6 py-4 text-gray-200 card justify-evenly bg-dark">
       {title ? (
         <>
-          <h1 className="text-lg font-semibold capitalize md:text-xl">
+          <h1 className="text-lg font-semibold tracking-wide capitalize md:text-xl">
             {title}
           </h1>
           <Bar
