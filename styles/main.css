@@ -1,20 +1,24 @@
-@media only screen and (min-width: 600px) {
-  html {
-    font-size: 12px;
-  }
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
+/* Root Styles */
+html {
+  @apply md:text-[12px];
+}
 body {
   @apply bg-gray-300;
   font-family: 'Montserrat', sans-serif;
 }
 
+/* Components */
 @layer components {
   .card {
     @apply rounded-l rounded-br shadow rounded-tr-xl;
   }
 }
 
+/* Styles */
 .hot {
   @apply bg-hot;
 }
@@ -24,7 +28,6 @@ body {
 .mild {
   @apply bg-mild;
 }
-
 .hover-hot {
   @apply hover:bg-hot;
 }

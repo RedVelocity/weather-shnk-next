@@ -1,8 +1,7 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable react/jsx-filename-extension */
 import Head from 'next/head';
-import '../styles/globals.css';
-import '../styles/tailwind.css';
+import '../styles/main.css';
 
 import { LocationProvider } from '../utils/context/locationProvider';
 import { WeatherProvider } from '../utils/context/weatherProvider';

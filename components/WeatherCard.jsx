@@ -1,5 +1,6 @@
 import { useContext } from 'react';
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 
 import weatherIcons from '../assets/svg/weatherIcons';
 import { WeatherContext } from '../utils/context/weatherProvider';
@@ -46,9 +47,11 @@ const WeatherCard = () => {
         {additionalInfo}
       </span>
       <div className="flex items-center pt-4 space-x-2 text-sm">
-        <img
-          alt="location"
+        <Image
           src="https://img.icons8.com/material-outlined/20/000000/marker.png"
+          height={20}
+          width={20}
+          alt="location"
         />
         <h5 className="ml-1">{locationName}</h5>
       </div>

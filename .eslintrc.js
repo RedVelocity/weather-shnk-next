@@ -4,7 +4,12 @@ module.exports = {
     es2021: true,
     node: true,
   },
-  extends: ['plugin:react/recommended', 'airbnb', 'prettier'],
+  extends: [
+    'plugin:react/recommended',
+    'airbnb',
+    'prettier',
+    'plugin:@next/next/recommended',
+  ],
   parserOptions: {
     ecmaFeatures: {
       jsx: true,

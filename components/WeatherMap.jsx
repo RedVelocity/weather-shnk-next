@@ -1,8 +1,9 @@
 import { useContext, useEffect, useRef } from 'react';
 import mapboxgl from 'mapbox-gl';
-
 import 'mapbox-gl/dist/mapbox-gl.css';
+
 import { LocationContext } from '../utils/context/locationProvider';
+import { hot } from '../styles/colors';
 
 mapboxgl.accessToken = process.env.NEXT_PUBLIC_MAPBOX_KEY;
 let marker; // current marker
@@ -37,11 +38,11 @@ const WeatherMap = () => {
     // add marker
     map.current.setCenter([longitude, latitude]);
     map.current.setZoom(10);
-    marker = new mapboxgl.Marker({ color: '#EF4444' });
+    marker = new mapboxgl.Marker({ color: hot });
     marker.setLngLat([longitude, latitude]).addTo(map.current);
   }, [longitude, latitude]);
 
-  return <div className="card h-96" ref={mapContainerRef} />;
+  return <div className="card h-84 md:h-96" ref={mapContainerRef} />;
 };
 
 export default WeatherMap;

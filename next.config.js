@@ -8,5 +8,8 @@ module.exports = withImages(
       dest: 'public',
       runtimeCaching,
     },
+    images: {
+      domains: ['img.icons8.com'],
+    },
   })
 );

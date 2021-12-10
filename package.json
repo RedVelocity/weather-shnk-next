@@ -8,19 +8,20 @@
     "start": "next start"
   },
   "dependencies": {
-    "axios": "^0.21.1",
+    "axios": "^0.21.4",
     "chart.js": "^2.9.4",
     "dayjs": "^1.10.4",
     "framer-motion": "^4.1.17",
     "mapbox-gl": "^2.2.0",
-    "next": "10.2.3",
+    "next": "^12.0.7",
     "next-pwa": "^5.4.4",
     "react": "17.0.2",
     "react-chartjs-2": "^2.11.1",
     "react-dom": "17.0.2"
   },
   "devDependencies": {
-    "autoprefixer": "^10.2.6",
+    "@next/eslint-plugin-next": "^12.0.7",
+    "autoprefixer": "^10.4.0",
     "eslint": "^7.28.0",
     "eslint-config-airbnb": "^18.2.1",
     "eslint-config-prettier": "^8.3.0",
@@ -29,7 +30,7 @@
     "eslint-plugin-prettier": "^3.4.0",
     "eslint-plugin-react": "^7.24.0",
     "next-images": "^1.7.0",
-    "postcss": "^8.3.0",
-    "tailwindcss": "^2.1.2"
+    "postcss": "^8.4.4",
+    "tailwindcss": "^3.0.0"
   }
 }
