@@ -42,7 +42,7 @@ const WeatherMap = () => {
     marker.setLngLat([longitude, latitude]).addTo(map.current);
   }, [longitude, latitude]);
 
-  return <div className="card h-84 md:h-96" ref={mapContainerRef} />;
+  return <div className="card h-80 md:h-96" ref={mapContainerRef} />;
 };
 
 export default WeatherMap;
