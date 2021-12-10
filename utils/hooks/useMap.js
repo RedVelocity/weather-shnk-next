@@ -1,18 +1,14 @@
-import { useContext, useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import mapboxgl from 'mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
 
-import { LocationContext } from '../context/locationProvider';
 import { hot } from '../../styles/colors';
 
 // current marker
 let marker;
 mapboxgl.accessToken = process.env.NEXT_PUBLIC_MAPBOX_KEY;
 
-const useMap = () => {
-  const {
-    location: { longitude, latitude },
-  } = useContext(LocationContext);
+const useMap = (longitude, latitude) => {
   const mapContainerRef = useRef(null);
   const map = useRef(null);
 
