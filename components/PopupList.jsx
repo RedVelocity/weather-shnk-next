@@ -26,7 +26,7 @@ const PopupList = ({
 }) => {
   // hide list on outside click
   const listNode = useRef(null);
-  const handleClick = (e) => {
+  const handleOutsideClick = (e) => {
     if (listNode.current?.contains(e.target) || e.target.id === 'popup-input') {
       return;
     }
@@ -34,8 +34,9 @@ const PopupList = ({
   };
 
   useEffect(() => {
-    document.addEventListener('mousedown', handleClick, false);
-    return () => document.removeEventListener('mousedown', handleClick, false);
+    document.addEventListener('mousedown', handleOutsideClick, false);
+    return () =>
+      document.removeEventListener('mousedown', handleOutsideClick, false);
   }, []);
 
   return (
