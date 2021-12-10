@@ -23,7 +23,7 @@ const WeatherChart = () => {
           />
         </>
       ) : (
-        <Skeleton rows={4} />
+        <Skeleton rows={5} />
       )}
     </div>
   );
