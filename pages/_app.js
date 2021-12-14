@@ -8,7 +8,7 @@ import { WeatherProvider } from '../utils/context/weatherProvider';
 import Header from '../components/header';
 import Footer from '../components/footer';
 
-function MyApp({ Component, pageProps }) {
+function App({ Component, pageProps }) {
   return (
     <>
       <Head>
@@ -33,4 +33,4 @@ function MyApp({ Component, pageProps }) {
   );
 }
 
-export default MyApp;
+export default App;

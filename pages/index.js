@@ -1,11 +1,22 @@
 /* eslint-disable react/jsx-filename-extension */
 import { useContext } from 'react';
+import dynamic from 'next/dynamic';
 
-import SearchCard from '../components/SearchCard';
-import WeatherChart from '../components/WeatherChart';
-import WeatherCard from '../components/WeatherCard';
-import WeatherMap from '../components/WeatherMap';
 import { LocationContext } from '../utils/context/locationProvider';
+import SearchCard from '../components/SearchCard';
+import WeatherCard from '../components/WeatherCard';
+import Skeleton from '../components/Skeleton';
+
+const DynamicWeatherMap = dynamic(() => import('../components/WeatherMap'), {
+  loading: () => <Skeleton rows={5} />,
+});
+
+const DynamicWeatherChart = dynamic(
+  () => import('../components/WeatherChart'),
+  {
+    loading: () => <Skeleton rows={5} />,
+  }
+);
 
 const Home = () => {
   const {
@@ -20,10 +31,10 @@ const Home = () => {
           <WeatherCard />
         </section>
         <section className="md:col-span-2">
-          <WeatherChart />
+          <DynamicWeatherChart />
         </section>
         <section className="md:col-span-full">
-          <WeatherMap longitude={longitude} latitude={latitude} />
+          <DynamicWeatherMap longitude={longitude} latitude={latitude} />
         </section>
       </div>
     </div>

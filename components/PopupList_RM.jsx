@@ -1,21 +1,32 @@
 import { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
-import { LazyMotion, m, AnimatePresence, domAnimation } from 'framer-motion';
+// import { motion, AnimatePresence } from 'framer-motion';
+// import { Motion } from 'react-motion';
 
-const variants = {
-  animate: {
-    opacity: 1,
-    height: 'auto',
-    transition: { duration: 0.25 },
-  },
-  exit: {
-    opacity: 0,
-  },
-  initial: {
-    opacity: 0,
-    height: 0,
-  },
-};
+// const variants = {
+//   animate: {
+//     opacity: 1,
+//     height: 'auto',
+//     transition: { duration: 0.25 },
+//   },
+//   exit: {
+//     opacity: 0,
+//   },
+//   initial: {
+//     opacity: 0,
+//     height: 0,
+//   },
+// };
+
+// const willEnter = () => ({
+//   height: 0,
+//   opacity: 1,
+// });
+
+// const willLeave = () => ({
+//   height: spring(0),
+//   opacity: spring(0),
+// });
 
 const PopupList = ({
   list,
@@ -24,6 +35,23 @@ const PopupList = ({
   handleSelect,
   color,
 }) => {
+  // const getStyles = () =>
+  //   list.map((listItem) => ({
+  //     data: { ...listItem },
+  //     key: listItem.id,
+  //     style: {
+  //       height: spring(60, presets.gentle),
+  //       opacity: spring(1, presets.gentle),
+  //     },
+  //   }));
+  // const getDefaultStyles = () =>
+  //   list.map((listItem) => ({
+  //     key: listItem.id,
+  //     style: {
+  //       height: 0,
+  //       opacity: 1,
+  //     },
+  //   }));
   // hide list on outside click
   const listNode = useRef(null);
   const handleOutsideClick = (e) => {
@@ -40,16 +68,18 @@ const PopupList = ({
   }, []);
 
   return (
-    <LazyMotion features={domAnimation} strict>
-      <AnimatePresence>
-        {showPopupList && (
-          <m.div
-            ref={listNode}
+    showPopupList && (
+      <>
+        {/* <Motion defaultStyle={{ opacity: 0 }} style={{ opacity: 1 }}> */}
+        {(interpolatingStyle) => (
+          <div
+            // ref={listNode}
             className="absolute z-10 w-full p-2 bg-white shadow rounded-xl"
-            variants={variants}
-            initial="initial"
-            animate="animate"
-            exit="exit"
+            style={interpolatingStyle}
+            // variants={variants}
+            // initial="initial"
+            // animate="animate"
+            // exit="exit"
           >
             <ul className="overflow-x-hidden max-h-64">
               {list.map((listItem) => (
@@ -57,6 +87,7 @@ const PopupList = ({
                   className={`hover-${color} cursor-pointer px-2 py-1 rounded-xl mx-1`}
                   key={listItem.id}
                   id={listItem.id}
+                  // style={listItem.style}
                   onClick={handleSelect}
                   role="presentation"
                 >
@@ -67,10 +98,11 @@ const PopupList = ({
                 </li>
               ))}
             </ul>
-          </m.div>
+          </div>
         )}
-      </AnimatePresence>
-    </LazyMotion>
+        {/* </Motion> */}
+      </>
+    )
   );
 };
 

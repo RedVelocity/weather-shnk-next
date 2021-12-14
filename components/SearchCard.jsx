@@ -63,7 +63,7 @@ const SearchCard = () => {
             showPopupList={showPopupList}
             setShowPopupList={setShowPopupList}
             handleSelect={handleSelect}
-            theme={theme}
+            color={theme}
           />
         )}
       </div>
