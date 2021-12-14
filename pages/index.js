@@ -33,7 +33,7 @@ const Home = () => {
         <section className="md:col-span-2">
           <DynamicWeatherChart />
         </section>
-        <section className="flex flex-col overflow-hidden text-gray-200 md:col-span-full bg-cool justify-evenly card">
+        <section className="overflow-hidden md:col-span-full bg-cool card">
           <DynamicWeatherMap longitude={longitude} latitude={latitude} />
         </section>
       </div>
