@@ -3,7 +3,7 @@ import useMap from '../utils/hooks/useMap';
 
 const WeatherMap = ({ longitude, latitude }) => {
   const mapContainerRef = useMap(longitude, latitude);
-  return <div className="h-80 md:h-96" ref={mapContainerRef} />;
+  return <div className="h-80 md:h-96 card" ref={mapContainerRef} />;
 };
 
 WeatherMap.propTypes = {
