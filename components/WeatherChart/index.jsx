@@ -10,9 +10,9 @@ const WeatherChart = () => {
   const { weatherData } = useContext(WeatherContext);
   const [data, options, title] = shapeChartData(weatherData);
   return (
-    <div className="flex flex-col min-h-full px-6 py-4 text-gray-200 card justify-evenly bg-dark">
+    <>
       {title ? (
-        <>
+        <div className="flex flex-col min-h-full px-6 py-4 text-gray-200 card bg-dark">
           <h1 className="mb-4 text-lg font-semibold tracking-wide capitalize md:text-xl">
             {title}
           </h1>
@@ -21,11 +21,11 @@ const WeatherChart = () => {
             data={data}
             options={options}
           />
-        </>
+        </div>
       ) : (
         <Skeleton rows={5} />
       )}
-    </div>
+    </>
   );
 };
 

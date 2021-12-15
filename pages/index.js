@@ -6,6 +6,7 @@ import { LocationContext } from '../lib/context/locationProvider';
 import SearchCard from '../components/SearchCard';
 import WeatherCard from '../components/WeatherCard';
 import Skeleton from '../components/Skeleton';
+import HourlyWeather from '../components/HourlyWeather';
 
 const DynamicWeatherMap = dynamic(() => import('../components/WeatherMap'), {
   loading: () => <Skeleton rows={5} />,
@@ -31,7 +32,7 @@ const Home = () => {
           <WeatherCard />
         </section>
         <section className="md:col-span-2">
-          <DynamicWeatherChart />
+          <HourlyWeather />
         </section>
         <section className="md:col-span-full bg-cool card">
           <DynamicWeatherMap longitude={longitude} latitude={latitude} />
