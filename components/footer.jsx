@@ -2,7 +2,7 @@ import React from 'react';
 
 const Footer = () => (
   <footer className="font-semibold text-dark">
-    <div className="flex justify-between max-w-screen-lg p-4 m-auto">
+    <div className="flex flex-col justify-between max-w-screen-lg gap-2 p-4 m-auto text-sm text-center md:flex-row md:text-lg">
       <a href="https://openweathermap.org/">Powered by OpenWeather</a>
       <span>
         Icons made by{' '}

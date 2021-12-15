@@ -6,7 +6,7 @@ import weatherIcons8 from '../assets/svg/weatherIcons-8';
 const SummaryCard = ({ icon, temperature, time }) => (
   <div className="flex flex-col items-center justify-center p-2 text-sky-50">
     <Image src={weatherIcons8[icon]} height={48} width={48} />
-    <div className="mt-4">
+    <div className="mt-2">
       <span className="tracking-wide">{time}</span>
     </div>
     <span className="text-2xl font-semibold tracking-wide">{temperature}</span>
