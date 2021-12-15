@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 const Skeleton = ({ rows = 1 }) => (
   <div className="flex flex-col min-h-full p-4 justify-evenly bg-dark card">
     {[...Array(rows)].map((_, i) => (
@@ -8,5 +10,9 @@ const Skeleton = ({ rows = 1 }) => (
     ))}
   </div>
 );
+
+Skeleton.propTypes = {
+  rows: PropTypes.number.isRequired,
+};
 
 export default Skeleton;

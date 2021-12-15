@@ -12,12 +12,12 @@ const DynamicWeatherMap = dynamic(() => import('../components/WeatherMap'), {
   loading: () => <Skeleton rows={5} />,
 });
 
-const DynamicWeatherChart = dynamic(
-  () => import('../components/WeatherChart'),
-  {
-    loading: () => <Skeleton rows={5} />,
-  }
-);
+// const DynamicWeatherChart = dynamic(
+//   () => import('../components/WeatherChart'),
+//   {
+//     loading: () => <Skeleton rows={5} />,
+//   }
+// );
 
 const Home = () => {
   const {
