@@ -2,7 +2,7 @@
 import { useContext } from 'react';
 import dynamic from 'next/dynamic';
 
-import { LocationContext } from '../utils/context/locationProvider';
+import { LocationContext } from '../lib/context/locationProvider';
 import SearchCard from '../components/SearchCard';
 import WeatherCard from '../components/WeatherCard';
 import Skeleton from '../components/Skeleton';

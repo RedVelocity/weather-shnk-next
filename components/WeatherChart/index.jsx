@@ -3,8 +3,8 @@ import { Bar } from 'react-chartjs-2';
 
 import Skeleton from '../Skeleton';
 import shapeChartData from './config';
-import { WeatherContext } from '../../utils/context/weatherProvider';
-import { getCurrentBreakpoint } from '../../utils/getCurrentBreakpoint';
+import { WeatherContext } from '../../lib/context/weatherProvider';
+import { getCurrentBreakpoint } from '../../lib/utils/getCurrentBreakpoint';
 
 const WeatherChart = () => {
   const { weatherData } = useContext(WeatherContext);

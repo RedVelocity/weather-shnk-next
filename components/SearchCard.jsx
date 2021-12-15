@@ -1,8 +1,8 @@
 import { useContext, useEffect, useState } from 'react';
-import { getPlaces } from '../utils/API';
-import { LocationContext } from '../utils/context/locationProvider';
-import { WeatherContext } from '../utils/context/weatherProvider';
-import useDebounce from '../utils/hooks/useDebounce';
+import { getPlaces } from '../lib/api';
+import { LocationContext } from '../lib/context/locationProvider';
+import { WeatherContext } from '../lib/context/weatherProvider';
+import useDebounce from '../lib/hooks/useDebounce';
 import PopupList from './PopupList';
 
 const SearchCard = () => {

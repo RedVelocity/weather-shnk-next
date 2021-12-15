@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import useMap from '../utils/hooks/useMap';
+import useMap from '../lib/hooks/useMap';
 
 const WeatherMap = ({ longitude, latitude }) => {
   const mapContainerRef = useMap(longitude, latitude);

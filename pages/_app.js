@@ -3,8 +3,8 @@
 import Head from 'next/head';
 import '../styles/main.css';
 
-import { LocationProvider } from '../utils/context/locationProvider';
-import { WeatherProvider } from '../utils/context/weatherProvider';
+import { LocationProvider } from '../lib/context/locationProvider';
+import { WeatherProvider } from '../lib/context/weatherProvider';
 import Header from '../components/header';
 import Footer from '../components/footer';
 

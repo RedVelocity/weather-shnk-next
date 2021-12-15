@@ -3,8 +3,8 @@ import { LazyMotion, m, domAnimation } from 'framer-motion';
 import Image from 'next/image';
 
 import weatherIcons from '../assets/svg/weatherIcons';
-import { WeatherContext } from '../utils/context/weatherProvider';
-import { LocationContext } from '../utils/context/locationProvider';
+import { WeatherContext } from '../lib/context/weatherProvider';
+import { LocationContext } from '../lib/context/locationProvider';
 
 const WeatherCard = () => {
   const {
