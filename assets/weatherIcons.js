@@ -1,12 +1,12 @@
-import clearDay from './clear-day.svg';
-import clearNight from './clear-night.svg';
-import cloudy from './cloudy.svg';
-import fog from './fog.svg';
-import partlyCloudyDay from './partly-cloudy-day.svg';
-import partlyCloudyNight from './partly-cloudy-night.svg';
-import rain from './rain.svg';
-import sleet from './sleet.svg';
-import thunderstorm from './thunderstorm.svg';
+import clearDay from './svg/clear-day.svg';
+import clearNight from './svg/clear-night.svg';
+import cloudy from './svg/cloudy.svg';
+import fog from './svg/fog.svg';
+import partlyCloudyDay from './svg/partly-cloudy-day.svg';
+import partlyCloudyNight from './svg/partly-cloudy-night.svg';
+import rain from './svg/rain.svg';
+import sleet from './svg/sleet.svg';
+import thunderstorm from './svg/thunderstorm.svg';
 // import tornado from './tornado.svg';
 
 const weatherIcons = {

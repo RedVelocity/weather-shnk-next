@@ -20,9 +20,8 @@ const HourlyWeather = () => {
               <SummaryCard
                 key={i}
                 icon={item.weather.icon}
-                temperature={`${Math.round(item.temp)}°C`}
-                time={i !== 0 ? dayjs.unix(item.dt).format('HH:mm') : 'Now'}
-                //   condition={item.weather.description}
+                title={`${Math.round(item.temp)}°C`}
+                subtitle={i !== 0 ? dayjs.unix(item.dt).format('HH:mm') : 'Now'}
               />
             ))}
         </div>

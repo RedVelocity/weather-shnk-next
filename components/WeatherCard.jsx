@@ -2,7 +2,7 @@ import { useContext } from 'react';
 import { LazyMotion, m, domAnimation } from 'framer-motion';
 import Image from 'next/image';
 
-import weatherIcons from '../assets/svg/weatherIcons';
+import weatherIcons from '../assets/weatherIcons';
 import { WeatherContext } from '../lib/context/weatherProvider';
 import { LocationContext } from '../lib/context/locationProvider';
 

@@ -1,4 +1,4 @@
-const weatherIcons8 = {
+const weatherSummaryIcons = {
   '01d': 'https://img.icons8.com/color-glass/48/000000/sun.png',
   '01n': 'https://img.icons8.com/color-glass/48/000000/bright-moon.png',
   '02d': 'https://img.icons8.com/color-glass/48/000000/partly-cloudy-day.png',
@@ -19,4 +19,4 @@ const weatherIcons8 = {
   '50n': 'https://img.icons8.com/color-glass/48/000000/fog.png',
 };
 
-export default weatherIcons8;
+export default weatherSummaryIcons;
