@@ -3,8 +3,8 @@ import { cool, mild, hot } from '../../styles/colors';
 
 const stepSize = 5;
 const options = {
-  responsive: true,
-  maintainAspectRatio: true,
+  // responsive: true,
+  // maintainAspectRatio: true,
   legend: {
     display: false,
   },
