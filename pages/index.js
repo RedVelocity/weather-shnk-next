@@ -12,12 +12,12 @@ const DynamicWeatherMap = dynamic(() => import('../components/WeatherMap'), {
   loading: () => <Skeleton rows={5} />,
 });
 
-// const DynamicWeatherChart = dynamic(
-//   () => import('../components/WeatherChart'),
-//   {
-//     loading: () => <Skeleton rows={5} />,
-//   }
-// );
+const DynamicWeatherChart = dynamic(
+  () => import('../components/WeatherChart'),
+  {
+    loading: () => <Skeleton rows={5} />,
+  }
+);
 
 const Home = () => {
   const {
@@ -34,8 +34,11 @@ const Home = () => {
         <section className="md:col-span-2">
           <HourlyWeather />
         </section>
-        <section className="md:col-span-full bg-cool card">
+        <section>
           <DynamicWeatherMap longitude={longitude} latitude={latitude} />
+        </section>
+        <section className="md:col-span-2 bg-cool card">
+          <DynamicWeatherChart />
         </section>
       </div>
     </div>

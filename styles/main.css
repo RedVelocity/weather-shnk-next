@@ -4,7 +4,7 @@
 
 /* Root Styles */
 html {
-  @apply md:text-[12px];
+  @apply text-[12px] md:text-[10.5px];
 }
 body {
   @apply bg-gray-300;
