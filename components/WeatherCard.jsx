@@ -4,7 +4,7 @@ import { LazyMotion, m, domAnimation } from 'framer-motion';
 
 import { WeatherContext } from '../lib/context/weatherProvider';
 import { LocationContext } from '../lib/context/locationProvider';
-import getIcon from '../lib/utils/getIcon';
+import Icon from './Icon';
 
 const WeatherCard = () => {
   const {
@@ -30,12 +30,7 @@ const WeatherCard = () => {
         className={`card p-4 font-semibold transition-colors duration-1000 ease-in-out ${theme}`}
       >
         <div className="flex items-center gap-6 p-4 text-center justify-evenly">
-          <m.img
-            layout="position"
-            className="w-20 h-20"
-            alt="icon"
-            src={getIcon(current.weather.icon)}
-          />
+          <Icon icon={current.weather.icon} size={64} />
           <m.h1 layout className="text-2xl font-bold capitalize">
             {current.weather.description}
           </m.h1>
