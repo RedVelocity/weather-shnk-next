@@ -1,8 +1,8 @@
 import { useContext } from 'react';
-import { LazyMotion, m, domAnimation } from 'framer-motion';
 import Image from 'next/image';
+import { LazyMotion, m, domAnimation } from 'framer-motion';
 
-import weatherIcons from '../assets/weatherIcons';
+import { weatherIcons } from '../lib/utils/icons';
 import { WeatherContext } from '../lib/context/weatherProvider';
 import { LocationContext } from '../lib/context/locationProvider';
 
@@ -34,7 +34,9 @@ const WeatherCard = () => {
             layout="position"
             className="w-20 h-20"
             alt="icon"
-            src={weatherIcons[current.weather.icon]}
+            src={`/assets/weather-icons/${
+              weatherIcons[current.weather.icon]
+            }.svg`}
           />
           <m.h1 layout className="text-2xl font-bold capitalize">
             {current.weather.description}
