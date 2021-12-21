@@ -12,7 +12,31 @@ const SearchCard = () => {
   const [showPopupList, setShowPopupList] = useState(false);
   const [searchInput, setSearchInput] = useState('');
   const debouncedSearchTerm = useDebounce(searchInput, 500);
-
+  // Handler for outside click
+  const handleOutsideClick = (e) => {
+    if (e.target.attributes['data-suggestion-item']) {
+      return;
+    }
+    setShowPopupList(false);
+  };
+  // Handler for popup item select
+  const handleSelect = (e) => {
+    const loc = placesList.find((suggestion) => suggestion.id === e.target.id);
+    setLocation({
+      ...location,
+      name: e.target.innerText,
+      latitude: loc.coordinates[1],
+      longitude: loc.coordinates[0],
+    });
+    setShowPopupList(false);
+  };
+  // Add listener for Outside click
+  useEffect(() => {
+    document.addEventListener('mousedown', handleOutsideClick, false);
+    return () =>
+      document.removeEventListener('mousedown', handleOutsideClick, false);
+  }, []);
+  // Update list on input change
   useEffect(
     () => {
       if (debouncedSearchTerm) {
@@ -32,17 +56,6 @@ const SearchCard = () => {
     [debouncedSearchTerm] // Only call effect if debounced search term changes
   );
 
-  const handleSelect = (e) => {
-    const loc = placesList.find((suggestion) => suggestion.id === e.target.id);
-    setLocation({
-      ...location,
-      name: e.target.innerText,
-      latitude: loc.coordinates[1],
-      longitude: loc.coordinates[0],
-    });
-    setShowPopupList(false);
-  };
-
   return (
     <div className="p-4 card bg-dark">
       <h1 className="text-xl font-semibold text-gray-200">Search</h1>
@@ -52,16 +65,13 @@ const SearchCard = () => {
           type="text"
           autoComplete="off"
           placeholder="Place Name"
-          id="popup-input"
           value={searchInput}
           onChange={(e) => setSearchInput(e.target.value)}
           onFocus={() => setShowPopupList(true)}
         />
-        {placesList.length > 0 && (
+        {showPopupList && (
           <PopupList
             list={placesList}
-            showPopupList={showPopupList}
-            setShowPopupList={setShowPopupList}
             handleSelect={handleSelect}
             color={theme}
           />

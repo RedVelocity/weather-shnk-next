@@ -14,9 +14,6 @@ const Footer = () => (
           www.flaticon.com
         </a>
       </span>
-      <a href="https://icons8.com/icon/set/weather/color-glass">
-        Color Glass icons by Icons8
-      </a>
     </div>
   </footer>
 );
