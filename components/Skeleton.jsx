@@ -4,7 +4,7 @@ const Skeleton = ({ rows = 1, withContainer = false }) => {
   const skeletons = [...Array(rows)].map((_, i) => (
     <div
       key={i}
-      className="h-4 mb-8 rounded last:mb-0 md:h-6 md:mb-4 bg-gradient-to-r from-gray-400 to-cool"
+      className="h-4 mb-6 rounded last:mb-0 md:h-6 bg-gradient-to-r from-gray-400 to-cool"
     />
   ));
 

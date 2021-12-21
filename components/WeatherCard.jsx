@@ -42,14 +42,14 @@ const WeatherCard = () => {
                 <h1 className="text-4xl">{temp}</h1>
               </m.div>
             </div>
-            <span className="block p-2 text-sm tracking-wide text-center bg-gray-200 rounded">
+            <span className="block p-2 mb-4 text-sm tracking-wide text-center bg-gray-200 rounded">
               {additionalInfo}
             </span>
           </>
         ) : (
           <Skeleton rows={4} />
         )}
-        <div className="flex items-center pt-4 space-x-2 text-sm">
+        <div className="flex items-center space-x-2 text-sm">
           <Image
             src="https://img.icons8.com/material-outlined/20/000000/marker.png"
             height={20}
