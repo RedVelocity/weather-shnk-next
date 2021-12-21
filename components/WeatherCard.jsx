@@ -15,11 +15,9 @@ const WeatherCard = () => {
     weatherData: { current },
     theme,
   } = useContext(WeatherContext);
-  let temp = '--';
-  let additionalInfo = '--';
+  let additionalInfo;
 
   if (current?.weather) {
-    temp = `${Math.round(current.temp)}°C`;
     additionalInfo = `Feels Like: ${Math.round(
       current.feels_like
     )}°C | Humidity: ${current.humidity} | UV: ${current.uvi}`;
@@ -39,7 +37,7 @@ const WeatherCard = () => {
               </m.h1>
               <m.div layout>
                 Currently
-                <h1 className="text-4xl">{temp}</h1>
+                <h1 className="text-4xl">{`${Math.round(current.temp)}°C`}</h1>
               </m.div>
             </div>
             <span className="block p-2 mb-4 text-sm tracking-wide text-center bg-gray-200 rounded">

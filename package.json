@@ -9,14 +9,14 @@
   },
   "dependencies": {
     "axios": "^0.21.4",
-    "chart.js": "^2.9.4",
+    "chart.js": "^3.6.2",
     "dayjs": "^1.10.4",
     "framer-motion": "^4.1.17",
     "mapbox-gl": "^2.2.0",
     "next": "^12.0.7",
     "next-pwa": "^5.4.4",
     "react": "17.0.2",
-    "react-chartjs-2": "^2.11.1",
+    "react-chartjs-2": "^4.0.0",
     "react-dom": "17.0.2"
   },
   "devDependencies": {

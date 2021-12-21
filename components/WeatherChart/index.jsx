@@ -1,26 +1,27 @@
 import { useContext } from 'react';
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  Title,
+} from 'chart.js';
 import { Bar } from 'react-chartjs-2';
 
 import Skeleton from '../Skeleton';
 import shapeChartData from './config';
 import { WeatherContext } from '../../lib/context/weatherProvider';
-import { getCurrentBreakpoint } from '../../lib/utils/getCurrentBreakpoint';
+
+ChartJS.register(CategoryScale, LinearScale, BarElement, Title);
 
 const WeatherChart = () => {
   const { weatherData } = useContext(WeatherContext);
-  const [data, options, title] = shapeChartData(weatherData);
+  const [data, options] = shapeChartData(weatherData);
   return (
     <>
-      {title ? (
-        <div className="flex flex-col px-6 py-4 text-gray-200 justify-evenly h-80 md:h-96 card bg-dark">
-          <h1 className="mb-4 text-lg font-semibold tracking-wide capitalize md:my-4 md:text-xl">
-            {title}
-          </h1>
-          <Bar
-            height={getCurrentBreakpoint() === 'sm' ? 130 : 90}
-            data={data}
-            options={options}
-          />
+      {weatherData.daily ? (
+        <div className="flex items-center justify-center px-6 py-4 text-gray-200 h-80 md:h-96 card bg-dark">
+          <Bar height="100%" data={data} options={options} />
         </div>
       ) : (
         <Skeleton rows={5} withContainer />

@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 
-const Skeleton = ({ rows = 1, withContainer = false }) => {
+const Skeleton = ({ rows = 1, withContainer }) => {
   const skeletons = [...Array(rows)].map((_, i) => (
     <div
       key={i}
