@@ -1,20 +1,12 @@
 import dayjs from 'dayjs';
 import { cool, mild, hot } from '../../styles/colors';
 
-// const stepSize = 5;
+const stepSize = 10;
 const options = {
   responsive: true,
-  // maintainAspectRatio: true,
+  maintainAspectRatio: false,
   legend: {
     display: false,
-  },
-  plugins: {
-    title: {
-      display: true,
-      text: '',
-      align: 'start',
-      color: 'lightgray',
-    },
   },
   scales: {
     x: {
@@ -39,6 +31,7 @@ const options = {
           family: ['Montserrat', 'sans-serif'],
           size: 13,
         },
+        stepSize,
       },
     },
   },
@@ -55,7 +48,6 @@ const shapeChartData = (weatherData) => {
     title = `${weatherData.daily[0].weather.description} on ${dayjs
       .unix(weatherData.daily[0].dt)
       .format('dddd')}`;
-    options.plugins.title.text = title;
     weatherData.daily.forEach((daily) => {
       labels.push(dayjs.unix(daily.dt).format('dd-DD'));
       lowTempData.push(Math.round(daily.temp.min));
@@ -63,9 +55,9 @@ const shapeChartData = (weatherData) => {
       highTempData.push(Math.round(daily.temp.max));
     });
     // Set min step for bar chart based on lowtemp value
-    // const min = Math.min(...lowTempData);
-    // options.scales.y.ticks.suggestedMin =
-    //   min % stepSize === 0 ? min - stepSize : min - (min % stepSize);
+    const min = Math.min(...lowTempData);
+    options.scales.y.ticks.suggestedMin =
+      min % stepSize === 0 ? min - stepSize : min - (min % stepSize);
     // Shape data element
     data = {
       labels,
@@ -94,7 +86,7 @@ const shapeChartData = (weatherData) => {
       ],
     };
   }
-  return [data, options];
+  return [data, options, title];
 };
 
 export default shapeChartData;
