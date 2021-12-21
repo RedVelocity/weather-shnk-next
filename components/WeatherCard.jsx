@@ -5,6 +5,7 @@ import { LazyMotion, m, domAnimation } from 'framer-motion';
 import { WeatherContext } from '../lib/context/weatherProvider';
 import { LocationContext } from '../lib/context/locationProvider';
 import Icon from './Icon';
+import Skeleton from './Skeleton';
 
 const WeatherCard = () => {
   const {
@@ -17,7 +18,7 @@ const WeatherCard = () => {
   let temp = '--';
   let additionalInfo = '--';
 
-  if (current.weather.description !== '--') {
+  if (current?.weather) {
     temp = `${Math.round(current.temp)}°C`;
     additionalInfo = `Feels Like: ${Math.round(
       current.feels_like
@@ -29,19 +30,25 @@ const WeatherCard = () => {
       <div
         className={`card p-4 font-semibold transition-colors duration-1000 ease-in-out ${theme}`}
       >
-        <div className="flex items-center gap-6 p-4 text-center justify-evenly">
-          <Icon icon={current.weather.icon} size={64} />
-          <m.h1 layout className="text-2xl font-bold capitalize">
-            {current.weather.description}
-          </m.h1>
-          <m.div layout>
-            Currently
-            <h1 className="text-4xl">{temp}</h1>
-          </m.div>
-        </div>
-        <span className="block p-2 text-sm tracking-wide text-center bg-gray-200 rounded">
-          {additionalInfo}
-        </span>
+        {current?.weather ? (
+          <>
+            <div className="flex items-center gap-6 p-4 text-center justify-evenly">
+              <Icon icon={current.weather.icon} size={64} />
+              <m.h1 layout className="text-2xl font-bold capitalize">
+                {current.weather.description}
+              </m.h1>
+              <m.div layout>
+                Currently
+                <h1 className="text-4xl">{temp}</h1>
+              </m.div>
+            </div>
+            <span className="block p-2 text-sm tracking-wide text-center bg-gray-200 rounded">
+              {additionalInfo}
+            </span>
+          </>
+        ) : (
+          <Skeleton rows={4} />
+        )}
         <div className="flex items-center pt-4 space-x-2 text-sm">
           <Image
             src="https://img.icons8.com/material-outlined/20/000000/marker.png"
