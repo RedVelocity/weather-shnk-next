@@ -21,7 +21,7 @@ const PopupList = ({ list, handleSelect, color }) => (
     <AnimatePresence>
       {list.length > 0 && (
         <m.div
-          className="absolute z-10 p-2 bg-white shadow rounded-xl"
+          className="absolute z-10 min-w-full p-2 bg-white shadow rounded-xl"
           variants={variants}
           initial="initial"
           animate="animate"

@@ -9,13 +9,13 @@ import Skeleton from '../components/Skeleton';
 import HourlyWeather from '../components/HourlyWeather';
 
 const DynamicWeatherMap = dynamic(() => import('../components/WeatherMap'), {
-  loading: () => <Skeleton rows={5} />,
+  loading: () => <Skeleton rows={5} withContainer />,
 });
 
 const DynamicWeatherChart = dynamic(
   () => import('../components/WeatherChart'),
   {
-    loading: () => <Skeleton rows={5} />,
+    loading: () => <Skeleton rows={5} withContainer />,
   }
 );
 
@@ -37,7 +37,7 @@ const Home = () => {
         <section>
           <DynamicWeatherMap longitude={longitude} latitude={latitude} />
         </section>
-        <section className="md:col-span-2 bg-cool card">
+        <section className="md:col-span-2">
           <DynamicWeatherChart />
         </section>
       </div>
