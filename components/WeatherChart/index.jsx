@@ -21,11 +21,11 @@ const WeatherChart = () => {
   return (
     <>
       {title ? (
-        <div className="p-4 text-gray-200 h-80 md:h-96 card bg-dark">
-          <h1 className="pb-4 text-xl font-semibold text-gray-200 capitalize">
+        <div className="p-4 text-gray-200 h-80 md:h-96 card bg-dark flex flex-col gap-4">
+          <h1 className="text-xl font-semibold text-gray-200 capitalize">
             {title}
           </h1>
-          <div className="h-[80%]">
+          <div className="grow">
             <Bar data={data} options={options} />
           </div>
         </div>
