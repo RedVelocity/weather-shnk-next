@@ -25,7 +25,7 @@ const Home = () => {
   } = useContext(LocationContext);
 
   return (
-    <div className="flex-1 w-full max-w-screen-lg mx-auto">
+    <main className="flex-1 w-full max-w-screen-lg mx-auto">
       <div className="grid gap-4 mx-4 md:grid-cols-3">
         <section className="space-y-4">
           <SearchCard />
@@ -41,7 +41,7 @@ const Home = () => {
           <DynamicWeatherChart />
         </section>
       </div>
-    </div>
+    </main>
   );
 };
 

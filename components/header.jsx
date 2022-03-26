@@ -1,11 +1,14 @@
-import React from 'react';
+import PropTypes from 'prop-types';
 
-const Header = () => (
-  <header className="text-2xl font-bold text-dark">
-    <div className="max-w-screen-lg p-4 m-auto">
-      <a href="https://shnk.tech">SHNK.TECH</a>
-    </div>
+const Header = ({ hostName, hostUrl }) => (
+  <header className="text-2xl font-bold text-dark uppercase max-w-screen-lg p-4 m-auto">
+    <a href={hostUrl}>{hostName}</a>
   </header>
 );
+
+Header.propTypes = {
+  hostName: PropTypes.string,
+  hostUrl: PropTypes.string,
+};
 
 export default Header;
