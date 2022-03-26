@@ -7,8 +7,8 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { LocationProvider } from '../lib/context/locationProvider';
 import { WeatherProvider } from '../lib/context/weatherProvider';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
+import Header from '../components/header';
+import Footer from '../components/footer';
 
 function App({ Component, pageProps }) {
   const [host, setHost] = useState({});
