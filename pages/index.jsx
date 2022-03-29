@@ -1,9 +1,8 @@
-import { useContext } from 'react';
 import axios from 'axios';
 import PropTypes from 'prop-types';
 import dynamic from 'next/dynamic';
 
-import { LocationContext } from '../lib/context/locationProvider';
+import { useLocation } from '../lib/context/locationProvider';
 import SearchCard from '../components/SearchCard';
 import WeatherCard from '../components/WeatherCard';
 import Skeleton from '../components/Skeleton';
@@ -35,7 +34,7 @@ export const getStaticProps = async () => {
 const Home = ({ host: { hostName, hostUrl } }) => {
   const {
     location: { longitude, latitude },
-  } = useContext(LocationContext);
+  } = useLocation();
   return (
     <>
       <Header hostName={hostName} hostUrl={hostUrl} />

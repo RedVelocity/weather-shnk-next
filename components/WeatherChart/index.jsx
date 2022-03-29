@@ -1,4 +1,3 @@
-import { useContext } from 'react';
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -11,12 +10,12 @@ import { Bar } from 'react-chartjs-2';
 
 import Skeleton from '../Skeleton';
 import shapeChartData from './config';
-import { WeatherContext } from '../../lib/context/weatherProvider';
+import { useWeather } from '../../lib/context/weatherProvider';
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip);
 
 const WeatherChart = () => {
-  const { weatherData } = useContext(WeatherContext);
+  const { weatherData } = useWeather();
   const [data, options, title] = shapeChartData(weatherData);
   return (
     <>

@@ -1,13 +1,13 @@
-import { useContext, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { getPlaces } from '../lib/api';
-import { LocationContext } from '../lib/context/locationProvider';
-import { WeatherContext } from '../lib/context/weatherProvider';
+import { useLocation } from '../lib/context/locationProvider';
+import { useWeather } from '../lib/context/weatherProvider';
 import useDebounce from '../lib/hooks/useDebounce';
 import PopupList from './PopupList';
 
 const SearchCard = () => {
-  const { theme } = useContext(WeatherContext);
-  const { setLocation, location } = useContext(LocationContext);
+  const { theme } = useWeather();
+  const { setLocation, location } = useLocation();
   const [placesList, setPlacesList] = useState([]);
   const [showPopupList, setShowPopupList] = useState(false);
   const [searchInput, setSearchInput] = useState('');
