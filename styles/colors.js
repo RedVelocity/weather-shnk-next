@@ -1,7 +1,7 @@
 const colors = {
   cool: '#00bbff',
   mild: '#f090cc',
-  hot: '#ef6a67',
+  hot: '#F9B900',
   dark: '#262d4a',
 };
 
