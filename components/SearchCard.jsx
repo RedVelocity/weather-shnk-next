@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { getPlaces } from '../lib/api';
-import { useLocation } from '../lib/context/locationProvider';
-import { useWeather } from '../lib/context/weatherProvider';
+import useWeather from '../lib/hooks/useWeather';
+import useLocation from '../lib/hooks/useLocation';
 import useDebounce from '../lib/hooks/useDebounce';
 import PopupList from './PopupList';
 

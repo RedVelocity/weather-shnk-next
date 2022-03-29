@@ -1,8 +1,8 @@
 import Image from 'next/image';
 import { LazyMotion, m, domAnimation } from 'framer-motion';
 
-import { useLocation } from '../lib/context/locationProvider';
-import { useWeather } from '../lib/context/weatherProvider';
+import useWeather from '../lib/hooks/useWeather';
+import useLocation from '../lib/hooks/useLocation';
 import Icon from './Icon';
 import Skeleton from './Skeleton';
 

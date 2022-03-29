@@ -1,6 +1,6 @@
 import dayjs from 'dayjs';
-import { useWeather } from '../lib/context/weatherProvider';
 import { getBreakpointValue } from '../lib/utils/getCurrentBreakpoint';
+import useWeather from '../lib/hooks/useWeather';
 import Skeleton from './Skeleton';
 import SummaryCard from './SummaryCard';
 import useWindowSize from '../lib/hooks/useWindowSize';
