@@ -1,20 +1,19 @@
-import { useContext } from 'react';
 import Image from 'next/image';
 import { LazyMotion, m, domAnimation } from 'framer-motion';
 
-import { WeatherContext } from '../lib/context/weatherProvider';
-import { LocationContext } from '../lib/context/locationProvider';
+import useWeather from '../lib/hooks/useWeather';
+import useLocation from '../lib/hooks/useLocation';
 import Icon from './Icon';
 import Skeleton from './Skeleton';
 
 const WeatherCard = () => {
   const {
     location: { name: locationName },
-  } = useContext(LocationContext);
+  } = useLocation();
   const {
     weatherData: { current },
     theme,
-  } = useContext(WeatherContext);
+  } = useWeather();
   let additionalInfo;
 
   if (current?.weather) {

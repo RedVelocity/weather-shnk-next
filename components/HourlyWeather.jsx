@@ -1,7 +1,6 @@
 import dayjs from 'dayjs';
-import { useContext } from 'react';
-import { WeatherContext } from '../lib/context/weatherProvider';
 import { getBreakpointValue } from '../lib/utils/getCurrentBreakpoint';
+import useWeather from '../lib/hooks/useWeather';
 import Skeleton from './Skeleton';
 import SummaryCard from './SummaryCard';
 import useWindowSize from '../lib/hooks/useWindowSize';
@@ -9,7 +8,7 @@ import useWindowSize from '../lib/hooks/useWindowSize';
 const HourlyWeather = () => {
   const {
     weatherData: { hourly },
-  } = useContext(WeatherContext);
+  } = useWeather();
   const { width } = useWindowSize();
 
   return (

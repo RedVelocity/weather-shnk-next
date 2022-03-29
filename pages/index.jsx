@@ -1,15 +1,14 @@
-import { useContext } from 'react';
 import axios from 'axios';
 import PropTypes from 'prop-types';
 import dynamic from 'next/dynamic';
 
-import { LocationContext } from '../lib/context/locationProvider';
 import SearchCard from '../components/SearchCard';
 import WeatherCard from '../components/WeatherCard';
 import Skeleton from '../components/Skeleton';
 import HourlyWeather from '../components/HourlyWeather';
 import Header from '../components/header';
 import Footer from '../components/footer';
+import useLocation from '../lib/hooks/useLocation';
 
 const DynamicWeatherMap = dynamic(() => import('../components/WeatherMap'), {
   loading: () => <Skeleton rows={4} withContainer />,
@@ -35,7 +34,7 @@ export const getStaticProps = async () => {
 const Home = ({ host: { hostName, hostUrl } }) => {
   const {
     location: { longitude, latitude },
-  } = useContext(LocationContext);
+  } = useLocation();
   return (
     <>
       <Header hostName={hostName} hostUrl={hostUrl} />
