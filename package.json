@@ -6,6 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
+    "export": "next export",
     "git:patch": "npm --no-git-tag-version --no-commit-hooks version patch && git add -A && git commit -m",
     "git:minor": "npm --no-git-tag-version --no-commit-hooks version minor && git add -A && git commit -m",
     "git:major": "npm --no-git-tag-version --no-commit-hooks version major && git add -A && git commit -m"
