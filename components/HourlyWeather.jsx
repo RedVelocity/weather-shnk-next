@@ -13,21 +13,18 @@ const HourlyWeather = () => {
   useWeather();
 
   return (
-    <div className="min-h-full card bg-dark flex flex-col justify-between p-4">
+    <div className="min-h-full card bg-dark p-4">
       <h1 className="text-xl font-semibold text-gray-200 tracking-wide">
         Hourly Forecast
       </h1>
       {hourly ? (
-        <div className="grid grid-cols-2 md:grid-cols-5 text-gray-200 gap-2 mt-4">
+        <div className="grid grid-cols-2 md:grid-cols-4 text-gray-200 gap-2 mt-4">
           {hourly
-            .slice(0, width <= getBreakpointValue('md') ? 6 : 10)
+            .slice(0, width <= getBreakpointValue('md') ? 6 : 8)
             .map((item, i) => (
               <SummaryCard key={i} icon={item.weather.icon}>
-                {/* <h5 className="mt-2 tracking-wide capitalize">{`${Math.round(
-                  item.temp
-                )}°C`}</h5> */}
-                <h2 className="mt-2 tracking-wide">
-                  <span className="font-semibold tracking-widest text-lg">
+                <h2 className="mt-2 tracking-wide text-lg">
+                  <span className="font-medium tracking-widest">
                     {i !== 0
                       ? `${dayjs.unix(item.dt).format('HH:mm')}-`
                       : 'Now-'}

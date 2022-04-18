@@ -4,12 +4,12 @@ const Skeleton = ({ rows = 1, withContainer }) => {
   const skeletons = [...Array(rows)].map((_, i) => (
     <div
       key={i}
-      className="h-4 mb-8 rounded last:mb-0 md:h-6 bg-gradient-to-r from-gray-400 to-cool"
+      className="h-4 mb-10 rounded last:mb-0 md:h-6 bg-gradient-to-r from-gray-400 to-cool"
     />
   ));
 
   return withContainer ? (
-    <div className="flex flex-col min-h-full p-6 md:py-8 justify-evenly bg-dark card">
+    <div className="flex flex-col min-h-full p-6 md:py-8 justify-evenly">
       {skeletons}
     </div>
   ) : (
