@@ -1,5 +1,6 @@
 import dayjs from 'dayjs';
 import useWeather from '../lib/hooks/useWeather';
+import Grid from './Grid';
 import Skeleton from './Skeleton';
 import SummaryCard from './SummaryCard';
 
@@ -9,20 +10,14 @@ const DailyWeather = () => {
   } = useWeather();
 
   return (
-    <div className="min-h-full card bg-dark p-4">
-      <h1 className="text-xl font-semibold text-gray-200 tracking-wide">
-        Daily Forecast
-      </h1>
+    <div className="min-h-full card bg-dark p-4 tracking-wide">
+      <h1 className="text-xl font-semibold text-gray-200">Daily Forecast</h1>
       {daily ? (
-        <div className="grid grid-cols-2 md:grid-cols-4 text-gray-200 gap-2 mt-4 text-center capitalize text-lg tracking-wide">
+        <Grid minColSize={2} maxColSize={4}>
           {daily.map((item, i) => (
-            <SummaryCard
-              //   border
-              key={i}
-              icon={item.weather.icon}
-            >
+            <SummaryCard key={i} icon={item.weather.icon}>
               <h2 className="mt-2 font-semibold">
-                {i !== 0 ? `${dayjs.unix(item.dt).format('ddd DD')}` : 'Today'}
+                {i !== 0 ? dayjs.unix(item.dt).format('ddd DD') : 'Today'}
               </h2>
               {item.weather.description}
               <h2 className="text-xl font-medium">
@@ -34,7 +29,7 @@ const DailyWeather = () => {
               </h2>
             </SummaryCard>
           ))}
-        </div>
+        </Grid>
       ) : (
         <Skeleton rows={7} withContainer />
       )}

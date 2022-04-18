@@ -4,6 +4,7 @@ import useWeather from '../lib/hooks/useWeather';
 import Skeleton from './Skeleton';
 import SummaryCard from './SummaryCard';
 import useWindowSize from '../lib/hooks/useWindowSize';
+import Grid from './Grid';
 
 const HourlyWeather = () => {
   const {
@@ -13,17 +14,15 @@ const HourlyWeather = () => {
   useWeather();
 
   return (
-    <div className="min-h-full card bg-dark p-4">
-      <h1 className="text-xl font-semibold text-gray-200 tracking-wide">
-        Hourly Forecast
-      </h1>
+    <div className="min-h-full card bg-dark p-4 tracking-wide">
+      <h1 className="text-xl font-semibold text-gray-200">Hourly Forecast</h1>
       {hourly ? (
-        <div className="grid grid-cols-2 md:grid-cols-4 text-gray-200 gap-2 mt-4">
+        <Grid minColSize={2} maxColSize={4}>
           {hourly
             .slice(0, width <= getBreakpointValue('md') ? 6 : 8)
             .map((item, i) => (
               <SummaryCard key={i} icon={item.weather.icon}>
-                <h2 className="mt-2 tracking-wide text-lg">
+                <h2 className="mt-2 text-lg">
                   <span className="font-medium tracking-widest">
                     {i !== 0
                       ? `${dayjs.unix(item.dt).format('HH:mm')}-`
@@ -33,9 +32,9 @@ const HourlyWeather = () => {
                 </h2>
               </SummaryCard>
             ))}
-        </div>
+        </Grid>
       ) : (
-        <Skeleton rows={6} withContainer />
+        <Skeleton rows={5} withContainer />
       )}
     </div>
   );
