@@ -18,7 +18,7 @@ const HourlyWeather = () => {
         Hourly Forecast
       </h1>
       {hourly ? (
-        <div className="grid grid-cols-3 md:grid-cols-5 text-gray-200 gap-2 mt-4">
+        <div className="grid grid-cols-2 md:grid-cols-5 text-gray-200 gap-2 mt-4">
           {hourly
             .slice(0, width <= getBreakpointValue('md') ? 6 : 10)
             .map((item, i) => (
