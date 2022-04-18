@@ -21,12 +21,12 @@ const DailyWeather = () => {
               key={i}
               icon={item.weather.icon}
             >
-              <h5 className="mt-2 tracking-wide capitalize">
-                <span className="font-bold tracking-widest">
+              <h2 className="mt-2 tracking-wide capitalize">
+                <span className="font-semibold tracking-widest">
                   {i !== 0 ? `${dayjs.unix(item.dt).format('ddd')}-` : 'Today-'}
                 </span>
                 {item.weather.description}
-              </h5>
+              </h2>
               <h2 className="text-xl font-medium tracking-wide">
                 <span className="text-base">{`${Math.round(
                   item.temp.min

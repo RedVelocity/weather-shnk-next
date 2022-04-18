@@ -23,11 +23,16 @@ const HourlyWeather = () => {
             .slice(0, width <= getBreakpointValue('md') ? 6 : 10)
             .map((item, i) => (
               <SummaryCard key={i} icon={item.weather.icon}>
-                <h5 className="mt-2 tracking-wide capitalize">{`${Math.round(
+                {/* <h5 className="mt-2 tracking-wide capitalize">{`${Math.round(
                   item.temp
-                )}°C`}</h5>
-                <h2 className="text-xl font-medium tracking-wide">
-                  {i !== 0 ? dayjs.unix(item.dt).format('HH:mm') : 'Now'}
+                )}°C`}</h5> */}
+                <h2 className="mt-2 tracking-wide">
+                  <span className="font-semibold tracking-widest text-lg">
+                    {i !== 0
+                      ? `${dayjs.unix(item.dt).format('HH:mm')}-`
+                      : 'Now-'}
+                  </span>
+                  {`${Math.round(item.temp)}°C`}
                 </h2>
               </SummaryCard>
             ))}
