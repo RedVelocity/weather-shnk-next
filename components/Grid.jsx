@@ -18,9 +18,9 @@ const gridValues = [
 
 const Grid = ({ children, minColSize, maxColSize }) => (
   <div
-    className={`grid ${gridValues[minColSize - 1]} md:${
+    className={`grid ${gridValues[minColSize - 1]} ${`md:${
       gridValues[maxColSize - 1]
-    } gap-2 mt-4 text-center capitalize`}
+    }`} gap-2 mt-4 text-center capitalize`}
   >
     {children}
   </div>
