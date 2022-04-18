@@ -10,7 +10,7 @@ const DailyWeather = () => {
   } = useWeather();
 
   return (
-    <div className="min-h-full card bg-dark p-4 tracking-wide">
+    <div className="min-h-full card bg-dark p-4 tracking-wide text-lg">
       <h1 className="text-xl font-semibold text-gray-200">Daily Forecast</h1>
       {daily ? (
         <Grid minColSize={2} maxColSize={4}>

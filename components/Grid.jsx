@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const gridValues = [
-  'grid-cols-0',
   'grid-cols-1',
   'grid-cols-2',
   'grid-cols-3',
@@ -19,7 +18,9 @@ const gridValues = [
 
 const Grid = ({ children, minColSize, maxColSize }) => (
   <div
-    className={`grid ${gridValues[minColSize]} md:${gridValues[maxColSize]} text-gray-200 gap-2 mt-4 text-center capitalize text-lg`}
+    className={`grid ${gridValues[minColSize - 1]} md:${
+      gridValues[maxColSize - 1]
+    } gap-2 mt-4 text-center capitalize`}
   >
     {children}
   </div>
