@@ -25,7 +25,7 @@ const WeatherCard = () => {
   return (
     <LazyMotion features={domAnimation} strict>
       <div
-        className={`card p-4 font-semibold transition-colors duration-1000 ease-in-out ${theme}`}
+        className={`card flex-1 flex flex-col justify-evenly p-4 font-semibold transition-colors duration-1000 ease-in-out ${theme}`}
       >
         {current?.weather ? (
           <>

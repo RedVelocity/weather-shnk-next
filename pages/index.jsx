@@ -9,17 +9,18 @@ import HourlyWeather from '../components/HourlyWeather';
 import Header from '../components/header';
 import Footer from '../components/footer';
 import useLocation from '../lib/hooks/useLocation';
+import DailyWeather from '../components/DailyWeather';
 
 const DynamicWeatherMap = dynamic(() => import('../components/WeatherMap'), {
   loading: () => <Skeleton rows={4} withContainer />,
 });
 
-const DynamicWeatherChart = dynamic(
-  () => import('../components/WeatherChart'),
-  {
-    loading: () => <Skeleton rows={4} withContainer />,
-  }
-);
+// const DynamicWeatherChart = dynamic(
+//   () => import('../components/WeatherChart'),
+//   {
+//     loading: () => <Skeleton rows={4} withContainer />,
+//   }
+// );
 
 export const getStaticProps = async () => {
   const res = await axios.get(
@@ -40,7 +41,7 @@ const Home = ({ host: { hostName, hostUrl } }) => {
       <Header hostName={hostName} hostUrl={hostUrl} />
       <main className="flex-1 w-full max-w-screen-lg mx-auto">
         <div className="grid gap-4 mx-4 md:grid-cols-3">
-          <section className="space-y-4">
+          <section className="space-y-4 flex flex-col">
             <SearchCard />
             <WeatherCard />
           </section>
@@ -51,7 +52,7 @@ const Home = ({ host: { hostName, hostUrl } }) => {
             <DynamicWeatherMap longitude={longitude} latitude={latitude} />
           </section>
           <section className="md:col-span-2">
-            <DynamicWeatherChart />
+            <DailyWeather />
           </section>
         </div>
       </main>
