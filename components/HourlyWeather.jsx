@@ -1,9 +1,9 @@
 import dayjs from 'dayjs';
 import { getBreakpointValue } from '../lib/utils/getCurrentBreakpoint';
-import useWeather from '../lib/hooks/useWeather';
-import Skeleton from './Skeleton';
-import SummaryCard from './SummaryCard';
 import useWindowSize from '../lib/hooks/useWindowSize';
+import useWeather from '../lib/hooks/useWeather';
+import SummaryCard from './SummaryCard';
+import Skeleton from './Skeleton';
 import Grid from './Grid';
 
 const HourlyWeather = () => {
@@ -11,13 +11,12 @@ const HourlyWeather = () => {
     weatherData: { hourly },
   } = useWeather();
   const { width } = useWindowSize();
-  useWeather();
 
   return (
     <div className="min-h-full card bg-dark p-4 tracking-wide text-lg">
       <h1 className="text-xl font-semibold text-gray-200">Hourly Forecast</h1>
       {hourly ? (
-        <Grid minColSize={2} maxColSize={4}>
+        <Grid minColSize="grid-cols-2" maxColSize="md:grid-cols-4">
           {hourly
             .slice(0, width <= getBreakpointValue('md') ? 6 : 8)
             .map((item, i) => (

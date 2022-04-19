@@ -1,8 +1,8 @@
 import dayjs from 'dayjs';
 import useWeather from '../lib/hooks/useWeather';
-import Grid from './Grid';
-import Skeleton from './Skeleton';
 import SummaryCard from './SummaryCard';
+import Skeleton from './Skeleton';
+import Grid from './Grid';
 
 const DailyWeather = () => {
   const {
@@ -13,7 +13,7 @@ const DailyWeather = () => {
     <div className="min-h-full card bg-dark p-4 tracking-wide text-lg">
       <h1 className="text-xl font-semibold text-gray-200">Daily Forecast</h1>
       {daily ? (
-        <Grid minColSize={2} maxColSize={4}>
+        <Grid minColSize="grid-cols-2" maxColSize="md:grid-cols-4">
           {daily.map((item, i) => (
             <SummaryCard key={i} icon={item.weather.icon}>
               <h2 className="mt-2 font-semibold">
