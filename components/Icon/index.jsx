@@ -4,9 +4,10 @@ import { weatherIcons } from './config';
 
 const getIcon = (icon) => `/assets/weather-icons/${weatherIcons[icon]}.svg`;
 
-const Icon = ({ icon, size }) => (
+const Icon = ({ icon, size, className }) => (
   <LazyMotion features={domAnimation} strict>
     <m.img
+      className={className}
       src={getIcon(icon)}
       height={size}
       width={size}
@@ -22,6 +23,7 @@ const Icon = ({ icon, size }) => (
 Icon.propTypes = {
   icon: PropTypes.string.isRequired,
   size: PropTypes.number.isRequired,
+  className: PropTypes.string,
 };
 
 export default Icon;

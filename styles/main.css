@@ -22,7 +22,7 @@ body {
 .hot {
   @apply bg-hot;
 }
-.cold {
+.cool {
   @apply bg-cool;
 }
 .mild {
@@ -31,7 +31,7 @@ body {
 .hover-hot {
   @apply hover:bg-hot hover:text-white;
 }
-.hover-cold {
+.hover-cool {
   @apply hover:bg-cool;
 }
 .hover-mild {

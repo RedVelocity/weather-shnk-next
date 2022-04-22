@@ -2,34 +2,40 @@ import dayjs from 'dayjs';
 import { getBreakpointValue } from '../lib/utils/getCurrentBreakpoint';
 import useWindowSize from '../lib/hooks/useWindowSize';
 import useWeather from '../lib/hooks/useWeather';
-import SummaryCard from './SummaryCard';
 import Skeleton from './Skeleton';
 import Grid from './Grid';
+import MiniCard from './MiniCard';
+import Icon from './Icon';
 
 const HourlyWeather = () => {
   const {
     weatherData: { hourly },
   } = useWeather();
   const { width } = useWindowSize();
-
   return (
     <div className="min-h-full card bg-dark p-4 tracking-wide text-lg">
       <h1 className="text-xl font-semibold text-gray-200">Hourly Forecast</h1>
       {hourly ? (
-        <Grid minColSize="grid-cols-2" maxColSize="md:grid-cols-4">
+        <Grid minColSize="grid-cols-1" maxColSize="md:grid-cols-2">
           {hourly
-            .slice(0, width <= getBreakpointValue('md') ? 6 : 8)
+            .slice(0, width <= getBreakpointValue('md') ? 5 : 12)
             .map((item, i) => (
-              <SummaryCard key={i} icon={item.weather.icon}>
-                <h2 className="mt-2">
-                  <span className="font-medium tracking-widest text-xl">
-                    {i !== 0
-                      ? `${dayjs.unix(item.dt).format('HH:mm')} `
-                      : 'Now '}
-                  </span>
-                  {`${Math.round(item.temp)}°C`}
-                </h2>
-              </SummaryCard>
+              <MiniCard
+                key={`hourly-${i}`}
+                header={
+                  i !== 0 ? `${dayjs.unix(item.dt).format('HH:mm')} ` : 'Now'
+                }
+                footer={`${Math.round(item.temp)}°C`}
+              >
+                <span className="col-span-2 text-left">
+                  <Icon
+                    size={25}
+                    icon={item.weather.icon}
+                    className="inline-block mr-2"
+                  />
+                  {item.weather.description}
+                </span>
+              </MiniCard>
             ))}
         </Grid>
       ) : (
