@@ -27,12 +27,8 @@ const HourlyWeather = () => {
                 }
                 footer={`${Math.round(item.temp)}°C`}
               >
-                <span className="col-span-2 text-left">
-                  <Icon
-                    size={25}
-                    icon={item.weather.icon}
-                    className="inline-block mr-2"
-                  />
+                <span className="col-span-2 flex items-center">
+                  <Icon size={25} icon={item.weather.icon} className="mr-2" />
                   {item.weather.description}
                 </span>
               </MiniCard>

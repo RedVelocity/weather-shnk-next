@@ -13,7 +13,9 @@ const MiniCard = ({ header, children, footer }) => {
 };
 
 MiniCard.propTypes = {
+  header: PropTypes.string.isRequired,
   children: PropTypes.node.isRequired,
+  footer: PropTypes.string.isRequired,
 };
 
 export default MiniCard;
