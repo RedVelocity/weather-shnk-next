@@ -27,10 +27,12 @@ const HourlyWeather = () => {
                 }
                 footer={`${Math.round(item.temp)}°C`}
               >
-                <span className="col-span-2 flex items-center">
-                  <Icon size={25} icon={item.weather.icon} className="mr-2" />
-                  {item.weather.description}
-                </span>
+                <div className="col-span-2 flex items-center gap-2">
+                  <Icon size={25} icon={item.weather.icon} />
+                  <span className="text-center w-full md:text-left">
+                    {item.weather.description}
+                  </span>
+                </div>
               </MiniCard>
             ))}
         </Grid>
