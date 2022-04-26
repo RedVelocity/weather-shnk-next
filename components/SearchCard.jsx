@@ -11,7 +11,7 @@ const SearchCard = () => {
   const [placesList, setPlacesList] = useState([]);
   const [showPopupList, setShowPopupList] = useState(false);
   const [searchInput, setSearchInput] = useState('');
-  const debouncedSearchTerm = useDebounce(searchInput, 500);
+  const debouncedSearchTerm = useDebounce(searchInput, 300);
   // Handler for outside click
   const handleOutsideClick = (e) => {
     if (e.target.attributes['data-suggestion-item']) {
@@ -40,15 +40,14 @@ const SearchCard = () => {
   useEffect(
     () => {
       if (debouncedSearchTerm) {
-        const handleInputChange = async () => {
+        (async () => {
           const places = await getPlaces(
             location.curLat,
             location.curLon,
             debouncedSearchTerm
           );
           setPlacesList(places);
-        };
-        handleInputChange();
+        })();
       } else {
         setPlacesList([]);
       }

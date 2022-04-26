@@ -46,7 +46,7 @@ const WeatherCard = () => {
         ) : (
           <Skeleton rows={3} />
         )}
-        <div className="flex items-center space-x-2 text-sm">
+        <div className="flex items-center space-x-2">
           <Image
             src="/assets/weather-icons/location.png"
             height={20}
