@@ -28,6 +28,15 @@ body {
 .mild {
   @apply bg-mild;
 }
+.txt-hot {
+  @apply text-hot;
+}
+.txt-cool {
+  @apply text-cool;
+}
+.txt-mild {
+  @apply text-mild;
+}
 .hover-hot {
   @apply hover:bg-hot hover:text-white;
 }

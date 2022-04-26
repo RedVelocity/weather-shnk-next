@@ -18,7 +18,7 @@ const HourlyWeather = () => {
       {hourly ? (
         <Grid minColSize="grid-cols-1" maxColSize="md:grid-cols-2">
           {hourly
-            .slice(0, width <= getBreakpointValue('md') ? 5 : 12)
+            .slice(0, width <= getBreakpointValue('md') ? 6 : 12)
             .map((item, i) => (
               <MiniCard
                 key={`hourly-${i}`}
