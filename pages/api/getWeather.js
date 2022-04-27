@@ -13,10 +13,7 @@ export default async (req, res) => {
     // console.log(data, 'data');
     formattedData = {
       current: {
-        temp: current.temp,
-        feels_like: current.feels_like,
-        humidity: current.humidity,
-        uvi: current.uvi,
+        ...current,
         weather: current.weather[0],
       },
       daily: daily.map((d) => ({
