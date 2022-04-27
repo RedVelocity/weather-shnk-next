@@ -5,7 +5,7 @@ const WeatherInfoCard = () => {
     weatherData: { current },
   } = useWeather();
   return (
-    <ul className="card min-h-[6.5rem] text-dark p-4 capitalize font-medium grid grid-cols-2 items-center bg-dark text-gray-100 tracking-wide">
+    <ul className="card min-h-[6.5rem] text-dark p-4 capitalize font-medium grid gap-2 grid-cols-2 items-center bg-dark text-gray-100 tracking-wide">
       {current && (
         <>
           <li>

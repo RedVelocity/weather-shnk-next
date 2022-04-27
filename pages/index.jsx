@@ -41,15 +41,15 @@ const Home = ({ host: { hostName, hostUrl } }) => {
     <>
       <Header hostName={hostName} hostUrl={hostUrl} />
       <main className="flex-1 w-full max-w-screen-lg mx-auto">
-        <div className="grid gap-4 mx-4 md:grid-cols-3">
-          <section className="space-y-4 flex flex-col">
+        <div className="grid gap-3 mx-4 md:grid-cols-3">
+          <section className="space-y-3 flex flex-col">
             <SearchCard />
             <WeatherCard />
           </section>
           <section className="md:col-span-2">
             <HourlyWeather />
           </section>
-          <section className="space-y-4 flex flex-col">
+          <section className="space-y-3 flex flex-col">
             <WeatherInfoCard />
             <DynamicWeatherMap longitude={longitude} latitude={latitude} />
           </section>
