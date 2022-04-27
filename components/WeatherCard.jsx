@@ -19,7 +19,7 @@ const WeatherCard = () => {
   if (current?.weather) {
     additionalInfo = `Feels Like: ${Math.round(
       current.feels_like
-    )}°C | Humidity: ${current.humidity} | UV: ${current.uvi}`;
+    )}°C | Humidity: ${current.humidity}% | UV: ${current.uvi}`;
   }
 
   return (
