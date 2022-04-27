@@ -1,11 +1,14 @@
+import PropTypes from 'prop-types';
 import useWeather from '../lib/hooks/useWeather';
 
-const WeatherInfoCard = () => {
+const WeatherInfoCard = ({ className }) => {
   const {
     weatherData: { current },
   } = useWeather();
   return (
-    <ul className="card text-dark p-4 font-medium grid gap-1 bg-dark text-gray-100 tracking-wide h-[16rem]">
+    <ul
+      className={`${className} card text-dark p-4 font-medium gap-1 bg-dark text-gray-100 tracking-wide h-[16rem]`}
+    >
       {current && (
         <>
           <li className="align-middle flex justify-between card p-2 bg-white/5 items-center">
@@ -111,6 +114,10 @@ const WeatherInfoCard = () => {
       )}
     </ul>
   );
+};
+
+WeatherInfoCard.propTypes = {
+  className: PropTypes.string,
 };
 
 export default WeatherInfoCard;
