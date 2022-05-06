@@ -11,7 +11,7 @@ const WeatherInfoCard = ({ className }) => {
     >
       {current && (
         <>
-          <li className="align-middle flex justify-between card p-2 bg-white/5 items-center">
+          <li className="align-middle flex gap-1 justify-between card p-2 bg-white/5 items-center">
             <span>
               <svg
                 className="h-8 w-8 inline mr-2 bg-cool rounded"

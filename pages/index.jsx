@@ -44,9 +44,11 @@ const Home = ({ host: { hostName, hostUrl } }) => {
         <div className="grid gap-3 mx-4 md:grid-cols-3">
           <section className="space-y-3 flex flex-col">
             <SearchCard />
-            <WeatherCard />
-            {/* Reposition Component on small devices */}
-            <WeatherInfoCard className="grid md:hidden" />
+            <div className="flex flex-col sm:flex-row gap-2 flex-1  ">
+              <WeatherCard />
+              {/* Reposition Component on small devices */}
+              <WeatherInfoCard className="grid md:hidden" />
+            </div>
           </section>
           <section className="md:col-span-2">
             <HourlyWeather />
