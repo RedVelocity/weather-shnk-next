@@ -10,7 +10,7 @@ import Header from '../components/header';
 import Footer from '../components/footer';
 import useLocation from '../lib/hooks/useLocation';
 import DailyWeather from '../components/DailyWeather';
-import WeatherInfoCard from '../components/WeatherInfoCard';
+import WeatherInfoCardList from '../components/WeatherInfoCardList';
 
 const DynamicWeatherMap = dynamic(() => import('../components/WeatherMap'), {
   loading: () => <Skeleton rows={4} withContainer />,
@@ -47,14 +47,14 @@ const Home = ({ host: { hostName, hostUrl } }) => {
             <div className="flex flex-col sm:flex-row gap-2 flex-1  ">
               <WeatherCard />
               {/* Reposition Component on small devices */}
-              <WeatherInfoCard className="grid md:hidden" />
+              <WeatherInfoCardList className="grid md:hidden" />
             </div>
           </section>
           <section className="md:col-span-2">
             <HourlyWeather />
           </section>
           <section className="md:space-y-3 md:flex md:flex-col">
-            <WeatherInfoCard className="hidden md:grid" />
+            <WeatherInfoCardList className="hidden md:grid" />
             <DynamicWeatherMap longitude={longitude} latitude={latitude} />
           </section>
           <section className="md:col-span-2">
