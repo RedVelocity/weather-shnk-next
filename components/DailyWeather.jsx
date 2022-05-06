@@ -16,11 +16,11 @@ const DailyWeather = () => {
         <Grid minColSize="grid-cols-2" maxColSize="md:grid-cols-4">
           {daily.map((item, i) => (
             <SummaryCard key={i} icon={item.weather.icon}>
-              <h2 className="mt-2 font-semibold">
+              <h2 className="mt-2 font-semibold leading-4">
                 {i !== 0 ? dayjs.unix(item.dt).format('ddd DD') : 'Today'}
               </h2>
               {item.weather.description}
-              <h2 className="text-xl font-medium">
+              <h2 className="text-xl font-medium leading-4">
                 <span className="text-base">{`${Math.round(
                   item.temp.min
                 )}°C`}</span>
