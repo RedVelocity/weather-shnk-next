@@ -7,7 +7,7 @@ const MiniCard = ({ header, children, footer }) => {
     <div className="bg-white/5 py-2 px-4 card grid grid-cols-4 gap-2 text-sky-50 items-center">
       <span className="font-medium">{header}</span>
       {children}
-      <span className={`txt-${theme} font-medium`}>{footer}</span>
+      <span className={`txt-${theme} font-semibold`}>{footer}</span>
     </div>
   );
 };
