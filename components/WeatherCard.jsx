@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import { LazyMotion, m, domAnimation } from 'framer-motion';
 
+import colors from '../styles/colors';
 import useWeather from '../lib/hooks/useWeather';
 import useLocation from '../lib/hooks/useLocation';
 import Icon from './Icon';
@@ -22,10 +23,31 @@ const WeatherCard = () => {
     )}°C | Humidity: ${current.humidity}% | UV: ${current.uvi}`;
   }
 
+  let backgroundPosition;
+  switch (theme) {
+    case 'cool':
+      backgroundPosition = 'left';
+      break;
+    case 'mild':
+      backgroundPosition = 'center';
+      break;
+    case 'hot':
+      backgroundPosition = 'right';
+      break;
+    default:
+      backgroundPosition = 'left';
+      break;
+  }
   return (
     <LazyMotion features={domAnimation} strict>
       <div
-        className={`card flex-1 flex flex-col justify-evenly p-4 font-semibold transition-colors duration-1000 ease-in-out ${theme}`}
+        style={{
+          backgroundImage: `linear-gradient(90deg, ${colors.cool} 0%, ${colors.mild} 30%, ${colors.milder} 60%, ${colors.hot} 100%)`,
+          backgroundSize: '2000px',
+          backgroundPosition,
+          transition: 'background-position 1000ms linear',
+        }}
+        className="card flex-1 flex flex-col justify-evenly p-4 font-semibold"
       >
         {current?.weather ? (
           <>

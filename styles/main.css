@@ -20,13 +20,13 @@ body {
 
 /* Styles */
 .hot {
-  @apply bg-hot;
+  @apply bg-right;
 }
 .cool {
-  @apply bg-cool;
+  @apply bg-left;
 }
 .mild {
-  @apply bg-mild;
+  @apply bg-center;
 }
 .txt-hot {
   @apply text-hot;
