@@ -16,7 +16,7 @@ const HourlyWeather = () => {
     <div className="min-h-full card bg-dark p-4 tracking-wide text-lg">
       <h1 className="text-xl font-semibold text-gray-200">Hourly Forecast</h1>
       {hourly ? (
-        <Grid minColSize="grid-cols-1" maxColSize="sm:grid-cols-2" gap="gap-1">
+        <Grid minColSize="grid-cols-1" maxColSize="sm:grid-cols-2" gap="gap-2">
           {hourly
             .slice(0, width <= getBreakpointValue('md') ? 12 : 12)
             .map((item, i) => (

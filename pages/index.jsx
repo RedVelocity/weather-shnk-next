@@ -8,9 +8,9 @@ import Skeleton from '../components/Skeleton';
 import HourlyWeather from '../components/HourlyWeather';
 import Header from '../components/header';
 import Footer from '../components/footer';
-import useLocation from '../lib/hooks/useLocation';
 import DailyWeather from '../components/DailyWeather';
 import WeatherInfoCardList from '../components/WeatherInfoCardList';
+import useLocation from '../lib/hooks/useLocation';
 
 const DynamicWeatherMap = dynamic(() => import('../components/WeatherMap'), {
   loading: () => <Skeleton rows={4} withContainer />,
@@ -35,9 +35,9 @@ export const getStaticProps = async () => {
 
 const Home = ({ host: { hostName, hostUrl } }) => {
   const {
-    location: { longitude, latitude },
+    location: { latitude, longitude },
   } = useLocation();
-  return (
+  return latitude === 0 ? null : (
     <>
       <Header hostName={hostName} hostUrl={hostUrl} />
       <main className="flex-1 w-full max-w-screen-lg mx-auto">
@@ -65,6 +65,7 @@ const Home = ({ host: { hostName, hostUrl } }) => {
       <Footer />
     </>
   );
+  // return null;
 };
 
 Home.propTypes = {

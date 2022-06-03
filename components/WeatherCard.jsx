@@ -45,7 +45,7 @@ const WeatherCard = () => {
           backgroundImage: `linear-gradient(90deg, ${colors.cool} 0%, ${colors.mild} 30%, ${colors.milder} 70%, ${colors.hot} 100%)`,
           backgroundSize: '1500px',
           backgroundPosition,
-          transition: 'background-position 1000ms linear',
+          transition: 'background-position 500ms linear',
         }}
         className="card flex-1 flex flex-col justify-evenly p-4 font-semibold"
       >
@@ -61,7 +61,7 @@ const WeatherCard = () => {
                 <h1 className="text-4xl">{`${Math.round(current.temp)}°C`}</h1>
               </m.div>
             </div>
-            <span className="block p-2 md:p-4 mt-2 mb-4 tracking-wide text-center bg-gray-200 rounded">
+            <span className="block p-2 md:px-4 md:py-2 mt-2 mb-4 tracking-wide text-center bg-gray-200 rounded">
               {additionalInfo}
             </span>
           </>
