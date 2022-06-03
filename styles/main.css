@@ -20,13 +20,13 @@ body {
 
 /* Styles */
 .hot {
-  @apply bg-right;
+  @apply bg-hot;
 }
 .cool {
-  @apply bg-left;
+  @apply bg-cool;
 }
 .mild {
-  @apply bg-center;
+  @apply bg-mild;
 }
 .txt-hot {
   @apply text-hot;
@@ -38,11 +38,11 @@ body {
   @apply text-mild;
 }
 .hover-hot {
-  @apply hover:bg-hot hover:text-white;
+  @apply hover:text-white hover:bg-gradient-to-r hover:from-milder hover:to-hot;
 }
 .hover-cool {
-  @apply hover:bg-cool;
+  @apply hover:text-white hover:bg-gradient-to-r hover:from-cool hover:to-blue-600;
 }
 .hover-mild {
-  @apply hover:bg-mild;
+  @apply hover:text-white hover:bg-gradient-to-r hover:from-mild hover:to-milder;
 }
