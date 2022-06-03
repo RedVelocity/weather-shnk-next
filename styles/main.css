@@ -41,7 +41,7 @@ body {
   @apply hover:bg-gradient-to-r hover:from-milder hover:to-hot;
 }
 .hover-cool {
-  @apply hover:bg-gradient-to-r hover:from-cool hover:to-blue-600;
+  @apply hover:bg-gradient-to-r hover:from-cool hover:to-purple-300;
 }
 .hover-mild {
   @apply hover:bg-gradient-to-r hover:from-mild hover:to-milder;

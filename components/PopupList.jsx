@@ -37,7 +37,7 @@ const PopupList = ({ list, handleSelect, color }) => (
                 role="presentation"
                 data-suggestion-item="true"
               >
-                <h3 className="text-lg underline pointer-events-none">
+                <h3 className="text-lg pointer-events-none font-medium">
                   {listItem.place_name}
                 </h3>
                 {listItem.place_locality}
