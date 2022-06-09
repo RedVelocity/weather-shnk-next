@@ -65,7 +65,6 @@ const Home = ({ host: { hostName, hostUrl } }) => {
       <Footer />
     </>
   );
-  // return null;
 };
 
 Home.propTypes = {
