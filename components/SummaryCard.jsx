@@ -3,11 +3,11 @@ import Icon from './Icon';
 
 const SummaryCard = ({ icon, children, border }) => (
   <div
-    className={`flex flex-col gap-1 items-center justify-center p-4 text-sky-50 card bg-white/5 ${
+    className={`flex flex-col gap-1 items-center justify-center p-4 card bg-white/5 ${
       border && 'border border-gray-50/25'
     }`}
   >
-    <Icon icon={icon} size={48} />
+    <Icon icon={icon} size={40} />
     {children}
   </div>
 );

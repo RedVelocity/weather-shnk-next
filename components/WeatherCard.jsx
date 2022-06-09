@@ -42,7 +42,7 @@ const WeatherCard = () => {
       <div
         style={{
           backgroundImage: `linear-gradient(140deg, ${colors.cool} 0%, ${colors.mild} 30%, ${colors.milder} 70%, ${colors.hot} 100%)`,
-          backgroundSize: '1500px',
+          backgroundSize: '1800px',
           backgroundPosition,
           transition: 'background-position 500ms linear',
         }}
