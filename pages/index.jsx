@@ -4,7 +4,6 @@ import dynamic from 'next/dynamic';
 
 import SearchCard from '../components/SearchCard';
 import WeatherCard from '../components/WeatherCard';
-import Skeleton from '../components/Skeleton';
 import HourlyWeather from '../components/HourlyWeather';
 import Header from '../components/header';
 import Footer from '../components/footer';
@@ -14,7 +13,7 @@ import useLocation from '../lib/hooks/useLocation';
 import useWeather from '../lib/hooks/useWeather';
 
 const DynamicWeatherMap = dynamic(() => import('../components/WeatherMap'), {
-  loading: () => <Skeleton rows={2} withContainer />,
+  loading: () => null,
 });
 
 // const DynamicWeatherChart = dynamic(
