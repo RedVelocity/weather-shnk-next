@@ -12,8 +12,8 @@ const Icon = ({ icon, size, className }) => (
       height={size}
       width={size}
       alt="icon"
-      initial={{ opacity: 0, scale: 1.4 }}
-      animate={{ opacity: 1, scale: 1 }}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
       key={icon}
     />
