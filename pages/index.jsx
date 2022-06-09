@@ -14,7 +14,7 @@ import useLocation from '../lib/hooks/useLocation';
 import useWeather from '../lib/hooks/useWeather';
 
 const DynamicWeatherMap = dynamic(() => import('../components/WeatherMap'), {
-  loading: () => <Skeleton rows={4} withContainer />,
+  loading: () => <Skeleton rows={2} withContainer />,
 });
 
 // const DynamicWeatherChart = dynamic(
