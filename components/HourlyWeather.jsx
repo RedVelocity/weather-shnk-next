@@ -17,7 +17,10 @@ const HourlyWeather = () => {
         {hourly
           .slice(0, width <= getBreakpointValue('md') ? 12 : 12)
           .map((item, i) => (
-            <div className="mini-card grid grid-cols-4 gap-2 text-slate-50 items-center">
+            <div
+              className="mini-card grid grid-cols-4 gap-2 text-slate-50 items-center"
+              key={`hourly ${i}`}
+            >
               <span className="font-medium">
                 {i !== 0 ? `${dayjs.unix(item.dt).format('HH:mm')} ` : 'Now'}
               </span>
