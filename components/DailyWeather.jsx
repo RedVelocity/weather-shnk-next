@@ -1,7 +1,6 @@
 import dayjs from 'dayjs';
 import useWeather from '../lib/hooks/useWeather';
 import SummaryCard from './SummaryCard';
-import Skeleton from './Skeleton';
 import Grid from './Grid';
 
 const DailyWeather = () => {

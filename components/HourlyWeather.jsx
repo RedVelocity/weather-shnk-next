@@ -2,7 +2,6 @@ import dayjs from 'dayjs';
 import { getBreakpointValue } from '../lib/utils/getCurrentBreakpoint';
 import useWindowSize from '../lib/hooks/useWindowSize';
 import useWeather from '../lib/hooks/useWeather';
-import Skeleton from './Skeleton';
 import Grid from './Grid';
 import MiniCard from './MiniCard';
 import Icon from './Icon';

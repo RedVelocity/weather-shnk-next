@@ -6,7 +6,6 @@ import {
   VisibilityIcon,
   WindIcon,
 } from './Icon/MiniIcon';
-import Skeleton from './Skeleton';
 import WeatherInfoCard from './WeatherInfoCard';
 
 const WeatherInfoCardList = ({ className }) => {

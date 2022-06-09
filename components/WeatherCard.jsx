@@ -5,7 +5,6 @@ import colors from '../styles/colors';
 import useWeather from '../lib/hooks/useWeather';
 import useLocation from '../lib/hooks/useLocation';
 import Icon from './Icon';
-import Skeleton from './Skeleton';
 
 const WeatherCard = () => {
   const {
