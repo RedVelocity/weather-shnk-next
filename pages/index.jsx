@@ -11,6 +11,7 @@ import Footer from '../components/footer';
 import DailyWeather from '../components/DailyWeather';
 import WeatherInfoCardList from '../components/WeatherInfoCardList';
 import useLocation from '../lib/hooks/useLocation';
+import useWeather from '../lib/hooks/useWeather';
 
 const DynamicWeatherMap = dynamic(() => import('../components/WeatherMap'), {
   loading: () => <Skeleton rows={4} withContainer />,
@@ -37,7 +38,8 @@ const Home = ({ host: { hostName, hostUrl } }) => {
   const {
     location: { latitude, longitude },
   } = useLocation();
-  return latitude === 0 ? null : (
+  const { weatherData } = useWeather();
+  return latitude === 0 || !weatherData?.current ? null : (
     <>
       <Header hostName={hostName} hostUrl={hostUrl} />
       <main className="flex-1 w-full max-w-screen-lg mx-auto">
