@@ -39,7 +39,6 @@ export default async (req, res) => {
         ),
       };
     });
-    console.log('places', places);
     res.status(200).json(places);
   } catch (error) {
     res.status(422).json({ data: String(error) });
