@@ -24,7 +24,7 @@ const SearchCard = () => {
     const loc = placesList.find((suggestion) => suggestion.id === e.target.id);
     setLocation({
       ...location,
-      name: e.target.innerText,
+      name: `${loc.place_name}, ${loc.place_locality}`,
       latitude: loc.coordinates[1],
       longitude: loc.coordinates[0],
     });

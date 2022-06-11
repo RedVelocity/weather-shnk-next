@@ -40,7 +40,7 @@ const PopupList = ({ list, handleSelect, color }) => (
                 <h3 className="text-lg pointer-events-none font-medium">
                   {listItem.place_name}
                 </h3>
-                {listItem.place_locality}
+                {listItem.place_address}
               </li>
             ))}
           </ul>

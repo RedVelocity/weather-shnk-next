@@ -11,18 +11,35 @@ export default async (req, res) => {
   try {
     const { data } = await axios.get(API_ENDPOINT);
     // console.log(data, 'data');
-    const places = data.features.map((feature) => ({
-      id: feature.id,
-      coordinates: feature.geometry.coordinates,
-      place_name: feature.text_en,
-      place_locality: feature.context.reduce(
-        (locality, ctx, index, context) =>
+    const places = data.features.map((feature) => {
+      const locality = !feature.context
+        ? [feature.text_en]
+        : feature.context.length < 3
+        ? feature.context
+        : feature.context.slice(-2);
+      // eslint-disable-next-line camelcase
+      const place_locality = locality.reduce(
+        (loc, ctx, index, context) =>
           context.length === index + 1
-            ? `${locality}${ctx.text_en}.`
-            : `${locality}${ctx.text_en}, `,
+            ? `${loc}${ctx.text_en}.`
+            : `${loc}${ctx.text_en}, `,
         ''
-      ),
-    }));
+      );
+      return {
+        id: feature.id,
+        coordinates: feature.geometry.coordinates,
+        place_name: feature.text_en,
+        place_locality,
+        place_address: feature.context.reduce(
+          (loc, ctx, index, context) =>
+            context.length === index + 1
+              ? `${loc}${ctx.text_en}.`
+              : `${loc}${ctx.text_en}, `,
+          ''
+        ),
+      };
+    });
+    console.log('places', places);
     res.status(200).json(places);
   } catch (error) {
     res.status(422).json({ data: String(error) });
