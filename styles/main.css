@@ -11,6 +11,10 @@ body {
   font-family: 'Montserrat', sans-serif;
 }
 
+#__next {
+  @apply flex flex-col min-h-screen max-w-screen-lg mx-auto;
+}
+
 /* Components */
 @layer components {
   .card {

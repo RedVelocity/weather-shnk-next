@@ -38,30 +38,32 @@ const Home = ({ host: { hostName, hostUrl } }) => {
     location: { latitude, longitude },
   } = useLocation();
   const { weatherData } = useWeather();
-  return latitude === 0 || !weatherData?.current ? null : (
+  return (
     <>
       <Header hostName={hostName} hostUrl={hostUrl} />
       <main className="flex-1 w-full max-w-screen-lg mx-auto">
-        <div className="grid gap-3 mx-4 md:grid-cols-3">
-          <section className="space-y-3 flex flex-col">
-            <SearchCard />
-            <div className="flex flex-col sm:flex-row gap-2 flex-1  ">
-              <WeatherCard />
-              {/* Reposition Component on small devices */}
-              <WeatherInfoCardList className="grid md:hidden" />
-            </div>
-          </section>
-          <section className="md:col-span-2">
-            <HourlyWeather />
-          </section>
-          <section className="md:space-y-3 md:flex md:flex-col">
-            <WeatherInfoCardList className="hidden md:grid" />
-            <DynamicWeatherMap longitude={longitude} latitude={latitude} />
-          </section>
-          <section className="md:col-span-2">
-            <DailyWeather />
-          </section>
-        </div>
+        {latitude === 0 || !weatherData?.current ? null : (
+          <div className="grid gap-3 mx-4 md:grid-cols-3">
+            <section className="space-y-3 flex flex-col">
+              <SearchCard />
+              <div className="flex flex-col sm:flex-row gap-2 flex-1  ">
+                <WeatherCard />
+                {/* Reposition Component on small devices */}
+                <WeatherInfoCardList className="grid md:hidden" />
+              </div>
+            </section>
+            <section className="md:col-span-2">
+              <HourlyWeather />
+            </section>
+            <section className="md:space-y-3 md:flex md:flex-col">
+              <WeatherInfoCardList className="hidden md:grid" />
+              <DynamicWeatherMap longitude={longitude} latitude={latitude} />
+            </section>
+            <section className="md:col-span-2">
+              <DailyWeather />
+            </section>
+          </div>
+        )}
       </main>
       <Footer />
     </>
