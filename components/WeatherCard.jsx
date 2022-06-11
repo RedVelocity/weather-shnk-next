@@ -51,7 +51,7 @@ const WeatherCard = () => {
         <>
           <div className="flex items-center gap-6 p-4 text-center justify-evenly">
             <Icon icon={current.weather.icon} size={64} />
-            <m.h1 layout className="text-3xl font-bold capitalize">
+            <m.h1 layout className="text-2xl md:text-3xl font-bold capitalize">
               {current.weather.description}
             </m.h1>
             <m.div layout>

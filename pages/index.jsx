@@ -41,8 +41,10 @@ const Home = ({ host: { hostName, hostUrl } }) => {
   return (
     <>
       <Header hostName={hostName} hostUrl={hostUrl} />
-      <main className="flex-1 w-full max-w-screen-lg mx-auto">
-        {latitude === 0 || !weatherData?.current ? null : (
+      <main className="flex-1 w-full max-w-screen-lg mx-auto flex items-center justify-center">
+        {latitude === 0 || !weatherData?.current ? (
+          <div className="loader" />
+        ) : (
           <div className="grid gap-3 mx-4 md:grid-cols-3">
             <section className="space-y-3 flex flex-col">
               <SearchCard />
