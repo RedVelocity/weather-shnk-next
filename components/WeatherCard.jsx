@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { LazyMotion, m, domAnimation } from 'framer-motion';
+import { m } from 'framer-motion';
 
 import colors from '../styles/colors';
 import useWeather from '../lib/hooks/useWeather';
@@ -38,7 +38,7 @@ const WeatherCard = () => {
       break;
   }
   return (
-    <LazyMotion features={domAnimation} strict>
+    <>
       <div
         style={{
           backgroundImage: `linear-gradient(140deg, ${colors.cool} 0%, ${colors.mild} 30%, ${colors.milder} 70%, ${colors.hot} 100%)`,
@@ -73,7 +73,7 @@ const WeatherCard = () => {
           <h5 className="ml-1">{locationName}</h5>
         </div>
       </div>
-    </LazyMotion>
+    </>
   );
 };
 

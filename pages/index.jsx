@@ -1,6 +1,7 @@
 import axios from 'axios';
 import PropTypes from 'prop-types';
 import dynamic from 'next/dynamic';
+import { LazyMotion, domAnimation } from 'framer-motion';
 
 import SearchCard from '../components/SearchCard';
 import WeatherCard from '../components/WeatherCard';
@@ -39,7 +40,7 @@ const Home = ({ host: { hostName, hostUrl } }) => {
   } = useLocation();
   const { weatherData } = useWeather();
   return (
-    <>
+    <LazyMotion features={domAnimation} strict>
       <Header hostName={hostName} hostUrl={hostUrl} />
       <main className="flex-1 min-w-full">
         {latitude === 0 || !weatherData?.current ? (
@@ -70,7 +71,7 @@ const Home = ({ host: { hostName, hostUrl } }) => {
         )}
       </main>
       <Footer />
-    </>
+    </LazyMotion>
   );
 };
 

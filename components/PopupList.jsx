@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { LazyMotion, m, AnimatePresence, domAnimation } from 'framer-motion';
+import { m } from 'framer-motion';
 
 const variants = {
   animate: {
@@ -17,37 +17,35 @@ const variants = {
 };
 
 const PopupList = ({ list, handleSelect, color }) => (
-  <LazyMotion features={domAnimation} strict>
-    <AnimatePresence>
-      {list.length > 0 && (
-        <m.div
-          className="absolute z-10 min-w-full p-2 bg-white shadow rounded-xl"
-          variants={variants}
-          initial="initial"
-          animate="animate"
-          exit="exit"
-        >
-          <ul className="overflow-x-hidden max-h-64">
-            {list.map((listItem) => (
-              <li
-                className={`hover-${color} cursor-pointer px-2 py-1 rounded-lg mx-1`}
-                key={listItem.id}
-                id={listItem.id}
-                onClick={handleSelect}
-                role="presentation"
-                data-suggestion-item="true"
-              >
-                <h3 className="text-lg pointer-events-none font-medium">
-                  {listItem.place_name}
-                </h3>
-                {listItem.place_address}
-              </li>
-            ))}
-          </ul>
-        </m.div>
-      )}
-    </AnimatePresence>
-  </LazyMotion>
+  <>
+    {list.length > 0 && (
+      <m.div
+        className="absolute z-10 min-w-full p-2 bg-white shadow rounded-xl"
+        variants={variants}
+        initial="initial"
+        animate="animate"
+        exit="exit"
+      >
+        <ul className="overflow-x-hidden max-h-64">
+          {list.map((listItem) => (
+            <li
+              className={`hover-${color} cursor-pointer px-2 py-1 rounded-lg mx-1`}
+              key={listItem.id}
+              id={listItem.id}
+              onClick={handleSelect}
+              role="presentation"
+              data-suggestion-item="true"
+            >
+              <h3 className="text-lg pointer-events-none font-medium">
+                {listItem.place_name}
+              </h3>
+              {listItem.place_address}
+            </li>
+          ))}
+        </ul>
+      </m.div>
+    )}
+  </>
 );
 
 PopupList.propTypes = {
