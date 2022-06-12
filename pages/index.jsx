@@ -1,7 +1,7 @@
 import axios from 'axios';
 import PropTypes from 'prop-types';
 import dynamic from 'next/dynamic';
-import { LazyMotion, domAnimation } from 'framer-motion';
+import { LazyMotion } from 'framer-motion';
 
 import SearchCard from '../components/SearchCard';
 import WeatherCard from '../components/WeatherCard';
@@ -17,12 +17,8 @@ const DynamicWeatherMap = dynamic(() => import('../components/WeatherMap'), {
   loading: () => null,
 });
 
-// const DynamicWeatherChart = dynamic(
-//   () => import('../components/WeatherChart'),
-//   {
-//     loading: () => <Skeleton rows={4} withContainer />,
-//   }
-// );
+const loadFeatures = () =>
+  import('../lib/utils/features').then((res) => res.default);
 
 export const getStaticProps = async () => {
   const res = await axios.get(
@@ -40,7 +36,7 @@ const Home = ({ host: { hostName, hostUrl } }) => {
   } = useLocation();
   const { weatherData } = useWeather();
   return (
-    <LazyMotion features={domAnimation} strict>
+    <LazyMotion features={loadFeatures} strict>
       <Header hostName={hostName} hostUrl={hostUrl} />
       <main className="flex-1 min-w-full">
         {latitude === 0 || !weatherData?.current ? (
