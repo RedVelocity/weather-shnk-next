@@ -2,8 +2,6 @@
 /* eslint-disable react/jsx-filename-extension */
 import Head from 'next/head';
 import '../styles/main.css';
-import { LocationProvider } from '../lib/context/locationProvider';
-import { WeatherProvider } from '../lib/context/weatherProvider';
 
 function App({ Component, pageProps }) {
   return (
@@ -19,11 +17,7 @@ function App({ Component, pageProps }) {
         />
         <meta name="author" content="shnk.tech" />
       </Head>
-      <LocationProvider>
-        <WeatherProvider>
-          <Component {...pageProps} />
-        </WeatherProvider>
-      </LocationProvider>
+      <Component {...pageProps} />
     </>
   );
 }
