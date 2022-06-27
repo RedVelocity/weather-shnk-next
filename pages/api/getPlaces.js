@@ -1,5 +1,24 @@
 import axios from 'axios';
 
+export const getPlaceCoords = async (searchTerm) => {
+  const API_ENDPOINT = `https://api.mapbox.com/geocoding/v5/mapbox.places/${searchTerm}.json?access_token=${process.env.NEXT_PUBLIC_MAPBOX_KEY}&types=place,locality&language=en&limit=1`;
+  try {
+    const { data } = await axios.get(API_ENDPOINT);
+    const feature = data.features[0];
+    const location = {
+      name: feature.text_en,
+      latitude: feature.geometry.coordinates[1],
+      longitude: feature.geometry.coordinates[0],
+      curLat: 0,
+      curLon: 0,
+    };
+    // console.log('coords', location);
+    return location;
+  } catch (error) {
+    return 0;
+  }
+};
+
 export default async (req, res) => {
   const { searchTerm, latitude, longitude } = req.query;
   const proximity =

@@ -8,39 +8,47 @@ import { LazyMotion } from 'framer-motion';
 import create from 'zustand';
 import { immer } from 'zustand/middleware/immer';
 
-import SearchCard from '../components/SearchCard';
-import WeatherCard from '../components/WeatherCard';
-import HourlyWeather from '../components/HourlyWeather';
-import Header from '../components/header';
-import Footer from '../components/footer';
-import DailyWeather from '../components/DailyWeather';
-import WeatherInfoCardList from '../components/WeatherInfoCardList';
-import useLocation from '../lib/hooks/useLocation';
-import { Provider } from '../lib/store/useWeatherStore';
-import { fetchWeather } from './api/getWeather';
+import SearchCard from '../../components/SearchCard';
+import WeatherCard from '../../components/WeatherCard';
+import HourlyWeather from '../../components/HourlyWeather';
+import Header from '../../components/header';
+import Footer from '../../components/footer';
+import DailyWeather from '../../components/DailyWeather';
+import WeatherInfoCardList from '../../components/WeatherInfoCardList';
+import { Provider } from '../../lib/store/useWeatherStore';
+import { fetchWeather } from '../api/getWeather';
+import { getPlaceCoords } from '../api/getPlaces';
 
-const DynamicWeatherMap = dynamic(() => import('../components/WeatherMap'), {
+const DynamicWeatherMap = dynamic(() => import('../../components/WeatherMap'), {
   loading: () => null,
 });
 
 const loadFeatures = () =>
-  import('../lib/utils/features').then((res) => res.default);
+  import('../../lib/utils/features').then((res) => res.default);
 
-export const getServerSideProps = async () => {
-  const res = await axios.get(
+export const getServerSideProps = async (context) => {
+  const { q } = context.query;
+  const { data: host } = await axios.get(
     'https://gist.githubusercontent.com/RedVelocity/424379247e7f4ce37d50c7f9a5d07a0a/raw/host.json'
   );
-  const weather = await fetchWeather(12.972442, 77.580643);
+  let location = {
+    name: 'Bangalore, Karnataka, India.',
+    latitude: 12.972442,
+    longitude: 77.580643,
+    curLat: 0,
+    curLon: 0,
+  };
+  // eslint-disable-next-line no-unused-expressions
+  q && (location = await getPlaceCoords(q));
+  const weather = await fetchWeather(location.latitude, location.longitude);
   return {
-    props: { host: res.data, weather },
+    props: { host, weather, location },
     // revalidate: 604800,
   };
 };
 
-const Home = ({ host: { hostName, hostUrl }, weather }) => {
-  const {
-    location: { latitude, longitude },
-  } = useLocation();
+const Home = ({ host: { hostName, hostUrl }, weather, location }) => {
+  const { latitude, longitude } = location;
   // const { weatherData } = useWeather();
   const createStore = useCallback(
     () =>
@@ -55,6 +63,11 @@ const Home = ({ host: { hostName, hostUrl }, weather }) => {
           setWeatherData: (w) =>
             set((state) => {
               state.weatherData = w;
+            }),
+          location,
+          setLocation: (loc) =>
+            set((state) => {
+              state.location = loc;
             }),
         }))
       ),
