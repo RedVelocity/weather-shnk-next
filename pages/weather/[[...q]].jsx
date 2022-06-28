@@ -1,6 +1,5 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-param-reassign */
-import { useCallback } from 'react';
 import axios from 'axios';
 import PropTypes from 'prop-types';
 import dynamic from 'next/dynamic';
@@ -38,7 +37,6 @@ export const getServerSideProps = async (context) => {
     curLat: 0,
     curLon: 0,
   };
-  // eslint-disable-next-line no-unused-expressions
   q && (location = await getPlaceCoords(q));
   const weather = await fetchWeather(location.latitude, location.longitude);
   return {
@@ -49,30 +47,19 @@ export const getServerSideProps = async (context) => {
 
 const Home = ({ host: { hostName, hostUrl }, weather, location }) => {
   const { latitude, longitude } = location;
-  // const { weatherData } = useWeather();
-  const createStore = useCallback(
-    () =>
-      create(
-        immer((set) => ({
-          theme: 'cool',
-          weatherData: weather,
-          setTheme: (theme) =>
-            set((state) => {
-              state.theme = theme;
-            }),
-          setWeatherData: (w) =>
-            set((state) => {
-              state.weatherData = w;
-            }),
-          location,
-          setLocation: (loc) =>
-            set((state) => {
-              state.location = loc;
-            }),
-        }))
-      ),
-    [weather]
-  );
+  // console.log('weather', weather);
+  const createStore = () =>
+    create(
+      immer((set) => ({
+        theme: 'cool',
+        weatherData: weather,
+        setTheme: (theme) =>
+          set((state) => {
+            state.theme = theme;
+          }),
+        location,
+      }))
+    );
   return (
     <Provider createStore={createStore}>
       <LazyMotion features={loadFeatures} strict>
