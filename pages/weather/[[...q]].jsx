@@ -4,8 +4,7 @@ import axios from 'axios';
 import PropTypes from 'prop-types';
 import dynamic from 'next/dynamic';
 import { LazyMotion } from 'framer-motion';
-import create from 'zustand';
-import { immer } from 'zustand/middleware/immer';
+import { useHydrateAtoms } from 'jotai/utils';
 
 import SearchCard from '../../components/SearchCard';
 import WeatherCard from '../../components/WeatherCard';
@@ -14,9 +13,9 @@ import Header from '../../components/header';
 import Footer from '../../components/footer';
 import DailyWeather from '../../components/DailyWeather';
 import WeatherInfoCardList from '../../components/WeatherInfoCardList';
-import { Provider } from '../../lib/store/useWeatherStore';
 import { fetchWeather } from '../api/getWeather';
 import { getPlaceCoords } from '../api/getPlaces';
+import { locationAtom, weatherAtom } from '../../lib/store';
 
 const DynamicWeatherMap = dynamic(() => import('../../components/WeatherMap'), {
   loading: () => null,
@@ -27,6 +26,7 @@ const loadFeatures = () =>
 
 export const getServerSideProps = async (context) => {
   const { q } = context.query;
+  const query = decodeURIComponent(q);
   const { data: host } = await axios.get(
     'https://gist.githubusercontent.com/RedVelocity/424379247e7f4ce37d50c7f9a5d07a0a/raw/host.json'
   );
@@ -37,8 +37,9 @@ export const getServerSideProps = async (context) => {
     curLat: 0,
     curLon: 0,
   };
-  q && (location = await getPlaceCoords(q));
+  query && (location = await getPlaceCoords(query));
   const weather = await fetchWeather(location.latitude, location.longitude);
+  // console.log('location', weather.current);
   return {
     props: { host, weather, location },
     // revalidate: 604800,
@@ -46,49 +47,38 @@ export const getServerSideProps = async (context) => {
 };
 
 const Home = ({ host: { hostName, hostUrl }, weather, location }) => {
-  const { latitude, longitude } = location;
-  // console.log('weather', weather);
-  const createStore = () =>
-    create(
-      immer((set) => ({
-        theme: 'cool',
-        weatherData: weather,
-        setTheme: (theme) =>
-          set((state) => {
-            state.theme = theme;
-          }),
-        location,
-      }))
-    );
+  useHydrateAtoms([[weatherAtom, weather]]);
+  useHydrateAtoms([[locationAtom, location]]);
   return (
-    <Provider createStore={createStore}>
-      <LazyMotion features={loadFeatures} strict>
-        <Header hostName={hostName} hostUrl={hostUrl} />
-        <main className="flex-1 min-w-full">
-          <div className="grid gap-3 mx-4 md:grid-cols-3">
-            <section className="space-y-3 flex flex-col">
-              <SearchCard />
-              <div className="flex flex-col sm:flex-row gap-2 flex-1  ">
-                <WeatherCard />
-                {/* Reposition Component on small devices */}
-                <WeatherInfoCardList className="grid md:hidden" />
-              </div>
-            </section>
-            <section className="md:col-span-2">
-              <HourlyWeather />
-            </section>
-            <section className="md:space-y-3 md:flex md:flex-col">
-              <WeatherInfoCardList className="hidden md:grid" />
-              <DynamicWeatherMap longitude={longitude} latitude={latitude} />
-            </section>
-            <section className="md:col-span-2">
-              <DailyWeather />
-            </section>
-          </div>
-        </main>
-        <Footer />
-      </LazyMotion>
-    </Provider>
+    <LazyMotion features={loadFeatures} strict>
+      <Header hostName={hostName} hostUrl={hostUrl} />
+      <main className="flex-1 min-w-full">
+        <div className="grid gap-3 mx-4 md:grid-cols-3">
+          <section className="space-y-3 flex flex-col">
+            <SearchCard />
+            <div className="flex flex-col sm:flex-row gap-2 flex-1  ">
+              <WeatherCard />
+              {/* Reposition Component on small devices */}
+              <WeatherInfoCardList className="grid md:hidden" />
+            </div>
+          </section>
+          <section className="md:col-span-2">
+            <HourlyWeather />
+          </section>
+          <section className="md:space-y-3 md:flex md:flex-col">
+            <WeatherInfoCardList className="hidden md:grid" />
+            <DynamicWeatherMap
+              longitude={location.longitude}
+              latitude={location.latitude}
+            />
+          </section>
+          <section className="md:col-span-2">
+            <DailyWeather />
+          </section>
+        </div>
+      </main>
+      <Footer />
+    </LazyMotion>
   );
 };
 

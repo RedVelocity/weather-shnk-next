@@ -13,7 +13,6 @@ export const getPlaceCoords = async (searchTerm) => {
       curLat: 0,
       curLon: 0,
     };
-    // console.log('coords', location);
     return location;
   } catch (error) {
     return 0;
