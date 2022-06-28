@@ -39,7 +39,7 @@ export const getServerSideProps = async (context) => {
   }
   const weather = await fetchWeather(location.latitude, location.longitude);
   // eslint-disable-next-line no-console
-  // console.log('server', weather.current, location, query);
+  console.log('server', weather.current, location, query);
   return {
     props: { host, weather, location },
     // revalidate: 604800,
