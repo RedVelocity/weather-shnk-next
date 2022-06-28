@@ -30,10 +30,9 @@ export const getServerSideProps = async (context) => {
   const { data: host } = await axios.get(
     'https://gist.githubusercontent.com/RedVelocity/424379247e7f4ce37d50c7f9a5d07a0a/raw/host.json'
   );
-  let location;
-  query !== 'undefined' && (location = await getPlaceCoords(query));
+  const location = await getPlaceCoords(query);
   // eslint-disable-next-line no-console
-  console.log('Query', query);
+  console.log('Query', context);
   if (location === 0) {
     return {
       notFound: true,
