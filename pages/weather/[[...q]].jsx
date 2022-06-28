@@ -37,9 +37,15 @@ export const getServerSideProps = async (context) => {
     curLat: 0,
     curLon: 0,
   };
-  query && (location = await getPlaceCoords(query));
+  query !== 'undefined' && (location = await getPlaceCoords(query));
+  if (location === 0) {
+    return {
+      notFound: true,
+    };
+  }
   const weather = await fetchWeather(location.latitude, location.longitude);
-  // console.log('location', weather.current);
+  // eslint-disable-next-line no-console
+  // console.log('server', weather.current, location, query);
   return {
     props: { host, weather, location },
     // revalidate: 604800,
