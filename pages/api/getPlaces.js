@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 import axios from 'axios';
 
 export const getPlaceCoords = async (searchTerm) => {
@@ -6,7 +7,7 @@ export const getPlaceCoords = async (searchTerm) => {
     const { data } = await axios.get(API_ENDPOINT);
     const feature = data.features[0];
     const location = {
-      name: feature.text_en,
+      name: feature.place_name_en,
       latitude: feature.geometry.coordinates[1],
       longitude: feature.geometry.coordinates[0],
       curLat: 0,
