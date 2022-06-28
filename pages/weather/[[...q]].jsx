@@ -30,13 +30,7 @@ export const getServerSideProps = async (context) => {
   const { data: host } = await axios.get(
     'https://gist.githubusercontent.com/RedVelocity/424379247e7f4ce37d50c7f9a5d07a0a/raw/host.json'
   );
-  let location = {
-    name: 'Bangalore, Karnataka, India.',
-    latitude: 12.972442,
-    longitude: 77.580643,
-    curLat: 0,
-    curLon: 0,
-  };
+  let location;
   query !== 'undefined' && (location = await getPlaceCoords(query));
   if (location === 0) {
     return {

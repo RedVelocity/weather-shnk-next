@@ -10,7 +10,7 @@ module.exports = withBundleAnalyzer({
     return [
       {
         source: '/',
-        destination: '/weather',
+        destination: '/weather?q=Bangalore',
         permanent: true,
       },
     ];
