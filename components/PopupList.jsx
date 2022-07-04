@@ -1,6 +1,5 @@
 import PropTypes from 'prop-types';
 import { m } from 'framer-motion';
-import Link from 'next/link';
 
 const variants = {
   animate: {
@@ -29,27 +28,19 @@ const PopupList = ({ list, handleSelect, color }) => (
       >
         <ul className="overflow-x-hidden max-h-64">
           {list.map((listItem) => (
-            <Link
-              href={`/weather?q=${encodeURIComponent(listItem.place_name)}`}
+            <li
+              className={`hover-${color} cursor-pointer px-2 py-1 rounded-lg mx-1`}
               key={listItem.id}
-              replace
+              id={listItem.id}
+              onClick={handleSelect}
+              role="presentation"
+              data-suggestion-item="true"
             >
-              {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-              <a>
-                <li
-                  className={`hover-${color} cursor-pointer px-2 py-1 rounded-lg mx-1`}
-                  id={listItem.id}
-                  onClick={handleSelect}
-                  role="presentation"
-                  data-suggestion-item="true"
-                >
-                  <h3 className="text-lg pointer-events-none font-medium">
-                    {listItem.place_name}
-                  </h3>
-                  {listItem.place_address}
-                </li>
-              </a>
-            </Link>
+              <h3 className="text-lg pointer-events-none font-medium">
+                {listItem.place_name}
+              </h3>
+              {listItem.place_address}
+            </li>
           ))}
         </ul>
       </m.div>

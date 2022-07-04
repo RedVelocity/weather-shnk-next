@@ -16,6 +16,7 @@ import WeatherInfoCardList from '../../components/WeatherInfoCardList';
 import { fetchWeather } from '../api/getWeather';
 import { getPlaceCoords } from '../api/getPlaces';
 import { locationAtom, weatherAtom } from '../../lib/store';
+import useLocation from '../../lib/hooks/useLocation';
 
 const DynamicWeatherMap = dynamic(() => import('../../components/WeatherMap'), {
   loading: () => null,
@@ -50,6 +51,9 @@ export const getServerSideProps = async (context) => {
 const Home = ({ host: { hostName, hostUrl }, weather, location }) => {
   useHydrateAtoms([[weatherAtom, weather]]);
   useHydrateAtoms([[locationAtom, location]]);
+  const {
+    location: { latitude, longitude },
+  } = useLocation();
   return (
     <LazyMotion features={loadFeatures} strict>
       <Header hostName={hostName} hostUrl={hostUrl} />
@@ -68,10 +72,7 @@ const Home = ({ host: { hostName, hostUrl }, weather, location }) => {
           </section>
           <section className="md:space-y-3 md:flex md:flex-col">
             <WeatherInfoCardList className="hidden md:grid" />
-            <DynamicWeatherMap
-              longitude={location.longitude}
-              latitude={location.latitude}
-            />
+            <DynamicWeatherMap longitude={longitude} latitude={latitude} />
           </section>
           <section className="md:col-span-2">
             <DailyWeather />

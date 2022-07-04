@@ -7,7 +7,7 @@ import PopupList from './PopupList';
 
 const SearchCard = () => {
   const { theme } = useWeather();
-  const { location } = useLocation();
+  const { location, setLocation } = useLocation();
   const [placesList, setPlacesList] = useState([]);
   const [showPopupList, setShowPopupList] = useState(false);
   const [searchInput, setSearchInput] = useState('');
@@ -20,14 +20,14 @@ const SearchCard = () => {
     setShowPopupList(false);
   };
   // Handler for popup item select
-  const handleSelect = () => {
-    // const loc = placesList.find((suggestion) => suggestion.id === e.target.id);
-    // setLocation({
-    //   ...location,
-    //   name: `${loc.place_name}, ${loc.place_locality}`,
-    //   latitude: loc.coordinates[1],
-    //   longitude: loc.coordinates[0],
-    // });
+  const handleSelect = (e) => {
+    const loc = placesList.find((suggestion) => suggestion.id === e.target.id);
+    setLocation({
+      ...location,
+      name: `${loc.place_name}, ${loc.place_locality}`,
+      latitude: loc.coordinates[1],
+      longitude: loc.coordinates[0],
+    });
     setShowPopupList(false);
   };
   // Add listener for Outside click
