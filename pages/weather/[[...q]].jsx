@@ -32,7 +32,15 @@ export const getServerSideProps = async (context) => {
     'https://gist.githubusercontent.com/RedVelocity/424379247e7f4ce37d50c7f9a5d07a0a/raw/host.json'
   );
   let location;
-  query !== 'undefined' && (location = await getPlaceCoords(query));
+  query !== 'undefined'
+    ? (location = await getPlaceCoords(query))
+    : (location = {
+        name: 'Bangalore, Karnataka, India.',
+        latitude: 12.972442,
+        longitude: 77.580643,
+        curLat: 0,
+        curLon: 0,
+      });
   // eslint-disable-next-line no-console
   console.log('Query', context);
   if (location === 0 || location === undefined) {
