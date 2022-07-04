@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
 import { getPlaces } from '../lib/api';
 import useWeather from '../lib/hooks/useWeather';
 import useLocation from '../lib/hooks/useLocation';
@@ -12,6 +13,7 @@ const SearchCard = () => {
   const [showPopupList, setShowPopupList] = useState(false);
   const [searchInput, setSearchInput] = useState('');
   const debouncedSearchTerm = useDebounce(searchInput, 300);
+  const router = useRouter();
   // Handler for outside click
   const handleOutsideClick = (e) => {
     if (e.target.attributes['data-suggestion-item']) {
@@ -28,6 +30,7 @@ const SearchCard = () => {
       latitude: loc.coordinates[1],
       longitude: loc.coordinates[0],
     });
+    router.push(`/weather?q=${loc.place_name}`);
     setShowPopupList(false);
   };
   // Add listener for Outside click

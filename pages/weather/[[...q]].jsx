@@ -6,6 +6,10 @@ import dynamic from 'next/dynamic';
 import { LazyMotion } from 'framer-motion';
 import { useHydrateAtoms } from 'jotai/utils';
 
+import { fetchWeather } from '../api/getWeather';
+import { getPlaceCoords } from '../api/getPlaces';
+import { locationAtom, weatherAtom } from '../../lib/store';
+import useLocation from '../../lib/hooks/useLocation';
 import SearchCard from '../../components/SearchCard';
 import WeatherCard from '../../components/WeatherCard';
 import HourlyWeather from '../../components/HourlyWeather';
@@ -13,10 +17,6 @@ import Header from '../../components/header';
 import Footer from '../../components/footer';
 import DailyWeather from '../../components/DailyWeather';
 import WeatherInfoCardList from '../../components/WeatherInfoCardList';
-import { fetchWeather } from '../api/getWeather';
-import { getPlaceCoords } from '../api/getPlaces';
-import { locationAtom, weatherAtom } from '../../lib/store';
-import useLocation from '../../lib/hooks/useLocation';
 
 const DynamicWeatherMap = dynamic(() => import('../../components/WeatherMap'), {
   loading: () => null,
