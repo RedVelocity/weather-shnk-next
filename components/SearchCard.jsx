@@ -30,7 +30,7 @@ const SearchCard = () => {
       latitude: loc.coordinates[1],
       longitude: loc.coordinates[0],
     });
-    router.push(`/weather?q=${loc.place_name}`);
+    router.push(`/weather?q=${loc.place_name}`, undefined, { shallow: true });
     setShowPopupList(false);
   };
   // Add listener for Outside click
