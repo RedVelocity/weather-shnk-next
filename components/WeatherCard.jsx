@@ -55,8 +55,9 @@ const WeatherCard = () => {
               {current.weather.description}
             </m.h1>
             <m.div layout>
-              <span className="text-xl">Currently</span>
-              <h1 className="text-4xl">{`${Math.round(current.temp)}°C`}</h1>
+              <h1 className="text-[2.6rem]">{`${Math.round(
+                current.temp
+              )}°C`}</h1>
             </m.div>
           </div>
           <span className="block p-2 md:px-4 md:py-3 mt-2 mb-4 tracking-wide text-center bg-gray-200 rounded">
