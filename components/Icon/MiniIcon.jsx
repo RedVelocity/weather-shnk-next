@@ -1,7 +1,6 @@
 const WindIcon = () => (
   <svg
     className="h-8 w-8 inline mr-2 bg-cool rounded"
-    set="current-conditions"
     name="wind"
     theme="dark"
     data-testid="Icon"
@@ -23,7 +22,6 @@ const WindIcon = () => (
 const VisibilityIcon = () => (
   <svg
     className="h-8 w-8 inline mr-2 p-1"
-    set="current-conditions"
     name="visibility"
     theme="dark"
     data-testid="Icon"
@@ -46,7 +44,6 @@ const VisibilityIcon = () => (
 const PressureIcon = () => (
   <svg
     className="h-8 w-8 inline mr-2 bg-hot rounded"
-    set="current-conditions"
     name="pressure"
     data-testid="Icon"
     aria-hidden="true"
@@ -64,7 +61,6 @@ const PressureIcon = () => (
 const DewpointIcon = () => (
   <svg
     className="h-8 w-8 inline mr-2 bg-mild rounded"
-    set="current-conditions"
     name="dewpoint"
     theme="dark"
     data-testid="Icon"
