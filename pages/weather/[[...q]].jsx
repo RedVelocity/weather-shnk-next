@@ -42,7 +42,7 @@ export const getServerSideProps = async (context) => {
         curLon: 0,
       });
   // eslint-disable-next-line no-console
-  console.log('Query', context);
+  console.log('Query', context.query);
   if (location === 0 || location === undefined) {
     return {
       notFound: true,
