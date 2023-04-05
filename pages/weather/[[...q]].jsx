@@ -1,5 +1,4 @@
 /* eslint-disable react/prop-types */
-/* eslint-disable no-param-reassign */
 import axios from 'axios';
 import PropTypes from 'prop-types';
 import dynamic from 'next/dynamic';
@@ -42,7 +41,7 @@ export const getServerSideProps = async (context) => {
         curLon: 0,
       });
   // eslint-disable-next-line no-console
-  console.log('Query', context.query);
+  // console.log('Query', context);
   if (location === 0 || location === undefined) {
     return {
       notFound: true,

@@ -6,13 +6,13 @@ module.exports = withBundleAnalyzer({
   images: {
     domains: ['img.icons8.com'],
   },
-  // async redirects() {
-  //   return [
-  //     {
-  //       source: '/',
-  //       destination: '/weather?q=Bangalore',
-  //       permanent: true,
-  //     },
-  //   ];
-  // },
+  async redirects() {
+    return [
+      {
+        source: '/',
+        destination: '/weather?q=Bangalore',
+        permanent: false,
+      },
+    ];
+  },
 });
