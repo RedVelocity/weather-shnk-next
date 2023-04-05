@@ -2,7 +2,6 @@ const WindIcon = () => (
   <svg
     className="h-8 w-8 inline mr-2 bg-cool rounded"
     name="wind"
-    theme="dark"
     data-testid="Icon"
     aria-hidden="true"
     role="img"
@@ -23,7 +22,6 @@ const VisibilityIcon = () => (
   <svg
     className="h-8 w-8 inline mr-2 p-1"
     name="visibility"
-    theme="dark"
     data-testid="Icon"
     aria-hidden="true"
     role="img"
@@ -62,7 +60,6 @@ const DewpointIcon = () => (
   <svg
     className="h-8 w-8 inline mr-2 bg-mild rounded"
     name="dewpoint"
-    theme="dark"
     data-testid="Icon"
     aria-hidden="true"
     role="img"
