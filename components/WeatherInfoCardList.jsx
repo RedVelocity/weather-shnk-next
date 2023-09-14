@@ -1,3 +1,5 @@
+'use client';
+
 import PropTypes from 'prop-types';
 import useWeather from '../lib/hooks/useWeather';
 import {
@@ -14,7 +16,7 @@ const WeatherInfoCardList = ({ className }) => {
   } = useWeather();
   return (
     <ul
-      className={`${className} card text-dark p-4 font-medium gap-1 bg-dark text-gray-100 tracking-wide min-w-[18rem] h-[16rem]`}
+      className={`${className} card p-4 font-medium gap-1 bg-dark text-gray-100 tracking-wide min-w-[18rem] h-[16rem]`}
     >
       <>
         <WeatherInfoCard

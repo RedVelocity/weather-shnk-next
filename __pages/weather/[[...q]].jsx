@@ -69,7 +69,7 @@ const Home = ({ host: { hostName, hostUrl }, weather, location }) => {
         <div className="grid gap-3 mx-4 md:grid-cols-3">
           <section className="space-y-3 flex flex-col">
             <SearchCard />
-            <div className="flex flex-col sm:flex-row gap-2 flex-1  ">
+            <div className="flex flex-col sm:flex-row gap-2 flex-1">
               <WeatherCard />
               {/* Reposition Component on small devices */}
               <WeatherInfoCardList className="grid md:hidden" />

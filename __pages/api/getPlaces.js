@@ -36,6 +36,7 @@ export default async (req, res) => {
         : feature.context.length < 3
         ? feature.context
         : feature.context.slice(-2);
+      // eslint-disable-next-line camelcase
       const place_locality = locality.reduce(
         (loc, ctx, index, context) =>
           context.length === index + 1

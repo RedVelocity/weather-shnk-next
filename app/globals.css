@@ -1,0 +1,68 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Root Styles */
+html {
+  @apply text-[14px] md:text-[11px];
+}
+body {
+  @apply bg-gray-300;
+  font-family: 'Montserrat', sans-serif;
+}
+
+#__next {
+  @apply flex flex-col min-h-screen max-w-screen-lg mx-auto;
+}
+
+/* Components */
+@layer components {
+  .card {
+    @apply rounded-l rounded-br shadow rounded-tr-xl;
+  }
+  .mini-card {
+    @apply bg-white/5 py-2 px-4 card;
+  }
+  .loader {
+    @apply rounded-full h-16 w-16 md:h-20 md:w-20 border-8 border-zinc-500 border-t-8 border-t-sky-500;
+    animation: spin 2s linear infinite;
+  }
+}
+
+/* Styles */
+.hot {
+  @apply bg-hot;
+}
+.cool {
+  @apply bg-cool;
+}
+.mild {
+  @apply bg-mild;
+}
+.txt-hot {
+  @apply text-hot;
+}
+.txt-cool {
+  @apply text-cool;
+}
+.txt-mild {
+  @apply text-mild;
+}
+.hover-hot {
+  @apply hover:bg-gradient-to-r hover:from-milder hover:to-hot;
+}
+.hover-cool {
+  @apply hover:bg-gradient-to-r hover:from-cool hover:to-purple-300;
+}
+.hover-mild {
+  @apply hover:bg-gradient-to-r hover:from-mild hover:to-milder;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

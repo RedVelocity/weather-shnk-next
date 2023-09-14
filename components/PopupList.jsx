@@ -1,30 +1,32 @@
-import PropTypes from 'prop-types';
-import { m } from 'framer-motion';
+'use client';
 
-const variants = {
-  animate: {
-    opacity: 1,
-    height: 'auto',
-    transition: { duration: 0.25 },
-  },
-  exit: {
-    opacity: 0,
-  },
-  initial: {
-    opacity: 0,
-    height: 0,
-  },
-};
+import PropTypes from 'prop-types';
+// import { m } from 'framer-motion';
+
+// const variants = {
+//   animate: {
+//     opacity: 1,
+//     height: 'auto',
+//     transition: { duration: 0.25 },
+//   },
+//   exit: {
+//     opacity: 0,
+//   },
+//   initial: {
+//     opacity: 0,
+//     height: 0,
+//   },
+// };
 
 const PopupList = ({ list, handleSelect, color }) => (
   <>
     {list.length > 0 && (
-      <m.div
+      <div
         className="absolute z-10 min-w-full p-2 bg-white shadow rounded-xl"
-        variants={variants}
-        initial="initial"
-        animate="animate"
-        exit="exit"
+        // variants={variants}
+        // initial="initial"
+        // animate="animate"
+        // exit="exit"
       >
         <ul className="overflow-x-hidden max-h-64">
           {list.map((listItem) => (
@@ -43,7 +45,7 @@ const PopupList = ({ list, handleSelect, color }) => (
             </li>
           ))}
         </ul>
-      </m.div>
+      </div>
     )}
   </>
 );
