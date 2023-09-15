@@ -27,11 +27,11 @@ const Home = async ({ searchParams }) => {
   const weather = await fetchWeather(location.latitude, location.longitude);
   // console.log(location);
   return (
-    <main className="flex-1 min-w-full">
+    <main className="max-w-screen-xl mx-auto p-2 min-w-[350px]">
       <Header hostName={host.hostName} hostUrl={host.hostUrl} />
       <HydrateAtoms weather={weather} location={location} />
-      <section className="space-y-3 grid sm:grid-cols-2 gap-2">
-        <div className="flex flex-col sm:flex-row gap-2">
+      <section className="grid md:grid-cols-2 gap-2">
+        <div className="flex flex-col gap-2">
           <SearchCard />
           {/* Reposition Component on small devices */}
           <WeatherInfoCardList className="grid" />
