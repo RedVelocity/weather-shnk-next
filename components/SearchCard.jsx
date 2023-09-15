@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { useRouter } from 'next/navigation';
+// import { useRouter } from 'next/navigation';
 import { getPlaces } from '../lib/api';
 import useWeather from '../lib/hooks/useWeather';
 import useLocation from '../lib/hooks/useLocation';
@@ -10,12 +10,12 @@ import PopupList from './PopupList';
 
 const SearchCard = () => {
   const { theme } = useWeather();
-  const { location, setLocation } = useLocation();
+  const { location } = useLocation();
   const [placesList, setPlacesList] = useState([]);
   const [showPopupList, setShowPopupList] = useState(false);
   const [searchInput, setSearchInput] = useState('');
   const debouncedSearchTerm = useDebounce(searchInput, 300);
-  const router = useRouter();
+  // const router = useRouter();
   // Handler for outside click
   const handleOutsideClick = (e) => {
     if (e.target.attributes['data-suggestion-item']) {
@@ -24,17 +24,17 @@ const SearchCard = () => {
     setShowPopupList(false);
   };
   // Handler for popup item select
-  const handleSelect = (e) => {
-    const loc = placesList.find((suggestion) => suggestion.id === e.target.id);
-    setLocation({
-      ...location,
-      name: `${loc.place_name}, ${loc.place_locality}`,
-      latitude: loc.coordinates[1],
-      longitude: loc.coordinates[0],
-    });
-    router.push(`/weather?q=${loc.place_name}`, undefined, { shallow: true });
-    setShowPopupList(false);
-  };
+  // const handleSelect = (e) => {
+  //   const loc = placesList.find((suggestion) => suggestion.id === e.target.id);
+  //   setLocation({
+  //     ...location,
+  //     name: `${loc.place_name}, ${loc.place_locality}`,
+  //     latitude: loc.coordinates[1],
+  //     longitude: loc.coordinates[0],
+  //   });
+  //   router.push(`/weather?q=${loc.place_name}`);
+  //   setShowPopupList(false);
+  // };
   // Add listener for Outside click
   useEffect(() => {
     document.addEventListener('mousedown', handleOutsideClick, false);
@@ -78,7 +78,7 @@ const SearchCard = () => {
         {showPopupList && (
           <PopupList
             list={placesList}
-            handleSelect={handleSelect}
+            handleSelect={() => setShowPopupList(false)}
             color={theme}
           />
         )}

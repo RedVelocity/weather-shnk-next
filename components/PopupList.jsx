@@ -1,5 +1,6 @@
 'use client';
 
+import Link from 'next/link';
 import PropTypes from 'prop-types';
 // import { m } from 'framer-motion';
 
@@ -30,19 +31,22 @@ const PopupList = ({ list, handleSelect, color }) => (
       >
         <ul className="overflow-x-hidden max-h-64">
           {list.map((listItem) => (
-            <li
-              className={`hover-${color} cursor-pointer px-2 py-1 rounded-lg mx-1`}
+            <Link
+              href={decodeURIComponent(`weather?q=${listItem.place_name}`)}
               key={listItem.id}
               id={listItem.id}
               onClick={handleSelect}
-              role="presentation"
+              // role="presentation"
               data-suggestion-item="true"
+              passHref
             >
-              <h3 className="text-lg pointer-events-none font-medium">
-                {listItem.place_name}
-              </h3>
-              {listItem.place_address}
-            </li>
+              <div
+                className={`hover-${color} px-2 py-1 rounded-lg mx-1 pointer-events-none`}
+              >
+                <h3 className="text-lg font-medium">{listItem.place_name}</h3>
+                <p>{listItem.place_address}</p>
+              </div>
+            </Link>
           ))}
         </ul>
       </div>

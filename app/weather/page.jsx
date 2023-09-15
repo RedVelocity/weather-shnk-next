@@ -30,13 +30,13 @@ const Home = async ({ searchParams }) => {
     <main className="flex-1 min-w-full">
       <Header hostName={host.hostName} hostUrl={host.hostUrl} />
       <HydrateAtoms weather={weather} location={location} />
-      <section className="space-y-3 flex flex-col">
-        <SearchCard />
-        <div className="flex flex-col sm:flex-row gap-2 flex-1">
-          <WeatherCard />
+      <section className="space-y-3 grid grid-cols-2 gap-2">
+        <div className="flex flex-col sm:flex-row gap-2">
+          <SearchCard />
           {/* Reposition Component on small devices */}
           <WeatherInfoCardList className="grid md:hidden" />
         </div>
+        <WeatherCard />
       </section>
     </main>
   );

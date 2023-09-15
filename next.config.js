@@ -9,13 +9,13 @@ module.exports = withBundleAnalyzer({
   experimental: {
     appDir: true,
   },
-  // async redirects() {
-  //   return [
-  //     {
-  //       source: '/',
-  //       destination: '/weather?q=Bangalore',
-  //       permanent: false,
-  //     },
-  //   ];
-  // },
+  async redirects() {
+    return [
+      {
+        source: '/',
+        destination: '/weather?q=Bangalore',
+        permanent: false,
+      },
+    ];
+  },
 });
