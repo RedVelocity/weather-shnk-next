@@ -34,5 +34,28 @@ module.exports = {
     'react/react-in-jsx-scope': 0,
     'react/no-array-index-key': 0,
     'react/require-default-props': 0,
+    // "import-alias/import-alias": [
+    //   "error",
+    //   {
+    //     "relativeDepth": 0,
+    //     "rootDir": __dirname,
+    //     "aliases": [
+    //       { "alias": "@src", "matcher": "^src" } // src/modules/app/test -> @src/modules/app/test
+    //     ]
+    //   }
+    // ]
+  },
+  settings: {
+    'import/resolver': {
+      alias: {
+        map: [
+          ['@', './'],
+          // ['@/components', './components'],
+          // ['@/app', './app'],
+          // ['@/lib', './lib'],
+        ],
+        extensions: ['.js', '.jsx', '.json'],
+      },
+    },
   },
 };

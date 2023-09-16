@@ -1,12 +1,12 @@
 import axios from 'axios';
 
-import { fetchWeather } from '../api/getWeather';
-import { getPlaceCoords } from '../api/getPlaces';
-import HydrateAtoms from '../../components/HydrateAtoms';
-import WeatherCard from '../../components/WeatherCard';
-import Header from '../../components/header';
-import SearchCard from '../../components/SearchCard';
-import WeatherInfoCardList from '../../components/WeatherInfoCardList';
+import { fetchWeather } from '@/app/api/getWeather';
+import { getPlaceCoords } from '@/app/api/getPlaces';
+import HydrateAtoms from '@/components/HydrateAtoms';
+import WeatherCard from '@/components/WeatherCard';
+import Header from '@/components/header';
+import SearchCard from '@/components/SearchCard';
+import WeatherInfoCardList from '@/components/WeatherInfoCardList';
 
 const Home = async ({ searchParams }) => {
   const { q } = searchParams;

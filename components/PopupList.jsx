@@ -32,13 +32,12 @@ const PopupList = ({ list, handleSelect, color }) => (
         <ul className="overflow-x-hidden max-h-64">
           {list.map((listItem) => (
             <Link
-              href={decodeURIComponent(`weather?q=${listItem.place_name}`)}
+              href={`weather?q=${listItem.place_name}`}
+              passHref
+              onClick={handleSelect}
               key={listItem.id}
               id={listItem.id}
-              onClick={handleSelect}
-              // role="presentation"
               data-suggestion-item="true"
-              passHref
             >
               <div
                 className={`hover-${color} px-2 py-1 rounded-lg mx-1 pointer-events-none`}
