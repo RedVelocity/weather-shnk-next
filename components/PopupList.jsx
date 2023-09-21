@@ -19,9 +19,9 @@ import PropTypes from 'prop-types';
 //   },
 // };
 
-const PopupList = ({ list, handleSelect, color }) => (
+const PopupList = ({ list, handleSelect, color, showPopupList }) => (
   <>
-    {list.length > 0 && (
+    {list.length > 0 && showPopupList && (
       <div
         className="absolute z-10 min-w-full p-2 bg-white shadow rounded-xl"
         // variants={variants}
@@ -31,9 +31,12 @@ const PopupList = ({ list, handleSelect, color }) => (
       >
         <ul className="overflow-x-hidden max-h-64">
           {list.map((listItem) => (
+            // eslint-disable-next-line @next/next/link-passhref
             <Link
-              href={`weather?q=${listItem.place_name}`}
-              passHref
+              href={`weather?q=${listItem.place_name},${listItem.place_locality
+                .replace(', ', ',')
+                .replace('.', '')}`}
+              // passHref
               onClick={handleSelect}
               key={listItem.id}
               id={listItem.id}
@@ -63,6 +66,7 @@ PopupList.propTypes = {
   ).isRequired,
   handleSelect: PropTypes.func.isRequired,
   color: PropTypes.string.isRequired,
+  showPopupList: PropTypes.bool,
 };
 
 export default PopupList;

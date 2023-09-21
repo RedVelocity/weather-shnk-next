@@ -2,11 +2,11 @@
 
 import { useEffect, useState } from 'react';
 // import { useRouter } from 'next/navigation';
-import { getPlaces } from '../lib/api';
-import useWeather from '../lib/hooks/useWeather';
-import useLocation from '../lib/hooks/useLocation';
-import useDebounce from '../lib/hooks/useDebounce';
-import PopupList from './PopupList';
+import { getPlaces } from '@/lib/api';
+import useWeather from '@/lib/hooks/useWeather';
+import useLocation from '@/lib/hooks/useLocation';
+import useDebounce from '@/lib/hooks/useDebounce';
+import PopupList from '@/components/PopupList';
 
 const SearchCard = () => {
   const { theme } = useWeather();
@@ -14,7 +14,7 @@ const SearchCard = () => {
   const [placesList, setPlacesList] = useState([]);
   const [showPopupList, setShowPopupList] = useState(false);
   const [searchInput, setSearchInput] = useState('');
-  const debouncedSearchTerm = useDebounce(searchInput, 300);
+  const debouncedSearchTerm = useDebounce(searchInput, 200);
   // const router = useRouter();
   // Handler for outside click
   const handleOutsideClick = (e) => {
@@ -27,7 +27,7 @@ const SearchCard = () => {
   // const handleSelect = (e) => {
   //   const loc = placesList.find((suggestion) => suggestion.id === e.target.id);
   //   setLocation({
-  //     ...location,
+  //     @.location,
   //     name: `${loc.place_name}, ${loc.place_locality}`,
   //     latitude: loc.coordinates[1],
   //     longitude: loc.coordinates[0],
@@ -75,13 +75,14 @@ const SearchCard = () => {
           onChange={(e) => setSearchInput(e.target.value)}
           onFocus={() => setShowPopupList(true)}
         />
-        {showPopupList && (
-          <PopupList
-            list={placesList}
-            handleSelect={() => setShowPopupList(false)}
-            color={theme}
-          />
-        )}
+        {/* {showPopupList && ( */}
+        <PopupList
+          list={placesList}
+          handleSelect={() => setShowPopupList(false)}
+          color={theme}
+          showPopupList={showPopupList}
+        />
+        {/* )} */}
       </div>
     </div>
   );
