@@ -1,7 +1,5 @@
-import axios from 'axios';
-
-import { fetchWeather } from '@/app/api/getWeather';
-import { getPlaceCoords } from '@/app/api/getPlaces';
+import { fetchWeather } from '@/app/api/getWeather/route';
+import { getPlaceCoords } from '@/app/api/getPlaces/route';
 import HydrateAtoms from '@/components/HydrateAtoms';
 import WeatherCard from '@/components/WeatherCard';
 import Header from '@/components/header';
@@ -11,9 +9,10 @@ import WeatherInfoCardList from '@/components/WeatherInfoCardList';
 const Home = async ({ searchParams }) => {
   const { q } = searchParams;
   const query = decodeURIComponent(q);
-  const { data: host } = await axios.get(
+  const res = await fetch(
     'https://gist.githubusercontent.com/RedVelocity/424379247e7f4ce37d50c7f9a5d07a0a/raw/host.json'
   );
+  const host = await res.json();
   let location;
   query !== 'undefined'
     ? (location = await getPlaceCoords(query))
@@ -33,7 +32,6 @@ const Home = async ({ searchParams }) => {
       <section className="grid md:grid-cols-2 gap-2">
         <div className="flex flex-col gap-2">
           <SearchCard />
-          {/* Reposition Component on small devices */}
           <WeatherInfoCardList className="grid" />
         </div>
         <WeatherCard />
