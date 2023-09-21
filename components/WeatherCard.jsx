@@ -53,11 +53,11 @@ const WeatherCard = () => {
         <>
           <div className="flex items-center gap-6 p-4 text-center justify-evenly">
             <Icon icon={current.weather.icon} size={64} />
-            <h1 className="text-2xl md:text-3xl font-bold capitalize">
+            <h1 className="text-2xl md:text-4xl font-bold capitalize">
               {current.weather.description}
             </h1>
             <div>
-              <h1 className="text-[2.6rem]">{`${Math.round(
+              <h1 className="text-[2.5rem] font-semibold">{`${Math.round(
                 current.temp
               )}°C`}</h1>
             </div>

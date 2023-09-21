@@ -1,11 +1,12 @@
-import axios from 'axios';
+// import axios from 'axios';
 
 export default async (req, res) => {
   const { latitude, longitude } = req.query;
   const API_ENDPOINT = `https://api.mapbox.com/geocoding/v5/mapbox.places/${longitude},${latitude}.json?access_token=${process.env.NEXT_PUBLIC_MAPBOX_KEY}&types=place&language=en&limit=1`;
 
   try {
-    const { data } = await axios.get(API_ENDPOINT);
+    const response = await fetch(API_ENDPOINT);
+    const data = await response.json();
     // console.log(data, 'data');
     res.status(200).json(data.features[0].place_name);
   } catch (error) {

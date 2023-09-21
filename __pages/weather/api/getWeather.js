@@ -1,13 +1,12 @@
-import axios from 'axios';
+// import axios from 'axios';
 
 export const fetchWeather = async (latitude, longitude) => {
   const exclude = 'minutely,alerts';
   const API_ENDPOINT = `https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&exclude=${exclude}&appid=${process.env.NEXT_PUBLIC_OWM_KEY}&units=metric`;
 
   let formattedData = {};
-  const {
-    data: { daily, current, hourly },
-  } = await axios.get(API_ENDPOINT);
+  const res = await fetch(API_ENDPOINT, { next: { revalidate: 600 } });
+  const { daily, current, hourly } = await res.json();
   // console.log(data, 'data');
   formattedData = {
     current: {

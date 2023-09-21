@@ -1,10 +1,11 @@
 /* eslint-disable camelcase */
-import axios from 'axios';
+// import axios from 'axios';
 
 export const getPlaceCoords = async (searchTerm) => {
   const API_ENDPOINT = `https://api.mapbox.com/geocoding/v5/mapbox.places/${searchTerm}.json?access_token=${process.env.NEXT_PUBLIC_MAPBOX_KEY}&types=place,locality&language=en&limit=1`;
   try {
-    const { data } = await axios.get(API_ENDPOINT);
+    const res = await fetch(API_ENDPOINT);
+    const data = await res.json();
     const feature = data.features[0];
     const location = {
       name: feature.place_name_en,
@@ -28,7 +29,8 @@ export default async (req, res) => {
   const API_ENDPOINT = `https://api.mapbox.com/geocoding/v5/mapbox.places/${searchTerm}.json?access_token=${process.env.NEXT_PUBLIC_MAPBOX_KEY}&types=place,locality&language=en&limit=25${proximity}`;
 
   try {
-    const { data } = await axios.get(API_ENDPOINT);
+    const response = await fetch(API_ENDPOINT);
+    const data = await response.json();
     // console.log(data, 'data');
     const places = data.features.map((feature) => {
       const locality = !feature.context
@@ -36,7 +38,6 @@ export default async (req, res) => {
         : feature.context.length < 3
         ? feature.context
         : feature.context.slice(-2);
-      // eslint-disable-next-line camelcase
       const place_locality = locality.reduce(
         (loc, ctx, index, context) =>
           context.length === index + 1

@@ -7,7 +7,6 @@ import WeatherCard from '@/components/WeatherCard';
 import Header from '@/components/header';
 import SearchCard from '@/components/SearchCard';
 import WeatherInfoCardList from '@/components/WeatherInfoCardList';
-// import ComboboxDemo from '@/components/ComboBox';
 
 const Home = async ({ searchParams }) => {
   const { q } = searchParams;
@@ -39,7 +38,6 @@ const Home = async ({ searchParams }) => {
         </div>
         <WeatherCard />
       </section>
-      {/* <ComboboxDemo /> */}
     </main>
   );
 };
