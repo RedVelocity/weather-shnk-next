@@ -40,43 +40,41 @@ const WeatherCard = () => {
       break;
   }
   return (
-    <>
-      <div
-        style={{
-          backgroundImage: `linear-gradient(140deg, ${colors.cool} 0%, ${colors.mild} 30%, ${colors.milder} 60%, ${colors.hot} 100%)`,
-          backgroundSize: '1800px',
-          backgroundPosition,
-          transition: 'background-position 500ms linear',
-        }}
-        className="card flex-1 flex flex-col justify-evenly p-4 font-semibold"
-      >
-        <>
-          <div className="flex items-center gap-6 p-4 text-center justify-evenly">
-            <Icon icon={current.weather.icon} size={64} />
-            <h1 className="text-2xl md:text-4xl font-bold capitalize">
-              {current.weather.description}
-            </h1>
-            <div>
-              <h1 className="text-[2.5rem] font-semibold">{`${Math.round(
-                current.temp
-              )}°C`}</h1>
-            </div>
+    <div
+      style={{
+        backgroundImage: `linear-gradient(140deg, ${colors.cool} 0%, ${colors.mild} 30%, ${colors.milder} 60%, ${colors.hot} 100%)`,
+        backgroundSize: '1800px',
+        backgroundPosition,
+        transition: 'background-position 500ms linear',
+      }}
+      className="card flex-1 flex flex-col justify-evenly p-4 font-semibold"
+    >
+      <>
+        <div className="flex items-center gap-6 p-4 text-center justify-evenly">
+          <Icon icon={current.weather.icon} size={64} />
+          <h1 className="text-2xl md:text-4xl font-bold capitalize">
+            {current.weather.description}
+          </h1>
+          <div>
+            <h1 className="text-[2.5rem] font-semibold">{`${Math.round(
+              current.temp
+            )}°C`}</h1>
           </div>
-          <span className="block p-2 md:px-4 md:py-3 mt-2 mb-4 tracking-wide text-center bg-gray-200 rounded">
-            {additionalInfo}
-          </span>
-        </>
-        <div className="flex items-center space-x-2">
-          <Image
-            src="/assets/weather-icons/location.png"
-            height={20}
-            width={20}
-            alt="location"
-          />
-          <h5 className="ml-1">{locationName}</h5>
         </div>
+        <span className="block p-2 md:px-4 md:py-3 mt-2 mb-4 tracking-wide text-center bg-gray-200 rounded">
+          {additionalInfo}
+        </span>
+      </>
+      <div className="flex items-center space-x-2">
+        <Image
+          src="/assets/weather-icons/location.png"
+          height={20}
+          width={20}
+          alt="location"
+        />
+        <h5 className="ml-1">{locationName}</h5>
       </div>
-    </>
+    </div>
   );
 };
 

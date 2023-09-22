@@ -32,9 +32,10 @@ const Home = async ({ searchParams }) => {
       <section className="grid md:grid-cols-2 gap-2">
         <div className="flex flex-col gap-2">
           <SearchCard />
-          <WeatherInfoCardList className="grid" />
+          <WeatherInfoCardList className="md:grid hidden" />
         </div>
-        <WeatherCard />
+        <WeatherCard className="md:block hidden" />
+        <WeatherInfoCardList className="grid md:hidden" />
       </section>
     </main>
   );

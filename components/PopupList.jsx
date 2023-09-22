@@ -1,3 +1,5 @@
+/* eslint-disable @next/next/link-passhref */
+
 'use client';
 
 import Link from 'next/link';
@@ -31,24 +33,26 @@ const PopupList = ({ list, handleSelect, color, showPopupList }) => (
       >
         <ul className="overflow-x-hidden max-h-64">
           {list.map((listItem) => (
-            // eslint-disable-next-line @next/next/link-passhref
-            <Link
-              href={`weather?q=${listItem.place_name},${listItem.place_locality
-                .replace(', ', ',')
-                .replace('.', '')}`}
-              // passHref
-              onClick={handleSelect}
+            <li
+              className={`hover-${color} rounded-lg px-2 py-1`}
               key={listItem.id}
-              id={listItem.id}
-              data-suggestion-item="true"
             >
-              <div
-                className={`hover-${color} px-2 py-1 rounded-lg mx-1 pointer-events-none`}
+              <Link
+                id={listItem.id}
+                href={`weather?q=${
+                  listItem.place_name
+                },${listItem.place_locality
+                  .replace(', ', ',')
+                  .replace('.', '')}`}
+                onClick={handleSelect}
+                data-suggestion-item
               >
-                <h3 className="text-lg font-medium">{listItem.place_name}</h3>
-                <p>{listItem.place_address}</p>
-              </div>
-            </Link>
+                <div className="pointer-events-none">
+                  <h3 className="text-lg font-medium">{listItem.place_name}</h3>
+                  <p>{listItem.place_address}</p>
+                </div>
+              </Link>
+            </li>
           ))}
         </ul>
       </div>
