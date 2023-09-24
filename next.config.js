@@ -6,9 +6,9 @@ module.exports = withBundleAnalyzer({
   images: {
     domains: ['img.icons8.com'],
   },
-  experimental: {
-    appDir: true,
-  },
+  // experimental: {
+  //   appDir: true,
+  // },
   async redirects() {
     return [
       {
