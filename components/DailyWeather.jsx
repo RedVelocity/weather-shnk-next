@@ -1,3 +1,5 @@
+'use client';
+
 import dayjs from 'dayjs';
 import useWeather from '../lib/hooks/useWeather';
 import SummaryCard from './SummaryCard';

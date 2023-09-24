@@ -1,3 +1,6 @@
+import dynamic from 'next/dynamic';
+// import { LazyMotion } from 'framer-motion';
+
 import { fetchWeather } from '@/app/api/getWeather/route';
 import { getPlaceCoords } from '@/app/api/getPlaces/route';
 import HydrateAtoms from '@/components/HydrateAtoms';
@@ -5,6 +8,15 @@ import WeatherCard from '@/components/WeatherCard';
 import Header from '@/components/header';
 import SearchCard from '@/components/SearchCard';
 import WeatherInfoCardList from '@/components/WeatherInfoCardList';
+import HourlyWeather from '@/components/HourlyWeather';
+import DailyWeather from '@/components/DailyWeather';
+
+const DynamicWeatherMap = dynamic(() => import('../../components/WeatherMap'), {
+  loading: () => null,
+});
+
+// const loadFeatures = () =>
+//   import('../../lib/utils/features').then((res) => res.default);
 
 const Home = async ({ searchParams }) => {
   const { q } = searchParams;
@@ -29,14 +41,29 @@ const Home = async ({ searchParams }) => {
     <main className="max-w-screen-xl mx-auto p-2 min-w-[350px]">
       <Header hostName={host.hostName} hostUrl={host.hostUrl} />
       <HydrateAtoms weather={weather} location={location} />
-      <section className="grid md:grid-cols-2 gap-2">
-        <div className="flex flex-col gap-2">
+      <div className="grid gap-3 mx-4 md:grid-cols-3">
+        <section className="space-y-3 flex flex-col">
           <SearchCard />
-          <WeatherInfoCardList className="md:grid hidden" />
-        </div>
-        <WeatherCard className="md:block hidden" />
-        <WeatherInfoCardList className="grid md:hidden" />
-      </section>
+          <div className="flex flex-col sm:flex-row gap-2 flex-1">
+            <WeatherCard />
+            {/* Reposition Component on small devices */}
+            <WeatherInfoCardList className="grid md:hidden" weather={weather} />
+          </div>
+        </section>
+        <section className="md:col-span-2">
+          <HourlyWeather />
+        </section>
+        <section className="md:space-y-3 md:flex md:flex-col">
+          <WeatherInfoCardList className="hidden md:grid" />
+          <DynamicWeatherMap
+            longitude={location.longitude}
+            latitude={location.latitude}
+          />
+        </section>
+        <section className="md:col-span-2">
+          <DailyWeather />
+        </section>
+      </div>
     </main>
   );
 };

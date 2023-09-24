@@ -1,3 +1,5 @@
+'use client';
+
 import dayjs from 'dayjs';
 import { getBreakpointValue } from '../lib/utils/getCurrentBreakpoint';
 import useWindowSize from '../lib/hooks/useWindowSize';

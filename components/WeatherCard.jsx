@@ -1,7 +1,7 @@
 'use client';
 
 import Image from 'next/image';
-// import { m } from 'framer-motion';
+import { motion } from 'framer-motion';
 
 import colors from '@/styles/colors';
 import useWeather from '@/lib/hooks/useWeather';
@@ -52,14 +52,17 @@ const WeatherCard = () => {
       <>
         <div className="flex items-center gap-6 p-4 text-center justify-evenly">
           <Icon icon={current.weather.icon} size={64} />
-          <h1 className="text-2xl md:text-4xl font-bold capitalize">
+          <motion.h1
+            layout
+            className="text-2xl md:text-3xl font-bold capitalize"
+          >
             {current.weather.description}
-          </h1>
-          <div>
+          </motion.h1>
+          <motion.div layout>
             <h1 className="text-[2.5rem] font-semibold">{`${Math.round(
               current.temp
             )}°C`}</h1>
-          </div>
+          </motion.div>
         </div>
         <span className="block p-2 md:px-4 md:py-3 mt-2 mb-4 tracking-wide text-center bg-gray-200 rounded">
           {additionalInfo}
