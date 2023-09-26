@@ -20,7 +20,7 @@ const HourlyWeather = () => {
           .slice(0, width <= getBreakpointValue('md') ? 12 : 12)
           .map((item, i) => (
             <div
-              className="mini-card sm:grid flex sm:grid-cols-4 gap-2 text-slate-50 items-center justify-around"
+              className="mini-card grid grid-cols-3 sm:grid-cols-4 gap-2 text-slate-50 items-center justify-around"
               key={`hourly ${i}`}
             >
               <span className="font-medium tracking-wider">
