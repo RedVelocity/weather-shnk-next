@@ -1,4 +1,4 @@
-import dynamic from 'next/dynamic';
+// import dynamic from 'next/dynamic';
 // import { LazyMotion } from 'framer-motion';
 
 import { fetchWeather } from '@/app/api/getWeather/route';
@@ -11,10 +11,11 @@ import WeatherInfoCardList from '@/components/WeatherInfoCardList';
 import HourlyWeather from '@/components/HourlyWeather';
 import DailyWeather from '@/components/DailyWeather';
 import Footer from '@/components/footer';
+import WeatherMap from '@/components/WeatherMap';
 
-const DynamicWeatherMap = dynamic(() => import('../../components/WeatherMap'), {
-  loading: () => null,
-});
+// const DynamicWeatherMap = dynamic(() => import('../../components/WeatherMap'), {
+//   loading: () => null,
+// });
 
 // const loadFeatures = () =>
 //   import('../../lib/utils/features').then((res) => res.default);
@@ -60,7 +61,11 @@ const Home = async ({ searchParams }) => {
           </section>
           <section className="md:space-y-3 md:flex md:flex-col">
             <WeatherInfoCardList className="hidden md:grid" />
-            <DynamicWeatherMap
+            {/* <DynamicWeatherMap
+              longitude={location.longitude}
+              latitude={location.latitude}
+            /> */}
+            <WeatherMap
               longitude={location.longitude}
               latitude={location.latitude}
             />

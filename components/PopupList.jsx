@@ -46,6 +46,7 @@ const PopupList = ({ list, handleSelect, color, showPopupList }) => (
                   .replace('.', '')}`}
                 onClick={handleSelect}
                 data-suggestion-item
+                scroll={false}
               >
                 <div className="pointer-events-none">
                   <h3 className="text-lg font-medium">{listItem.place_name}</h3>
