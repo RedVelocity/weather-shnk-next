@@ -10,7 +10,7 @@ const WeatherMap = ({ longitude, latitude }) => {
   // <div className="h-80 md:h-full card relative overflow-hidden">
   //   <Image
   //     fill
-  //     src={`https://api.mapbox.com/styles/v1/mapbox/streets-v12/static/pin-s+444(${longitude},${latitude})/${longitude},${latitude},9.5,0,0/400x400?access_token=${process.env.NEXT_PUBLIC_MAPBOX_KEY}`}
+  //     src={`https://api.mapbox.com/styles/v1/mapbox/streets-v12/static/pin-s+444(${longitude},${latitude})/${longitude},${latitude},9,0,0/400x400?access_token=${process.env.NEXT_PUBLIC_MAPBOX_KEY}`}
   //     className="object-cover"
   //     quality={100}
   //     alt="map"
