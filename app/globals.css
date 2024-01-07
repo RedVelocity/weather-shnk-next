@@ -58,6 +58,10 @@ body {
   @apply hover:bg-gradient-to-r hover:from-mild hover:to-milder;
 }
 
+.leaflet-container {
+  @apply h-full;
+}
+
 @keyframes spin {
   0% {
     transform: rotate(0deg);
