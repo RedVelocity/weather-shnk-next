@@ -8,7 +8,8 @@ import { Icon } from 'leaflet';
 // import colors from '../../styles/colors';
 const icon = new Icon({
   iconUrl: 'https://cdn-icons-png.flaticon.com/512/684/684908.png',
-  iconSize: [35, 35],
+  iconSize: [34, 34],
+  iconAnchor: [17, 34],
 });
 
 const MapUpdater = ({ longitude, latitude }) => {
@@ -25,11 +26,11 @@ const LeafletMap = ({ longitude, latitude }) => (
     touchZoom={false}
     dragging={false}
   >
-    <MapUpdater longitude={longitude} latitude={latitude} />
     <TileLayer
       url={`https://api.mapbox.com/styles/v1/mapbox/streets-v12/tiles/256/{z}/{x}/{y}@2x?access_token=${process.env.NEXT_PUBLIC_MAPBOX_KEY}`}
       attribution='Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery &copy; <a href="https://www.mapbox.com/">Mapbox</a>'
     />
+    <MapUpdater longitude={longitude} latitude={latitude} />
   </MapContainer>
 );
 
