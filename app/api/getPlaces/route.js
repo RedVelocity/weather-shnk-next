@@ -3,7 +3,7 @@
 import { NextResponse } from 'next/server';
 
 export const getPlaceCoords = async (searchTerm) => {
-  const API_ENDPOINT = `https://api.mapbox.com/geocoding/v5/mapbox.places/${searchTerm}.json?access_token=${process.env.NEXT_PUBLIC_MAPBOX_KEY}&types=place,locality&language=en&limit=1`;
+  const API_ENDPOINT = `https://api.mapbox.com/geocoding/v5/mapbox.places/${searchTerm}.json?access_token=${process.env.NEXT_PUBLIC_MAPBOX_BACKEND}&types=place,locality&language=en&limit=1`;
   try {
     const res = await fetch(API_ENDPOINT);
     const data = await res.json();
@@ -30,7 +30,7 @@ export async function GET(request) {
     latitude !== 0 && longitude !== 0
       ? `&proximity=${longitude},${latitude}`
       : '';
-  const API_ENDPOINT = `https://api.mapbox.com/geocoding/v5/mapbox.places/${searchTerm}.json?access_token=${process.env.NEXT_PUBLIC_MAPBOX_KEY}&types=place,locality&language=en&limit=25${proximity}`;
+  const API_ENDPOINT = `https://api.mapbox.com/geocoding/v5/mapbox.places/${searchTerm}.json?access_token=${process.env.NEXT_PUBLIC_MAPBOX_BACKEND}&types=place,locality&language=en&limit=25${proximity}`;
 
   const response = await fetch(API_ENDPOINT);
   const data = await response.json();
