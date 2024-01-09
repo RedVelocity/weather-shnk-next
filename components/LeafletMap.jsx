@@ -2,8 +2,8 @@
 
 import { MapContainer, Marker, TileLayer, useMap } from 'react-leaflet';
 import PropTypes from 'prop-types';
-import 'leaflet/dist/leaflet.css';
 import { Icon } from 'leaflet';
+import 'leaflet/dist/leaflet.css';
 
 // import colors from '../../styles/colors';
 const icon = new Icon({

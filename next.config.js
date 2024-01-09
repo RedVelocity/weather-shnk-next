@@ -4,7 +4,16 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 
 module.exports = withBundleAnalyzer({
   images: {
-    domains: ['img.icons8.com', 'api.mapbox.com'],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'img.icons8.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'api.mapbox.com',
+      },
+    ],
   },
   // experimental: {
   //   appDir: true,

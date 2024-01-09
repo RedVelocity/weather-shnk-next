@@ -53,16 +53,23 @@ const WeatherCard = () => {
         <div className="flex items-center gap-6 p-4 text-center justify-evenly">
           <Icon icon={current.weather.icon} size={64} />
           <motion.h1
-            layout
+            key={current.weather.description}
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.5 }}
             className="text-2xl md:text-3xl font-bold capitalize"
           >
             {current.weather.description}
           </motion.h1>
-          <motion.div layout>
-            <h1 className="text-[2.5rem] font-semibold">{`${Math.round(
-              current.temp
-            )}°C`}</h1>
-          </motion.div>
+          <motion.h1
+            key={current.temp}
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.5 }}
+            className="text-[2.5rem] font-semibold"
+          >{`${Math.round(current.temp)}°C`}</motion.h1>
         </div>
         <span className="block p-2 md:px-4 md:py-3 mt-2 mb-4 tracking-wide text-center bg-gray-200 rounded">
           {additionalInfo}
