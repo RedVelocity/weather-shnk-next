@@ -1,6 +1,12 @@
 import './globals.css';
+import Header from '@/components/header';
+import Footer from '@/components/footer';
 
-export default function RootLayout({ children }) {
+export default async function RootLayout({ children }) {
+  const res = await fetch(
+    'https://gist.githubusercontent.com/RedVelocity/424379247e7f4ce37d50c7f9a5d07a0a/raw/host.json'
+  );
+  const host = await res.json();
   return (
     <html lang="en">
       {/*
@@ -8,7 +14,11 @@ export default function RootLayout({ children }) {
         head.tsx. Find out more at https://beta.nextjs.org/docs/api-reference/file-conventions/head
       */}
       <head />
-      <body>{children}</body>
+      <body>
+        <Header hostName={host.hostName} hostUrl={host.hostUrl} />
+        <main className="flex-1 min-w-full">{children}</main>
+        <Footer />
+      </body>
     </html>
   );
 }
