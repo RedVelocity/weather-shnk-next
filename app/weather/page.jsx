@@ -42,9 +42,9 @@ const Home = async ({ searchParams }) => {
   // console.log(location);
   return (
     <>
+      <HydrateAtoms weather={weather} location={location} />
       <Header hostName={host.hostName} hostUrl={host.hostUrl} />
       <main className="flex-1 min-w-full">
-        <HydrateAtoms weather={weather} location={location} />
         <div className="grid gap-3 mx-4 md:grid-cols-3">
           <section className="space-y-3 flex flex-col">
             <SearchCard />
