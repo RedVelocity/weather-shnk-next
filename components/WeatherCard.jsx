@@ -68,7 +68,7 @@ const WeatherCard = () => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.5 }}
-            className="text-[2.5rem] font-semibold"
+            className="text-[2rem] font-semibold"
           >{`${Math.round(current.temp)}°C`}</motion.h1>
         </div>
         <span className="block p-2 md:px-4 md:py-3 mt-2 mb-4 tracking-wide text-center bg-gray-200 rounded">
@@ -82,7 +82,7 @@ const WeatherCard = () => {
           width={20}
           alt="location"
         />
-        <h5 className="ml-1">{locationName}</h5>
+        <h5 className="ml-1 text-sm tracking-wide">{locationName}</h5>
       </div>
     </div>
   );
