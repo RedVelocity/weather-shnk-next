@@ -1,7 +1,7 @@
 'use client';
 
 import { useHydrateAtoms } from 'jotai/utils';
-import { useAtom } from 'jotai';
+// import { useAtom } from 'jotai';
 import { locationAtom, weatherAtom } from '../lib/store';
 
 const HydrateAtoms = ({ weather, location }) => {
@@ -9,10 +9,10 @@ const HydrateAtoms = ({ weather, location }) => {
     [weatherAtom, weather],
     [locationAtom, location],
   ]);
-  const [, setWeatherData] = useAtom(weatherAtom);
-  const [, setLocation] = useAtom(locationAtom);
-  setWeatherData(weather);
-  setLocation(location);
+  // const [, setWeatherData] = useAtom(weatherAtom);
+  // const [, setLocation] = useAtom(locationAtom);
+  // setWeatherData(weather);
+  // setLocation(location);
   return null;
 };
 

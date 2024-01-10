@@ -58,7 +58,7 @@ const WeatherCard = () => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.5 }}
-            className="text-2xl md:text-3xl font-bold capitalize"
+            className="text-2xl font-bold capitalize"
           >
             {current.weather.description}
           </motion.h1>

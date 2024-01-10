@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { useClickOutside, useDebouncedState } from '@mantine/hooks';
+import { useClickOutside, useDebouncedValue } from '@mantine/hooks';
 import { getPlaces } from '@/lib/api';
 import useWeather from '@/lib/hooks/useWeather';
 import useLocation from '@/lib/hooks/useLocation';
@@ -12,17 +12,18 @@ const SearchCard = () => {
   const { location } = useLocation();
   const [placesList, setPlacesList] = useState([]);
   const [showPopupList, setShowPopupList] = useState(false);
-  const [searchInput, setSearchInput] = useDebouncedState('', 200);
+  const [searchInput, setSearchInput] = useState('');
+  const [debouncedSearch] = useDebouncedValue(searchInput, 200);
   const ref = useClickOutside(() => setShowPopupList(false));
   // Update list on input change
   useEffect(
     () => {
-      if (searchInput) {
+      if (debouncedSearch) {
         (async () => {
           const places = await getPlaces(
             location.curLat,
             location.curLon,
-            searchInput
+            debouncedSearch
           );
           setPlacesList(places);
         })();
@@ -30,7 +31,7 @@ const SearchCard = () => {
         setPlacesList([]);
       }
     },
-    [searchInput] // Only call effect if debounced search term changes
+    [debouncedSearch] // Only call effect if debounced search term changes
   );
 
   return (

@@ -1,3 +1,5 @@
+'use client';
+
 import { motion } from 'framer-motion';
 import PropTypes from 'prop-types';
 import { weatherIcons } from './config';
