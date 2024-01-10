@@ -1,11 +1,10 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-// import { useRouter } from 'next/navigation';
+import { useClickOutside, useDebouncedState } from '@mantine/hooks';
 import { getPlaces } from '@/lib/api';
 import useWeather from '@/lib/hooks/useWeather';
 import useLocation from '@/lib/hooks/useLocation';
-import useDebounce from '@/lib/hooks/useDebounce';
 import PopupList from '@/components/PopupList';
 
 const SearchCard = () => {
@@ -13,43 +12,17 @@ const SearchCard = () => {
   const { location } = useLocation();
   const [placesList, setPlacesList] = useState([]);
   const [showPopupList, setShowPopupList] = useState(false);
-  const [searchInput, setSearchInput] = useState('');
-  const debouncedSearchTerm = useDebounce(searchInput, 200);
-  // const router = useRouter();
-  // Handler for outside click
-  const handleOutsideClick = (e) => {
-    if (e.target.attributes['data-suggestion-item']) {
-      return;
-    }
-    setShowPopupList(false);
-  };
-  // Handler for popup item select
-  // const handleSelect = (e) => {
-  //   const loc = placesList.find((suggestion) => suggestion.id === e.target.id);
-  //   setLocation({
-  //     @.location,
-  //     name: `${loc.place_name}, ${loc.place_locality}`,
-  //     latitude: loc.coordinates[1],
-  //     longitude: loc.coordinates[0],
-  //   });
-  //   router.push(`/weather?q=${loc.place_name}`);
-  //   setShowPopupList(false);
-  // };
-  // Add listener for Outside click
-  useEffect(() => {
-    document.addEventListener('mousedown', handleOutsideClick, false);
-    return () =>
-      document.removeEventListener('mousedown', handleOutsideClick, false);
-  }, []);
+  const [searchInput, setSearchInput] = useDebouncedState('', 200);
+  const ref = useClickOutside(() => setShowPopupList(false));
   // Update list on input change
   useEffect(
     () => {
-      if (debouncedSearchTerm) {
+      if (searchInput) {
         (async () => {
           const places = await getPlaces(
             location.curLat,
             location.curLon,
-            debouncedSearchTerm
+            searchInput
           );
           setPlacesList(places);
         })();
@@ -57,7 +30,7 @@ const SearchCard = () => {
         setPlacesList([]);
       }
     },
-    [debouncedSearchTerm] // Only call effect if debounced search term changes
+    [searchInput] // Only call effect if debounced search term changes
   );
 
   return (
@@ -77,6 +50,7 @@ const SearchCard = () => {
         />
         {/* {showPopupList && ( */}
         <PopupList
+          ref={ref}
           list={placesList}
           handleSelect={() => setShowPopupList(false)}
           color={theme}

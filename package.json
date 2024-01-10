@@ -1,6 +1,6 @@
 {
   "name": "weather-shnk-next",
-  "version": "10.1.0",
+  "version": "10.1.1",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -14,6 +14,7 @@
     "git:major": "npm --no-git-tag-version --no-commit-hooks version major && git add -A && git commit -m"
   },
   "dependencies": {
+    "@mantine/hooks": "^7.4.1",
     "chart.js": "^4.2.1",
     "dayjs": "^1.10.4",
     "eslint-config-next": "^13.4.19",
