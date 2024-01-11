@@ -6,7 +6,7 @@ import { motion } from 'framer-motion';
 import colors from '@/styles/colors';
 import useWeather from '@/lib/hooks/useWeather';
 import useLocation from '@/lib/hooks/useLocation';
-import Icon from './Icon';
+import Icon from '@/components/Icon';
 
 const WeatherCard = () => {
   const {
@@ -47,31 +47,30 @@ const WeatherCard = () => {
         backgroundPosition,
         transition: 'background-position 500ms linear',
       }}
-      className="card flex-1 flex flex-col justify-evenly p-4 font-semibold"
+      className="flex flex-col flex-1 p-4 text-gray-900 card justify-evenly"
     >
       <>
         <div className="flex items-center gap-6 p-4 text-center justify-evenly">
           <Icon icon={current.weather.icon} size={64} />
-          <motion.h1
+          <motion.h2
             key={current.weather.description}
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.5 }}
-            className="text-2xl font-bold capitalize"
+            className="capitalize"
           >
             {current.weather.description}
-          </motion.h1>
+          </motion.h2>
           <motion.h1
             key={current.temp}
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.5 }}
-            className="text-[2rem] font-semibold"
           >{`${Math.round(current.temp)}°C`}</motion.h1>
         </div>
-        <span className="block p-2 md:px-4 md:py-3 mt-2 mb-4 tracking-wide text-center bg-gray-200 rounded">
+        <span className="block p-2 mt-2 mb-4 font-semibold tracking-wide text-center bg-gray-200 rounded md:px-4 md:py-3">
           {additionalInfo}
         </span>
       </>
@@ -82,7 +81,7 @@ const WeatherCard = () => {
           width={20}
           alt="location"
         />
-        <h5 className="ml-1 text-sm tracking-wide">{locationName}</h5>
+        <h4 className="ml-1 tracking-wide">{locationName}</h4>
       </div>
     </div>
   );

@@ -16,7 +16,10 @@ const WeatherMap = ({ longitude, latitude }) => {
   );
   // const mapRef = useLeafletMap({ longitude, latitude });
   return (
-    <div className="h-80 md:h-full card overflow-hidden" id="map">
+    <div
+      className="h-80 md:h-full md:min-h-[250px] card overflow-hidden"
+      id="map"
+    >
       <DynLeafletMap longitude={longitude} latitude={latitude} />
     </div>
   );

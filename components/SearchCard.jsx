@@ -36,9 +36,7 @@ const SearchCard = () => {
 
   return (
     <div className="p-4 card bg-dark">
-      <h1 className="text-xl font-semibold text-gray-200 tracking-wide">
-        Search
-      </h1>
+      <h3 className="text-gray-200">Search</h3>
       <div className="relative mt-4">
         <input
           className="w-full p-2 mb-4 bg-gray-200 rounded shadow-lg focus:outline-none focus:ring focus:ring-blue-400"

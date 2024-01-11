@@ -4,15 +4,33 @@
 
 /* Root Styles */
 html {
-  @apply text-[14px] md:text-[12px];
+  @apply text-[14px] md:text-[12px] text-gray-900;
 }
 body {
-  @apply bg-gray-300 flex flex-col min-h-screen max-w-screen-lg mx-auto;
+  @apply flex flex-col max-w-screen-lg min-h-screen mx-auto bg-gray-300;
   font-family: 'Montserrat', sans-serif;
+}
+h1 {
+  @apply text-4xl font-semibold tracking-wide;
+}
+h2 {
+  @apply text-2xl font-semibold tracking-wide;
+}
+h3 {
+  @apply text-xl font-semibold tracking-wide;
+}
+h4 {
+  @apply text-base font-semibold tracking-wide;
+}
+h5 {
+  @apply text-sm font-semibold tracking-wide;
+}
+p {
+  @apply text-base tracking-wide;
 }
 
 #__next {
-  @apply flex flex-col min-h-screen max-w-screen-lg mx-auto;
+  @apply flex flex-col max-w-screen-lg min-h-screen mx-auto;
 }
 
 /* Components */
@@ -21,10 +39,10 @@ body {
     @apply rounded-l rounded-br shadow rounded-tr-xl;
   }
   .mini-card {
-    @apply bg-white/5 py-2 px-4 card;
+    @apply px-4 py-2 bg-white/5 card;
   }
   .loader {
-    @apply rounded-full h-16 w-16 md:h-20 md:w-20 border-8 border-zinc-500 border-t-8 border-t-sky-500;
+    @apply w-16 h-16 border-8 border-t-8 rounded-full md:h-20 md:w-20 border-zinc-500 border-t-sky-500;
     animation: spin 2s linear infinite;
   }
 }

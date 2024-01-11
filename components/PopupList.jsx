@@ -29,7 +29,7 @@ const PopupList = forwardRef((props, ref) => {
       {list.length > 0 && showPopupList && (
         <motion.div
           ref={ref}
-          className="absolute z-10 min-w-full p-2 bg-white shadow rounded-xl"
+          className="absolute z-10 min-w-full p-2 bg-white shadow rounded-xl text-gray-900"
           variants={variants}
           initial="initial"
           animate="animate"

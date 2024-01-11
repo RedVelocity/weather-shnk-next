@@ -13,22 +13,22 @@ const HourlyWeather = () => {
   } = useWeather();
   const { width } = useWindowSize();
   return (
-    <div className="min-h-full card bg-dark p-4 tracking-wide text-lg">
-      <h1 className="text-xl font-semibold text-gray-200">Hourly Forecast</h1>
+    <div className="min-h-full p-4 text-lg tracking-wide text-gray-200 card bg-dark">
+      <h3>Hourly Forecast</h3>
       <Grid minColSize="grid-cols-2" maxColSize="sm:grid-cols-2" gap="gap-1">
         {hourly
           .slice(0, width <= getBreakpointValue('md') ? 12 : 12)
           .map((item, i) => (
             <div
-              className="mini-card grid grid-cols-3 sm:grid-cols-4 gap-2 text-slate-50 items-center justify-around"
+              className="grid items-center justify-around grid-cols-3 gap-2 mini-card sm:grid-cols-4"
               key={`hourly ${i}`}
             >
-              <span className="font-medium tracking-wider">
+              <h4 className="tracking-wider">
                 {i !== 0 ? `${dayjs.unix(item.dt).format('HH:mm')} ` : 'Now'}
-              </span>
-              <div className="sm:col-span-2 items-center justify-center sm:gap-3 flex">
+              </h4>
+              <div className="flex items-center justify-center sm:col-span-2 sm:gap-3">
                 <Icon size={26} icon={item.weather.icon} />
-                <span className="text-center w-full md:text-left hidden sm:block">
+                <span className="hidden w-full text-center md:text-left sm:block">
                   {item.weather.description}
                 </span>
               </div>
