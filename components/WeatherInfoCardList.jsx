@@ -1,14 +1,14 @@
 'use client';
 
 import PropTypes from 'prop-types';
-import useWeather from '../lib/hooks/useWeather';
+import useWeather from '@/lib/hooks/useWeather';
+import WeatherInfoCard from '@/components/WeatherInfoCard';
 import {
   DewpointIcon,
   PressureIcon,
   VisibilityIcon,
   WindIcon,
-} from './Icon/MiniIcon';
-import WeatherInfoCard from './WeatherInfoCard';
+} from '@/components/Icon/MiniIcon';
 
 const WeatherInfoCardList = ({ className }) => {
   const {
@@ -20,22 +20,22 @@ const WeatherInfoCardList = ({ className }) => {
     >
       <>
         <WeatherInfoCard
-          MiniIcon={WindIcon}
+          Icon={WindIcon}
           title="Wind Speed"
           content={`${current.wind_speed} km/s`}
         />
         <WeatherInfoCard
-          MiniIcon={VisibilityIcon}
+          Icon={VisibilityIcon}
           title="Visibility"
           content={`${current.visibility / 1000} km`}
         />
         <WeatherInfoCard
-          MiniIcon={PressureIcon}
+          Icon={PressureIcon}
           title="Pressure"
           content={`${current.pressure} hPa`}
         />
         <WeatherInfoCard
-          MiniIcon={DewpointIcon}
+          Icon={DewpointIcon}
           title="Dew Point"
           content={`${current.dew_point.toFixed()}°C`}
         />

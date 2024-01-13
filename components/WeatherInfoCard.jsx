@@ -1,9 +1,9 @@
 import PropTypes from 'prop-types';
 
-const WeatherInfoCard = ({ MiniIcon, title, content }) => (
-  <li className="flex gap-4 justify-between card py-2 px-3 bg-white/5 items-center">
+const WeatherInfoCard = ({ Icon, title, content }) => (
+  <li className="flex items-center justify-between gap-4 px-3 py-2 card bg-white/5">
     <p className="flex items-center">
-      <MiniIcon />
+      <Icon />
       {title}
     </p>
     <p>{content}</p>
@@ -11,7 +11,7 @@ const WeatherInfoCard = ({ MiniIcon, title, content }) => (
 );
 
 WeatherInfoCard.propTypes = {
-  MiniIcon: PropTypes.elementType.isRequired,
+  Icon: PropTypes.elementType.isRequired,
   title: PropTypes.string.isRequired,
   content: PropTypes.string.isRequired,
 };
