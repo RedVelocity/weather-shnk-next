@@ -1,5 +1,3 @@
-// import { LazyMotion } from 'framer-motion';
-
 import { notFound } from 'next/navigation';
 import { fetchWeather } from '@/app/api/getWeather/route';
 import { getPlaceCoords } from '@/app/api/getPlaces/route';
@@ -10,9 +8,6 @@ import WeatherInfoCardList from '@/components/WeatherInfoCardList';
 import HourlyWeather from '@/components/HourlyWeather';
 import DailyWeather from '@/components/DailyWeather';
 import WeatherMap from '@/components/WeatherMap';
-
-// const loadFeatures = () =>
-//   import('../../lib/utils/features').then((res) => res.default);
 
 const Home = async ({ searchParams }) => {
   const { q } = searchParams;
@@ -40,9 +35,9 @@ const Home = async ({ searchParams }) => {
     <>
       <HydrateAtoms weather={weather} location={location} />
       <div className="grid gap-3 mx-4 md:grid-cols-3">
-        <section className="space-y-3 flex flex-col">
+        <section className="flex flex-col space-y-3">
           <SearchCard />
-          <div className="flex flex-col sm:flex-row gap-2 flex-1">
+          <div className="flex flex-col flex-1 gap-2 sm:flex-row">
             <WeatherCard />
             {/* Reposition Component on small devices */}
             <WeatherInfoCardList className="grid md:hidden" weather={weather} />

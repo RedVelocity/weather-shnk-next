@@ -1,4 +1,6 @@
-import './globals.css';
+import '@/styles/globals.css';
+
+// import { LazyMotion, domAnimation } from 'framer-motion';
 import Header from '@/components/header';
 import Footer from '@/components/footer';
 
@@ -16,7 +18,9 @@ export default async function RootLayout({ children }) {
       <head />
       <body>
         <Header hostName={host.hostName} hostUrl={host.hostUrl} />
+        {/* <LazyMotion features={domAnimation}> */}
         <main className="flex-1 min-w-full">{children}</main>
+        {/* </LazyMotion> */}
         <Footer />
       </body>
     </html>
