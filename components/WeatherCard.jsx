@@ -58,7 +58,7 @@ const WeatherCard = () => {
       className="flex flex-col flex-1 p-4 text-gray-900 card justify-evenly"
     >
       <>
-        <div className="grid grid-cols-3 gap-4 place-items-center">
+        <div className="grid grid-cols-3 gap-4 py-4 place-items-center">
           <Icon icon={current.weather.icon} size={64} animate />
           <motion.h2
             key={current.weather.description}
