@@ -4,10 +4,10 @@
 
 /* Root Styles */
 html {
-  @apply text-[14px] md:text-[12px] text-gray-900;
+  @apply text-[14px] md:text-[12px] text-gray-900 bg-gray-300;
 }
 body {
-  @apply flex flex-col max-w-screen-lg min-h-screen mx-auto bg-gray-300;
+  @apply flex flex-col max-w-screen-lg min-h-screen mx-auto;
   font-family: 'Montserrat', sans-serif;
 }
 h1 {

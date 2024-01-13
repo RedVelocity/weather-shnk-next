@@ -20,6 +20,9 @@ const HourlyWeather = () => {
   return (
     <div className="min-h-full p-4 text-lg tracking-wide text-gray-200 card bg-dark">
       <h3>Hourly Forecast</h3>
+      <h5>
+        Local Time {dayjs.tz(dayjs.unix(hourly[0].dt), TZ).format('HH:mm')}
+      </h5>
       <Grid minColSize="grid-cols-2" maxColSize="sm:grid-cols-2" gap="gap-1">
         {hourly
           .slice(0, width <= getBreakpointValue('md') ? 12 : 12)

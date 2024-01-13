@@ -26,11 +26,11 @@ const DailyWeather = () => {
           >
             <div className="flex flex-col items-center justify-center">
               <Icon icon={item.weather.icon} size={40} />
-              <h3 className="mt-3 leading-4">
+              <h4 className="mt-3 leading-4">
                 {i !== 0
                   ? dayjs.tz(dayjs.unix(item.dt), TZ).format('ddd DD')
                   : 'Today'}
-              </h3>
+              </h4>
             </div>
             <div className="flex flex-col items-center justify-center">
               <p>{item.weather.description}</p>

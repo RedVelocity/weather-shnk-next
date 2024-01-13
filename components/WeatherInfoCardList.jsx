@@ -22,7 +22,7 @@ const WeatherInfoCardList = ({ className }) => {
         <WeatherInfoCard
           Icon={WindIcon}
           title="Wind Speed"
-          content={`${current.wind_speed} km/s`}
+          content={`${current.wind_speed} km/h`}
         />
         <WeatherInfoCard
           Icon={VisibilityIcon}
