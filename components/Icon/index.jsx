@@ -46,6 +46,7 @@ const Icon = ({ icon, size, className, animate = false }) => {
       src={getIcon(icon)}
       height={size}
       width={size}
+      key={icon}
       alt="icon"
     />
   );

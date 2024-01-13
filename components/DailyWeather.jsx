@@ -25,7 +25,7 @@ const DailyWeather = () => {
             key={`summary-${i}`}
           >
             <div className="flex flex-col items-center justify-center">
-              <Icon icon={item.weather.icon} size={40} />
+              <Icon icon={item.weather.icon} size={48} />
               <h4 className="mt-3 leading-4">
                 {i !== 0
                   ? dayjs.tz(dayjs.unix(item.dt), TZ).format('ddd DD')
@@ -33,7 +33,7 @@ const DailyWeather = () => {
               </h4>
             </div>
             <div className="flex flex-col items-center justify-center gap-2">
-              <p>{item.weather.description}</p>
+              <span>{item.weather.description}</span>
               {`${Math.round(item.temp.min)}°C • ${Math.round(
                 item.temp.max
               )}°C`}

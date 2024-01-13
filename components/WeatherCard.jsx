@@ -100,7 +100,7 @@ const WeatherCard = () => {
           width={20}
           alt="location"
         />
-        <h4 className="ml-1 tracking-wide">{locationName}</h4>
+        <p className="ml-1 tracking-wide">{locationName}</p>
       </div>
     </div>
   );
