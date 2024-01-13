@@ -1,15 +1,20 @@
 'use client';
 
 import dayjs from 'dayjs';
+import utc from 'dayjs/plugin/utc';
+import timezone from 'dayjs/plugin/timezone';
 import useWeather from '@/lib/hooks/useWeather';
 import Grid from '@/components/Grid';
 import Icon from '@/components/Icon';
 
+dayjs.extend(utc);
+dayjs.extend(timezone);
+
 const DailyWeather = () => {
   const {
-    weatherData: { daily },
+    weatherData: { daily, timezone: TZ },
   } = useWeather();
-
+  dayjs.tz(daily[0].dt, TZ);
   return (
     <div className="p-4 tracking-wide text-gray-200 card bg-dark">
       <h3>Daily Forecast</h3>
@@ -22,7 +27,9 @@ const DailyWeather = () => {
             <div className="flex flex-col items-center justify-center">
               <Icon icon={item.weather.icon} size={40} />
               <h3 className="mt-3 leading-4">
-                {i !== 0 ? dayjs.unix(item.dt).format('ddd DD') : 'Today'}
+                {i !== 0
+                  ? dayjs.tz(dayjs.unix(item.dt), TZ).format('ddd DD')
+                  : 'Today'}
               </h3>
             </div>
             <div className="flex flex-col items-center justify-center">

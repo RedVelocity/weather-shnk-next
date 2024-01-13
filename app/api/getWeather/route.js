@@ -8,9 +8,10 @@ export const fetchWeather = async (latitude, longitude) => {
 
   let formattedData = {};
   const res = await fetch(API_ENDPOINT, { next: { revalidate: 600 } });
-  const { daily, current, hourly } = await res.json();
+  const { timezone, daily, current, hourly } = await res.json();
   // console.log(data, 'data');
   formattedData = {
+    timezone,
     current: {
       ...current,
       weather: current.weather[0],

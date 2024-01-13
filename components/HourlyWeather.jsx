@@ -1,15 +1,20 @@
 'use client';
 
 import dayjs from 'dayjs';
+import utc from 'dayjs/plugin/utc';
+import timezone from 'dayjs/plugin/timezone';
 import { getBreakpointValue } from '../lib/utils/getCurrentBreakpoint';
 import useWindowSize from '../lib/hooks/useWindowSize';
 import useWeather from '../lib/hooks/useWeather';
 import Grid from './Grid';
 import Icon from './Icon';
 
+dayjs.extend(utc);
+dayjs.extend(timezone);
+
 const HourlyWeather = () => {
   const {
-    weatherData: { hourly },
+    weatherData: { hourly, timezone: TZ },
   } = useWeather();
   const { width } = useWindowSize();
   return (
@@ -24,7 +29,9 @@ const HourlyWeather = () => {
               key={`hourly ${i}`}
             >
               <h4 className="tracking-wider">
-                {i !== 0 ? `${dayjs.unix(item.dt).format('HH:mm')} ` : 'Now'}
+                {i !== 0
+                  ? `${dayjs.tz(dayjs.unix(item.dt), TZ).format('HH:mm')} `
+                  : 'Now'}
               </h4>
               <div className="flex items-center justify-center sm:col-span-2 sm:gap-3">
                 <Icon size={26} icon={item.weather.icon} />
