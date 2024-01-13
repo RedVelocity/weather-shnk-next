@@ -8,6 +8,13 @@ import useWeather from '@/lib/hooks/useWeather';
 import useLocation from '@/lib/hooks/useLocation';
 import Icon from '@/components/Icon';
 
+const variants = {
+  animate: { opacity: 1, y: 0 },
+  exit: { opacity: 0, y: -10 },
+  initial: { opacity: 0, y: 10 },
+  transition: { duration: 0.5 },
+};
+
 const WeatherCard = () => {
   const {
     location: { name: locationName },
@@ -55,10 +62,10 @@ const WeatherCard = () => {
           <Icon icon={current.weather.icon} size={64} />
           <motion.h2
             key={current.weather.description}
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            transition={{ duration: 0.5 }}
+            variants={variants}
+            initial="initial"
+            animate="animate"
+            exit="exit"
             className="capitalize"
           >
             {current.weather.description}
@@ -66,14 +73,24 @@ const WeatherCard = () => {
           <div>
             <motion.h1
               key={current.temp}
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
-              transition={{ duration: 0.5 }}
-            >{`${Math.round(current.temp)}°C`}</motion.h1>
-            <h4>{`${Math.round(minTemp)}°C / ${Math.round(maxTemp)}°C`}</h4>
+              variants={variants}
+              initial="initial"
+              animate="animate"
+              exit="exit"
+            >
+              {`${Math.round(current.temp)}°C`}
+            </motion.h1>
           </div>
         </div>
+        <motion.p
+          variants={variants}
+          initial="initial"
+          animate="animate"
+          exit="exit"
+          className="text-right"
+        >{`Min ${Math.round(minTemp)}°C • Max ${Math.round(
+          maxTemp
+        )}°C`}</motion.p>
         <span className="block p-2 mt-2 mb-4 font-semibold tracking-wide text-center bg-gray-200 rounded md:px-4 md:py-3">
           {additionalInfo}
         </span>

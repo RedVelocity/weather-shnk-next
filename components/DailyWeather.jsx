@@ -32,14 +32,11 @@ const DailyWeather = () => {
                   : 'Today'}
               </h4>
             </div>
-            <div className="flex flex-col items-center justify-center">
+            <div className="flex flex-col items-center justify-center gap-2">
               <p>{item.weather.description}</p>
-              <h4 className="flex-1 leading-4">
-                <span className="text-base">{`${Math.round(
-                  item.temp.min
-                )}°C`}</span>
-                {` / ${Math.round(item.temp.max)}°C`}
-              </h4>
+              {`${Math.round(item.temp.min)}°C • ${Math.round(
+                item.temp.max
+              )}°C`}
             </div>
           </div>
         ))}
