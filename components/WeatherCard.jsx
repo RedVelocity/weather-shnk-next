@@ -13,10 +13,11 @@ const WeatherCard = () => {
     location: { name: locationName },
   } = useLocation();
   const {
-    weatherData: { current },
+    weatherData: { current, daily },
     theme,
   } = useWeather();
   let additionalInfo;
+  const { min: minTemp, max: maxTemp } = daily[0].temp;
 
   if (current?.weather) {
     additionalInfo = `Feels Like: ${Math.round(
@@ -62,13 +63,16 @@ const WeatherCard = () => {
           >
             {current.weather.description}
           </motion.h2>
-          <motion.h1
-            key={current.temp}
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            transition={{ duration: 0.5 }}
-          >{`${Math.round(current.temp)}°C`}</motion.h1>
+          <div>
+            <motion.h1
+              key={current.temp}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.5 }}
+            >{`${Math.round(current.temp)}°C`}</motion.h1>
+            <h4>{`${Math.round(minTemp)}°C / ${Math.round(maxTemp)}°C`}</h4>
+          </div>
         </div>
         <span className="block p-2 mt-2 mb-4 font-semibold tracking-wide text-center bg-gray-200 rounded md:px-4 md:py-3">
           {additionalInfo}
