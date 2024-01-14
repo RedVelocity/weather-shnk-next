@@ -1,16 +1,11 @@
 'use client';
 
-import dayjs from 'dayjs';
-import utc from 'dayjs/plugin/utc';
-import timezone from 'dayjs/plugin/timezone';
+import dayjsExtended from '@/lib/utils/dayjsExtended';
 import { getBreakpointValue } from '../lib/utils/getCurrentBreakpoint';
 import useWindowSize from '../lib/hooks/useWindowSize';
 import useWeather from '../lib/hooks/useWeather';
 import Grid from './Grid';
 import Icon from './Icon';
-
-dayjs.extend(utc);
-dayjs.extend(timezone);
 
 const HourlyWeather = () => {
   const {
@@ -18,7 +13,7 @@ const HourlyWeather = () => {
   } = useWeather();
   const { width } = useWindowSize();
   return (
-    <div className="min-h-full p-4 text-lg tracking-wide text-gray-200 card bg-dark">
+    <div className="min-h-full p-4 text-lg tracking-wide card bg-white/20">
       <h3>Hourly Forecast</h3>
       {/* <p>Local Time {dayjs.tz(dayjs.unix(hourly[0].dt), TZ).format('HH:mm')}</p> */}
       <Grid minColSize="grid-cols-2" maxColSize="sm:grid-cols-2" gap="gap-1">
@@ -31,7 +26,9 @@ const HourlyWeather = () => {
             >
               <h4 className="tracking-wider">
                 {i !== 0
-                  ? `${dayjs.tz(dayjs.unix(item.dt), TZ).format('HH:mm')} `
+                  ? `${dayjsExtended
+                      .tz(dayjsExtended.unix(item.dt), TZ)
+                      .format('HH:mm')} `
                   : 'Now'}
               </h4>
               <div className="flex items-center justify-center sm:col-span-2 sm:gap-3">
