@@ -25,6 +25,7 @@ const LeafletMap = ({ longitude, latitude }) => (
     scrollWheelZoom={false}
     touchZoom={false}
     dragging={false}
+    preferCanvas
   >
     <TileLayer
       url={`https://api.mapbox.com/styles/v1/mapbox/streets-v12/tiles/256/{z}/{x}/{y}@2x?access_token=${process.env.NEXT_PUBLIC_MAPBOX_KEY}`}

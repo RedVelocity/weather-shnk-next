@@ -7,7 +7,7 @@ export const fetchWeather = async (latitude, longitude) => {
   const API_ENDPOINT = `https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&exclude=${exclude}&appid=${process.env.NEXT_PUBLIC_OWM_KEY}&units=metric`;
 
   let formattedData = {};
-  const res = await fetch(API_ENDPOINT, { next: { revalidate: 600 } });
+  const res = await fetch(API_ENDPOINT, { next: { revalidate: 0 } });
   const { timezone, daily, current, hourly } = await res.json();
   // console.log(data, 'data');
   formattedData = {

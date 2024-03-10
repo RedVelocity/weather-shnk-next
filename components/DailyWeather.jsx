@@ -4,12 +4,16 @@ import useWeather from '@/lib/hooks/useWeather';
 import dayjsExtended from '@/lib/utils/dayjsExtended';
 import Grid from '@/components/Grid';
 import Icon from '@/components/Icon';
+import useWindowSize from '@/lib/hooks/useWindowSize';
+import { getBreakpointValue } from '@/lib/utils/getCurrentBreakpoint';
 
 const DailyWeather = () => {
   const {
     weatherData: { daily, timezone: TZ },
   } = useWeather();
   dayjsExtended.tz(daily[0].dt, TZ);
+  const { width } = useWindowSize();
+
   return (
     <div className="p-4 tracking-wide card backdrop-blur-sm bg-white/20">
       <h3>Daily Forecast</h3>
@@ -31,9 +35,15 @@ const DailyWeather = () => {
             </div>
             <div className="flex flex-col items-center justify-center gap-2">
               <span>{item.weather.description}</span>
-              <h4>{`${Math.round(item.temp.min)}°C • ${Math.round(
-                item.temp.max
-              )}°C`}</h4>
+              {width <= getBreakpointValue('md') ? (
+                <h5>{`${Math.round(item.temp.min)}°C ${Math.round(
+                  item.temp.max
+                )}°C`}</h5>
+              ) : (
+                <h4>{`${Math.round(item.temp.min)}°C • ${Math.round(
+                  item.temp.max
+                )}°C`}</h4>
+              )}
             </div>
           </div>
         ))}
