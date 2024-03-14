@@ -6,7 +6,7 @@ import Footer from '@/components/footer';
 
 export default async function RootLayout({ children }) {
   const res = await fetch(
-    'https://gist.githubusercontent.com/RedVelocity/424379247e7f4ce37d50c7f9a5d07a0a/raw/host.json'
+    'https://gist.githubusercontent.com/RedVelocity/424379247e7f4ce37d50c7f9a5d07a0a/raw/host.json',{ next: { revalidate: 604800 } }
   );
   const host = await res.json();
   return (
