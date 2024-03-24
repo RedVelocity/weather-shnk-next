@@ -9,21 +9,33 @@ import HourlyWeather from '@/components/HourlyWeather';
 import DailyWeather from '@/components/DailyWeather';
 import WeatherMap from '@/components/WeatherMap';
 
-export const generateMetadata = async ({ searchParams }) => {
-  // read route params
-  const { q } = searchParams;
-  const locationName = decodeURIComponent(q).split(',')[0];
-  return {
-    title: `Weather | ${locationName}`,
-    description: `Checkout the weather details for ${locationName}`,
-    keywords: ['Next.js', 'React', 'JavaScript', 'Weather', locationName],
-    authors: [{ name: 'RedVelocity', url: 'https://redvelo.site' }],
-    creator: 'RedVelocity',
-    publisher: 'RedVelocity',
-    icons: {
-      icon: '/weather-icon.png',
-    },
-  };
+// export const generateMetadata = async ({ searchParams }) => {
+//   // read route params
+//   const { q } = searchParams;
+//   const locationName = decodeURIComponent(q).split(',')[0];
+//   return {
+//     title: `Weather | ${locationName}`,
+//     description: `Checkout the weather details for ${locationName}`,
+//     keywords: ['Next.js', 'React', 'JavaScript', 'Weather', locationName],
+//     authors: [{ name: 'RedVelocity', url: 'https://redvelo.site' }],
+//     creator: 'RedVelocity',
+//     publisher: 'RedVelocity',
+//     icons: {
+//       icon: '/weather-icon.png',
+//     },
+//   };
+// };
+
+export const metadata = {
+  title: `Redvelo.Site | Weather`,
+  description: `Checkout the weather details for any place!`,
+  keywords: ['Next.js', 'React', 'JavaScript', 'Weather'],
+  authors: [{ name: 'RedVelocity', url: 'https://redvelo.site' }],
+  creator: 'RedVelocity',
+  publisher: 'RedVelocity',
+  icons: {
+    icon: '/weather-icon.png',
+  },
 };
 
 const Home = async ({ searchParams }) => {
