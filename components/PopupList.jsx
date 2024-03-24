@@ -5,12 +5,12 @@
 import { forwardRef } from 'react';
 import Link from 'next/link';
 import PropTypes from 'prop-types';
-import { motion } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 
 const variants = {
   animate: {
     opacity: 1,
-    height: 'auto',
+    scale: 1,
     transition: { duration: 0.25 },
   },
   exit: {
@@ -18,14 +18,14 @@ const variants = {
   },
   initial: {
     opacity: 0,
-    height: 0,
+    scale: 0.9,
   },
 };
 
 const PopupList = forwardRef((props, ref) => {
   const { list, handleSelect, color, showPopupList } = props;
   return (
-    <>
+    <AnimatePresence>
       {list.length > 0 && showPopupList && (
         <motion.div
           ref={ref}
@@ -64,7 +64,7 @@ const PopupList = forwardRef((props, ref) => {
           </ul>
         </motion.div>
       )}
-    </>
+    </AnimatePresence>
   );
 });
 
