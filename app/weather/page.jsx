@@ -9,6 +9,22 @@ import HourlyWeather from '@/components/HourlyWeather';
 import DailyWeather from '@/components/DailyWeather';
 import WeatherMap from '@/components/WeatherMap';
 
+export const generateMetadata = async ({ searchParams }) => {
+  // read route params
+  const { q } = searchParams;
+  const locationName = decodeURIComponent(q).split(',')[0];
+  return {
+    title: `Weather | ${locationName}`,
+    keywords: ['Next.js', 'React', 'JavaScript', 'Weather', locationName],
+    authors: [{ name: 'RedVelocity', url: 'https://redvelo.site' }],
+    creator: 'RedVelocity',
+    publisher: 'RedVelocity',
+    icons: {
+      icon: '/weather-icon.png',
+    },
+  };
+};
+
 const Home = async ({ searchParams }) => {
   const { q } = searchParams;
   const query = decodeURIComponent(q);
