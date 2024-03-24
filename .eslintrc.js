@@ -50,9 +50,9 @@ module.exports = {
       alias: {
         map: [
           ['@', './'],
-          // ['@/components', './components'],
-          // ['@/app', './app'],
-          // ['@/lib', './lib'],
+          ['@/components', './components'],
+          ['@/app', './app'],
+          ['@/lib', './lib'],
         ],
         extensions: ['.js', '.jsx', '.json'],
       },

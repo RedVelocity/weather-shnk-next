@@ -1,9 +1,9 @@
 'use client';
 
 import dayjsExtended from '@/lib/utils/dayjsExtended';
-import { getBreakpointValue } from '../lib/utils/getCurrentBreakpoint';
-import useWindowSize from '../lib/hooks/useWindowSize';
-import useWeather from '../lib/hooks/useWeather';
+import { getBreakpointValue } from '@/lib/utils/getCurrentBreakpoint';
+import useWindowSize from '@/lib/hooks/useWindowSize';
+import useWeather from '@/lib/hooks/useWeather';
 import Grid from './Grid';
 import Icon from './Icon';
 
