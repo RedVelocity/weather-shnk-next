@@ -15,6 +15,7 @@ export const generateMetadata = async ({ searchParams }) => {
   const locationName = decodeURIComponent(q).split(',')[0];
   return {
     title: `Weather | ${locationName}`,
+    description: `Checkout the weather details for ${locationName}`,
     keywords: ['Next.js', 'React', 'JavaScript', 'Weather', locationName],
     authors: [{ name: 'RedVelocity', url: 'https://redvelo.site' }],
     creator: 'RedVelocity',
