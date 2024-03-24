@@ -13,15 +13,15 @@ const DailyWeather = () => {
   return (
     <div className="p-4 tracking-wide card backdrop-blur-sm bg-white/20">
       <h3>Daily Forecast</h3>
-      <div className="grid grid-cols-1 gap-2 mt-4 text-center capitalize sm:grid-cols-2 md:grid-cols-3">
+      <div className="grid gap-2 mt-4 text-center capitalize sm:grid-cols-2">
         {daily.map((item, i) => (
           <div
             className="grid grid-cols-2 gap-1 p-4 place-items-center card"
             key={`summary-${i}`}
           >
-            <div className="flex flex-col items-center justify-center">
+            <div className="flex items-center justify-center gap-3">
               <Icon icon={item.weather.icon} size={48} />
-              <h4 className="mt-3 leading-4">
+              <h4 className="leading-4">
                 {i !== 0
                   ? dayjsExtended
                       .tz(dayjsExtended.unix(item.dt), TZ)

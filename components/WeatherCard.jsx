@@ -86,7 +86,7 @@ const WeatherCard = () => {
           animate="animate"
           exit="exit"
           className="text-right"
-        >{`Min ${Math.round(minTemp)}°C • Max ${Math.round(
+        >{`Low ${Math.round(minTemp)}°C • High ${Math.round(
           maxTemp
         )}°C`}</motion.p>
         <span className="block p-2 mt-2 mb-4 font-semibold tracking-wide text-center bg-gray-200 rounded md:px-4 md:py-3">
