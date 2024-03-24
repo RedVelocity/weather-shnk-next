@@ -47,6 +47,9 @@ p {
     @apply w-16 h-16 border-8 border-t-8 rounded-full md:h-20 md:w-20 border-zinc-500 border-t-sky-500;
     animation: spin 2s linear infinite;
   }
+  .pill {
+    @apply px-2 py-1 rounded-full;
+  }
 }
 
 /* Styles */

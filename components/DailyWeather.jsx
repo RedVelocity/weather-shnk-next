@@ -30,7 +30,7 @@ const DailyWeather = () => {
               </h4>
             </div>
             <div className="flex flex-col items-center justify-center gap-2">
-              <span>{item.weather.description}</span>
+              <span className="text-lg">{item.weather.description}</span>
               <h4>{`${Math.round(item.temp.min)}°C • ${Math.round(
                 item.temp.max
               )}°C`}</h4>

@@ -13,7 +13,7 @@ const HourlyWeather = () => {
   } = useWeather();
   const { width } = useWindowSize();
   return (
-    <div className="min-h-full p-4 text-lg tracking-wide card bg-white/20">
+    <div className="min-h-full p-4 tracking-wide card bg-white/20">
       <h3>Hourly Forecast</h3>
       {/* <p>Local Time {dayjs.tz(dayjs.unix(hourly[0].dt), TZ).format('HH:mm')}</p> */}
       <Grid minColSize="grid-cols-2" maxColSize="sm:grid-cols-2" gap="gap-1">
@@ -33,11 +33,11 @@ const HourlyWeather = () => {
               </h4>
               <div className="flex items-center justify-center sm:col-span-2 sm:gap-3">
                 <Icon size={26} icon={item.weather.icon} />
-                <span className="hidden w-full text-center md:text-left sm:block">
+                <span className="hidden w-full text-lg text-center md:text-left sm:block">
                   {item.weather.description}
                 </span>
               </div>
-              <span className="">{`${Math.round(item.temp)}°C`}</span>
+              <span className="text-lg">{`${Math.round(item.temp)}°C`}</span>
             </div>
           ))}
       </Grid>
