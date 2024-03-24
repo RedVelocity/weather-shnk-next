@@ -27,9 +27,17 @@ import WeatherMap from '@/components/WeatherMap';
 // };
 
 export const metadata = {
-  title: `Redvelo.Site | Weather`,
+  title: `REDVELO.SITE | Weather`,
   description: `Checkout the weather details for any place!`,
-  keywords: ['Next.js', 'React', 'JavaScript', 'Weather'],
+  keywords: [
+    'Next.js',
+    'React',
+    'JavaScript',
+    'Weather',
+    'redvelo',
+    'redvelo.site',
+    'vercel',
+  ],
   authors: [{ name: 'RedVelocity', url: 'https://redvelo.site' }],
   creator: 'RedVelocity',
   publisher: 'RedVelocity',
