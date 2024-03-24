@@ -2,7 +2,6 @@
 
 import useWeather from '@/lib/hooks/useWeather';
 import dayjsExtended from '@/lib/utils/dayjsExtended';
-import Grid from '@/components/Grid';
 import Icon from '@/components/Icon';
 
 const DailyWeather = () => {

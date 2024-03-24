@@ -6,7 +6,7 @@ import {
   Tooltip,
   Title,
 } from 'chart.js';
-import { Bar } from 'react-chartjs-2';
+// import { Bar } from 'react-chartjs-2';
 
 import useWeather from '../../lib/hooks/useWeather';
 import Skeleton from '../Skeleton';
@@ -16,16 +16,16 @@ ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip);
 
 const WeatherChart = () => {
   const { weatherData } = useWeather();
-  const [data, options, title] = shapeChartData(weatherData);
+  const [title] = shapeChartData(weatherData);
   return (
     <>
       {title ? (
-        <div className="p-4 text-gray-200 h-80 md:h-96 card bg-dark flex flex-col gap-4">
+        <div className="flex flex-col gap-4 p-4 text-gray-200 h-80 md:h-96 card bg-dark">
           <h1 className="text-xl font-semibold text-gray-200 capitalize">
             {title}
           </h1>
           <div className="grow">
-            <Bar data={data} options={options} />
+            {/* <Bar data={data} options={options} /> */}
           </div>
         </div>
       ) : (
