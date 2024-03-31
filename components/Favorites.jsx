@@ -49,7 +49,7 @@ export const FavButton = ({ favKey }) => {
         initial="initial"
         animate="animate"
         type="button"
-        className="flex items-center justify-center h-20 p-4 sm:h-auto card"
+        className="flex items-center justify-center p-4 h-28 sm:h-auto card"
         onClick={() => setFav(location)}
       >
         <Image
@@ -68,12 +68,12 @@ export const FavButton = ({ favKey }) => {
       variants={variants}
       initial="initial"
       animate="animate"
-      className="relative h-20 p-4 sm:h-auto card bg-slate-300"
+      className="relative p-4 h-28 card bg-slate-300 sm:h-auto"
     >
       <Link
         href={`weather?q=${encodeURI(fav.name.replaceAll(', ', ','))}`}
         passHref
-        className="flex flex-col items-center justify-center h-full"
+        className="flex flex-col items-center justify-center h-full text-center"
         scroll={false}
       >
         <h3>{locName}</h3>
@@ -82,12 +82,11 @@ export const FavButton = ({ favKey }) => {
       <button
         type="button"
         onClick={() => removeFav()}
-        className="absolute top-0 right-0 z-20 p-2"
+        className="absolute top-0 right-0 z-20 h-4 m-2 sm:h-6 aspect-square"
       >
         <Image
           src="/assets/weather-icons/close.png"
-          height={25}
-          width={25}
+          layout="fill"
           alt="Close"
         />
       </button>
