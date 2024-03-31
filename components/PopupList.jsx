@@ -46,8 +46,8 @@ const PopupList = forwardRef((props, ref) => {
                   href={`weather?q=${
                     listItem.place_name
                   },${listItem.place_locality
-                    .replace(', ', ',')
-                    .replace('.', '')}`}
+                    .replaceAll(', ', ',')
+                    .replaceAll('.', '')}`}
                   onClick={handleSelect}
                   data-suggestion-item
                   scroll={false}

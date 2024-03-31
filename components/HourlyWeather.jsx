@@ -13,7 +13,7 @@ const HourlyWeather = () => {
   } = useWeather();
   const { width } = useWindowSize();
   return (
-    <div className="min-h-full p-4 tracking-wide card bg-white/20">
+    <div className="min-h-full wrapper">
       <h3>Hourly Forecast</h3>
       {/* <p>Local Time {dayjs.tz(dayjs.unix(hourly[0].dt), TZ).format('HH:mm')}</p> */}
       <Grid minColSize="grid-cols-2" maxColSize="sm:grid-cols-2" gap="gap-1">

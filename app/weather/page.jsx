@@ -8,6 +8,7 @@ import WeatherInfoCardList from '@/components/WeatherInfoCardList';
 import HourlyWeather from '@/components/HourlyWeather';
 import DailyWeather from '@/components/DailyWeather';
 import WeatherMap from '@/components/WeatherMap';
+import Favorites from '@/components/Favorites';
 
 // export const generateMetadata = async ({ searchParams }) => {
 //   // read route params
@@ -27,7 +28,7 @@ import WeatherMap from '@/components/WeatherMap';
 // };
 
 export const metadata = {
-  title: `REDVELO.SITE | Weather`,
+  title: `Weather | redvelo.site`,
   description: `Checkout the weather details for any place!`,
   keywords: [
     'Next.js',
@@ -77,19 +78,23 @@ const Home = async ({ searchParams }) => {
           <div className="flex flex-col flex-1 gap-2 sm:flex-row">
             <WeatherCard />
             {/* Reposition Component on small devices */}
+            <div className="sm:hidden">
+              <Favorites />
+            </div>
             <WeatherInfoCardList className="grid md:hidden" weather={weather} />
           </div>
         </section>
         <section className="md:col-span-2">
           <HourlyWeather />
         </section>
-        <section className="md:space-y-3 md:flex md:flex-col">
-          <WeatherInfoCardList className="hidden md:grid" />
-          <WeatherMap
-            longitude={location.longitude}
-            latitude={location.latitude}
-          />
+        <WeatherInfoCardList className="hidden md:grid" />
+        <section className="hidden md:col-span-2 sm:block">
+          <Favorites />
         </section>
+        <WeatherMap
+          longitude={location.longitude}
+          latitude={location.latitude}
+        />
         <section className="md:col-span-2">
           <DailyWeather />
         </section>

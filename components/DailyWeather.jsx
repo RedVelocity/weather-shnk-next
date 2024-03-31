@@ -11,7 +11,7 @@ const DailyWeather = () => {
   dayjsExtended.tz(daily[0].dt, TZ);
 
   return (
-    <div className="p-4 tracking-wide card backdrop-blur-sm bg-white/20">
+    <div className="wrapper">
       <h3>Daily Forecast</h3>
       <div className="grid gap-2 mt-4 text-center capitalize sm:grid-cols-2">
         {daily.map((item, i) => (

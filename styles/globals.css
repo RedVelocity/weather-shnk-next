@@ -50,6 +50,9 @@ p {
   .pill {
     @apply px-2 py-1 rounded-full;
   }
+  .wrapper {
+    @apply p-4 tracking-wide card backdrop-blur-sm bg-white/20;
+  }
 }
 
 /* Styles */
