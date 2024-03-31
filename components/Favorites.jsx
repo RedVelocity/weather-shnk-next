@@ -49,7 +49,7 @@ export const FavButton = ({ favKey }) => {
         initial="initial"
         animate="animate"
         type="button"
-        className="flex items-center justify-center p-4 card"
+        className="flex items-center justify-center h-20 p-4 sm:h-auto card"
         onClick={() => setFav(location)}
       >
         <Image
@@ -68,12 +68,13 @@ export const FavButton = ({ favKey }) => {
       variants={variants}
       initial="initial"
       animate="animate"
-      className="relative p-4 card bg-slate-300"
+      className="relative h-20 p-4 sm:h-auto card bg-slate-300"
     >
       <Link
         href={`weather?q=${encodeURI(fav.name.replaceAll(', ', ','))}`}
         passHref
-        className="flex flex-col items-center justify-center min-h-full"
+        className="flex flex-col items-center justify-center h-full"
+        scroll={false}
       >
         <h3>{locName}</h3>
         <p>{locRegion}</p>
