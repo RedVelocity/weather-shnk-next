@@ -79,7 +79,7 @@ const FavButton = ({ favKey }) => {
         </button>
       </motion.div>
     );
-  } else {
+  } 
     return (
       <motion.button
         variants={variants}
@@ -99,7 +99,6 @@ const FavButton = ({ favKey }) => {
         />
       </motion.button>
     );
-  }
 };
 
 export default Favorites;
