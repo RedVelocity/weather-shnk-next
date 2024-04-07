@@ -14,6 +14,7 @@ const variants = {
     transition: { duration: 0.25 },
   },
   exit: {
+    y: -50,
     opacity: 0,
   },
   initial: {
@@ -52,6 +53,8 @@ export const FavButton = ({ favKey }) => {
           variants={variants}
           initial="initial"
           animate="animate"
+          exit="exit"
+          key={`${renderFav}-${favKey}`}
           className="relative p-4 h-28 card bg-slate-300 sm:h-auto"
         >
           <Link
@@ -80,6 +83,8 @@ export const FavButton = ({ favKey }) => {
           variants={variants}
           initial="initial"
           animate="animate"
+          exit="exit"
+          key={`${renderFav}-${favKey}`}
           type="button"
           className="flex items-center justify-center p-4 h-28 sm:h-auto card"
           onClick={() => setFav(location)}
