@@ -6,11 +6,10 @@ import { useLocalStorage } from '@mantine/hooks';
 import { AnimatePresence, motion } from 'framer-motion';
 import useLocation from '@/lib/hooks/useLocation';
 
-const variants = {
+const popInOut = {
   animate: {
     y: 0,
     opacity: 1,
-    // scale: 1,
     transition: { duration: 0.25 },
   },
   exit: {
@@ -20,7 +19,6 @@ const variants = {
   initial: {
     y: 50,
     opacity: 0,
-    // scale: 0.9,
   },
 };
 
@@ -28,12 +26,10 @@ const Favorites = () => (
   <div className="flex flex-col min-h-full wrapper">
     <h3>Favorites</h3>
     <div className="grid flex-1 grid-cols-2 gap-2 mt-4 sm:grid-cols-4">
-      <AnimatePresence initial={false}>
-        <FavButton favKey="fav-1" />
-        <FavButton favKey="fav-2" />
-        <FavButton favKey="fav-3" />
-        <FavButton favKey="fav-4" />
-      </AnimatePresence>
+      <FavButton favKey="fav-1" />
+      <FavButton favKey="fav-2" />
+      <FavButton favKey="fav-3" />
+      <FavButton favKey="fav-4" />
     </div>
   </div>
 );
@@ -48,10 +44,10 @@ const FavButton = ({ favKey }) => {
   const [locName, ...locRegion] = renderFav ? fav.name.split(',') : ['', ''];
 
   return (
-    <AnimatePresence initial={false}>
+    <AnimatePresence initial={false} mode="wait">
       {renderFav ? (
         <motion.div
-          variants={variants}
+          variants={popInOut}
           initial="initial"
           animate="animate"
           exit="exit"
@@ -75,16 +71,14 @@ const FavButton = ({ favKey }) => {
             <Image
               src="/assets/weather-icons/close.png"
               layout="fill"
-              alt="Close"
+              alt="Remove Favorite"
             />
           </button>
         </motion.div>
       ) : (
         <motion.button
-          variants={variants}
-          initial="initial"
-          animate="animate"
-          exit="exit"
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
           key={`${renderFav}-${favKey}`}
           type="button"
           className="flex items-center justify-center p-4 h-28 sm:h-auto card"
@@ -94,7 +88,7 @@ const FavButton = ({ favKey }) => {
             src="/assets/weather-icons/add.png"
             height={50}
             width={50}
-            alt="Add"
+            alt="Add Favorite"
           />
         </motion.button>
       )}
