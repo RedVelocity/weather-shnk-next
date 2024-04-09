@@ -1,6 +1,6 @@
 {
   "name": "weather-shnk-next",
-  "version": "10.11.5",
+  "version": "10.11.6",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -15,6 +15,8 @@
   },
   "dependencies": {
     "@mantine/hooks": "^7.4.1",
+    "@vercel/speed-insights": "^1.0.10",
+    "browserslist": "latest",
     "chart.js": "^4.2.1",
     "dayjs": "^1.10.4",
     "eslint-config-next": "^13.4.19",

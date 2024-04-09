@@ -22,7 +22,7 @@ const popInOut = {
     transition: { duration: 0.25 },
   },
   exit: {
-    scale: 1.3,
+    y: -50,
     opacity: 0,
     transition: { duration: 0.15 },
   },
