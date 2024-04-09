@@ -3,10 +3,15 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { useLocalStorage } from '@mantine/hooks';
-import { AnimatePresence, motion } from 'framer-motion';
+import {
+  LazyMotion,
+  domAnimation,
+  AnimatePresence,
+  m as motion,
+} from 'framer-motion';
 import useLocation from '@/lib/hooks/useLocation';
 
-const popInOut = {  
+const popInOut = {
   initial: {
     y: 50,
     opacity: 0,
@@ -24,15 +29,17 @@ const popInOut = {
 };
 
 const Favorites = () => (
-  <div className="flex flex-col min-h-full wrapper">
-    <h3>Favorites</h3>
-    <div className="grid flex-1 grid-cols-2 gap-2 mt-4 sm:grid-cols-4">
-      <FavButton favKey="fav-1" />
-      <FavButton favKey="fav-2" />
-      <FavButton favKey="fav-3" />
-      <FavButton favKey="fav-4" />
+  <LazyMotion features={domAnimation}>
+    <div className="flex flex-col min-h-full wrapper">
+      <h3>Favorites</h3>
+      <div className="grid flex-1 grid-cols-2 gap-2 mt-4 sm:grid-cols-4">
+        <FavButton favKey="fav-1" />
+        <FavButton favKey="fav-2" />
+        <FavButton favKey="fav-3" />
+        <FavButton favKey="fav-4" />
+      </div>
     </div>
-  </div>
+  </LazyMotion>
 );
 
 const FavButton = ({ favKey }) => {

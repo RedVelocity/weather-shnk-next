@@ -1,6 +1,6 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { LazyMotion, domAnimation, m as motion } from 'framer-motion';
 import Image from 'next/image';
 import PropTypes from 'prop-types';
 
@@ -30,15 +30,17 @@ const getIcon = (icon) => `/assets/weather-icons/${weatherIcons[icon]}.svg`;
 const Icon = ({ icon, size, className, animate = false }) => {
   if (animate)
     return (
-      <motion.div
-        initial={{ opacity: 0, scale: 1.2 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.5 }}
-        key={icon}
-        className={className}
-      >
-        <Image src={getIcon(icon)} height={size} width={size} alt="icon" />
-      </motion.div>
+      <LazyMotion features={domAnimation}>
+        <motion.div
+          initial={{ opacity: 0, scale: 1.2 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.5 }}
+          key={icon}
+          className={className}
+        >
+          <Image src={getIcon(icon)} height={size} width={size} alt="icon" />
+        </motion.div>
+      </LazyMotion>
     );
   return (
     <Image
