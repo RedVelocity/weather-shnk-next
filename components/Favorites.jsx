@@ -6,20 +6,20 @@ import { useLocalStorage } from '@mantine/hooks';
 import { AnimatePresence, motion } from 'framer-motion';
 import useLocation from '@/lib/hooks/useLocation';
 
-const popInOut = {
+const popInOut = {  
+  initial: {
+    scale: 0.7,
+    opacity: 0,
+  },
   animate: {
-    y: 0,
+    scale: 1,
     opacity: 1,
     transition: { duration: 0.25 },
   },
   exit: {
-    y: -50,
+    scale: 1.3,
     opacity: 0,
     transition: { duration: 0.15 },
-  },
-  initial: {
-    y: 50,
-    opacity: 0,
   },
 };
 
