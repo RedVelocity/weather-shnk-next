@@ -15,6 +15,7 @@ const popInOut = {
   exit: {
     y: -50,
     opacity: 0,
+    transition: { duration: 0.15 },
   },
   initial: {
     y: 50,
@@ -44,44 +45,42 @@ const FavButton = ({ favKey }) => {
   const [locName, ...locRegion] = renderFav ? fav.name.split(',') : ['', ''];
 
   return (
-    <AnimatePresence initial={false} mode="wait">
-      {renderFav ? (
-        <motion.div
-          variants={popInOut}
-          initial="initial"
-          animate="animate"
-          exit="exit"
-          key={`${renderFav}-${favKey}`}
-          className="relative p-4 h-28 card bg-slate-300 sm:h-auto"
-        >
-          <Link
-            href={`weather?q=${encodeURI(fav.name.replaceAll(', ', ','))}`}
-            passHref
-            className="flex flex-col items-center justify-center h-full text-center"
-            scroll={false}
+    <div className="relative h-28 sm:h-auto">
+      <AnimatePresence initial={false}>
+        {renderFav && (
+          <motion.div
+            className="absolute inset-0 w-full h-full p-4 card bg-slate-300"
+            variants={popInOut}
+            initial="initial"
+            animate="animate"
+            exit="exit"
+            key={`${renderFav}-${favKey}`}
           >
-            <h3>{locName}</h3>
-            <p>{locRegion.join(', ')}</p>
-          </Link>
-          <button
-            type="button"
-            onClick={removeFav}
-            className="absolute top-0 right-0 z-20 h-6 m-2 aspect-square"
-          >
-            <Image
-              src="/assets/weather-icons/close.png"
-              layout="fill"
-              alt="Remove Favorite"
-            />
-          </button>
-        </motion.div>
-      ) : (
-        <motion.button
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          key={`${renderFav}-${favKey}`}
+            <Link
+              href={`weather?q=${encodeURI(fav.name.replaceAll(', ', ','))}`}
+              passHref
+              className="flex flex-col items-center justify-center h-full text-center"
+              scroll={false}
+            >
+              <h3>{locName}</h3>
+              <p>{locRegion.join(', ')}</p>
+            </Link>
+            <button
+              type="button"
+              onClick={removeFav}
+              className="absolute top-0 right-0 z-20 h-6 m-2 aspect-square"
+            >
+              <Image
+                src="/assets/weather-icons/close.png"
+                layout="fill"
+                alt="Remove Favorite"
+              />
+            </button>
+          </motion.div>
+        )}
+        <button
           type="button"
-          className="flex items-center justify-center p-4 h-28 sm:h-auto card"
+          className="flex items-center justify-center w-full h-full p-4 card"
           onClick={() => setFav(location)}
         >
           <Image
@@ -90,9 +89,9 @@ const FavButton = ({ favKey }) => {
             width={50}
             alt="Add Favorite"
           />
-        </motion.button>
-      )}
-    </AnimatePresence>
+        </button>
+      </AnimatePresence>
+    </div>
   );
 };
 
