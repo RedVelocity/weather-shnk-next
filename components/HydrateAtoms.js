@@ -3,7 +3,7 @@
 import { useEffect } from 'react';
 import { useAtom } from 'jotai';
 import { useHydrateAtoms } from 'jotai/utils';
-import { locationAtom, weatherAtom } from '../lib/store';
+import { locationAtom, weatherAtom } from '@/lib/store';
 
 const HydrateAtoms = ({ weather, location }) => {
   // Hydrate on intitial render

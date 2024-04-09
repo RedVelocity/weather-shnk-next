@@ -16,12 +16,12 @@ const HourlyWeather = () => {
     <div className="min-h-full wrapper">
       <h3>Hourly Forecast</h3>
       {/* <p>Local Time {dayjs.tz(dayjs.unix(hourly[0].dt), TZ).format('HH:mm')}</p> */}
-      <Grid minColSize="grid-cols-2" maxColSize="sm:grid-cols-2" gap="gap-1">
+      <Grid minColSize="grid-cols-1" maxColSize="sm:grid-cols-2" gap="gap-1">
         {hourly
           .slice(0, width <= getBreakpointValue('md') ? 12 : 12)
           .map((item, i) => (
             <div
-              className="grid items-center justify-around grid-cols-3 gap-2 mini-card sm:grid-cols-4"
+              className="grid items-center justify-around grid-cols-3 gap-2 sm:grid-cols-4 mini-card"
               key={`hourly ${i}`}
             >
               <h4 className="tracking-wider">
@@ -31,9 +31,9 @@ const HourlyWeather = () => {
                       .format('HH:mm')} `
                   : 'Now'}
               </h4>
-              <div className="flex items-center justify-center sm:col-span-2 sm:gap-3">
-                <Icon size={26} icon={item.weather.icon} />
-                <span className="hidden w-full text-lg text-center md:text-left sm:block">
+              <div className="flex items-center justify-center gap-2 sm:col-span-2 sm:gap-3">
+                <Icon size={30} icon={item.weather.icon} />
+                <span className="w-full text-left ext-lg">
                   {item.weather.description}
                 </span>
               </div>

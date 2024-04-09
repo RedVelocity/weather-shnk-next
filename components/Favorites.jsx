@@ -30,9 +30,9 @@ const popInOut = {
 
 const Favorites = () => (
   <LazyMotion features={domAnimation}>
-    <div className="flex flex-col min-h-full wrapper">
+    <div className="flex flex-col min-h-full gap-4 wrapper">
       <h3>Favorites</h3>
-      <div className="grid flex-1 grid-cols-2 gap-2 mt-4 sm:grid-cols-4">
+      <div className="grid flex-1 grid-cols-2 gap-2 sm:grid-cols-4">
         <FavButton favKey="fav-1" />
         <FavButton favKey="fav-2" />
         <FavButton favKey="fav-3" />
@@ -52,7 +52,7 @@ const FavButton = ({ favKey }) => {
   const [locName, ...locRegion] = renderFav ? fav.name.split(',') : ['', ''];
 
   return (
-    <div className="relative h-28 sm:h-auto">
+    <div className="relative h-28 sm:h-full">
       <AnimatePresence initial={false}>
         {renderFav && (
           <motion.div
