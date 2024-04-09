@@ -8,11 +8,11 @@ import useLocation from '@/lib/hooks/useLocation';
 
 const popInOut = {  
   initial: {
-    scale: 0.7,
+    y: 50,
     opacity: 0,
   },
   animate: {
-    scale: 1,
+    y: 0,
     opacity: 1,
     transition: { duration: 0.25 },
   },
