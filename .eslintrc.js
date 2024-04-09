@@ -1,3 +1,5 @@
+const path = require('path');
+
 module.exports = {
   env: {
     browser: true,
@@ -38,7 +40,7 @@ module.exports = {
   settings: {
     'import/resolver': {
       alias: {
-        map: [['@', './']],
+        map: [['@', path.resolve(__dirname)]],
         extensions: ['.js', '.jsx', '.json', 'ts', 'tsx'],
       },
     },
