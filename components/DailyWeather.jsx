@@ -1,13 +1,11 @@
-'use client';
+/* eslint-disable react/prop-types */
 
-import useWeather from '@/lib/hooks/useWeather';
+// import useWeather from '@/lib/hooks/useWeather';
 import dayjsExtended from '@/lib/utils/dayjsExtended';
 import Icon from '@/components/Icon';
 
-const DailyWeather = () => {
-  const {
-    weatherData: { daily, timezone: TZ },
-  } = useWeather();
+const DailyWeather = ({ weather }) => {
+  const { daily, timezone: TZ } = weather;
   dayjsExtended.tz(daily[0].dt, TZ);
 
   return (

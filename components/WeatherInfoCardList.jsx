@@ -1,7 +1,7 @@
-'use client';
+/* eslint-disable react/prop-types */
 
 import PropTypes from 'prop-types';
-import useWeather from '@/lib/hooks/useWeather';
+// import useWeather from '@/lib/hooks/useWeather';
 import WeatherInfoCard from '@/components/WeatherInfoCard';
 import {
   DewpointIcon,
@@ -10,10 +10,8 @@ import {
   WindIcon,
 } from '@/components/Icon/MiniIcon';
 
-const WeatherInfoCardList = ({ className }) => {
-  const {
-    weatherData: { current },
-  } = useWeather();
+const WeatherInfoCardList = ({ className, weather }) => {
+  const { current } = weather;
   return (
     <ul
       className={`${className} card p-4 gap-1 bg-dark min-w-[18rem] h-[16rem] text-gray-200`}

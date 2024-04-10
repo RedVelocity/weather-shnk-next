@@ -1,3 +1,5 @@
+/* eslint-disable react/prop-types */
+
 'use client';
 
 import Image from 'next/image';
@@ -5,7 +7,7 @@ import Link from 'next/link';
 import { useLocalStorage } from '@mantine/hooks';
 import { AnimatePresence, m as motion } from 'framer-motion';
 import PropTypes from 'prop-types';
-import useLocation from '@/lib/hooks/useLocation';
+// import useLocation from '@/lib/hooks/useLocation';
 
 const popInOut = {
   initial: {
@@ -24,20 +26,20 @@ const popInOut = {
   },
 };
 
-const Favorites = () => (
+const Favorites = ({ location }) => (
   <div className="flex flex-col min-h-full gap-4 wrapper">
     <h3>Favorites</h3>
     <div className="grid flex-1 grid-cols-2 gap-2 sm:grid-cols-4">
-      <FavButton favKey="fav-1" />
-      <FavButton favKey="fav-2" />
-      <FavButton favKey="fav-3" />
-      <FavButton favKey="fav-4" />
+      <FavButton favKey="fav-1" location={location} />
+      <FavButton favKey="fav-2" location={location} />
+      <FavButton favKey="fav-3" location={location} />
+      <FavButton favKey="fav-4" location={location} />
     </div>
   </div>
 );
 
-const FavButton = ({ favKey }) => {
-  const { location } = useLocation();
+const FavButton = ({ favKey, location }) => {
+  // const { location } = useLocation();
   const [fav, setFav, removeFav] = useLocalStorage({
     key: favKey,
     defaultValue: 'unset',

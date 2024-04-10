@@ -1,11 +1,14 @@
+/* eslint-disable react/prop-types */
+
 'use client';
 
 import Image from 'next/image';
 import { m as motion } from 'framer-motion';
 
+// import useWeather from '@/lib/hooks/useWeather';
+// import useLocation from '@/lib/hooks/useLocation';
+import useTheme from '@/lib/hooks/useTheme';
 import colors from '@/styles/colors';
-import useWeather from '@/lib/hooks/useWeather';
-import useLocation from '@/lib/hooks/useLocation';
 import Icon from '@/components/Icon';
 
 const variants = {
@@ -15,14 +18,11 @@ const variants = {
   transition: { duration: 0.5 },
 };
 
-const WeatherCard = () => {
-  const {
-    location: { name: locationName },
-  } = useLocation();
-  const {
-    weatherData: { current, daily },
-    theme,
-  } = useWeather();
+const WeatherCard = ({ weather, location }) => {
+  const { name: locationName } = location;
+  const { current, daily } = weather;
+  const { theme } = useTheme(current.temp);
+
   let additionalInfo;
   const { min: minTemp, max: maxTemp } = daily[0].temp;
 
@@ -47,6 +47,7 @@ const WeatherCard = () => {
       backgroundPosition = 'left';
       break;
   }
+  console.log('first', backgroundPosition, theme);
   return (
     <div
       style={{

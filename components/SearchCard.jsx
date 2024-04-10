@@ -1,15 +1,17 @@
+/* eslint-disable react/prop-types */
+
 'use client';
 
 import { useEffect, useState } from 'react';
 import { useClickOutside, useDebouncedValue } from '@mantine/hooks';
 import { getPlaces } from '@/lib/api';
-import useWeather from '@/lib/hooks/useWeather';
-import useLocation from '@/lib/hooks/useLocation';
+// import useWeather from '@/lib/hooks/useWeather';
+// import useLocation from '@/lib/hooks/useLocation';
 import PopupList from '@/components/PopupList';
+import useTheme from '@/lib/hooks/useTheme';
 
-const SearchCard = () => {
-  const { theme } = useWeather();
-  const { location } = useLocation();
+const SearchCard = ({ weather, location }) => {
+  const { theme } = useTheme(weather.current.temp);
   const [placesList, setPlacesList] = useState([]);
   const [showPopupList, setShowPopupList] = useState(false);
   const [searchInput, setSearchInput] = useState('');

@@ -1,7 +1,7 @@
 import { notFound } from 'next/navigation';
 import { fetchWeather } from '@/app/api/getWeather/route';
 import { getPlaceCoords } from '@/app/api/getPlaces/route';
-import HydrateAtoms from '@/components/HydrateAtoms';
+// import HydrateAtoms from '@/components/HydrateAtoms';
 import WeatherCard from '@/components/WeatherCard';
 import SearchCard from '@/components/SearchCard';
 import WeatherInfoCardList from '@/components/WeatherInfoCardList';
@@ -71,32 +71,32 @@ const Home = async ({ searchParams }) => {
 
   return (
     <>
-      <HydrateAtoms weather={weather} location={location} />
+      {/* <HydrateAtoms weather={weather} location={location} /> */}
       <div className="grid gap-3 mx-4 md:grid-cols-3">
         <section className="flex flex-col space-y-3">
-          <SearchCard />
+          <SearchCard weather={weather} location={location} />
           <div className="flex flex-col flex-1 gap-2 sm:flex-row">
-            <WeatherCard />
+            <WeatherCard weather={weather} location={location} />
             {/* Reposition Component on small devices */}
             <div className="sm:hidden">
-              <Favorites />
+              <Favorites location={location} />
             </div>
             <WeatherInfoCardList className="grid md:hidden" weather={weather} />
           </div>
         </section>
         <section className="md:col-span-2">
-          <HourlyWeather />
+          <HourlyWeather weather={weather} />
         </section>
-        <WeatherInfoCardList className="hidden md:grid" />
+        <WeatherInfoCardList className="hidden md:grid" weather={weather} />
         <section className="hidden md:col-span-2 sm:block">
-          <Favorites />
+          <Favorites location={location} />
         </section>
         <WeatherMap
           longitude={location.longitude}
           latitude={location.latitude}
         />
         <section className="md:col-span-2">
-          <DailyWeather />
+          <DailyWeather weather={weather} />
         </section>
       </div>
     </>
