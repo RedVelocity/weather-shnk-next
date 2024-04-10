@@ -4,14 +4,14 @@
 
 import { useEffect, useState } from 'react';
 import { useClickOutside, useDebouncedValue } from '@mantine/hooks';
-import { getPlaces } from '@/lib/api';
 // import useWeather from '@/lib/hooks/useWeather';
 // import useLocation from '@/lib/hooks/useLocation';
+import { getPlaces } from '@/lib/api';
 import PopupList from '@/components/PopupList';
 import useTheme from '@/lib/hooks/useTheme';
 
 const SearchCard = ({ weather, location }) => {
-  const { theme } = useTheme(weather.current.temp);
+  const theme = useTheme(weather.current.temp);
   const [placesList, setPlacesList] = useState([]);
   const [showPopupList, setShowPopupList] = useState(false);
   const [searchInput, setSearchInput] = useState('');
@@ -49,7 +49,6 @@ const SearchCard = ({ weather, location }) => {
           onChange={(e) => setSearchInput(e.target.value)}
           onFocus={() => setShowPopupList(true)}
         />
-        {/* {showPopupList && ( */}
         <PopupList
           ref={ref}
           list={placesList}
@@ -57,7 +56,6 @@ const SearchCard = ({ weather, location }) => {
           color={theme}
           showPopupList={showPopupList}
         />
-        {/* )} */}
       </div>
     </div>
   );

@@ -21,7 +21,7 @@ const variants = {
 const WeatherCard = ({ weather, location }) => {
   const { name: locationName } = location;
   const { current, daily } = weather;
-  const { theme } = useTheme(current.temp);
+  const theme = useTheme(current.temp);
 
   let additionalInfo;
   const { min: minTemp, max: maxTemp } = daily[0].temp;
@@ -47,7 +47,7 @@ const WeatherCard = ({ weather, location }) => {
       backgroundPosition = 'left';
       break;
   }
-  console.log('first', backgroundPosition, theme);
+
   return (
     <div
       style={{
