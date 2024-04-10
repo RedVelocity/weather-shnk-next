@@ -1,8 +1,8 @@
 import '@/styles/globals.css';
 
-import { SpeedInsights } from '@vercel/speed-insights/next';
 import Header from '@/components/header';
 import Footer from '@/components/footer';
+import Providers from '@/app/Providers';
 
 export default async function RootLayout({ children }) {
   const res = await fetch(
@@ -18,10 +18,11 @@ export default async function RootLayout({ children }) {
       */}
       <head />
       <body>
-        <Header hostName={host.hostName} hostUrl={host.hostUrl} />
-        <main className="flex-1 min-w-full">{children}</main>
-        <SpeedInsights />
-        <Footer />
+        <Providers>
+          <Header hostName={host.hostName} hostUrl={host.hostUrl} />
+          <main className="flex-1 min-w-full">{children}</main>
+          <Footer />
+        </Providers>
       </body>
     </html>
   );
