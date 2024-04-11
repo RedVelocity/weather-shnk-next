@@ -28,7 +28,7 @@ const HourlyWeather = ({ weather }) => {
                 : 'Now'}
             </h4>
             <div className="flex items-center justify-center col-span-2 gap-2 sm:gap-3">
-              <Icon size={30} icon={item.weather.icon} />
+              <Icon size={28} icon={item.weather.icon} />
               <span className="w-full text-lg text-left">
                 {item.weather.description}
               </span>
