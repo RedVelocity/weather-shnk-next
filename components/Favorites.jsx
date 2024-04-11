@@ -75,7 +75,7 @@ const FavButton = ({ favKey, location }) => {
             >
               <Image
                 src="/assets/weather-icons/close.png"
-                layout="fill"
+                fill
                 alt="Remove Favorite"
               />
             </button>
