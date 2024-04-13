@@ -31,10 +31,25 @@ p {
   @apply text-base tracking-wide;
 }
 
+*:focus {
+  @apply outline-none ring ring-blue-400;
+}
+
 #__next {
   @apply flex flex-col max-w-screen-lg min-h-screen mx-auto;
 }
 
+@layer utilities {
+  .bg-gradient-hot {
+    @apply bg-gradient-to-r from-milder to-hot;
+  }
+  .bg-gradient-cool {
+    @apply bg-gradient-to-r from-cool to-purple-300;
+  }
+  .bg-gradient-mild {
+    @apply bg-gradient-to-r from-mild to-milder;
+  }
+}
 /* Components */
 @layer components {
   .card {
@@ -75,13 +90,13 @@ p {
   @apply text-mild;
 }
 .hover-hot {
-  @apply hover:bg-gradient-to-r hover:from-milder hover:to-hot;
+  @apply hover:bg-gradient-hot;
 }
 .hover-cool {
-  @apply hover:bg-gradient-to-r hover:from-cool hover:to-purple-300;
+  @apply hover:bg-gradient-cool;
 }
 .hover-mild {
-  @apply hover:bg-gradient-to-r hover:from-mild hover:to-milder;
+  @apply hover:bg-gradient-mild;
 }
 
 .leaflet-container {

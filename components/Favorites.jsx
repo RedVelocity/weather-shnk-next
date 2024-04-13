@@ -52,7 +52,7 @@ const FavButton = ({ favKey, location }) => {
       <AnimatePresence initial={false}>
         {renderFav && (
           <motion.div
-            className="absolute inset-0 w-full h-full p-4 card bg-slate-300"
+            className="absolute inset-0 w-full h-full bg-slate-300"
             variants={popInOut}
             initial="initial"
             animate="animate"
@@ -62,7 +62,7 @@ const FavButton = ({ favKey, location }) => {
             <Link
               href={`weather?q=${encodeURI(fav.name.replaceAll(', ', ','))}`}
               passHref
-              className="flex flex-col items-center justify-center h-full text-center"
+              className="flex flex-col items-center justify-center h-full text-centerp-4 card"
               scroll={false}
             >
               <h3>{locName}</h3>
@@ -71,7 +71,7 @@ const FavButton = ({ favKey, location }) => {
             <button
               type="button"
               onClick={removeFav}
-              className="absolute top-0 right-0 z-20 h-6 m-2 aspect-square"
+              className="absolute top-0 right-0 z-20 h-6 m-2 rounded-full aspect-square"
             >
               <Image
                 src="/assets/weather-icons/close.png"
@@ -84,6 +84,7 @@ const FavButton = ({ favKey, location }) => {
         <button
           type="button"
           className="flex items-center justify-center w-full h-full p-4 card"
+          disabled={renderFav}
           onClick={() => setFav(location)}
         >
           <Image

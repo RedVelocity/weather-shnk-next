@@ -3,14 +3,36 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { useRouter } from 'next13-progressbar';
 import Image from 'next/image';
+import { AnimatePresence, m as motion } from 'framer-motion';
 import { useDebouncedValue } from '@mantine/hooks';
 import { Combobox } from '@headlessui/react';
+import { useRouter } from 'next13-progressbar';
 // import useWeather from '@/lib/hooks/useWeather';
 // import useLocation from '@/lib/hooks/useLocation';
 import { getPlaces } from '@/lib/api';
 import useTheme from '@/lib/hooks/useTheme';
+
+const variants = {
+  animate: {
+    opacity: 1,
+    scale: 1,
+    transition: { duration: 0.25 },
+  },
+  exit: {
+    opacity: 0,
+  },
+  initial: {
+    opacity: 0,
+    scale: 0.9,
+  },
+};
+
+const colorVariants = {
+  hot: 'ui-active:bg-gradient-to-r ui-active:from-milder ui-active:to-hot',
+  mild: 'ui-active:bg-gradient-to-r ui-active:from-mild ui-active:to-milder',
+  cool: 'ui-active:bg-gradient-to-r ui-active:from-cool ui-active:to-purple-300',
+};
 
 const SearchCard = ({ weather, location }) => {
   const theme = useTheme(weather.current.temp);
@@ -56,41 +78,64 @@ const SearchCard = ({ weather, location }) => {
           }}
           by="id"
         >
-          <div className="relative rounded-l">
-            <Combobox.Input
-              onChange={(e) => setSearchInput(e.target.value)}
-              displayValue={(place) => place.place_name}
-              className="w-full p-2 bg-gray-200 rounded-l rounded-r-full shadow-lg focus:outline-none focus:ring focus:ring-blue-400"
-              autoComplete="off"
-              placeholder="Search Place"
-            />
-            <Combobox.Button className="absolute inset-y-0 right-0 flex items-center mr-1">
-              <Image
-                src="/assets/icons/up-arrow.png"
-                className="rotate-180"
-                width={25}
-                height={25}
-                aria-hidden="true"
-                alt="Open Menu"
-              />
-            </Combobox.Button>
-          </div>
-          <Combobox.Options className="absolute z-10 min-w-full p-2 mt-2 text-gray-900 bg-gray-100 shadow rounded-xl">
-            <div className="overflow-x-hidden max-h-64">
-              {placesList?.map((place) => (
-                <Combobox.Option
-                  key={place.id}
-                  value={place}
-                  className={`ui-active:bg-blue-200 hover-${theme} rounded-lg px-2 py-1 cursor-pointer`}
+          {({ open }) => (
+            <>
+              <div className="relative">
+                <Combobox.Input
+                  onChange={(e) => setSearchInput(e.target.value)}
+                  displayValue={(place) => place.place_name}
+                  className="w-full p-2 bg-gray-200 rounded-l rounded-r-3xl"
+                  autoComplete="off"
+                  placeholder="Search Place"
+                />
+                <Combobox.Button
+                  className="absolute inset-y-0 right-0 flex items-center mr-1 focus:ring-0"
+                  name="Toggle Menu"
                 >
-                  <div className="pointer-events-none">
-                    <h5>{place.place_name}</h5>
-                    <p>{place.place_address}</p>
-                  </div>
-                </Combobox.Option>
-              ))}
-            </div>
-          </Combobox.Options>
+                  <Image
+                    src="/assets/icons/up-arrow.png"
+                    className={`${
+                      !open && 'rotate-180'
+                    } transition-transform duration-200 ease-in-out`}
+                    width={25}
+                    height={25}
+                    aria-hidden="true"
+                    alt="Toggle Menu"
+                  />
+                </Combobox.Button>
+              </div>
+              <AnimatePresence>
+                {open && placesList.length > 0 && (
+                  <motion.div
+                    variants={variants}
+                    initial="initial"
+                    animate="animate"
+                    exit="exit"
+                  >
+                    <Combobox.Options
+                      static
+                      className="absolute z-10 min-w-full p-2 mt-2 text-gray-900 bg-gray-100 shadow rounded-xl"
+                    >
+                      <div className="overflow-x-hidden max-h-64">
+                        {placesList?.map((place) => (
+                          <Combobox.Option
+                            key={place.id}
+                            value={place}
+                            className={`${colorVariants[theme]} hover-${theme} rounded-lg px-2 py-1 cursor-pointer`}
+                          >
+                            <div className="pointer-events-none">
+                              <h5>{place.place_name}</h5>
+                              <p>{place.place_address}</p>
+                            </div>
+                          </Combobox.Option>
+                        ))}
+                      </div>
+                    </Combobox.Options>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </>
+          )}
         </Combobox>
       </div>
     </div>
