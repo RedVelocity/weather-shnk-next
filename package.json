@@ -1,6 +1,6 @@
 {
   "name": "weather-shnk-next",
-  "version": "12.0.1",
+  "version": "13.0.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -14,6 +14,8 @@
     "git:major": "npm --no-git-tag-version --no-commit-hooks version major && git add -A && git commit -m"
   },
   "dependencies": {
+    "@headlessui/react": "^1.7.18",
+    "@headlessui/tailwindcss": "^0.2.0",
     "@mantine/hooks": "^7.4.1",
     "browserslist": "latest",
     "chart.js": "^4.2.1",

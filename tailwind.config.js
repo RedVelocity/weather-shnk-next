@@ -19,5 +19,6 @@ module.exports = {
       '2xl': '1536px',
     },
   },
-  plugins: [],
+  // eslint-disable-next-line global-require
+  plugins: [require('@headlessui/tailwindcss')],
 };
