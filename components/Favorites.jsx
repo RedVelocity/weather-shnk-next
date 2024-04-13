@@ -52,7 +52,7 @@ const FavButton = ({ favKey, location }) => {
       <AnimatePresence initial={false}>
         {renderFav && (
           <motion.div
-            className="absolute inset-0 w-full h-full bg-slate-300"
+            className="absolute inset-0 w-full h-full"
             variants={popInOut}
             initial="initial"
             animate="animate"
@@ -62,7 +62,7 @@ const FavButton = ({ favKey, location }) => {
             <Link
               href={`weather?q=${encodeURI(fav.name.replaceAll(', ', ','))}`}
               passHref
-              className="flex flex-col items-center justify-center h-full text-centerp-4 card"
+              className="flex flex-col items-center justify-center h-full text-center bg-slate-300 p-4 card"
               scroll={false}
             >
               <h3>{locName}</h3>
