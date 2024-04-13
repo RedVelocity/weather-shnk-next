@@ -114,14 +114,14 @@ const SearchCard = ({ weather, location }) => {
                   >
                     <Combobox.Options
                       static
-                      className="absolute z-10 min-w-full p-2 mt-2 text-gray-900 bg-gray-100 shadow rounded-xl"
+                      className="absolute z-10 min-w-full mt-2 text-gray-900 bg-gray-100 shadow rounded-xl"
                     >
                       <div className="overflow-x-hidden max-h-64">
                         {placesList?.map((place) => (
                           <Combobox.Option
                             key={place.id}
                             value={place}
-                            className={`${colorVariants[theme]} hover-${theme} rounded-lg px-2 py-1 cursor-pointer`}
+                            className={`${colorVariants[theme]} hover-${theme} rounded-lg px-4 py-1 cursor-pointer`}
                           >
                             <div className="pointer-events-none">
                               <h5>{place.place_name}</h5>
