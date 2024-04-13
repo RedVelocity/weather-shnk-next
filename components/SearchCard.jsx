@@ -3,7 +3,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { useRouter } from 'next/navigation';
+import { useRouter } from 'next13-progressbar';
 import Image from 'next/image';
 import { useDebouncedValue } from '@mantine/hooks';
 import { Combobox } from '@headlessui/react';
@@ -56,7 +56,7 @@ const SearchCard = ({ weather, location }) => {
           }}
           by="id"
         >
-          <div className="relative rounded">
+          <div className="relative rounded-l">
             <Combobox.Input
               onChange={(e) => setSearchInput(e.target.value)}
               displayValue={(place) => place.place_name}
