@@ -56,11 +56,11 @@ const SearchCard = ({ weather, location }) => {
           }}
           by="id"
         >
-          <div className="relative overflow-hidden rounded">
+          <div className="relative rounded">
             <Combobox.Input
               onChange={(e) => setSearchInput(e.target.value)}
               displayValue={(place) => place.place_name}
-              className="w-full p-2 bg-gray-200 rounded-r-full shadow-lg focus:outline-none focus:ring focus:ring-blue-400"
+              className="w-full p-2 bg-gray-200 rounded-l rounded-r-full shadow-lg focus:outline-none focus:ring focus:ring-blue-400"
               autoComplete="off"
               placeholder="Search Place"
             />
