@@ -121,7 +121,7 @@ const SearchCard = ({ weather, location }) => {
                           <Combobox.Option
                             key={place.id}
                             value={place}
-                            className={`${colorVariants[theme]} hover-${theme} rounded-lg px-4 py-1 cursor-pointer`}
+                            className={`${colorVariants[theme]} hover-${theme} rounded-lg px-2 py-1 cursor-pointer mx-2`}
                           >
                             <div className="pointer-events-none">
                               <h5>{place.place_name}</h5>
