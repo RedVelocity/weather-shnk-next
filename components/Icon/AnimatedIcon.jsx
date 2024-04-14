@@ -13,7 +13,7 @@ const AnimatedIcon = ({ className, icon, size }) => (
     transition={{ duration: 0.5 }}
     key={icon}
   >
-    <Image src={icon} height={size} width={size} alt="icon" />
+    <Image src={icon} height={size} width={size} alt="icon" priority />
   </motion.div>
 );
 

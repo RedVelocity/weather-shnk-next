@@ -2,7 +2,7 @@
 
 // import useWeather from '@/lib/hooks/useWeather';
 import dayjsExtended from '@/lib/utils/dayjsExtended';
-import Icon from '@/components/Icon';
+import WeatherIcon from '@/components/Icon/WeatherIcon';
 
 const DailyWeather = ({ weather }) => {
   const { daily, timezone: TZ } = weather;
@@ -18,7 +18,7 @@ const DailyWeather = ({ weather }) => {
             key={`summary-${i}`}
           >
             <div className="flex items-center gap-3">
-              <Icon icon={item.weather.icon} size={48} />
+              <WeatherIcon icon={item.weather.icon} size={48} />
               <h4 className="leading-4">
                 {i !== 0
                   ? dayjsExtended

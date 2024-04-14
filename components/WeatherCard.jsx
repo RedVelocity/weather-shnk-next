@@ -9,7 +9,7 @@ import { m as motion } from 'framer-motion';
 // import useLocation from '@/lib/hooks/useLocation';
 import useTheme from '@/lib/hooks/useTheme';
 import colors from '@/styles/colors';
-import Icon from '@/components/Icon';
+import WeatherIcon from '@/components/Icon/WeatherIcon';
 
 const variants = {
   animate: { opacity: 1, y: 0 },
@@ -60,7 +60,7 @@ const WeatherCard = ({ weather, location }) => {
     >
       <>
         <div className="grid grid-cols-3 gap-4 py-4 place-items-center">
-          <Icon icon={current.weather.icon} size={64} animate />
+          <WeatherIcon icon={current.weather.icon} size={64} animate />
           <motion.h2
             key={current.weather.description}
             variants={variants}

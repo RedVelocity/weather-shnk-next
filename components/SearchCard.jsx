@@ -86,7 +86,7 @@ const SearchCard = ({ weather, location }) => {
                   displayValue={(place) => place.place_name}
                   className="w-full p-2 bg-gray-200 rounded-l rounded-r-3xl"
                   autoComplete="off"
-                  placeholder="Enter Place Name"
+                  placeholder="Place Name"
                 />
                 <Combobox.Button
                   className="absolute inset-y-0 right-0 flex items-center h-10 focus:ring-0 aspect-square"

@@ -8,7 +8,7 @@ import {
   PressureIcon,
   VisibilityIcon,
   WindIcon,
-} from '@/components/Icon/MiniIcon';
+} from '@/components/Icon/InfoIcon';
 
 const WeatherInfoCardList = ({ className, weather }) => {
   const { current } = weather;

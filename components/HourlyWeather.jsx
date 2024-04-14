@@ -5,7 +5,7 @@
 // import useWeather from '@/lib/hooks/useWeather';
 import dayjsExtended from '@/lib/utils/dayjsExtended';
 import Grid from './Grid';
-import Icon from './Icon';
+import WeatherIcon from './Icon/WeatherIcon';
 
 const HourlyWeather = ({ weather }) => {
   const { hourly, timezone: TZ } = weather;
@@ -28,7 +28,7 @@ const HourlyWeather = ({ weather }) => {
                 : 'Now'}
             </h4>
             <div className="flex items-center justify-center col-span-2 gap-2 sm:gap-3">
-              <Icon size={28} icon={item.weather.icon} />
+              <WeatherIcon size={28} icon={item.weather.icon} />
               <span className="w-full text-lg text-left">
                 {item.weather.description}
               </span>

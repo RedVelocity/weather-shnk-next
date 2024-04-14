@@ -25,7 +25,7 @@ const weatherIcons = {
 
 const getIcon = (icon) => `/assets/weather-icons/${weatherIcons[icon]}.svg`;
 
-const Icon = ({ icon, size, className, animate = false }) => {
+const WeatherIcon = ({ icon, size, className, animate = false }) => {
   if (animate)
     return (
       <AnimatedIcon className={className} icon={getIcon(icon)} size={size} />
@@ -37,16 +37,16 @@ const Icon = ({ icon, size, className, animate = false }) => {
       height={size}
       width={size}
       key={icon}
-      alt="icon"
+      alt={weatherIcons[icon]}
     />
   );
 };
 
-Icon.propTypes = {
+WeatherIcon.propTypes = {
   icon: PropTypes.string.isRequired,
   size: PropTypes.number.isRequired,
   animate: PropTypes.bool,
   className: PropTypes.string,
 };
 
-export default Icon;
+export default WeatherIcon;
