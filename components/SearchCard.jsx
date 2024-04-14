@@ -86,20 +86,18 @@ const SearchCard = ({ weather, location }) => {
                   displayValue={(place) => place.place_name}
                   className="w-full p-2 bg-gray-200 rounded-l rounded-r-3xl"
                   autoComplete="off"
-                  placeholder="Search Place"
+                  placeholder="Enter Place Name"
                 />
                 <Combobox.Button
-                  className="absolute inset-y-0 right-0 flex items-center mr-1 focus:ring-0"
+                  className="absolute inset-y-0 right-0 flex items-center h-10 focus:ring-0 aspect-square"
                   name="Toggle Menu"
                 >
                   <Image
-                    src="/assets/icons/up-arrow.png"
+                    src="/assets/icons/chevron-down.png"
                     className={`${
-                      !open && 'rotate-180'
+                      open && 'rotate-180'
                     } transition-transform duration-200 ease-in-out`}
-                    width={25}
-                    height={25}
-                    aria-hidden="true"
+                    fill
                     alt="Toggle Menu"
                   />
                 </Combobox.Button>

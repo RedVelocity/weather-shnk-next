@@ -1,9 +1,17 @@
 const Footer = () => (
   <footer className="font-semibold text-dark">
     <div className="flex flex-col justify-between max-w-screen-lg gap-2 p-4 m-auto text-sm text-center md:flex-row md:text-lg">
-      <a href="https://openweathermap.org/" rel="noreferrer" target="_blank">
-        Powered by <span className="pill bg-dark text-mild">OpenWeather</span>
-      </a>
+      <span>
+        Powered by{' '}
+        <a
+          href="https://openweathermap.org/"
+          rel="noreferrer"
+          target="_blank"
+          className="pill bg-dark text-cool"
+        >
+          OpenWeather
+        </a>
+      </span>
       <span>
         Icons made by{' '}
         <a

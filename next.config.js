@@ -22,7 +22,7 @@ module.exports = withBundleAnalyzer({
     return [
       {
         source: '/',
-        destination: '/weather?q=Bangalore',
+        destination: '/weather?q=Scranton,Pennsylvania,USA',
         permanent: false,
       },
     ];

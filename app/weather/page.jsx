@@ -56,9 +56,9 @@ const Home = async ({ searchParams }) => {
     query !== 'undefined'
       ? (location = await getPlaceCoords(query))
       : (location = {
-          name: 'Bangalore, Karnataka, India.',
-          latitude: 12.972442,
-          longitude: 77.580643,
+          name: 'Scranton, Pennsylvania, USA.',
+          latitude: 41.411835,
+          longitude: -75.665245,
           curLat: 0,
           curLon: 0,
         });
