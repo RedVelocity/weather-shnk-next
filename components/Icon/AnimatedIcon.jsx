@@ -5,7 +5,7 @@
 import { m as motion } from 'framer-motion';
 import Image from 'next/image';
 
-const AnimatedIcon = ({ className, icon, size }) => (
+const AnimatedIcon = ({ className, icon, size, alt }) => (
   <motion.div
     className={className}
     initial={{ opacity: 0, scale: 1.2 }}
@@ -13,7 +13,7 @@ const AnimatedIcon = ({ className, icon, size }) => (
     transition={{ duration: 0.5 }}
     key={icon}
   >
-    <Image src={icon} height={size} width={size} alt="icon" priority />
+    <Image src={icon} height={size} width={size} alt={alt} priority />
   </motion.div>
 );
 

@@ -5,7 +5,7 @@
 /* Root Styles */
 html {
   @apply text-[14px] md:text-[12px] text-gray-900 bg-gradient-to-br from-cool to-mild;
-  -webkit-tap-highlight-color: transparent
+  -webkit-tap-highlight-color: transparent;
 }
 body {
   @apply flex flex-col max-w-screen-xl min-h-screen mx-auto;
@@ -52,9 +52,6 @@ p {
 @layer components {
   .card {
     @apply rounded-l rounded-br shadow rounded-tr-xl;
-  }
-  .mini-card {
-    @apply px-4 py-2 bg-white/5 card;
   }
   .loader {
     @apply w-16 h-16 border-8 border-t-8 rounded-full md:h-20 md:w-20 border-zinc-500 border-t-sky-500;

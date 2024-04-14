@@ -24,18 +24,28 @@ const weatherIcons = {
 };
 
 const getIcon = (icon) => `/assets/weather-icons/${weatherIcons[icon]}.svg`;
+const sizes = {
+  small: 36,
+  medium: 48,
+  large: 64,
+};
 
 const WeatherIcon = ({ icon, size, className, animate = false }) => {
   if (animate)
     return (
-      <AnimatedIcon className={className} icon={getIcon(icon)} size={size} />
+      <AnimatedIcon
+        className={className}
+        icon={getIcon(icon)}
+        size={sizes[size]}
+        alt={getIcon(icon)}
+      />
     );
   return (
     <Image
       className={className}
       src={getIcon(icon)}
-      height={size}
-      width={size}
+      height={sizes[size]}
+      width={sizes[size]}
       key={icon}
       alt={weatherIcons[icon]}
     />
@@ -44,7 +54,7 @@ const WeatherIcon = ({ icon, size, className, animate = false }) => {
 
 WeatherIcon.propTypes = {
   icon: PropTypes.string.isRequired,
-  size: PropTypes.number.isRequired,
+  size: PropTypes.string.isRequired,
   animate: PropTypes.bool,
   className: PropTypes.string,
 };

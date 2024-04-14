@@ -10,7 +10,7 @@ const DailyWeather = ({ weather }) => {
 
   return (
     <div className="wrapper">
-      <h3>Daily Forecast</h3>
+      <h3>8-Day Forecast</h3>
       <div className="grid gap-2 mt-4 text-center capitalize sm:grid-cols-2">
         {daily.map((item, i) => (
           <div
@@ -18,7 +18,7 @@ const DailyWeather = ({ weather }) => {
             key={`summary-${i}`}
           >
             <div className="flex items-center gap-3">
-              <WeatherIcon icon={item.weather.icon} size={48} />
+              <WeatherIcon icon={item.weather.icon} size="medium" />
               <h4 className="leading-4">
                 {i !== 0
                   ? dayjsExtended

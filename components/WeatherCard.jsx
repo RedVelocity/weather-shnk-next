@@ -59,8 +59,8 @@ const WeatherCard = ({ weather, location }) => {
       className="flex flex-col flex-1 p-4 text-gray-900 card justify-evenly"
     >
       <>
-        <div className="grid grid-cols-3 gap-4 py-4 place-items-center">
-          <WeatherIcon icon={current.weather.icon} size={64} animate />
+        <div className="grid grid-cols-3 gap-4 py-1 place-items-center">
+          <WeatherIcon icon={current.weather.icon} size="large" animate />
           <motion.h2
             key={current.weather.description}
             variants={variants}
@@ -81,15 +81,9 @@ const WeatherCard = ({ weather, location }) => {
             {`${Math.round(current.temp)}°C`}
           </motion.h1>
         </div>
-        <motion.p
-          variants={variants}
-          initial="initial"
-          animate="animate"
-          exit="exit"
-          className="text-right"
-        >{`Low ${Math.round(minTemp)}°C • High ${Math.round(
-          maxTemp
-        )}°C`}</motion.p>
+        <p className="text-right">{`Low ${Math.round(
+          minTemp
+        )}°C • High ${Math.round(maxTemp)}°C`}</p>
         <span className="block p-2 mt-2 mb-4 font-semibold tracking-wide text-center bg-gray-200 rounded md:px-4 md:py-3">
           {additionalInfo}
         </span>
