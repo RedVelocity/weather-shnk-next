@@ -5,6 +5,7 @@
 /* Root Styles */
 html {
   @apply text-[14px] md:text-[12px] text-gray-900 bg-gradient-to-br from-cool to-mild;
+  -webkit-tap-highlight-color: transparent
 }
 body {
   @apply flex flex-col max-w-screen-xl min-h-screen mx-auto;
@@ -35,11 +36,6 @@ p {
 
 #__next {
   @apply flex flex-col max-w-screen-lg min-h-screen mx-auto;
-}
-@layer base {
-  html {
-    -webkit-tap-highlight-color: transparent;
-  }
 }
 @layer utilities {
   .bg-gradient-hot {
