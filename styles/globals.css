@@ -36,7 +36,11 @@ p {
 #__next {
   @apply flex flex-col max-w-screen-lg min-h-screen mx-auto;
 }
-
+@layer base {
+  html {
+    -webkit-tap-highlight-color: transparent;
+  }
+}
 @layer utilities {
   .bg-gradient-hot {
     @apply bg-gradient-to-r from-milder to-hot;
