@@ -29,7 +29,7 @@ const WeatherCard = ({ weather, location }) => {
   if (current?.weather) {
     additionalInfo = `Feels Like: ${Math.round(
       current.feels_like
-    )}°C | Humidity: ${current.humidity}% | UV: ${current.uvi}`;
+    )}°C | Humidity: ${current.humidity}% | UV: ${Math.round(current.uvi)}`;
   }
 
   let backgroundPosition;
