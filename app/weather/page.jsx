@@ -1,6 +1,5 @@
 import { notFound } from 'next/navigation';
-import { fetchWeather } from '@/app/api/getWeather/route';
-import { getPlaceCoords } from '@/app/api/getPlaces/route';
+import { getPlaceCoords, getWeather } from '@/app/actions';
 // import HydrateAtoms from '@/components/HydrateAtoms';
 import WeatherCard from '@/components/WeatherCard';
 import SearchCard from '@/components/SearchCard';
@@ -67,7 +66,7 @@ const Home = async ({ searchParams }) => {
   }
 
   if (!location.latitude) return notFound();
-  const weather = await fetchWeather(location.latitude, location.longitude);
+  const weather = await getWeather(location.latitude, location.longitude);
 
   return (
     <>

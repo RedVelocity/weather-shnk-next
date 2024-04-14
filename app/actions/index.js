@@ -1,6 +1,32 @@
-/* eslint-disable @next/next/no-server-import-in-page */
-/* eslint-disable camelcase */
-import { NextResponse } from 'next/server';
+'use server';
+
+export const getWeather = async (latitude, longitude) => {
+  const exclude = 'minutely,alerts';
+  const API_ENDPOINT = `https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&exclude=${exclude}&appid=${process.env.NEXT_PUBLIC_OWM_KEY}&units=metric`;
+
+  let formattedData = {};
+  const res = await fetch(API_ENDPOINT, { next: { revalidate: 0 } });
+  const { timezone, daily, current, hourly } = await res.json();
+  // console.log(data, 'data');
+  formattedData = {
+    timezone,
+    current: {
+      ...current,
+      weather: current.weather[0],
+    },
+    daily: daily.map((d) => ({
+      dt: d.dt,
+      temp: d.temp,
+      weather: d.weather[0],
+    })),
+    hourly: hourly.map((d) => ({
+      dt: d.dt,
+      temp: d.temp,
+      weather: d.weather[0],
+    })),
+  };
+  return formattedData;
+};
 
 export const getPlaceCoords = async (searchTerm) => {
   const API_ENDPOINT = `https://api.mapbox.com/geocoding/v5/mapbox.places/${searchTerm}.json?access_token=${process.env.NEXT_PUBLIC_MAPBOX_BACKEND}&types=place,locality&language=en&limit=1`;
@@ -21,11 +47,7 @@ export const getPlaceCoords = async (searchTerm) => {
   }
 };
 
-export async function GET(request) {
-  const { searchParams } = new URL(request.url);
-  const latitude = searchParams.get('latitude');
-  const longitude = searchParams.get('longitude');
-  const searchTerm = searchParams.get('searchTerm');
+export const getPlaces = async (latitude, longitude, searchTerm) => {
   const proximity =
     latitude !== 0 && longitude !== 0
       ? `&proximity=${longitude},${latitude}`
@@ -41,6 +63,7 @@ export async function GET(request) {
       : feature.context.length < 3
       ? feature.context
       : feature.context.slice(-2);
+    // eslint-disable-next-line camelcase
     const place_locality = locality.reduce(
       (loc, ctx, index, context) =>
         context.length === index + 1
@@ -62,5 +85,5 @@ export async function GET(request) {
       ),
     };
   });
-  return NextResponse.json(places);
-}
+  return places;
+};
