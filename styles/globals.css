@@ -4,7 +4,7 @@
 
 /* Root Styles */
 html {
-  @apply text-[14px] md:text-[12px] text-gray-900 bg-gradient-to-r from-cool to-mild;
+  @apply text-[14px] md:text-[12px] text-gray-900 bg-gradient-to-br from-cool to-mild;
 }
 body {
   @apply flex flex-col max-w-screen-xl min-h-screen mx-auto;
