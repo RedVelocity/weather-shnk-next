@@ -13,30 +13,26 @@ const HourlyWeather = ({ weather }) => {
     <div className="min-h-full wrapper">
       <h3>12-Hour Forecast</h3>
       {/* <p>Local Time {dayjs.tz(dayjs.unix(hourly[0].dt), TZ).format('HH:mm')}</p> */}
-      <div className="grid grid-cols-2 gap-2 mt-4 text-center capitalize sm:grid-cols-3">
+      <div className="grid grid-cols-1 mt-4 text-center capitalize gap-y-1 gap-x-2 sm:grid-cols-2">
         {hourly.slice(0, 12).map((item, i) => (
           <div
-            className="grid items-center grid-cols-3 gap-2 px-4 py-2 justify-evenly bg-white/5 card"
+            className="grid items-center justify-around grid-cols-4 gap-2 px-2 py-1 bg-white/5 card"
             key={`hourly ${i}`}
           >
-            <div>
-              <h4 className="tracking-wider">
-                {i !== 0
-                  ? `${dayjsExtended
-                      .tz(dayjsExtended.unix(item.dt), TZ)
-                      .format('HH:mm')}`
-                  : 'Now'}
-              </h4>
-              <span className="block text-lg">{`${Math.round(
-                item.temp
-              )}°C`}</span>
-            </div>
-            <div className="flex flex-col items-center justify-start col-span-2 gap-1 sm:flex-row sm:gap-3">
+            <h4 className="tracking-wider">
+              {i !== 0
+                ? `${dayjsExtended
+                    .tz(dayjsExtended.unix(item.dt), TZ)
+                    .format('HH:mm')} `
+                : 'Now'}
+            </h4>
+            <div className="flex items-center justify-center col-span-2 gap-2 sm:gap-3">
               <WeatherIcon size="small" icon={item.weather.icon} />
-              <span className="w-full text-lg text-center sm:text-left">
+              <span className="w-full text-lg text-left">
                 {item.weather.description}
               </span>
             </div>
+            <span className="text-lg">{`${Math.round(item.temp)}°C`}</span>
           </div>
         ))}
       </div>
