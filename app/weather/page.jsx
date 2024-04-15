@@ -1,5 +1,5 @@
 import { notFound } from 'next/navigation';
-import { getPlaceCoords, getWeather } from '@/app/actions';
+import { getLocation, getWeather } from '@/app/actions';
 // import HydrateAtoms from '@/components/HydrateAtoms';
 import WeatherCard from '@/components/WeatherCard';
 import SearchCard from '@/components/SearchCard';
@@ -53,12 +53,12 @@ const Home = async ({ searchParams }) => {
   let location;
   try {
     query !== 'undefined'
-      ? (location = await getPlaceCoords(query))
+      ? (location = await getLocation(query))
       : (location = {
           name: 'Scranton, Pennsylvania, USA.',
           latitude: 41.411835,
           longitude: -75.665245,
-          curLat: 0,
+          curLat: 0, // Use if you'd like localized results
           curLon: 0,
         });
   } catch (error) {

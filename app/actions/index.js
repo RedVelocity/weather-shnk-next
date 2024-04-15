@@ -28,7 +28,7 @@ export const getWeather = async (latitude, longitude) => {
   return formattedData;
 };
 
-export const getPlaceCoords = async (searchTerm) => {
+export const getLocation = async (searchTerm) => {
   const API_ENDPOINT = `https://api.mapbox.com/geocoding/v5/mapbox.places/${searchTerm}.json?access_token=${process.env.NEXT_PUBLIC_MAPBOX_BACKEND}&types=place,locality&language=en&limit=1`;
   try {
     const res = await fetch(API_ENDPOINT);
