@@ -4,7 +4,7 @@
 
 /* Root Styles */
 html {
-  @apply text-[14px] md:text-[12px] text-gray-900 bg-slate-300;
+  @apply text-[14px] md:text-[12px] text-gray-900 bg-slate-300 relative;
   -webkit-tap-highlight-color: transparent;
 }
 body {

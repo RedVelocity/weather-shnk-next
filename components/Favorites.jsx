@@ -48,7 +48,7 @@ const FavButton = ({ favKey, location }) => {
   const [locName, ...locRegion] = renderFav ? fav.name.split(',') : ['', ''];
 
   return (
-    <div className="relative h-28 sm:h-full">
+    <div className="relative h-28 sm:min-h-full">
       <AnimatePresence initial={false}>
         {renderFav && (
           <motion.div
@@ -62,7 +62,7 @@ const FavButton = ({ favKey, location }) => {
             <Link
               href={`weather?q=${encodeURI(fav.name.replaceAll(', ', ','))}`}
               passHref
-              className="flex flex-col items-center justify-center h-full p-4 text-center bg-slate-300 card"
+              className="flex flex-col items-center justify-center h-full p-4 text-center bg-slate-200/20 card"
               scroll={false}
             >
               <h3>{locName}</h3>
@@ -87,12 +87,14 @@ const FavButton = ({ favKey, location }) => {
           disabled={renderFav}
           onClick={() => setFav(location)}
         >
-          <Image
-            src="/assets/weather-icons/add.png"
-            height={50}
-            width={50}
-            alt="Add Favorite"
-          />
+          {!renderFav && (
+            <Image
+              src="/assets/weather-icons/add.png"
+              height={50}
+              width={50}
+              alt="Add Favorite"
+            />
+          )}
         </button>
       </AnimatePresence>
     </div>
