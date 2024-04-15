@@ -65,6 +65,7 @@ const Home = async ({ searchParams }) => {
     if (!location.latitude) return notFound();
     weather = await getWeather(location.latitude, location.longitude);
   } catch (error) {
+    console.log('error', error);
     return notFound();
   }
 

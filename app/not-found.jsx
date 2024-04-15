@@ -1,5 +1,5 @@
 const NotFoundPage = () => (
-  <div className="grid place-items-center">
+  <div className="grid p-4 text-center place-items-center">
     <h1 className="mb-2 text-xl font-bold capitalize">
       Oops! Something Went Wrong!
     </h1>
