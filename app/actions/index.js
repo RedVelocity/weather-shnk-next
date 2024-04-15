@@ -6,8 +6,10 @@ export const getWeather = async (latitude, longitude) => {
 
   let formattedData = {};
   const res = await fetch(API_ENDPOINT, { next: { revalidate: 0 } });
+  if (!res.ok) {
+    throw new Error(res.statusText);
+  }
   const { timezone, daily, current, hourly } = await res.json();
-  // console.log(data, 'data');
   formattedData = {
     timezone,
     current: {
@@ -32,6 +34,9 @@ export const getLocation = async (searchTerm) => {
   const API_ENDPOINT = `https://api.mapbox.com/geocoding/v5/mapbox.places/${searchTerm}.json?access_token=${process.env.NEXT_PUBLIC_MAPBOX_BACKEND}&types=place,locality&language=en&limit=1`;
   try {
     const res = await fetch(API_ENDPOINT);
+    if (!res.ok) {
+      throw new Error(res.statusText);
+    }
     const data = await res.json();
     const feature = data.features[0];
     const location = {
@@ -54,8 +59,11 @@ export const getPlaces = async (latitude, longitude, searchTerm) => {
       : '';
   const API_ENDPOINT = `https://api.mapbox.com/geocoding/v5/mapbox.places/${searchTerm}.json?access_token=${process.env.NEXT_PUBLIC_MAPBOX_BACKEND}&types=place,locality&language=en&limit=25${proximity}`;
 
-  const response = await fetch(API_ENDPOINT);
-  const data = await response.json();
+  const res = await fetch(API_ENDPOINT);
+  if (!res.ok) {
+    throw new Error(res.statusText);
+  }
+  const data = await res.json();
   // console.log(data, 'data');
   const places = data.features.map((feature) => {
     const locality = !feature.context
