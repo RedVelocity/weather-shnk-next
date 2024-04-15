@@ -51,6 +51,7 @@ const Home = async ({ searchParams }) => {
   const query = decodeURIComponent(q);
 
   let location;
+  let weather;
   try {
     query !== 'undefined'
       ? (location = await getLocation(query))
@@ -61,12 +62,11 @@ const Home = async ({ searchParams }) => {
           curLat: 0, // Use if you'd like localized results
           curLon: 0,
         });
+    if (!location.latitude) return notFound();
+    weather = await getWeather(location.latitude, location.longitude);
   } catch (error) {
     return notFound();
   }
-
-  if (!location.latitude) return notFound();
-  const weather = await getWeather(location.latitude, location.longitude);
 
   return (
     <>
