@@ -7,7 +7,6 @@ const colors = {
   txtDark: '#e5e7eb',
   baseLight: '#cbd5e1',
   txtLight: '#111827',
-  surfaceTranslucent: '#D5DDE7',
   surfaceLight: '#F3F4F6',
 };
 

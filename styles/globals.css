@@ -7,10 +7,12 @@
   html {
     @apply text-[14px] md:text-[12px] relative;
     -webkit-tap-highlight-color: transparent;
+    font-family: 'Montserrat', sans-serif;
   }
   body {
     @apply flex flex-col max-w-screen-xl min-h-screen mx-auto text-txtLight bg-baseLight;
-    font-family: 'Montserrat', sans-serif;
+    background-image: radial-gradient(#abacbc 0.55px, #cbd5e1 0.55px);
+    background-size: 11px 11px;
   }
   h1 {
     @apply text-4xl font-semibold tracking-wide;
@@ -63,7 +65,7 @@
     @apply px-2 py-1 rounded-full;
   }
   .wrapper {
-    @apply p-4 tracking-wide card backdrop-blur-sm bg-surfaceTranslucent;
+    @apply p-4 tracking-wide card backdrop-blur-sm bg-baseLight/30;
   }
 }
 
