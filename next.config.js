@@ -18,13 +18,13 @@ module.exports = withBundleAnalyzer({
   // experimental: {
   //   appDir: true,
   // },
-  async redirects() {
-    return [
-      {
-        source: '/',
-        destination: '/weather?q=Scranton,Pennsylvania,USA',
-        permanent: false,
-      },
-    ];
-  },
+  // async redirects() {
+  //   return [
+  //     {
+  //       source: '/',
+  //       destination: '/weather?q=Scranton,Pennsylvania,USA',
+  //       permanent: false,
+  //     },
+  //   ];
+  // },
 });

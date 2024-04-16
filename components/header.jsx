@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 
 const Header = ({ hostName, hostUrl }) => (
-  <header className="text-2xl font-bold text-dark uppercase max-w-screen-lg p-4">
+  <header className="max-w-screen-lg p-4 text-2xl font-bold uppercase">
     <a href={hostUrl}>{hostName}</a>
   </header>
 );

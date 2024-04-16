@@ -62,7 +62,7 @@ const FavButton = ({ favKey, location }) => {
             <Link
               href={`weather?q=${encodeURI(fav.name.replaceAll(', ', ','))}`}
               passHref
-              className="flex flex-col items-center justify-center h-full p-4 text-center bg-slate-200/20 card"
+              className="flex flex-col items-center justify-center h-full p-4 text-center bg-surfaceLight/30 card"
               scroll={false}
             >
               <h3>{locName}</h3>

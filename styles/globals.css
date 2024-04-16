@@ -5,11 +5,11 @@
 @layer base {
   /* Root Styles */
   html {
-    @apply text-[14px] md:text-[12px] text-txtLight bg-light relative;
+    @apply text-[14px] md:text-[12px] relative;
     -webkit-tap-highlight-color: transparent;
   }
   body {
-    @apply flex flex-col max-w-screen-xl min-h-screen mx-auto;
+    @apply flex flex-col max-w-screen-xl min-h-screen mx-auto text-txtLight bg-baseLight;
     font-family: 'Montserrat', sans-serif;
   }
   h1 {
@@ -63,7 +63,7 @@
     @apply px-2 py-1 rounded-full;
   }
   .wrapper {
-    @apply p-4 tracking-wide card backdrop-blur-sm bg-white/20;
+    @apply p-4 tracking-wide card backdrop-blur-sm bg-surfaceTranslucent;
   }
 }
 

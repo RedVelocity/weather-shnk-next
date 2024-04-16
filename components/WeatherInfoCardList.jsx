@@ -14,7 +14,7 @@ const WeatherInfoCardList = ({ className, weather }) => {
   const { current } = weather;
   return (
     <ul
-      className={`${className} card p-4 gap-1 bg-dark min-w-[18rem] h-[16rem] text-gray-200`}
+      className={`${className} card p-4 gap-1 bg-baseDark min-w-[18rem] h-[16rem] text-txtDark`}
     >
       <>
         <WeatherInfoCard
