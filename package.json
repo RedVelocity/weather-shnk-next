@@ -1,17 +1,17 @@
 {
   "name": "weather-shnk-next",
-  "version": "13.3.8",
+  "version": "13.3.9",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "export": "next export",
-    "lint": "next lint",
+    "lint": "eslint .",
     "analyze": "cross-env ANALYZE=true next build",
-    "git:patch": "npm --no-git-tag-version --no-commit-hooks version patch && git add -A && git commit -m",
-    "git:minor": "npm --no-git-tag-version --no-commit-hooks version minor && git add -A && git commit -m",
-    "git:major": "npm --no-git-tag-version --no-commit-hooks version major && git add -A && git commit -m"
+    "git:patch": "npm run lint && npm --no-git-tag-version --no-commit-hooks version patch && git add -A && git commit -m",
+    "git:minor": "npm run lint && npm --no-git-tag-version --no-commit-hooks version minor && git add -A && git commit -m",
+    "git:major": "npm run lint && npm --no-git-tag-version --no-commit-hooks version major && git add -A && git commit -m"
   },
   "dependencies": {
     "@headlessui/react": "^1.7.18",

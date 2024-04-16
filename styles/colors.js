@@ -1,8 +1,12 @@
-import resolveConfig from 'tailwindcss/resolveConfig';
-// eslint-disable-next-line import/extensions
-import tailwindConfig from '@/tailwind.config.js';
+const colors = {
+  cool: '#97d9e1',
+  mild: '#d9afd9',
+  milder: '#ff8b7e',
+  hot: '#F9B900',
+  dark: '#262d4a',
+  txtDark: '#e5e7eb',
+  light: '#cbd5e1',
+  txtLight: '#111827',
+};
 
-const config = resolveConfig(tailwindConfig);
-const { theme } = config;
-
-export default theme.colors;
+module.exports = colors;
