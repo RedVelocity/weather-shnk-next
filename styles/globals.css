@@ -2,32 +2,45 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Root Styles */
-html {
-  @apply text-[14px] md:text-[12px] text-gray-900 bg-slate-300 relative;
-  -webkit-tap-highlight-color: transparent;
+:root {
+  --cool: #97d9e1;
+  --mild: #d9afd9;
+  --milder: #ff8b7e;
+  --hot: #f9b900;
+  --dark: #262d4a;
+  --txt-dark: #e5e7eb;
+  --light: #cbd5e1;
+  --txt-light: #111827;
 }
-body {
-  @apply flex flex-col max-w-screen-xl min-h-screen mx-auto;
-  font-family: 'Montserrat', sans-serif;
-}
-h1 {
-  @apply text-4xl font-semibold tracking-wide;
-}
-h2 {
-  @apply text-2xl font-semibold tracking-wide;
-}
-h3 {
-  @apply text-xl font-semibold tracking-wide;
-}
-h4 {
-  @apply text-lg font-semibold tracking-wide;
-}
-h5 {
-  @apply text-base font-semibold tracking-wide;
-}
-p {
-  @apply text-base tracking-wide;
+
+@layer base {
+  /* Root Styles */
+  html {
+    @apply text-[14px] md:text-[12px] text-txtLight bg-light relative;
+    -webkit-tap-highlight-color: transparent;
+  }
+  body {
+    @apply flex flex-col max-w-screen-xl min-h-screen mx-auto;
+    font-family: 'Montserrat', sans-serif;
+  }
+  h1 {
+    @apply text-4xl font-semibold tracking-wide;
+  }
+  h2 {
+    @apply text-2xl font-semibold tracking-wide;
+  }
+  h3 {
+    @apply text-xl font-semibold tracking-wide;
+  }
+  h4 {
+    @apply text-lg font-semibold tracking-wide;
+  }
+  h5 {
+    @apply text-base font-semibold tracking-wide;
+  }
+  p {
+    @apply text-base tracking-wide;
+  }
 }
 
 *:focus {
@@ -65,7 +78,7 @@ p {
   }
 }
 
-/* Styles */
+/* Custom Styles */
 .hot {
   @apply bg-hot;
 }
