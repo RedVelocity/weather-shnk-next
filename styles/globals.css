@@ -11,8 +11,8 @@
   }
   body {
     @apply flex flex-col max-w-screen-xl min-h-screen mx-auto text-txtLight bg-baseLight;
-    background-image: radial-gradient(#abacbc 0.55px, #cbd5e1 0.55px);
-    background-size: 11px 11px;
+    background-image: radial-gradient(#a5a5a5 1.2px, #cbd5e1 1.2px);
+    background-size: 21px 21px;
   }
   h1 {
     @apply text-4xl font-semibold tracking-wide;
