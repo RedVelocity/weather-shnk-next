@@ -11,11 +11,11 @@
   }
   body {
     @apply flex flex-col max-w-screen-xl min-h-screen mx-auto text-txtLight bg-baseLight;
-    background: linear-gradient(-180deg, #929ead 0%, #cfd8e2 98%),
+    background: linear-gradient(-180deg, #b5c4d6 0%, #cfd8e2 98%),
       radial-gradient(
         at bottom right,
-        rgba(255, 255, 255, 0.3) 0%,
-        rgba(0, 0, 0, 0.3) 100%
+        rgba(255, 255, 255, 0.4) 0%,
+        rgba(0, 0, 0, 0.5) 100%
       );
     background-blend-mode: screen;
   }
