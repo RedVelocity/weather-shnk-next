@@ -8,6 +8,7 @@ import HourlyWeather from '@/components/HourlyWeather';
 import DailyWeather from '@/components/DailyWeather';
 import WeatherMap from '@/components/WeatherMap';
 import Favorites from '@/components/Favorites';
+import { headers } from 'next/headers';
 
 // export const generateMetadata = async ({ searchParams }) => {
 //   // read route params
@@ -53,15 +54,33 @@ const Home = async ({ searchParams }) => {
   let location;
   let weather;
   try {
-    query !== 'undefined'
-      ? (location = await getLocation(query))
-      : (location = {
+    if (query !== 'undefined') location = await getLocation(query);
+    else {
+      const header = headers();
+      const IP = (header.get('x-real-ip') ?? '127.0.0.1').split(',')[0];
+      const res = await fetch(
+        `http://ip-api.com/json/${IP}?fields=status,country,regionName,city,lat,lon`
+      );
+      const data = await res.json();
+      if (!res.ok || data.status === 'fail') {
+        location = {
           name: 'Scranton, Pennsylvania, USA.',
           latitude: 41.411835,
           longitude: -75.665245,
           curLat: 0, // Use if you'd like localized results
           curLon: 0,
-        });
+        };
+      } else {
+        const { country, regionName, city, lat, lon } = data;
+        location = {
+          name: `${city},${regionName},${country}`,
+          latitude: lat,
+          longitude: lon,
+          curLat: 0, // Use if you'd like localized results
+          curLon: 0,
+        };
+      }
+    }
     if (!location.latitude) return notFound();
     weather = await getWeather(location.latitude, location.longitude);
   } catch (error) {

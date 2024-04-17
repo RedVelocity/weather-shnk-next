@@ -9,6 +9,8 @@ const Home = async () => {
   );
   !res.ok && redirect('/weather?q=Scranton,Pennsylvania,USA');
   const location = await res.json();
+  const { status } = location;
+  status === 'fail' && redirect('/weather?q=Scranton,Pennsylvania,USA');
   const { country, regionName, city } = location;
   console.log('IP', IP, location);
   redirect(`/weather?q=${city},${regionName},${country}`);
