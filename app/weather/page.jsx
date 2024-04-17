@@ -9,6 +9,7 @@ import DailyWeather from '@/components/DailyWeather';
 import WeatherMap from '@/components/WeatherMap';
 import Favorites from '@/components/Favorites';
 import { headers } from 'next/headers';
+import UpdateParams from '@/components/UpdateParams';
 
 // export const generateMetadata = async ({ searchParams }) => {
 //   // read route params
@@ -64,7 +65,7 @@ const Home = async ({ searchParams }) => {
       const data = await res.json();
       if (!res.ok || data.status === 'fail') {
         location = {
-          name: 'Scranton, Pennsylvania, USA.',
+          name: 'Scranton,Pennsylvania,USA',
           latitude: 41.411835,
           longitude: -75.665245,
           curLat: 0, // Use if you'd like localized results
@@ -91,6 +92,7 @@ const Home = async ({ searchParams }) => {
   return (
     <>
       {/* <HydrateAtoms weather={weather} location={location} /> */}
+      <UpdateParams location={location} />
       <div className="grid gap-3 mx-4 md:grid-cols-3">
         <section className="flex flex-col space-y-3">
           <SearchCard weather={weather} location={location} />

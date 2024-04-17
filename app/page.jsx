@@ -7,12 +7,11 @@ const Home = async () => {
   const res = await fetch(
     `http://ip-api.com/json/${IP}?fields=status,country,regionName,city`
   );
-  !res.ok && redirect('/weather?q=Scranton,Pennsylvania,USA');
-  const location = await res.json();
-  const { status } = location;
-  status === 'fail' && redirect('/weather?q=Scranton,Pennsylvania,USA');
-  const { country, regionName, city } = location;
-  console.log('IP', IP, location);
+  const data = await res.json();
+  (!res.ok || data.status === 'fail') &&
+    redirect('/weather?q=Scranton,Pennsylvania,USA');
+  const { country, regionName, city } = data;
+  // console.log('IP', IP, location);
   redirect(`/weather?q=${city},${regionName},${country}`);
 };
 
