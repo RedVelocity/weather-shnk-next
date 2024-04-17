@@ -16,7 +16,7 @@ const HourlyWeather = ({ weather }) => {
       <div className="grid grid-cols-1 mt-4 text-center capitalize gap-y-1 gap-x-2 sm:grid-cols-2">
         {hourly.slice(0, 12).map((item, i) => (
           <div
-            className="grid items-center justify-around grid-cols-4 gap-2 px-2 py-1 bg-white/5 card"
+            className="grid items-center justify-around grid-cols-4 gap-2 px-2 py-1 bg-surfaceLight/30 card"
             key={`hourly ${i}`}
           >
             <h4 className="tracking-wider">

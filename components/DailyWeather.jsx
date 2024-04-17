@@ -14,7 +14,7 @@ const DailyWeather = ({ weather }) => {
       <div className="grid gap-2 mt-4 text-center capitalize sm:grid-cols-2">
         {daily.map((item, i) => (
           <div
-            className="grid grid-cols-2 gap-1 p-4 place-items-stretch card"
+            className="grid grid-cols-2 gap-1 p-4 place-items-stretch card bg-surfaceLight/30"
             key={`summary-${i}`}
           >
             <div className="flex items-center gap-3">
