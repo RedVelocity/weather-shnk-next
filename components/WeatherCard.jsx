@@ -56,10 +56,10 @@ const WeatherCard = ({ weather, location }) => {
         backgroundPosition,
         transition: 'background-position 500ms linear',
       }}
-      className="flex flex-col flex-1 p-4 card justify-evenly"
+      className="flex flex-col w-full gap-2 p-4 card justify-evenly"
     >
       <>
-        <div className="grid grid-cols-3 gap-4 py-4 place-items-center">
+        <div className="grid grid-cols-3 gap-4 py-2 place-items-center">
           <WeatherIcon icon={current.weather.icon} size="large" animate />
           <motion.h2
             key={current.weather.description}
@@ -84,7 +84,7 @@ const WeatherCard = ({ weather, location }) => {
         <p className="text-right">{`Low ${Math.round(
           minTemp
         )}°C • High ${Math.round(maxTemp)}°C`}</p>
-        <span className="block p-2 mt-2 mb-4 font-semibold tracking-wide text-center rounded bg-surfaceLight md:px-4 md:py-3">
+        <span className="block p-2 my-2 font-semibold tracking-wide text-center rounded bg-surfaceLight md:px-4 md:py-3">
           {additionalInfo}
         </span>
       </>

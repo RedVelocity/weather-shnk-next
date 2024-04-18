@@ -1,6 +1,6 @@
 {
   "name": "weather-shnk-next",
-  "version": "13.5.6",
+  "version": "13.5.7",
   "private": true,
   "scripts": {
     "dev": "next dev",

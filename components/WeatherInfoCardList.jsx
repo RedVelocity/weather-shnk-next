@@ -12,9 +12,12 @@ import {
 
 const WeatherInfoCardList = ({ className, weather }) => {
   const { current } = weather;
+  const uvi = Math.round((current.uvi * 100) / 11);
+  const uvPercentage = uvi > 100 ? 100 : uvi;
+  console.log('uvPercentage', uvPercentage, current.uvi);
   return (
     <ul
-      className={`${className} card p-4 gap-1 bg-baseDark min-w-[18rem] h-[16rem] text-txtDark`}
+      className={`${className} card p-4 gap-1 bg-baseDark min-w-[18rem] h-full text-txtDark`}
     >
       <>
         <WeatherInfoCard
@@ -37,6 +40,11 @@ const WeatherInfoCardList = ({ className, weather }) => {
           title="Dew Point"
           content={`${current.dew_point.toFixed()}°C`}
         />
+        {/* <div className="w-full p-2 card bg-surfaceLight/5">
+          <div
+            className={`after:transition-all w-full relative h-3 rounded-full bg-mild after:content-[''] after:h-5 after:w-5 after:rounded-full after:bg-white after:shadow after:absolute after:left-[${uvPercentage}%] after:top-[-50%] after:ease-in-out after:duration-200`}
+          />
+        </div> */}
       </>
     </ul>
   );
