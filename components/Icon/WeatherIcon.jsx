@@ -48,7 +48,6 @@ const WeatherIcon = ({ icon, size, className, animate = false }) => {
       width={sizes[size]}
       key={icon}
       alt={weatherIcons[icon]}
-      priority
     />
   );
 };
