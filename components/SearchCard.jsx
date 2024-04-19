@@ -12,6 +12,7 @@ import { useRouter } from 'next13-progressbar';
 // import useLocation from '@/lib/hooks/useLocation';
 import { getPlaces } from '@/app/actions';
 import useTheme from '@/lib/hooks/useTheme';
+import useRecentSearch from '@/lib/hooks/useRecentSearch';
 
 const variants = {
   animate: {
@@ -35,10 +36,12 @@ const colorVariants = {
 };
 
 const SearchCard = ({ weather, location }) => {
+  const router = useRouter();
   const theme = useTheme(weather.current.temp);
   const [placesList, setPlacesList] = useState([]);
-  const router = useRouter();
-  // Current combobox item
+  // Recent search items
+  const { searches, addSearch } = useRecentSearch();
+  // Selected combobox item
   const [selectedPlace, setSelectedPlace] = useState(placesList[0]);
   const [searchInput, setSearchInput] = useState('');
   const [debouncedSearch] = useDebouncedValue(searchInput, 200);
@@ -68,6 +71,7 @@ const SearchCard = ({ weather, location }) => {
         <Combobox
           value={selectedPlace || ''}
           onChange={(place) => {
+            addSearch(place);
             setSelectedPlace(place);
             router.push(
               `weather?q=${place.place_name},${place.place_locality
@@ -103,7 +107,7 @@ const SearchCard = ({ weather, location }) => {
                 </Combobox.Button>
               </div>
               <AnimatePresence>
-                {open && placesList.length > 0 && (
+                {open && (
                   <motion.div
                     variants={variants}
                     initial="initial"
@@ -112,21 +116,42 @@ const SearchCard = ({ weather, location }) => {
                   >
                     <Combobox.Options
                       static
-                      className="absolute z-10 min-w-full mt-2 overflow-hidden shadow bg-surfaceLight rounded-xl"
+                      className="absolute z-10 min-w-full mt-2 overflow-hidden shadow card bg-surfaceLight"
                     >
-                      <div className="overflow-x-hidden max-h-64">
-                        {placesList?.map((place) => (
-                          <Combobox.Option
-                            key={place.id}
-                            value={place}
-                            className={`${colorVariants[theme]} hover-${theme} rounded-lg px-2 py-1 cursor-pointer mx-2 first:mt-2 last:mb-2`}
-                          >
-                            <div className="pointer-events-none">
-                              <h5>{place.place_name}</h5>
-                              <p>{place.place_address}</p>
-                            </div>
-                          </Combobox.Option>
-                        ))}
+                      <div className="overflow-x-hidden max-h-80">
+                        {placesList.length > 0 &&
+                          searchInput !== '' &&
+                          placesList.map((place) => (
+                            <Combobox.Option
+                              key={place.id}
+                              value={place}
+                              className={`${colorVariants[theme]} hover-${theme} rounded-lg px-2 py-1 cursor-pointer mx-2 first:mt-2 last:mb-2`}
+                            >
+                              <div className="pointer-events-none">
+                                <h5>{place.place_name}</h5>
+                                <p>{place.place_address}</p>
+                              </div>
+                            </Combobox.Option>
+                          ))}
+                        {searches.length > 0 && searchInput === '' && (
+                          <>
+                            <h5 className="px-4 py-1 tracking-widest uppercase border-b-2">
+                              Recent Searches
+                            </h5>
+                            {searches.toReversed().map((place) => (
+                              <Combobox.Option
+                                key={place.id}
+                                value={place}
+                                className={`${colorVariants[theme]} hover-${theme} rounded-lg px-2 py-1 cursor-pointer mx-2 first:mt-2 last:mb-2`}
+                              >
+                                <div className="pointer-events-none">
+                                  <h5>{place.place_name}</h5>
+                                  <p>{place.place_address}</p>
+                                </div>
+                              </Combobox.Option>
+                            ))}
+                          </>
+                        )}
                       </div>
                     </Combobox.Options>
                   </motion.div>
