@@ -135,7 +135,7 @@ const SearchCard = ({ weather, location }) => {
                           ))}
                         {searches.length > 0 && searchInput === '' && (
                           <>
-                            <h5 className="px-4 py-1 tracking-widest uppercase border-b-2">
+                            <h5 className="px-4 py-1 mb-1 tracking-widest uppercase border-b-2">
                               Recent Searches
                             </h5>
                             {searches.toReversed().map((place) => (
