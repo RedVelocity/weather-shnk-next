@@ -7,7 +7,7 @@ const Footer = () => (
           href="https://openweathermap.org/"
           rel="noreferrer"
           target="_blank"
-          className="pill bg-baseDark text-cool"
+          className="pill bg-baseDark text-baseLight"
         >
           OpenWeather
         </a>

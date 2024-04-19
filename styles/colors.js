@@ -5,7 +5,7 @@ const colors = {
   hot: '#F9B900',
   baseDark: '#262d4a',
   txtDark: '#e5e7eb',
-  baseLight: '#cbd5e1',
+  baseLight: '#C8D3E0',
   txtLight: '#111827',
   surfaceLight: '#F3F4F6',
 };

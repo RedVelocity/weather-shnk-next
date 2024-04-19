@@ -10,14 +10,14 @@
     font-family: 'Montserrat', sans-serif;
   }
   body {
-    @apply flex flex-col max-w-screen-xl min-h-screen mx-auto text-txtLight bg-baseLight;
-    background: linear-gradient(-180deg, #b5c4d6 0%, #cfd8e2 98%),
+    @apply flex flex-col max-w-screen-xl min-h-screen mx-auto text-txtLight bg-baseLight scroll-smooth;
+    /* background: linear-gradient(-180deg, #b5c4d6 0%, #cfd8e2 98%),
       radial-gradient(
         at bottom right,
         rgba(255, 255, 255, 0.4) 0%,
         rgba(0, 0, 0, 0.5) 100%
       );
-    background-blend-mode: screen;
+    background-blend-mode: screen; */
   }
   h1 {
     @apply text-4xl font-semibold tracking-wide;
