@@ -7,13 +7,13 @@ const colors = {
   milder: '#ff8b7e',
   hot: '#F9B900',
   // surfaces
-  baseDark: '#0A2647',
+  baseDark: '#142850',
   txtDark: twColors.gray[300],
   baseLight: '#C8D3E0',
   txtLight: twColors.gray[700],
   surfaceLight: twColors.gray[200],
-  surfaceWrapperDark: '#144272',
-  surfaceDark: '#205295',
+  wrapperDark: '#27496D',
+  surfaceDark: '#0C7B93',
   // basic colors
   blue: twColors.blue[400],
   purple: twColors.purple[300],
