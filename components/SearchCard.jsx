@@ -66,7 +66,7 @@ const SearchCard = ({ weather, location }) => {
 
   return (
     <div className="p-4 card bg-baseDark">
-      <h3 className="text-gray-200">Search</h3>
+      <h3 className="text-txtDark">Search</h3>
       <div className="relative my-4">
         <Combobox
           value={selectedPlace || ''}
