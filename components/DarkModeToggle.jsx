@@ -4,9 +4,10 @@ import { useTheme } from 'next-themes';
 import Image from 'next/image';
 
 const DarkModeToggle = () => {
-  const { setTheme, resolvedTheme } = useTheme();
+  const { setTheme, resolvedTheme, theme } = useTheme();
+  const renderedTheme = theme === 'system' ? resolvedTheme : theme; 
   const toggleColorScheme = () => {
-    setTheme(() => (resolvedTheme === 'dark' ? 'light' : 'dark'));
+    setTheme(() => (renderedTheme === 'dark' ? 'light' : 'dark'));
   };
   return (
     <button
@@ -22,7 +23,7 @@ const DarkModeToggle = () => {
       </span>
       <div
         className={`absolute bg-baseDark ${
-          resolvedTheme === 'dark' ? 'translate-x-0' : 'translate-x-8'
+          renderedTheme === 'dark' ? 'translate-x-0' : 'translate-x-8'
         } text-accent transition-transform duration-500 ease-in-out rounded-full h-7 w-7`}
       />
     </button>
