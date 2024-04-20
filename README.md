@@ -1,34 +1,41 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Yet Another Weather App
 
-## Getting Started
+Honestly, I've spent way too much time for what seems to be a "simple" weather app. But I'm quite proud of what I've achieved [here](https://weather.redvelo.site/)
+I hope this repo will serve as a good starting point for those who are new to NextJS.
 
-First, run the development server:
+Countless hours spent on:
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+- Making my unique design from scratch, I wanted the **_colors to POP_** - this might not be everyone's cuppa.
+- Responsive design, had to be **_very good looking_** in phones, tablets & PC.
+- **_90+_** Pagespeed score.
+- Learn and implement core concepts of Nextjs 13; mixing SSR with CSR was when it came to Hydration, but it's definitely worth it for the performance gains.
+- Add subtle animations.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+The codebase is kind of a mess, because I started this off with CRA before moving on NextJS pages router. It was later updated to NextJS app router for enhanced server rendering.
+As a result of multiple migrations/experimentation, the codebase contains several redundant files/functions. I intend to keep it that way so the changes are quite evident especially to highlight the differences between SSR/RSC & CSR.
+The commit messages might not make sense, I've pushed code through phone a few times...
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+# Core Technical Features
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+- RSC app with data passed to components as props, if you'd like to see RSC + CSR which fetches data on the server and passes it down to components over context rather than props then checkout the SSR_CSR branch.
+- Server actions for client side calls.
+- LazyMotion for reduced bundle size of framer motion.
+- Custom React hooks.
+- Recently implemented **_Dark Mode!_**
+- **_Colors change_** based on temp range.
+- Identify location based on IP.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+## Requirements
 
-## Learn More
+- This is a NextJS app, requires a valid runtime/server.
+- Obviously requires API keys for **OpenWeather**[to fetch weather] & **Mapbox**[for geocoding], more details can be found in .env.example
 
-To learn more about Next.js, take a look at the following resources:
+## Potential Improvements
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+I'm extremely satisfied with the current state of this app, but it does not mean there's no room for improvements. I can think of few things.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+- Fahrenheit conversion is something few people requested.
+- Probably have a linear bar to display the intensity of UVI.
+- Display Sunrise/Sunset in cool way, I like how Accuweather does it.
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+If this repo helps you in any way, don't forget to star it :)
