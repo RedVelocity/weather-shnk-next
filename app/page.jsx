@@ -4,6 +4,7 @@ import { redirect } from 'next/navigation';
 const Home = async () => {
   const header = headers();
   const IP = (header.get('x-real-ip') ?? '127.0.0.1').split(',')[0];
+  IP === '127.0.0.1' && redirect('/weather?q=Scranton,Pennsylvania,USA');
   const res = await fetch(
     `http://ip-api.com/json/${IP}?fields=status,country,regionName,city`
   );

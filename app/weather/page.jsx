@@ -59,11 +59,15 @@ const Home = async ({ searchParams }) => {
     else {
       const header = headers();
       const IP = (header.get('x-real-ip') ?? '127.0.0.1').split(',')[0];
-      const res = await fetch(
-        `http://ip-api.com/json/${IP}?fields=status,country,regionName,city,lat,lon`
-      );
-      const data = await res.json();
-      if (!res.ok || data.status === 'fail') {
+      let res;
+      let data;
+      if (IP !== '127.0.0.1') {
+        res = await fetch(
+          `http://ip-api.com/json/${IP}?fields=status,country,regionName,city,lat,lon`
+        );
+        data = await res.json();
+      }
+      if (IP === '127.0.0.1' || !res.ok || data?.status === 'fail') {
         location = {
           name: 'Scranton,Pennsylvania,USA',
           latitude: 41.411835,
