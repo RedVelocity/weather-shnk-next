@@ -116,7 +116,7 @@ const SearchCard = ({ weather, location }) => {
                   >
                     <Combobox.Options
                       static
-                      className="absolute z-10 min-w-full mt-2 overflow-hidden shadow card bg-surfaceLight dark:bg-surfaceWrapperDark"
+                      className="absolute z-10 min-w-full mt-2 overflow-hidden rounded-lg shadow bg-surfaceLight dark:bg-surfaceWrapperDark"
                     >
                       <div className="overflow-x-hidden max-h-80">
                         {placesList.length > 0 &&
@@ -135,7 +135,7 @@ const SearchCard = ({ weather, location }) => {
                           ))}
                         {searches.length > 0 && searchInput === '' && (
                           <>
-                            <h5 className="px-4 py-1 mb-1 tracking-widest uppercase border-b dark:border-txtDark border-txtLight">
+                            <h5 className="px-4 py-1 mb-1 tracking-widest uppercase border-b border-gray">
                               Recent Searches
                             </h5>
                             {searches.toReversed().map((place) => (

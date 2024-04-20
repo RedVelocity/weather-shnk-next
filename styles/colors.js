@@ -17,6 +17,7 @@ const colors = {
   // basic colors
   blue: twColors.blue[400],
   purple: twColors.purple[300],
+  gray: twColors.slate[400],
 };
 
 module.exports = colors;
