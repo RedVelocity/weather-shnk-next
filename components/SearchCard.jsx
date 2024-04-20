@@ -30,9 +30,9 @@ const variants = {
 };
 
 const colorVariants = {
-  hot: 'ui-active:bg-gradient-to-r ui-active:from-milder ui-active:to-hot',
-  mild: 'ui-active:bg-gradient-to-r ui-active:from-mild ui-active:to-milder',
-  cool: 'ui-active:bg-gradient-to-r ui-active:from-cool ui-active:to-purple-300',
+  hot: 'ui-active:bg-gradient-to-r ui-active:from-milder ui-active:to-hot ui-active:text-txtLight',
+  mild: 'ui-active:bg-gradient-to-r ui-active:from-mild ui-active:to-milder ui-active:text-txtLight',
+  cool: 'ui-active:bg-gradient-to-r ui-active:from-cool ui-active:to-purple ui-active:text-txtLight',
 };
 
 const SearchCard = ({ weather, location }) => {
@@ -88,7 +88,7 @@ const SearchCard = ({ weather, location }) => {
                 <Combobox.Input
                   onChange={(e) => setSearchInput(e.target.value)}
                   displayValue={(place) => place.place_name}
-                  className="w-full p-2 rounded-l bg-surfaceLight rounded-r-3xl"
+                  className="w-full p-2 rounded-l bg-surfaceLight dark:bg-surfaceWrapperDark rounded-r-3xl"
                   autoComplete="off"
                   placeholder="Place Name"
                 />
@@ -116,7 +116,7 @@ const SearchCard = ({ weather, location }) => {
                   >
                     <Combobox.Options
                       static
-                      className="absolute z-10 min-w-full mt-2 overflow-hidden shadow card bg-surfaceLight"
+                      className="absolute z-10 min-w-full mt-2 overflow-hidden shadow card bg-surfaceLight dark:bg-surfaceWrapperDark"
                     >
                       <div className="overflow-x-hidden max-h-80">
                         {placesList.length > 0 &&
@@ -135,7 +135,7 @@ const SearchCard = ({ weather, location }) => {
                           ))}
                         {searches.length > 0 && searchInput === '' && (
                           <>
-                            <h5 className="px-4 py-1 mb-1 tracking-widest uppercase border-b-2">
+                            <h5 className="px-4 py-1 mb-1 tracking-widest uppercase border-b dark:border-txtDark border-txtLight">
                               Recent Searches
                             </h5>
                             {searches.toReversed().map((place) => (

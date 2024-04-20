@@ -1,13 +1,13 @@
 const Footer = () => (
-  <footer className="font-semibold">
-    <div className="flex flex-col justify-between max-w-screen-lg gap-2 p-4 m-auto text-sm text-center md:flex-row md:text-lg">
+  <footer>
+    <div className="flex flex-col justify-between max-w-screen-lg gap-2 p-4 m-auto text-sm tracking-wider text-center md:flex-row md:text-lg">
       <span>
         Powered by{' '}
         <a
           href="https://openweathermap.org/"
           rel="noreferrer"
           target="_blank"
-          className="pill bg-baseDark text-baseLight"
+          className="font-semibold pill bg-baseDark dark:bg-baseLight text-baseLight dark:text-baseDark"
         >
           OpenWeather
         </a>
@@ -19,7 +19,7 @@ const Footer = () => (
           rel="noreferrer"
           target="_blank"
           title="Freepik"
-          className="pill bg-milder"
+          className="font-semibold pill bg-milder text-txtLight"
         >
           Freepik
         </a>{' '}

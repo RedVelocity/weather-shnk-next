@@ -56,7 +56,7 @@ const WeatherCard = ({ weather, location }) => {
         backgroundPosition,
         transition: 'background-position 500ms linear',
       }}
-      className="flex flex-col w-full gap-2 p-4 card justify-evenly"
+      className="flex flex-col w-full gap-2 p-4 card justify-evenly text-txtLight"
     >
       <>
         <div className="grid grid-cols-3 gap-4 py-2 place-items-center">

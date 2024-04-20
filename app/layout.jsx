@@ -11,7 +11,7 @@ export default async function RootLayout({ children }) {
   );
   const host = await res.json();
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       {/*
         <head /> will contain the components returned by the nearest parent
         head.tsx. Find out more at https://beta.nextjs.org/docs/api-reference/file-conventions/head
