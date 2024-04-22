@@ -22,8 +22,8 @@ const colors = {
 };
 
 const textColors = {
-  primary: { DEFAULT: twColors.gray[800], dark: twColors.gray[200] },
-  secondary: { DEFAULT: twColors.gray[700], dark: twColors.gray[300] },
+  primary: { DEFAULT: twColors.slate[800], dark: '#E2E8F0' },
+  secondary: { DEFAULT: twColors.slate[700], dark: '#AFACBF' },
   muted: '#2E3A4E',
   current: 'currentColor',
   inherit: 'inherit',

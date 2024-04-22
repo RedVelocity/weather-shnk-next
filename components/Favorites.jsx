@@ -66,7 +66,7 @@ const FavButton = ({ favKey, location }) => {
               scroll={false}
             >
               <h3>{locName}</h3>
-              <p>{locRegion.join(', ')}</p>
+              <p className="secondary">{locRegion.join(', ')}</p>
             </Link>
             <button
               type="button"

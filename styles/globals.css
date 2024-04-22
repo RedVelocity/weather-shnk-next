@@ -43,9 +43,6 @@
   @apply outline-none ring ring-blue;
 }
 
-#__next {
-  @apply flex flex-col max-w-screen-lg min-h-screen mx-auto;
-}
 @layer utilities {
   .bg-gradient-hot {
     @apply bg-gradient-to-r from-milder to-hot;
@@ -55,6 +52,9 @@
   }
   .bg-gradient-mild {
     @apply bg-gradient-to-r from-mild to-milder;
+  }
+  .secondary {
+    @apply text-secondary dark:text-secondary-dark;
   }
 }
 /* Components */
@@ -86,24 +86,6 @@
 }
 .mild {
   @apply bg-mild;
-}
-/* .txt-hot {
-  @apply text-hot;
-}
-.txt-cool {
-  @apply text-cool;
-}
-.txt-mild {
-  @apply text-mild;
-} */
-.hover-hot {
-  @apply hover:bg-gradient-hot hover:text-primary;
-}
-.hover-cool {
-  @apply hover:bg-gradient-cool hover:text-primary;
-}
-.hover-mild {
-  @apply hover:bg-gradient-mild hover:text-primary;
 }
 
 .leaflet-container {

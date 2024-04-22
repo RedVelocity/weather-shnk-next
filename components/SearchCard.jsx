@@ -30,9 +30,9 @@ const variants = {
 };
 
 const colorVariants = {
-  hot: 'ui-active:bg-gradient-to-r ui-active:from-milder ui-active:to-hot ui-active:text-primary',
-  mild: 'ui-active:bg-gradient-to-r ui-active:from-mild ui-active:to-milder ui-active:text-primary',
-  cool: 'ui-active:bg-gradient-to-r ui-active:from-cool ui-active:to-purple ui-active:text-primary',
+  hot: 'ui-active:bg-gradient-hot ui-active:text-primary hover:bg-gradient-hot hover:text-primary',
+  mild: 'ui-active:bg-gradient-mild ui-active:text-primary hover:bg-gradient-mild hover:text-primary',
+  cool: 'ui-active:bg-gradient-cool ui-active:text-primary hover:bg-gradient-cool hover:text-primary',
 };
 
 const SearchCard = ({ weather, location }) => {
@@ -122,16 +122,7 @@ const SearchCard = ({ weather, location }) => {
                         {placesList.length > 0 &&
                           searchInput !== '' &&
                           placesList.map((place) => (
-                            <Combobox.Option
-                              key={place.id}
-                              value={place}
-                              className={`${colorVariants[theme]} hover-${theme} rounded-lg px-2 py-1 cursor-pointer mx-2 first:mt-2 last:mb-2`}
-                            >
-                              <div className="pointer-events-none">
-                                <h5>{place.place_name}</h5>
-                                <p>{place.place_address}</p>
-                              </div>
-                            </Combobox.Option>
+                            <Option place={place} theme={theme} />
                           ))}
                         {searches.length > 0 && searchInput === '' && (
                           <>
@@ -139,16 +130,7 @@ const SearchCard = ({ weather, location }) => {
                               Recent Searches
                             </h5>
                             {searches.toReversed().map((place) => (
-                              <Combobox.Option
-                                key={place.id}
-                                value={place}
-                                className={`${colorVariants[theme]} hover-${theme} rounded-lg px-2 py-1 cursor-pointer mx-2 first:mt-2 last:mb-2`}
-                              >
-                                <div className="pointer-events-none">
-                                  <h5>{place.place_name}</h5>
-                                  <p>{place.place_address}</p>
-                                </div>
-                              </Combobox.Option>
+                              <Option place={place} theme={theme} />
                             ))}
                           </>
                         )}
@@ -164,5 +146,18 @@ const SearchCard = ({ weather, location }) => {
     </div>
   );
 };
+
+const Option = ({ place, theme }) => (
+  <Combobox.Option
+    key={place.id}
+    value={place}
+    className={`${colorVariants[theme]} rounded-lg px-2 py-1 cursor-pointer mx-2 first:mt-2 last:mb-2 group`}
+  >
+    <h5>{place.place_name}</h5>
+    <p className="text-secondary-dark group-hover:text-secondary">
+      {place.place_address}
+    </p>
+  </Combobox.Option>
+);
 
 export default SearchCard;
