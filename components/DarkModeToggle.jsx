@@ -6,7 +6,7 @@ import { useTheme } from 'next-themes';
 
 const DarkModeToggle = () => {
   const [mounted, setMounted] = useState(false);
-  const { setTheme, resolvedTheme, theme } = useTheme();
+  const { theme, resolvedTheme, setTheme } = useTheme();
   const renderedTheme = theme === 'system' ? resolvedTheme : theme;
   const toggleColorScheme = () => {
     setTheme(() => (renderedTheme === 'dark' ? 'light' : 'dark'));
@@ -19,9 +19,13 @@ const DarkModeToggle = () => {
 
   return (
     <button
-      className="relative flex gap-1 p-1 pill bg-milder"
+      className={`relative flex gap-1 p-1 pill bg-milder ${
+        theme === 'system' && 'filter grayscale'
+      }`}
       type="button"
       onClick={() => toggleColorScheme()}
+      disabled={theme === 'system'}
+      title="Toggle Dark Mode"
     >
       <span className="relative h-7 w-7">
         <Image fill src="/assets/sun.png" alt="Light Mode" />

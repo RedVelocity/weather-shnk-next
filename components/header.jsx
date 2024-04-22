@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import DarkModeToggle from './DarkModeToggle';
+import SystemThemeToggle from './SystemThemeToggle';
 
 const Header = ({ hostName, hostUrl }) => (
   <header className="flex items-center justify-between max-w-screen-xl p-4">
@@ -11,7 +12,10 @@ const Header = ({ hostName, hostUrl }) => (
     >
       {hostName}
     </a>
-    <DarkModeToggle />
+    <div className="flex gap-2">
+      <SystemThemeToggle />
+      <DarkModeToggle />
+    </div>
   </header>
 );
 
