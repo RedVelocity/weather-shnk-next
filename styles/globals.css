@@ -70,10 +70,10 @@
     @apply px-2 py-1 rounded-full;
   }
   .wrapper {
-    @apply p-4 tracking-wide card backdrop-blur-sm bg-base/40 dark:bg-wrapper-dark/20;
+    @apply p-4 tracking-wide card bg-wrapper dark:bg-wrapper-dark;
   }
   .surface {
-    @apply bg-surface/30 dark:bg-surface-dark/20;
+    @apply bg-surface dark:bg-surface-dark;
   }
 }
 

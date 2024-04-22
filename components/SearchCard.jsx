@@ -65,7 +65,7 @@ const SearchCard = ({ weather, location }) => {
   );
 
   return (
-    <div className="p-4 card bg-base-dark dark:bg-wrapper-dark/20">
+    <div className="p-4 card bg-base-dark dark:bg-wrapper-dark">
       <h3 className="text-primary-dark">Search</h3>
       <div className="relative my-4">
         <Combobox
@@ -88,7 +88,7 @@ const SearchCard = ({ weather, location }) => {
                 <Combobox.Input
                   onChange={(e) => setSearchInput(e.target.value)}
                   displayValue={(place) => place.place_name}
-                  className="w-full p-2 rounded-l bg-surface dark:bg-wrapper-dark rounded-r-3xl"
+                  className="w-full p-2 rounded-l bg-surface dark:bg-surface-dark rounded-r-3xl"
                   autoComplete="off"
                   placeholder="Place Name"
                 />
@@ -116,7 +116,7 @@ const SearchCard = ({ weather, location }) => {
                   >
                     <Combobox.Options
                       static
-                      className="absolute z-10 min-w-full mt-2 overflow-hidden rounded-lg shadow bg-surface dark:bg-wrapper-dark"
+                      className="absolute z-10 min-w-full mt-2 overflow-hidden rounded-lg shadow bg-surface dark:bg-surface-dark"
                     >
                       <div className="overflow-x-hidden max-h-80">
                         {placesList.length > 0 &&

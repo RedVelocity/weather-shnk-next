@@ -7,9 +7,9 @@ const colors = {
   milder: '#ff8b7e',
   hot: '#F9B900',
   // surfaces
-  base: { DEFAULT: '#C8D3E0', dark: '#142850' },
-  surface: { DEFAULT: twColors.gray[200], dark: '#0C7B93' },
-  wrapper: { dark: '#27496D' },
+  base: { DEFAULT: '#B9C3CF', dark: '#142850' },
+  wrapper: { DEFAULT: '#C8D3E0', dark: '#182F56' },
+  surface: { DEFAULT: '#D3DFEA', dark: '#133A5E' },
   // basic colors
   blue: twColors.blue[400],
   purple: twColors.purple[300],
@@ -23,7 +23,7 @@ const colors = {
 
 const textColors = {
   primary: { DEFAULT: twColors.gray[800], dark: twColors.gray[200] },
-  secondary: { DEFAULT: twColors.gray[600], dark: twColors.gray[400] },
+  secondary: { DEFAULT: twColors.gray[700], dark: twColors.gray[300] },
   muted: '#2E3A4E',
   current: 'currentColor',
   inherit: 'inherit',
