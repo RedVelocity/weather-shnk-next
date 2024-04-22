@@ -7,17 +7,27 @@ const colors = {
   milder: '#ff8b7e',
   hot: '#F9B900',
   // surfaces
-  baseDark: '#142850',
-  txtDark: twColors.gray[300],
-  baseLight: '#C8D3E0',
-  txtLight: twColors.gray[700],
-  surfaceLight: twColors.gray[200],
-  wrapperDark: '#27496D',
-  surfaceDark: '#0C7B93',
+  base: { DEFAULT: '#C8D3E0', dark: '#142850' },
+  surface: { DEFAULT: twColors.gray[200], dark: '#0C7B93' },
+  wrapper: { dark: '#27496D' },
   // basic colors
   blue: twColors.blue[400],
   purple: twColors.purple[300],
-  gray: twColors.slate[400],
+  gray: twColors.gray[400],
+  white: 'white',
+  black: 'black',
+  current: 'currentColor',
+  inherit: 'inherit',
+  transparent: 'transparent',
 };
 
-module.exports = colors;
+const textColors = {
+  primary: { DEFAULT: twColors.gray[800], dark: twColors.gray[200] },
+  secondary: { DEFAULT: twColors.gray[600], dark: twColors.gray[400] },
+  muted: '#2E3A4E',
+  current: 'currentColor',
+  inherit: 'inherit',
+  transparent: 'transparent',
+};
+
+module.exports = { colors, textColors };

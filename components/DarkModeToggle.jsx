@@ -34,7 +34,7 @@ const DarkModeToggle = () => {
         <Image fill src="/assets/half-moon.png" alt="Dark Mode" />
       </span>
       <div
-        className={`absolute bg-baseDark ${
+        className={`absolute bg-base-dark ${
           renderedTheme === 'dark' ? 'translate-x-0' : 'translate-x-8'
         } text-accent transition-transform duration-500 ease-in-out rounded-full h-7 w-7`}
       />

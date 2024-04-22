@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import { Map, Marker, ZoomControl } from 'pigeon-maps';
-import colors from '@/styles/colors';
+import { colors } from '@/styles/colors';
 
 const mapTiler = (x, y, z, dpr) =>
   `https://api.mapbox.com/styles/v1/mapbox/streets-v12/tiles/256/${z}/${x}/${y}${

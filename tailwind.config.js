@@ -1,4 +1,4 @@
-const colors = require('./styles/colors');
+const { colors, textColors } = require('./styles/colors');
 
 module.exports = {
   darkMode: 'class',
@@ -8,9 +8,10 @@ module.exports = {
     './app/**/*.{js,ts,jsx,tsx}',
   ],
   theme: {
-    extend: {
-      colors,
-    },
+    // extend: {
+    // },
+    colors,
+    textColor: textColors,
     screens: {
       xs: '320px',
       sm: '640px',

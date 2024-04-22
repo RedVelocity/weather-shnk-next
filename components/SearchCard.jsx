@@ -30,9 +30,9 @@ const variants = {
 };
 
 const colorVariants = {
-  hot: 'ui-active:bg-gradient-to-r ui-active:from-milder ui-active:to-hot ui-active:text-txtLight',
-  mild: 'ui-active:bg-gradient-to-r ui-active:from-mild ui-active:to-milder ui-active:text-txtLight',
-  cool: 'ui-active:bg-gradient-to-r ui-active:from-cool ui-active:to-purple ui-active:text-txtLight',
+  hot: 'ui-active:bg-gradient-to-r ui-active:from-milder ui-active:to-hot ui-active:text-primary',
+  mild: 'ui-active:bg-gradient-to-r ui-active:from-mild ui-active:to-milder ui-active:text-primary',
+  cool: 'ui-active:bg-gradient-to-r ui-active:from-cool ui-active:to-purple ui-active:text-primary',
 };
 
 const SearchCard = ({ weather, location }) => {
@@ -65,8 +65,8 @@ const SearchCard = ({ weather, location }) => {
   );
 
   return (
-    <div className="p-4 card bg-baseDark dark:bg-wrapperDark/20">
-      <h3 className="text-txtDark">Search</h3>
+    <div className="p-4 card bg-base-dark dark:bg-wrapper-dark/20">
+      <h3 className="text-primary-dark">Search</h3>
       <div className="relative my-4">
         <Combobox
           value={selectedPlace || ''}
@@ -88,7 +88,7 @@ const SearchCard = ({ weather, location }) => {
                 <Combobox.Input
                   onChange={(e) => setSearchInput(e.target.value)}
                   displayValue={(place) => place.place_name}
-                  className="w-full p-2 rounded-l bg-surfaceLight dark:bg-wrapperDark rounded-r-3xl"
+                  className="w-full p-2 rounded-l bg-surface dark:bg-wrapper-dark rounded-r-3xl"
                   autoComplete="off"
                   placeholder="Place Name"
                 />
@@ -116,7 +116,7 @@ const SearchCard = ({ weather, location }) => {
                   >
                     <Combobox.Options
                       static
-                      className="absolute z-10 min-w-full mt-2 overflow-hidden rounded-lg shadow bg-surfaceLight dark:bg-wrapperDark"
+                      className="absolute z-10 min-w-full mt-2 overflow-hidden rounded-lg shadow bg-surface dark:bg-wrapper-dark"
                     >
                       <div className="overflow-x-hidden max-h-80">
                         {placesList.length > 0 &&

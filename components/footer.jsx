@@ -7,7 +7,7 @@ const Footer = () => (
           href="https://openweathermap.org/"
           rel="noreferrer"
           target="_blank"
-          className="font-semibold pill bg-baseDark dark:bg-baseLight text-baseLight dark:text-baseDark"
+          className="font-semibold pill bg-base-dark dark:bg-base text-primary-dark dark:text-primary"
         >
           OpenWeather
         </a>
@@ -19,7 +19,7 @@ const Footer = () => (
           rel="noreferrer"
           target="_blank"
           title="Freepik"
-          className="font-semibold pill bg-milder text-txtLight"
+          className="font-semibold pill bg-milder text-primary"
         >
           Freepik
         </a>{' '}

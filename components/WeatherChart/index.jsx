@@ -20,7 +20,7 @@ const WeatherChart = () => {
   return (
     <>
       {title ? (
-        <div className="flex flex-col gap-4 p-4 text-txtDark h-80 md:h-96 card bg-baseDark">
+        <div className="flex flex-col gap-4 p-4 text-txtDark h-80 md:h-96 card bg-base-dark">
           <h1 className="text-xl font-semibold capitalize text-txtDark">
             {title}
           </h1>

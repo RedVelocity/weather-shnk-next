@@ -8,7 +8,7 @@ import { m as motion } from 'framer-motion';
 // import useWeather from '@/lib/hooks/useWeather';
 // import useLocation from '@/lib/hooks/useLocation';
 import useTheme from '@/lib/hooks/useTheme';
-import colors from '@/styles/colors';
+import { colors } from '@/styles/colors';
 import WeatherIcon from '@/components/Icon/WeatherIcon';
 
 const variants = {
@@ -56,7 +56,7 @@ const WeatherCard = ({ weather, location }) => {
         backgroundPosition,
         transition: 'background-position 500ms linear',
       }}
-      className="flex flex-col w-full gap-2 p-4 card justify-evenly text-txtLight"
+      className="flex flex-col w-full gap-2 p-4 card justify-evenly text-primary"
     >
       <>
         <div className="grid grid-cols-3 gap-4 py-2 place-items-center">
@@ -81,10 +81,10 @@ const WeatherCard = ({ weather, location }) => {
             {`${Math.round(current.temp)}°C`}
           </motion.h1>
         </div>
-        <p className="text-right">{`Low ${Math.round(
+        <p className="text-right text-primary">{`Low ${Math.round(
           minTemp
         )}°C • High ${Math.round(maxTemp)}°C`}</p>
-        <span className="block p-2 my-2 font-semibold tracking-wide text-center rounded bg-surfaceLight md:px-4 md:py-3">
+        <span className="block p-2 my-2 font-semibold tracking-wide text-center rounded bg-surface md:px-4 md:py-3">
           {additionalInfo}
         </span>
       </>
@@ -95,7 +95,7 @@ const WeatherCard = ({ weather, location }) => {
           width={20}
           alt="location"
         />
-        <p className="ml-1 tracking-wide">{locationName}</p>
+        <p className="ml-1 tracking-wide text-primary">{locationName}</p>
       </div>
     </div>
   );
