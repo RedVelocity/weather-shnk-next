@@ -154,7 +154,7 @@ const Option = ({ place, theme }) => (
     className={`${colorVariants[theme]} rounded-lg px-2 py-1 cursor-pointer mx-2 first:mt-2 last:mb-2 group`}
   >
     <h5>{place.place_name}</h5>
-    <p className="text-secondary-dark group-hover:text-secondary">
+    <p className="text-secondary dark:text-secondary-dark group-hover:text-secondary">
       {place.place_address}
     </p>
   </Combobox.Option>
