@@ -30,9 +30,9 @@ const variants = {
 };
 
 const colorVariants = {
-  hot: 'ui-active:bg-gradient-hot ui-active:text-primary hover:bg-gradient-hot hover:text-primary',
-  mild: 'ui-active:bg-gradient-mild ui-active:text-primary hover:bg-gradient-mild hover:text-primary',
-  cool: 'ui-active:bg-gradient-cool ui-active:text-primary hover:bg-gradient-cool hover:text-primary',
+  hot: 'ui-active:ring ui-active:ring-blue hover:bg-gradient-hot hover:text-primary',
+  mild: 'ui-active:ring ui-active:ring-blue hover:bg-gradient-mild hover:text-primary',
+  cool: 'ui-active:ring ui-active:ring-blue hover:bg-gradient-cool hover:text-primary',
 };
 
 const SearchCard = ({ weather, location }) => {
