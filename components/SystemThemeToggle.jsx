@@ -16,6 +16,7 @@ const SystemThemeToggle = () => {
     setMounted(true);
   }, []);
   if (!mounted) return null;
+
   return (
     <button
       className={`relative flex gap-1 p-1 pill bg-cool ${
@@ -23,7 +24,7 @@ const SystemThemeToggle = () => {
       }`}
       type="button"
       title="Toggle System Theme"
-      onClick={() => toggleColorScheme()}
+      onClick={toggleColorScheme}
     >
       <span className="relative h-7 w-7">
         <Image fill src="/assets/sun-and-moon.png" alt="Toggle System Theme" />
