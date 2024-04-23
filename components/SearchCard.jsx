@@ -30,9 +30,9 @@ const variants = {
 };
 
 const colorVariants = {
-  hot: 'ui-active:ring ui-active:ring-blue hover:bg-gradient-hot hover:text-primary',
-  mild: 'ui-active:ring ui-active:ring-blue hover:bg-gradient-mild hover:text-primary',
-  cool: 'ui-active:ring ui-active:ring-blue hover:bg-gradient-cool hover:text-primary',
+  hot: 'ui-active:bg-gradient-hot ui-active:text-primary hover:bg-gradient-hot hover:text-primary',
+  mild: 'ui-active:bg-gradient-mild ui-active:text-primary hover:bg-gradient-mild hover:text-primary',
+  cool: 'ui-active:bg-gradient-cool ui-active:text-primary hover:bg-gradient-cool hover:text-primary',
 };
 
 const SearchCard = ({ weather, location }) => {
@@ -126,7 +126,7 @@ const SearchCard = ({ weather, location }) => {
                           ))}
                         {searches.length > 0 && searchInput === '' && (
                           <>
-                            <h5 className="px-4 py-1 mb-1 tracking-widest uppercase border-b border-gray">
+                            <h5 className="px-4 py-1 mb-1 tracking-wide capitalize border-b border-gray">
                               Recent Searches
                             </h5>
                             {searches.toReversed().map((place) => (
@@ -154,7 +154,7 @@ const Option = ({ place, theme }) => (
     className={`${colorVariants[theme]} rounded-lg px-2 py-1 cursor-pointer mx-2 first:mt-2 last:mb-2 group`}
   >
     <h5>{place.place_name}</h5>
-    <p className="text-secondary dark:text-secondary-dark group-hover:text-secondary">
+    <p className="text-secondary dark:text-secondary-dark group-hover:text-secondary ui-active:text-secondary dark:ui-active:text-secondary">
       {place.place_address}
     </p>
   </Combobox.Option>
