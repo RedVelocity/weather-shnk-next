@@ -98,10 +98,11 @@ const Home = async ({ searchParams }) => {
     <>
       {/* <HydrateAtoms weather={weather} location={location} /> */}
       <UpdateParams location={location} />
-      <div className="absolute w-[80vw] aspect-video -z-10 top-0 right-50 sm:right-0">
+      <div className="fixed inset-0 -z-10">
         <Image
-          className="mix-blend-darken blur-sm"
+          className="blur-sm"
           src="/assets/bg.png"
+          alt="BG"
           fill
           priority
           sizes="80vw"
