@@ -65,7 +65,7 @@ const SearchCard = ({ weather, location }) => {
   );
 
   return (
-    <div className="p-4 card bg-base-dark dark:bg-wrapper-dark">
+    <div className="p-4 card bg-wrapper-dark dark:bg-wrapper-dark/60 dark:backdrop-blur">
       <h3 className="text-primary-dark">Search</h3>
       <div className="relative my-4">
         <Combobox

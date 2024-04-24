@@ -10,6 +10,7 @@ import WeatherMap from '@/components/WeatherMap';
 import Favorites from '@/components/Favorites';
 import { headers } from 'next/headers';
 import UpdateParams from '@/components/UpdateParams';
+import Image from 'next/image';
 
 // export const generateMetadata = async ({ searchParams }) => {
 //   // read route params
@@ -97,6 +98,15 @@ const Home = async ({ searchParams }) => {
     <>
       {/* <HydrateAtoms weather={weather} location={location} /> */}
       <UpdateParams location={location} />
+      <div className="absolute w-[80vw] aspect-video -z-10 top-0 right-50 sm:right-0">
+        <Image
+          className="mix-blend-darken blur-sm"
+          src="/assets/bg.png"
+          fill
+          priority
+          sizes="80vw"
+        />
+      </div>
       <div className="grid gap-3 mx-4 md:grid-cols-3">
         <section className="flex flex-col space-y-3">
           <SearchCard weather={weather} location={location} />
