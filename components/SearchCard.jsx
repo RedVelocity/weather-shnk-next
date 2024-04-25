@@ -65,7 +65,7 @@ const SearchCard = ({ weather, location }) => {
   );
 
   return (
-    <div className="p-4 card bg-wrapper-dark dark:bg-wrapper-dark/60 dark:backdrop-blur">
+    <div className="z-10 p-4 card bg-wrapper-dark dark:bg-wrapper-dark/60 dark:backdrop-blur">
       <h3 className="text-primary-dark">Search</h3>
       <div className="relative my-4">
         <Combobox
@@ -116,7 +116,7 @@ const SearchCard = ({ weather, location }) => {
                   >
                     <Combobox.Options
                       static
-                      className="absolute z-10 min-w-full mt-2 overflow-hidden rounded-lg shadow bg-surface dark:bg-surface-dark"
+                      className="absolute z-20 min-w-full mt-2 overflow-hidden rounded-lg shadow bg-surface dark:bg-surface-dark"
                     >
                       <div className="overflow-x-hidden max-h-80">
                         {placesList.length > 0 &&
