@@ -19,8 +19,9 @@ const MapUpdater = ({ longitude, latitude }) => {
 };
 
 const LeafletMap = ({ longitude, latitude }) => {
-  const { theme } = useTheme();
-  const mapStyle = theme === 'dark' ? 'navigation-night-v1' : 'streets-v12';
+  const { resolvedTheme } = useTheme();
+  const mapStyle =
+    resolvedTheme === 'dark' ? 'navigation-night-v1' : 'streets-v12';
   return (
     <MapContainer
       center={[latitude, longitude]}
