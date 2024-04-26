@@ -79,14 +79,14 @@ const Home = async ({ searchParams }) => {
   return (
     <>
       <UpdateParams location={location} />
-      <div className="fixed top-0 left-0 right-0 h-[100dvh] -z-10 object-cover">
+      <div className="fixed top-0 left-0 w-screen h-auto aspect-video -z-10">
         <Image
           className="blur-sm"
           src="/assets/bg.png"
           alt="BG"
           fill
           priority
-          sizes="80vw"
+          sizes="100vw"
         />
       </div>
       <div className="grid gap-3 mx-4 md:grid-cols-3">
