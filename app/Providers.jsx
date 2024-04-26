@@ -12,7 +12,7 @@ const Providers = ({ children }) => (
     <Next13ProgressBar
       height="4px"
       color={colors.milder}
-      options={{ showSpinner: true }}
+      options={{ showSpinner: false }}
       showOnShallow
     />
   </LazyMotion>

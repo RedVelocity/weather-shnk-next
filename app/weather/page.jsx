@@ -79,7 +79,7 @@ const Home = async ({ searchParams }) => {
   return (
     <>
       <UpdateParams location={location} />
-      <div className="fixed top-0 left-0 w-screen h-auto aspect-video -z-10">
+      <div className="fixed top-0 left-0 object-cover w-screen h-auto aspect-[16/7] -z-10">
         <Image
           className="blur-sm"
           src="/assets/bg.png"
