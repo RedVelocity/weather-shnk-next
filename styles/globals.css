@@ -73,7 +73,7 @@
     @apply p-4 tracking-wide card bg-wrapper/60 dark:bg-wrapper-dark/60 backdrop-blur;
   }
   .surface {
-    @apply bg-surface dark:bg-surface-dark;
+    @apply bg-surface/60 dark:bg-surface-dark/60;
   }
 }
 

@@ -100,7 +100,7 @@ const AddFavButton = ({ setFavorite }) => (
     onClick={setFavorite}
   >
     <Image
-      src="/assets/weather-icons/add.png"
+      src="/assets/icons/add.png"
       height={50}
       width={50}
       alt="Add Favorite"
@@ -115,7 +115,7 @@ const FavButton = ({ favorite, removeFavorite }) => {
       <Link
         href={`weather?q=${encodeURI(favorite.name.replaceAll(', ', ','))}`}
         passHref
-        className="flex flex-col items-center justify-center h-full p-4 text-center surface card"
+        className="flex flex-col items-center justify-center h-full p-6 overflow-hidden text-center surface card"
         scroll={false}
       >
         <h3>{locName}</h3>
@@ -124,13 +124,9 @@ const FavButton = ({ favorite, removeFavorite }) => {
       <button
         type="button"
         onClick={removeFavorite}
-        className="absolute top-0 right-0 z-20 h-6 m-2 rounded-full aspect-square"
+        className="absolute dark:saturate-[75%] top-0 right-0 z-20 h-8 sm:h-10 card aspect-square bg-[#BF392B]"
       >
-        <Image
-          src="/assets/weather-icons/close.png"
-          fill
-          alt="Remove Favorite"
-        />
+        <Image src="/assets/icons/close.png" fill alt="Remove Favorite" />
       </button>
     </div>
   );

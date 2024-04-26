@@ -122,7 +122,11 @@ const SearchCard = ({ weather, location }) => {
                         {placesList.length > 0 &&
                           searchInput !== '' &&
                           placesList.map((place) => (
-                            <Option place={place} theme={theme} />
+                            <Option
+                              place={place}
+                              theme={theme}
+                              key={place.id}
+                            />
                           ))}
                         {searches.length > 0 && searchInput === '' && (
                           <>

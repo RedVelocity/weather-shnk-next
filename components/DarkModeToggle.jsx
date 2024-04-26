@@ -28,10 +28,10 @@ const DarkModeToggle = () => {
       onClick={toggleColorScheme}
     >
       <span className="relative h-7 w-7">
-        <Image fill src="/assets/sun.png" alt="Light Mode" />
+        <Image fill src="/assets/icons/sun.png" alt="Light Mode" />
       </span>
       <span className="relative h-7 w-7">
-        <Image fill src="/assets/half-moon.png" alt="Dark Mode" />
+        <Image fill src="/assets/icons/half-moon.png" alt="Dark Mode" />
       </span>
       <div
         className={`absolute bg-base-dark ${

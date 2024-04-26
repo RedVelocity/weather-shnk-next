@@ -27,7 +27,11 @@ const SystemThemeToggle = () => {
       onClick={toggleColorScheme}
     >
       <span className="relative h-7 w-7">
-        <Image fill src="/assets/sun-and-moon.png" alt="Toggle System Theme" />
+        <Image
+          fill
+          src="/assets/icons/sun-and-moon.png"
+          alt="Toggle System Theme"
+        />
       </span>
     </button>
   );

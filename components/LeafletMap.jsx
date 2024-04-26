@@ -5,9 +5,8 @@ import PropTypes from 'prop-types';
 import { Icon } from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 
-// import colors from '../../styles/colors';
 const icon = new Icon({
-  iconUrl: 'https://cdn-icons-png.flaticon.com/512/684/684908.png',
+  iconUrl: '/assets/icons/marker.png',
   iconSize: [34, 34],
   iconAnchor: [17, 34],
 });

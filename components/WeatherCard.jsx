@@ -90,7 +90,7 @@ const WeatherCard = ({ weather, location }) => {
       </>
       <div className="flex items-center space-x-2">
         <Image
-          src="/assets/weather-icons/location.png"
+          src="/assets/icons/location.png"
           height={20}
           width={20}
           alt="location"
