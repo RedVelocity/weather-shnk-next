@@ -4,6 +4,7 @@ import { MapContainer, Marker, TileLayer, useMap } from 'react-leaflet';
 import PropTypes from 'prop-types';
 import { Icon } from 'leaflet';
 import 'leaflet/dist/leaflet.css';
+import { useTheme } from 'next-themes';
 
 const icon = new Icon({
   iconUrl: '/assets/icons/marker.png',
@@ -17,22 +18,26 @@ const MapUpdater = ({ longitude, latitude }) => {
   return <Marker position={[latitude, longitude]} icon={icon} />;
 };
 
-const LeafletMap = ({ longitude, latitude }) => (
-  <MapContainer
-    center={[latitude, longitude]}
-    zoom={10}
-    scrollWheelZoom={false}
-    touchZoom={false}
-    dragging={false}
-    preferCanvas
-  >
-    <TileLayer
-      url={`https://api.mapbox.com/styles/v1/mapbox/streets-v12/tiles/256/{z}/{x}/{y}@2x?access_token=${process.env.NEXT_PUBLIC_MAPBOX_KEY}`}
-      attribution='Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery &copy; <a href="https://www.mapbox.com/">Mapbox</a>'
-    />
-    <MapUpdater longitude={longitude} latitude={latitude} />
-  </MapContainer>
-);
+const LeafletMap = ({ longitude, latitude }) => {
+  const { theme } = useTheme();
+  const mapStyle = theme === 'dark' ? 'navigation-night-v1' : 'streets-v12';
+  return (
+    <MapContainer
+      center={[latitude, longitude]}
+      zoom={10}
+      scrollWheelZoom={false}
+      touchZoom={false}
+      dragging={false}
+      preferCanvas
+    >
+      <TileLayer
+        url={`https://api.mapbox.com/styles/v1/mapbox/${mapStyle}/tiles/256/{z}/{x}/{y}@2x?access_token=${process.env.NEXT_PUBLIC_MAPBOX_KEY}`}
+        attribution='Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery &copy; <a href="https://www.mapbox.com/">Mapbox</a>'
+      />
+      <MapUpdater longitude={longitude} latitude={latitude} />
+    </MapContainer>
+  );
+};
 
 LeafletMap.propTypes = {
   longitude: PropTypes.number.isRequired,
