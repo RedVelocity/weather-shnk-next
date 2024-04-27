@@ -38,7 +38,6 @@
     @apply text-base tracking-wide;
   }
 }
-
 *:focus {
   @apply outline-none ring ring-blue;
 }
@@ -87,9 +86,15 @@
 .mild {
   @apply bg-mild;
 }
-
+/* Leaflet Styles */
 .leaflet-container {
   @apply h-full;
+}
+.leaflet-control-zoom > a {
+  @apply bg-surface dark:bg-surface-dark text-primary dark:text-primary-dark hover:bg-surface/60 dark:hover:bg-surface-dark/60;
+}
+.leaflet-container .leaflet-control-attribution {
+  @apply bg-surface dark:bg-surface-dark text-secondary dark:text-secondary-dark;
 }
 
 @keyframes spin {
