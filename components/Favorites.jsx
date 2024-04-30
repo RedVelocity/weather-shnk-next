@@ -10,6 +10,7 @@ import { AnimatePresence, m as motion } from 'framer-motion';
 import { Dialog } from '@headlessui/react';
 import PropTypes from 'prop-types';
 import { useState } from 'react';
+import useRecentSearch from '@/lib/hooks/useRecentSearch';
 
 const popInOut = {
   initial: {
@@ -148,33 +149,54 @@ const FavModal = ({
   favIndex,
   location,
   handleSetFavorite,
-}) => (
-  <Dialog as="div" className="relative z-30" onClose={closeModal} open={isOpen}>
-    <motion.div
-      className="fixed inset-0 bg-black/40"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-    />
-    <motion.div layoutId="addFav" transition={{ duration: 1.5 }}>
-      <div className="fixed inset-0 overflow-y-auto">
-        <div className="flex items-center justify-center min-h-full p-4 text-center">
-          <Dialog.Panel className="w-full max-w-md p-6 overflow-hidden text-left align-middle transition-all transform bg-wrapper dark:bg-wrapper-dark card">
-            <Dialog.Title as="h3">Add Favorite</Dialog.Title>
-            <button
-              type="button"
-              className="flex flex-col items-center justify-center w-full p-2 mt-4 text-center surface card"
-              onClick={() => handleSetFavorite(favIndex)}
-            >
-              <h3>{location.name.split(',')[0]}</h3>
-              <p className="secondary">{location.name.split(',')[1]}</p>
-            </button>
-          </Dialog.Panel>
+}) => {
+  const { searches } = useRecentSearch();
+  return (
+    <Dialog
+      as="div"
+      className="relative z-30"
+      onClose={closeModal}
+      open={isOpen}
+    >
+      <motion.div
+        className="fixed inset-0 bg-black/40"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+      />
+      <motion.div layoutId="addFav" transition={{ duration: 1.5 }}>
+        <div className="fixed inset-0 overflow-y-auto">
+          <div className="flex items-center justify-center min-h-full p-4 text-center">
+            <Dialog.Panel className="w-full max-w-md p-4 text-left align-middle bg-wrapper dark:bg-wrapper-dark card">
+              <Dialog.Title as="h3">Add Favorite</Dialog.Title>
+              <button
+                type="button"
+                className="flex flex-col items-center justify-center w-full p-2 mt-4 text-center surface card"
+                onClick={() => handleSetFavorite(favIndex)}
+              >
+                <h3>{location.name.split(',')[0]}</h3>
+                <p className="secondary">{location.name.split(',')[1]}</p>
+              </button>
+              <div className="grid gap-2 sm:grid-cols-2">
+                {searches.map((search, index) => (
+                  <button
+                    type="button"
+                    className="flex flex-col items-center justify-center h-full p-2 mt-4 text-center surface card"
+                    onClick={() => handleSetFavorite(favIndex)}
+                    key={`search-${index}`}
+                  >
+                    <h3>{search.place_name}</h3>
+                    <p className="secondary">{search.place_address}</p>
+                  </button>
+                ))}
+              </div>
+            </Dialog.Panel>
+          </div>
         </div>
-      </div>
-    </motion.div>
-  </Dialog>
-);
+      </motion.div>
+    </Dialog>
+  );
+};
 
 Favorites.propTypes = {
   location: PropTypes.object.isRequired, // Ensure location prop is required and of type object
