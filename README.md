@@ -37,5 +37,6 @@ I'm extremely satisfied with the current state of this app, but it does not mean
 - Fahrenheit conversion is something few people requested.
 - Probably have a linear bar to display the intensity of UVI.
 - Display Sunrise/Sunset in cool way, I like how Accuweather does it.
+- TypeScript support??
 
 If this repo helps you in any way, don't forget to star it :)
