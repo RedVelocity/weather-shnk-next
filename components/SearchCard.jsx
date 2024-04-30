@@ -11,7 +11,7 @@ import { useRouter } from 'next13-progressbar';
 // import useWeather from '@/lib/hooks/useWeather';
 // import useLocation from '@/lib/hooks/useLocation';
 import { getPlaces } from '@/lib/actions';
-import useTheme from '@/lib/hooks/useTheme';
+import getTheme from '@/lib/utils/getTheme';
 import useRecentSearch from '@/lib/hooks/useRecentSearch';
 
 const variants = {
@@ -37,7 +37,7 @@ const colorVariants = {
 
 const SearchCard = ({ weather, location }) => {
   const router = useRouter();
-  const theme = useTheme(weather.current.temp);
+  const theme = getTheme(weather.current.temp);
   const [placesList, setPlacesList] = useState([]);
   // Recent search items
   const { searches, addSearch } = useRecentSearch();

@@ -7,7 +7,7 @@ import { m as motion } from 'framer-motion';
 
 // import useWeather from '@/lib/hooks/useWeather';
 // import useLocation from '@/lib/hooks/useLocation';
-import useTheme from '@/lib/hooks/useTheme';
+import getTheme from '@/lib/utils/getTheme';
 import { colors } from '@/styles/colors';
 import WeatherIcon from '@/components/Icon/WeatherIcon';
 
@@ -21,7 +21,7 @@ const variants = {
 const WeatherCard = ({ weather, location }) => {
   const { name: locationName } = location;
   const { current, daily } = weather;
-  const theme = useTheme(current.temp);
+  const theme = getTheme(current.temp);
 
   let additionalInfo;
   const { min: minTemp, max: maxTemp } = daily[0].temp;
