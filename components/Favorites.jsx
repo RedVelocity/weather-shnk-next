@@ -1,5 +1,5 @@
-/* eslint-disable react/prop-types */
 /* eslint-disable react/forbid-prop-types */
+/* eslint-disable react/prop-types */
 
 'use client';
 
@@ -7,10 +7,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useLocalStorage } from '@mantine/hooks';
 import { AnimatePresence, m as motion } from 'framer-motion';
-import { Dialog } from '@headlessui/react';
 import PropTypes from 'prop-types';
-import { useState } from 'react';
-import useRecentSearch from '@/lib/hooks/useRecentSearch';
 
 const popInOut = {
   initial: {
@@ -32,8 +29,6 @@ const popInOut = {
 const MAX_FAVORITES = 4;
 
 const Favorites = ({ location }) => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [favIndex, setFavIndex] = useState(0);
   const [favorites, setFavorites] = useLocalStorage({
     key: 'favorites',
     defaultValue: new Array(MAX_FAVORITES).fill('unset'),
@@ -43,7 +38,6 @@ const Favorites = ({ location }) => {
     const updatedFavorites = [...favorites];
     updatedFavorites[index] = location;
     setFavorites(updatedFavorites);
-    setIsOpen(false);
   };
 
   const handleRemoveFavorite = (index) => {
@@ -55,13 +49,6 @@ const Favorites = ({ location }) => {
   return (
     <div className="flex flex-col min-h-full gap-4 wrapper">
       <h3>Favorites</h3>
-      <FavModal
-        isOpen={isOpen}
-        closeModal={() => setIsOpen(false)}
-        location={location}
-        handleSetFavorite={handleSetFavorite}
-        favIndex={favIndex}
-      />
       <div className="grid flex-1 grid-cols-2 gap-2 sm:grid-cols-4">
         <AnimatePresence initial={false} mode="popLayout">
           {favorites.map((fav, index) =>
@@ -82,19 +69,21 @@ const Favorites = ({ location }) => {
             ) : (
               <motion.div
                 className="relative h-28 sm:min-h-full"
-                key={`addFav-${index}`}
-                variants={popInOut}
-                initial="initial"
-                animate="animate"
-                exit="exit"
-                layoutId="addFav"
+                key={`addFav-${index}-${fav.name}`}
+                initial={{
+                  opacity: 0,
+                  scale: 0.9,
+                }}
+                animate={{
+                  opacity: 1,
+                  scale: 1.0,
+                }}
+                exit={{
+                  opacity: 0,
+                  scale: 0.9,
+                }}
               >
-                <AddFavButton
-                  setFavorite={() => {
-                    setFavIndex(index);
-                    setIsOpen(true);
-                  }}
-                />
+                <AddFavButton setFavorite={() => handleSetFavorite(index)} />
               </motion.div>
             )
           )}
@@ -140,61 +129,6 @@ const FavButton = ({ favorite, removeFavorite }) => {
         <Image src="/assets/icons/close.png" fill alt="Remove Favorite" />
       </button>
     </div>
-  );
-};
-
-const FavModal = ({
-  closeModal,
-  isOpen,
-  favIndex,
-  location,
-  handleSetFavorite,
-}) => {
-  const { searches } = useRecentSearch();
-  return (
-    <Dialog
-      as="div"
-      className="relative z-30"
-      onClose={closeModal}
-      open={isOpen}
-    >
-      <motion.div
-        className="fixed inset-0 bg-black/40"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-      />
-      <motion.div layoutId="addFav" transition={{ duration: 1.5 }}>
-        <div className="fixed inset-0 overflow-y-auto">
-          <div className="flex items-center justify-center min-h-full p-4 text-center">
-            <Dialog.Panel className="w-full max-w-md p-4 text-left align-middle bg-wrapper dark:bg-wrapper-dark card">
-              <Dialog.Title as="h3">Add Favorite</Dialog.Title>
-              <button
-                type="button"
-                className="flex flex-col items-center justify-center w-full p-2 mt-4 text-center surface card"
-                onClick={() => handleSetFavorite(favIndex)}
-              >
-                <h3>{location.name.split(',')[0]}</h3>
-                <p className="secondary">{location.name.split(',')[1]}</p>
-              </button>
-              <div className="grid gap-2 sm:grid-cols-2">
-                {searches.map((search, index) => (
-                  <button
-                    type="button"
-                    className="flex flex-col items-center justify-center h-full p-2 mt-4 text-center surface card"
-                    onClick={() => handleSetFavorite(favIndex)}
-                    key={`search-${index}`}
-                  >
-                    <h3>{search.place_name}</h3>
-                    <p className="secondary">{search.place_address}</p>
-                  </button>
-                ))}
-              </div>
-            </Dialog.Panel>
-          </div>
-        </div>
-      </motion.div>
-    </Dialog>
   );
 };
 
