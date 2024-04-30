@@ -96,6 +96,9 @@
 .leaflet-container .leaflet-control-attribution {
   @apply bg-surface dark:bg-surface-dark text-secondary dark:text-secondary-dark;
 }
+div.pigeon-attribution {
+  @apply bg-surface dark:bg-surface-dark text-secondary dark:text-secondary-dark !important;
+}
 
 @keyframes spin {
   0% {
