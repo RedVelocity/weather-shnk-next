@@ -10,7 +10,7 @@ import { Combobox } from '@headlessui/react';
 import { useRouter } from 'next13-progressbar';
 // import useWeather from '@/lib/hooks/useWeather';
 // import useLocation from '@/lib/hooks/useLocation';
-import { getPlaces } from '@/app/actions';
+import { getPlaces } from '@/lib/actions';
 import useTheme from '@/lib/hooks/useTheme';
 import useRecentSearch from '@/lib/hooks/useRecentSearch';
 

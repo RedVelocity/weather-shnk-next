@@ -1,7 +1,7 @@
 import { notFound } from 'next/navigation';
 import { headers } from 'next/headers';
 import Image from 'next/image';
-import { getLocation, getWeather } from '@/app/actions';
+import { getLocation, getWeather } from '@/lib/actions';
 import {
   DailyWeather,
   HourlyWeather,
