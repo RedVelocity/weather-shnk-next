@@ -1,8 +1,6 @@
 /* eslint-disable react/prop-types */
 
 import PropTypes from 'prop-types';
-// import useWeather from '@/lib/hooks/useWeather';
-import WeatherInfoCard from '@/components/WeatherInfoCard';
 import {
   DewpointIcon,
   PressureIcon,
@@ -42,6 +40,21 @@ const WeatherInfoCardList = ({ className, weather }) => {
   );
 };
 
+const WeatherInfoCard = ({ Icon, title, content }) => (
+  <li className="flex items-center justify-between gap-4 px-3 py-2 card bg-surface/5 dark:bg-surface-dark">
+    <p className="flex items-center">
+      <Icon />
+      {title}
+    </p>
+    <p>{content}</p>
+  </li>
+);
+
+WeatherInfoCard.propTypes = {
+  Icon: PropTypes.elementType.isRequired,
+  title: PropTypes.string.isRequired,
+  content: PropTypes.string.isRequired,
+};
 WeatherInfoCardList.propTypes = {
   className: PropTypes.string,
 };

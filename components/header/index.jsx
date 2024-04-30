@@ -12,7 +12,7 @@ const Header = ({ hostName, hostUrl }) => (
     >
       {hostName}
     </a>
-    <div className="flex gap-1 sm:gap-2">
+    <div className="flex items-center justify-center gap-1 sm:gap-2">
       <SystemThemeToggle />
       <DarkModeToggle />
     </div>

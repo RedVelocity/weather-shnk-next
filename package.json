@@ -1,6 +1,6 @@
 {
   "name": "weather-shnk-next",
-  "version": "14.8.7",
+  "version": "14.9.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -18,7 +18,6 @@
     "@headlessui/tailwindcss": "^0.2.0",
     "@mantine/hooks": "^7.4.1",
     "browserslist": "latest",
-    "chart.js": "^4.2.1",
     "dayjs": "^1.10.4",
     "eslint-config-next": "^13.4.19",
     "framer-motion": "^10.10.0",

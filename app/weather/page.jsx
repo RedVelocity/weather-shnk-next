@@ -2,14 +2,16 @@ import { notFound } from 'next/navigation';
 import { headers } from 'next/headers';
 import Image from 'next/image';
 import { getLocation, getWeather } from '@/app/actions';
-import WeatherCard from '@/components/WeatherCard';
+import {
+  DailyWeather,
+  HourlyWeather,
+  WeatherCard,
+  WeatherInfoCardList,
+  WeatherMap,
+} from '@/components/weather';
 import SearchCard from '@/components/SearchCard';
-import WeatherInfoCardList from '@/components/WeatherInfoCardList';
-import HourlyWeather from '@/components/HourlyWeather';
-import DailyWeather from '@/components/DailyWeather';
-import WeatherMap from '@/components/WeatherMap';
 import Favorites from '@/components/Favorites';
-import UpdateParams from '@/components/UpdateParams';
+import UpdateParams from '@/lib/utils/UpdateParams';
 
 export const metadata = {
   title: `Weather | redvelo.site`,

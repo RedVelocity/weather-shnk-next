@@ -19,20 +19,18 @@ const SystemThemeToggle = () => {
 
   return (
     <button
-      className={`relative flex gap-1 p-1 pill bg-cool ${
+      className={`relative h-8 w-8 rounded-full ${
         theme !== 'system' && 'filter grayscale'
       }`}
       type="button"
       title="Toggle System Theme"
       onClick={toggleColorScheme}
     >
-      <span className="relative h-7 w-7">
-        <Image
-          fill
-          src="/assets/icons/sun-and-moon.png"
-          alt="Toggle System Theme"
-        />
-      </span>
+      <Image
+        fill
+        src="/assets/icons/sun-and-moon.png"
+        alt="Toggle System Theme"
+      />
     </button>
   );
 };
