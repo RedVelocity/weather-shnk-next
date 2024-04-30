@@ -11,7 +11,7 @@ const DynamicMap = dynamic(() => import('@/components/LeafletMap'), {
 
 const WeatherMap = ({ longitude, latitude }) => (
   <div
-    className="h-80 md:h-full md:min-h-[250px] card overflow-hidden"
+    className="h-80 md:h-full md:min-h-[250px] card overflow-hidden z-0"
     id="map"
   >
     <DynamicMap longitude={longitude} latitude={latitude} />
