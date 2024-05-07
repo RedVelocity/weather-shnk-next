@@ -91,30 +91,32 @@ const Home = async ({ searchParams }) => {
           sizes="100vw"
         />
       </div>
-      <div className="grid gap-3 mx-4 md:grid-cols-3">
+      <div className="grid gap-3 mx-4 lg:grid-cols-3">
         <section className="flex flex-col space-y-3">
           <SearchCard weather={weather} location={location} />
-          <div className="flex flex-col flex-1 gap-2 sm:flex-row">
-            <WeatherCard weather={weather} location={location} />
+          <div className="grid gap-2 sm:grid-cols-2 md:grid-cols-3 lg:flex">
+            <div className="w-full md:col-span-2">
+              <WeatherCard weather={weather} location={location} />
+            </div>
             {/* Reposition Component on small devices */}
             <div className="sm:hidden">
               <Favorites location={location} />
             </div>
-            <WeatherInfoCardList className="grid md:hidden" weather={weather} />
+            <WeatherInfoCardList className="grid lg:hidden" weather={weather} />
           </div>
         </section>
-        <section className="md:col-span-2">
+        <section className="lg:col-span-2">
           <HourlyWeather weather={weather} />
         </section>
-        <WeatherInfoCardList className="hidden md:grid" weather={weather} />
-        <section className="hidden md:col-span-2 sm:block">
+        <WeatherInfoCardList className="hidden lg:grid" weather={weather} />
+        <section className="hidden lg:col-span-2 sm:block">
           <Favorites location={location} />
         </section>
         <WeatherMap
           longitude={location.longitude}
           latitude={location.latitude}
         />
-        <section className="md:col-span-2">
+        <section className="lg:col-span-2">
           <DailyWeather weather={weather} />
         </section>
       </div>
