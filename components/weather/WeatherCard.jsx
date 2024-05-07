@@ -4,9 +4,6 @@
 
 import Image from 'next/image';
 import { m as motion } from 'framer-motion';
-
-// import useWeather from '@/lib/hooks/useWeather';
-// import useLocation from '@/lib/hooks/useLocation';
 import getTheme from '@/lib/utils/getTheme';
 import { colors } from '@/styles/colors';
 import WeatherIcon from '@/components/Icon/WeatherIcon';
@@ -59,7 +56,7 @@ const WeatherCard = ({ weather, location }) => {
       className="flex flex-col w-full gap-2 p-4 card justify-evenly text-primary dark:filter dark:saturate-[70%]"
     >
       <>
-        <div className="grid grid-cols-3 gap-4 py-2 place-items-center">
+        <div className="grid grid-cols-4 gap-4 py-2 place-items-center">
           <WeatherIcon icon={current.weather.icon} size="large" animate />
           <motion.h2
             key={current.weather.description}
@@ -67,7 +64,7 @@ const WeatherCard = ({ weather, location }) => {
             initial="initial"
             animate="animate"
             exit="exit"
-            className="text-center capitalize"
+            className="col-span-2 text-center capitalize"
           >
             {current.weather.description}
           </motion.h2>

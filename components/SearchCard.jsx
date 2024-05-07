@@ -134,7 +134,7 @@ const SearchCard = ({ weather, location }) => {
                               Recent Searches
                             </h5>
                             {searches.toReversed().map((place) => (
-                              <Option place={place} theme={theme} />
+                              <Option place={place} theme={theme} key={place} />
                             ))}
                           </>
                         )}
