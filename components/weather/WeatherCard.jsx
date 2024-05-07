@@ -15,10 +15,24 @@ const variants = {
   transition: { duration: 0.5 },
 };
 
+const getBackgroundPosition = (theme) => {
+  switch (theme) {
+    case 'cool':
+      return 'left';
+    case 'mild':
+      return 'center';
+    case 'hot':
+      return 'right';
+    default:
+      return 'left';
+  }
+};
+
 const WeatherCard = ({ weather, location }) => {
   const { name: locationName } = location;
   const { current, daily } = weather;
   const theme = getTheme(current.temp);
+  const backgroundPosition = getBackgroundPosition(theme);
 
   let additionalInfo;
   const { min: minTemp, max: maxTemp } = daily[0].temp;
@@ -26,23 +40,7 @@ const WeatherCard = ({ weather, location }) => {
   if (current?.weather) {
     additionalInfo = `Feels Like: ${Math.round(
       current.feels_like
-    )}°C | Humidity: ${current.humidity}% | UV: ${Math.round(current.uvi)}`;
-  }
-
-  let backgroundPosition;
-  switch (theme) {
-    case 'cool':
-      backgroundPosition = 'left';
-      break;
-    case 'mild':
-      backgroundPosition = 'center';
-      break;
-    case 'hot':
-      backgroundPosition = 'right';
-      break;
-    default:
-      backgroundPosition = 'left';
-      break;
+    )}°C | Humidity: ${current.humidity}% | UVI: ${Math.round(current.uvi)}`;
   }
 
   return (
