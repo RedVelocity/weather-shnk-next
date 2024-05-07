@@ -94,15 +94,15 @@ const Home = async ({ searchParams }) => {
       <div className="grid gap-3 mx-4 lg:grid-cols-3">
         <section className="flex flex-col space-y-3">
           <SearchCard weather={weather} location={location} />
-          <div className="grid gap-2 sm:grid-cols-2 md:grid-cols-3 lg:flex">
+          <div className="grid h-full gap-2 sm:grid-cols-2 md:grid-cols-3 lg:flex">
             <div className="w-full md:col-span-2">
               <WeatherCard weather={weather} location={location} />
             </div>
             {/* Reposition Component on small devices */}
+            <WeatherInfoCardList className="grid lg:hidden" weather={weather} />
             <div className="sm:hidden">
               <Favorites location={location} />
             </div>
-            <WeatherInfoCardList className="grid lg:hidden" weather={weather} />
           </div>
         </section>
         <section className="lg:col-span-2">

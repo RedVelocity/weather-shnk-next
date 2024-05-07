@@ -53,7 +53,7 @@ const WeatherCard = ({ weather, location }) => {
         backgroundPosition,
         transition: 'background-position 500ms linear',
       }}
-      className="flex flex-col w-full gap-2 p-4 card justify-evenly text-primary dark:filter dark:saturate-[70%]"
+      className="flex flex-col w-full h-full gap-2 p-4 card justify-evenly text-primary dark:filter dark:saturate-[70%]"
     >
       <>
         <div className="grid grid-cols-4 gap-4 py-2 place-items-center">
