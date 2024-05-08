@@ -15,7 +15,7 @@ const Home = async () => {
     const { country, regionName, city } = data;
     redirect(`/weather?q=${city},${regionName},${country}`);
   } catch (error) {
-    console.error(`${e.name}: ${e.message}: ${e.cause}`);
+    console.error(`${error.name}: ${error.message}: ${error.cause}`);
     redirect("/weather?q=Scranton,Pennsylvania,USA");
   }
 };
