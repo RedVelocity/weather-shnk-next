@@ -1,5 +1,5 @@
 // import { headers } from "next/headers";
-// import { redirect } from "next/navigation";
+import { redirect } from "next/navigation";
 
 const Home = async () => {
   // try {
