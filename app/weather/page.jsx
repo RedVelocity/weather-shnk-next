@@ -24,6 +24,10 @@ export const metadata = {
     'redvelo',
     'redvelo.site',
     'vercel',
+    'weather redvelocity',
+    'redvelocity',
+    'redvelocity.site',
+    'redvelo.city'
   ],
   authors: [{ name: 'RedVelocity', url: 'https://redvelo.site' }],
   creator: 'RedVelocity',

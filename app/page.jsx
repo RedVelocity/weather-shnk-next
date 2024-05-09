@@ -1,6 +1,30 @@
 // import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 
+export const metadata = {
+  title: `Weather | redvelo.site`,
+  description: `Checkout the weather details for any place!`,
+  keywords: [
+    'Next.js',
+    'React',
+    'JavaScript',
+    'Weather',
+    'redvelo',
+    'redvelo.site',
+    'vercel',
+    'weather redvelocity',
+    'redvelocity',
+    'redvelocity.site',
+    'redvelo.city'
+  ],
+  authors: [{ name: 'RedVelocity', url: 'https://redvelo.site' }],
+  creator: 'RedVelocity',
+  publisher: 'RedVelocity',
+  icons: {
+    icon: '/weather-icon.png',
+  },
+};
+
 const Home = async () => {
   // try {
   //   const header = headers();
