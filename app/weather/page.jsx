@@ -22,12 +22,15 @@ export const metadata = {
     'JavaScript',
     'Weather',
     'redvelo',
-    'redvelo.site',
-    'vercel',
+    'vercel weather',
+    'weather vercel',
     'weather redvelocity',
+    'redvelo.site',
     'redvelocity',
     'redvelocity.site',
-    'redvelo.city'
+    'redvelo.city',
+    'red velocity',
+    'weather red velocity'
   ],
   authors: [{ name: 'RedVelocity', url: 'https://redvelo.site' }],
   creator: 'RedVelocity',
