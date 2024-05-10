@@ -1,6 +1,6 @@
 {
   "name": "weather-shnk-next",
-  "version": "14.10.6",
+  "version": "14.11.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -23,7 +23,7 @@
     "framer-motion": "^10.10.0",
     "jotai": "^2.4.2",
     "leaflet": "^1.9.4",
-    "next": "^14.1.4",
+    "next": "^14.2.3",
     "next-themes": "^0.3.0",
     "next13-progressbar": "^1.2.1",
     "pigeon-maps": "^0.21.4",
