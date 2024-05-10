@@ -126,7 +126,12 @@ const FavButton = ({ favorite, removeFavorite }) => {
         onClick={removeFavorite}
         className="absolute dark:saturate-[75%] top-0 right-0 z-20 h-8 sm:h-10 card aspect-square bg-[#BF392B]"
       >
-        <Image src="/assets/icons/close.png" fill alt="Remove Favorite" />
+        <Image
+          src="/assets/icons/close.png"
+          fill
+          alt="Remove Favorite"
+          sizes="2rem"
+        />
       </button>
     </div>
   );

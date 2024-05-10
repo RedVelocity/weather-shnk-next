@@ -1,10 +1,7 @@
 /* eslint-disable react/prop-types */
 
-// import { getBreakpointValue } from '@/lib/utils/getCurrentBreakpoint';
-// import useWindowSize from '@/lib/hooks/useWindowSize';
-// import useWeather from '@/lib/hooks/useWeather';
 import dayjsExtended from '@/lib/utils/dayjsExtended';
-import WeatherIcon from '../Icon/WeatherIcon';
+import WeatherIcon from '@/components/Icon/WeatherIcon';
 
 const HourlyWeather = ({ weather }) => {
   const { hourly, timezone: TZ } = weather;

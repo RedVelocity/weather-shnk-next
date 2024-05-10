@@ -1,6 +1,6 @@
 const Footer = () => (
   <footer>
-    <div className="flex flex-col justify-between max-w-screen-xl gap-2 p-4 m-auto text-sm tracking-wider text-center md:flex-row md:text-lg">
+    <div className="flex flex-col justify-between max-w-screen-xl gap-4 p-4 m-auto text-sm tracking-wider text-center md:flex-row md:text-lg">
       <span>
         Powered by{' '}
         <a

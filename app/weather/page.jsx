@@ -12,6 +12,7 @@ import {
 import SearchCard from '@/components/SearchCard';
 import Favorites from '@/components/Favorites';
 import UpdateParams from '@/lib/utils/UpdateParams';
+import dayjsExtended from '@/lib/utils/dayjsExtended';
 
 export const metadata = {
   title: `Weather | redvelo.site`,
@@ -30,7 +31,7 @@ export const metadata = {
     'redvelocity.site',
     'redvelo.city',
     'red velocity',
-    'weather red velocity'
+    'weather red velocity',
   ],
   authors: [{ name: 'RedVelocity', url: 'https://redvelo.site' }],
   creator: 'RedVelocity',
@@ -106,10 +107,10 @@ const Home = async ({ searchParams }) => {
               <WeatherCard weather={weather} location={location} />
             </div>
             {/* Reposition Component on small devices */}
-            <WeatherInfoCardList className="grid lg:hidden" weather={weather} />
             <div className="sm:hidden">
               <Favorites location={location} />
             </div>
+            <WeatherInfoCardList className="grid lg:hidden" weather={weather} />
           </div>
         </section>
         <section className="lg:col-span-2">
@@ -126,6 +127,12 @@ const Home = async ({ searchParams }) => {
         <section className="lg:col-span-2">
           <DailyWeather weather={weather} />
         </section>
+        <span className="text-sm tracking-wider text-center md:text-left md:text-lg">
+          Updated at -
+          {` ${dayjsExtended
+            .tz(Date.now(), weather.timezone)
+            .format('HH:mm')} ${weather.timezone}`}
+        </span>
       </div>
     </>
   );
