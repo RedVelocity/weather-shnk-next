@@ -1,5 +1,5 @@
-// import { headers } from "next/headers";
-import { redirect } from "next/navigation";
+import { headers } from 'next/headers';
+import { redirect } from 'next/navigation';
 
 export const metadata = {
   title: `Weather | redvelo.site`,
@@ -18,7 +18,7 @@ export const metadata = {
     'redvelocity.site',
     'redvelo.city',
     'red velocity',
-    'weather red velocity'
+    'weather red velocity',
   ],
   authors: [{ name: 'RedVelocity', url: 'https://redvelo.site' }],
   creator: 'RedVelocity',
@@ -29,23 +29,22 @@ export const metadata = {
 };
 
 const Home = async () => {
-  // try {
-  //   const header = headers();
-  //   const IP = (header.get("x-real-ip") ?? "127.0.0.1").split(",")[0];
-  //   IP === "127.0.0.1" && redirect("/weather?q=Scranton,Pennsylvania,USA");
-  //   const res = await fetch(
-  //     `http://ip-api.com/json/${IP}?fields=status,country,regionName,city`
-  //   );
-  //   const data = await res.json();
-  //   (!res.ok || data.status === "fail") &&
-  //     redirect("/weather?q=Scranton,Pennsylvania,USA");
-  //   const { country, regionName, city } = data;
-  //   redirect(`/weather?q=${city},${regionName},${country}`);
-  // } catch (error) {
-  //   console.error(error);
-  //   redirect("/weather?q=Scranton,Pennsylvania,USA");
-  // }
-  redirect("/weather");
+  try {
+    const header = headers();
+    const IP = (header.get('x-real-ip') ?? '127.0.0.1').split(',')[0];
+    IP === '127.0.0.1' && redirect('/Scranton,Pennsylvania,USA');
+    const res = await fetch(
+      `http://ip-api.com/json/${IP}?fields=status,country,regionName,city`
+    );
+    const data = await res.json();
+    (!res.ok || data.status === 'fail') &&
+      redirect('/Scranton,Pennsylvania,USA');
+    const { country, regionName, city } = data;
+    redirect(`/${city},${regionName},${country}`);
+  } catch (error) {
+    console.error(error);
+    redirect('/Scranton,Pennsylvania,USA');
+  }
 };
 
 export default Home;
