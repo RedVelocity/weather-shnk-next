@@ -67,24 +67,12 @@ const Favorites = ({ location }) => {
                 />
               </motion.div>
             ) : (
-              <motion.div
+              <div
                 className="relative h-28 sm:min-h-full"
                 key={`addFav-${index}-${fav.name}`}
-                initial={{
-                  opacity: 0,
-                  scale: 0.9,
-                }}
-                animate={{
-                  opacity: 1,
-                  scale: 1.0,
-                }}
-                exit={{
-                  opacity: 0,
-                  scale: 0.9,
-                }}
               >
                 <AddFavButton setFavorite={() => handleSetFavorite(index)} />
-              </motion.div>
+              </div>
             )
           )}
         </AnimatePresence>
