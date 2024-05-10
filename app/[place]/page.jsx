@@ -11,7 +11,6 @@ import {
 } from '@/components/weather';
 import SearchCard from '@/components/SearchCard';
 import Favorites from '@/components/Favorites';
-import UpdateParams from '@/lib/utils/UpdateParams';
 import dayjsExtended from '@/lib/utils/dayjsExtended';
 
 export const metadata = {
@@ -71,9 +70,10 @@ async function getIPLocation() {
   };
 }
 
-const Home = async ({ searchParams }) => {
-  const { q } = searchParams;
-  const query = decodeURIComponent(q);
+const Home = async ({ params: searchParams }) => {
+  // console.log('params', searchParams);
+  const { place } = searchParams;
+  const query = decodeURIComponent(place);
   let location;
   let weather;
   try {
@@ -88,7 +88,6 @@ const Home = async ({ searchParams }) => {
 
   return (
     <>
-      <UpdateParams location={location} />
       <div className="fixed top-0 left-0 object-cover w-screen h-auto aspect-[16/7] -z-10">
         <Image
           className="blur-sm"

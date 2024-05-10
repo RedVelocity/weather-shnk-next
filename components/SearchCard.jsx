@@ -74,7 +74,7 @@ const SearchCard = ({ weather, location }) => {
             addSearch(place);
             setSelectedPlace(place);
             router.push(
-              `weather?q=${place.place_name},${place.place_locality
+              `/${place.place_name},${place.place_locality
                 .replaceAll(', ', ',')
                 .replaceAll('.', '')}`,
               { scroll: false }

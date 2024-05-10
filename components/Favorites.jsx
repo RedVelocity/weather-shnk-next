@@ -1,13 +1,12 @@
-/* eslint-disable react/forbid-prop-types */
 /* eslint-disable react/prop-types */
 
 'use client';
 
+import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useLocalStorage } from '@mantine/hooks';
 import { AnimatePresence, m as motion } from 'framer-motion';
-import PropTypes from 'prop-types';
 
 const popInOut = {
   initial: {
@@ -25,7 +24,6 @@ const popInOut = {
     transition: { duration: 0.25 },
   },
 };
-
 const MAX_FAVORITES = 4;
 
 const Favorites = ({ location }) => {
@@ -33,10 +31,12 @@ const Favorites = ({ location }) => {
     key: 'favorites',
     defaultValue: new Array(MAX_FAVORITES).fill('unset'),
   });
+  const [initial, setInitial] = useState(false);
 
   const handleSetFavorite = (index) => {
     const updatedFavorites = [...favorites];
     updatedFavorites[index] = location;
+    setInitial(true);
     setFavorites(updatedFavorites);
   };
 
@@ -57,7 +57,7 @@ const Favorites = ({ location }) => {
                 className="relative h-28 sm:min-h-full"
                 key={`fav-${index}-${fav.name}`}
                 variants={popInOut}
-                initial="initial"
+                initial={initial ? 'initial' : false}
                 animate="animate"
                 exit="exit"
               >
@@ -113,7 +113,7 @@ const FavButton = ({ favorite, removeFavorite }) => {
   return (
     <div className="absolute inset-0 w-full h-full">
       <Link
-        href={`weather?q=${encodeURI(favorite.name.replaceAll(', ', ','))}`}
+        href={`/${encodeURI(favorite.name.replaceAll(', ', ','))}`}
         passHref
         className="flex flex-col items-center justify-center h-full p-6 overflow-hidden text-center surface card"
         scroll={false}
@@ -135,19 +135,6 @@ const FavButton = ({ favorite, removeFavorite }) => {
       </button>
     </div>
   );
-};
-
-Favorites.propTypes = {
-  location: PropTypes.object.isRequired, // Ensure location prop is required and of type object
-};
-
-AddFavButton.propTypes = {
-  setFavorite: PropTypes.func.isRequired, // Ensure setFavorite prop is required and of type function
-};
-
-FavButton.propTypes = {
-  favorite: PropTypes.object.isRequired, // Ensure favorite prop is required and of type object
-  removeFavorite: PropTypes.func.isRequired, // Ensure removeFavorite prop is required and of type function
 };
 
 export default Favorites;
