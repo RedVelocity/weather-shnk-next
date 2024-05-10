@@ -35,10 +35,20 @@ const ThemeToggle = () => {
         onClick={toggleColorScheme}
       >
         <span className="relative h-7 w-7">
-          <Image fill src="/assets/icons/sun.png" alt="Light Mode" />
+          <Image
+            fill
+            src="/assets/icons/sun.png"
+            alt="Light Mode"
+            sizes="1.75rem"
+          />
         </span>
         <span className="relative h-7 w-7">
-          <Image fill src="/assets/icons/half-moon.png" alt="Dark Mode" />
+          <Image
+            fill
+            src="/assets/icons/half-moon.png"
+            alt="Dark Mode"
+            sizes="1.75rem"
+          />
         </span>
         <div
           className={`absolute bg-base-dark ${
@@ -58,6 +68,7 @@ const ThemeToggle = () => {
           fill
           src="/assets/icons/sun-and-moon.png"
           alt="Toggle System Theme"
+          sizes="2rem"
         />
       </button>
     </div>

@@ -103,6 +103,7 @@ const SearchCard = ({ weather, location }) => {
                     } transition-transform duration-200 ease-in-out`}
                     fill
                     alt="Toggle Menu"
+                    sizes="2.5rem"
                   />
                 </Combobox.Button>
               </div>
