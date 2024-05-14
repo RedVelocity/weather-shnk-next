@@ -55,7 +55,7 @@ const Favorites = ({ location }) => {
             fav !== 'unset' ? (
               <motion.div
                 className="relative h-28 sm:min-h-full"
-                key={`fav-${index}-${fav.name}`}
+                key={`fav-${index}-${fav.id}`}
                 variants={popInOut}
                 initial={initial ? 'initial' : false}
                 animate="animate"
@@ -69,7 +69,7 @@ const Favorites = ({ location }) => {
             ) : (
               <div
                 className="relative h-28 sm:min-h-full"
-                key={`addFav-${index}-${fav.name}`}
+                key={`addFav-${index}-${fav.id}`}
               >
                 <AddFavButton setFavorite={() => handleSetFavorite(index)} />
               </div>
@@ -96,33 +96,32 @@ const AddFavButton = ({ setFavorite }) => (
   </button>
 );
 
-const FavButton = ({ favorite, removeFavorite }) => {
-  const [locName, ...locRegion] = favorite.name.split(',');
-  return (
-    <div className="absolute inset-0 w-full h-full">
-      <Link
-        href={`/${encodeURI(favorite.name.replaceAll(', ', ','))}`}
-        passHref
-        className="flex flex-col items-center justify-center h-full p-6 overflow-hidden text-center surface card"
-        scroll={false}
-      >
-        <h3>{locName}</h3>
-        <p className="secondary">{locRegion.join(', ')}</p>
-      </Link>
-      <button
-        type="button"
-        onClick={removeFavorite}
-        className="absolute dark:saturate-[75%] top-0 right-0 z-20 h-8 sm:h-10 card aspect-square bg-[#BF392B]"
-      >
-        <Image
-          src="/assets/icons/close.png"
-          fill
-          alt="Remove Favorite"
-          sizes="2rem"
-        />
-      </button>
-    </div>
-  );
-};
+const FavButton = ({ favorite, removeFavorite }) => (
+  <div className="absolute inset-0 w-full h-full">
+    <Link
+      href={`/${favorite.place_name},${favorite.place_locality
+        .replaceAll(', ', ',')
+        .replaceAll('.', '')}`}
+      passHref
+      className="flex flex-col items-center justify-center h-full p-6 overflow-hidden text-center surface card"
+      scroll={false}
+    >
+      <h3>{favorite.place_name}</h3>
+      <p className="secondary">{favorite.place_locality}</p>
+    </Link>
+    <button
+      type="button"
+      onClick={removeFavorite}
+      className="absolute dark:saturate-[75%] top-0 right-0 z-20 h-8 sm:h-10 card aspect-square bg-[#BF392B]"
+    >
+      <Image
+        src="/assets/icons/close.png"
+        fill
+        alt="Remove Favorite"
+        sizes="2rem"
+      />
+    </button>
+  </div>
+);
 
 export default Favorites;

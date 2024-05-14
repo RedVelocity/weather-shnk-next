@@ -35,7 +35,7 @@ const colorVariants = {
   cool: 'ui-active:bg-gradient-cool ui-active:text-primary hover:bg-gradient-cool hover:text-primary',
 };
 
-const SearchCard = ({ weather, location }) => {
+const SearchCard = ({ weather }) => {
   const router = useRouter();
   const theme = getTheme(weather.current.temp);
   const [placesList, setPlacesList] = useState([]);
@@ -50,11 +50,7 @@ const SearchCard = ({ weather, location }) => {
     () => {
       if (debouncedSearch) {
         (async () => {
-          const places = await getPlaces(
-            location.curLat,
-            location.curLon,
-            debouncedSearch
-          );
+          const places = await getPlaces(0, 0, debouncedSearch);
           setPlacesList(places);
         })();
       } else {

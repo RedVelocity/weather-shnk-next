@@ -41,13 +41,12 @@ export const metadata = {
 };
 
 const DEFAULT_LOCATION = {
-  name: 'Scranton,Pennsylvania,USA',
-  latitude: 41.411835,
-  longitude: -75.665245,
-  curLat: 0,
-  curLon: 0,
+  place_name: 'Scranton',
+  coordinates: [-75.665245, 41.411835],
+  place_locality: 'Pennsylvania, United States.',
+  place_address: 'Lackawanna County, Pennsylvania, United States.',
 };
-async function getIPLocation() {
+const getIPLocation = async () => {
   const header = headers();
   const IP = (header.get('x-real-ip') ?? '127.0.0.1').split(',')[0];
   if (IP === '127.0.0.1') {
@@ -62,13 +61,12 @@ async function getIPLocation() {
   }
   const { country, regionName, city, lat, lon } = data;
   return {
-    name: `${city},${regionName},${country}`,
-    latitude: lat,
-    longitude: lon,
-    curLat: 0,
-    curLon: 0,
+    place_name: city,
+    coordinates: [lon, lat],
+    place_locality: `${regionName}, ${country}.`,
+    place_address: `${regionName}, ${country}.`,
   };
-}
+};
 
 const Home = async ({ params: searchParams }) => {
   // console.log('params', searchParams);
@@ -79,8 +77,11 @@ const Home = async ({ params: searchParams }) => {
   try {
     location =
       query !== 'undefined' ? await getLocation(query) : await getIPLocation();
-    if (!location.latitude) return notFound();
-    weather = await getWeather(location.latitude, location.longitude);
+    if (!location.coordinates[1]) return notFound();
+    weather = await getWeather(
+      location.coordinates[1],
+      location.coordinates[0]
+    );
   } catch (error) {
     console.log('error', error);
     return notFound();
@@ -100,7 +101,7 @@ const Home = async ({ params: searchParams }) => {
       </div>
       <div className="grid gap-3 mx-4 lg:grid-cols-3">
         <section className="flex flex-col space-y-3">
-          <SearchCard weather={weather} location={location} />
+          <SearchCard weather={weather} />
           <div className="grid h-full gap-2 sm:grid-cols-2 md:grid-cols-3 lg:flex">
             <div className="w-full md:col-span-2">
               <WeatherCard weather={weather} location={location} />
@@ -120,8 +121,8 @@ const Home = async ({ params: searchParams }) => {
           <Favorites location={location} />
         </section>
         <WeatherMap
-          longitude={location.longitude}
-          latitude={location.latitude}
+          longitude={location.coordinates[0]}
+          latitude={location.coordinates[1]}
         />
         <section className="lg:col-span-2">
           <DailyWeather weather={weather} />

@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 /* eslint-disable react/prop-types */
 
 'use client';
@@ -29,7 +30,7 @@ const getBackgroundPosition = (theme) => {
 };
 
 const WeatherCard = ({ weather, location }) => {
-  const { name: locationName } = location;
+  const { place_name, place_address } = location;
   const { current, daily } = weather;
   const theme = getTheme(current.temp);
   const backgroundPosition = getBackgroundPosition(theme);
@@ -90,7 +91,9 @@ const WeatherCard = ({ weather, location }) => {
           width={20}
           alt="location"
         />
-        <p className="ml-1 tracking-wide text-primary">{locationName}</p>
+        <p className="ml-1 tracking-wide text-primary">
+          {`${place_name}, ${place_address}`}
+        </p>
       </div>
     </div>
   );

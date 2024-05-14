@@ -4,7 +4,7 @@
 import dynamic from 'next/dynamic';
 import PropTypes from 'prop-types';
 
-const DynamicMap = dynamic(() => import('@/components/PigeonMap'), {
+const DynamicMap = dynamic(() => import('@/components/map/PigeonMap'), {
   ssr: false,
   loading: () => null,
 });
