@@ -138,4 +138,5 @@ const Home = async ({ params: searchParams }) => {
   );
 };
 
+export const revalidate = 900;
 export default Home;

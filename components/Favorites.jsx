@@ -7,6 +7,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useLocalStorage } from '@mantine/hooks';
 import { AnimatePresence, m as motion } from 'framer-motion';
+import getLocationPath from '@/lib/utils/getLocationPath';
 
 const popInOut = {
   initial: {
@@ -99,9 +100,7 @@ const AddFavButton = ({ setFavorite }) => (
 const FavButton = ({ favorite, removeFavorite }) => (
   <div className="absolute inset-0 w-full h-full">
     <Link
-      href={`/${favorite.place_name},${favorite.place_locality
-        .replaceAll(', ', ',')
-        .replaceAll('.', '')}`}
+      href={`/${getLocationPath(favorite.place_name, favorite.place_locality)}`}
       passHref
       className="flex flex-col items-center justify-center h-full p-6 overflow-hidden text-center surface card"
       scroll={false}

@@ -31,15 +31,16 @@ export const metadata = {
 const Home = async () => {
   const header = headers();
   const IP = (header.get('x-real-ip') ?? '127.0.0.1').split(',')[0];
-  IP === '127.0.0.1' && redirect('/Scranton,Pennsylvania,United States');
+  IP === '127.0.0.1' &&
+    redirect(encodeURIComponent('Scranton,Pennsylvania,United States'));
   const res = await fetch(
     `http://ip-api.com/json/${IP}?fields=status,country,regionName,city`
   );
   const data = await res.json();
   (!res.ok || data.status === 'fail') &&
-    redirect('/Scranton,Pennsylvania,United States');
+    redirect(encodeURIComponent('Scranton,Pennsylvania,United States'));
   const { country, regionName, city } = data;
-  redirect(`/${city},${regionName},${country}`);
+  redirect(encodeURIComponent(`${city},${regionName},${country}`));
 };
 
 export default Home;

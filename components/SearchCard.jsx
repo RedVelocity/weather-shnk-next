@@ -8,11 +8,10 @@ import { AnimatePresence, m as motion } from 'framer-motion';
 import { useDebouncedValue } from '@mantine/hooks';
 import { Combobox } from '@headlessui/react';
 import { useRouter } from 'next13-progressbar';
-// import useWeather from '@/lib/hooks/useWeather';
-// import useLocation from '@/lib/hooks/useLocation';
 import { getPlaces } from '@/lib/actions';
 import getTheme from '@/lib/utils/getTheme';
 import useRecentSearch from '@/lib/hooks/useRecentSearch';
+import getLocationPath from '@/lib/utils/getLocationPath';
 
 const variants = {
   animate: {
@@ -43,6 +42,7 @@ const SearchCard = ({ weather }) => {
   const { searches, addSearch } = useRecentSearch();
   // Selected combobox item
   const [selectedPlace, setSelectedPlace] = useState(placesList[0]);
+  // Search item
   const [searchInput, setSearchInput] = useState('');
   const [debouncedSearch] = useDebouncedValue(searchInput, 200);
   // Update list on input change
@@ -70,9 +70,7 @@ const SearchCard = ({ weather }) => {
             addSearch(place);
             setSelectedPlace(place);
             router.push(
-              `/${place.place_name},${place.place_locality
-                .replaceAll(', ', ',')
-                .replaceAll('.', '')}`,
+              `/${getLocationPath(place.place_name, place.place_locality)}`,
               { scroll: false }
             );
           }}
