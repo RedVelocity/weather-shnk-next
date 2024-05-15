@@ -86,7 +86,7 @@ const Home = async ({ params: searchParams }) => {
       location.coordinates[0]
     );
   } catch (error) {
-    console.log('error', error);
+    console.error('error', error);
     return notFound();
   }
 
