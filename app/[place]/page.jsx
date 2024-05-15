@@ -13,6 +13,8 @@ import SearchCard from '@/components/SearchCard';
 import Favorites from '@/components/Favorites';
 import dayjsExtended from '@/lib/utils/dayjsExtended';
 
+// Revalidate the page every 15mins
+export const revalidate = 900;
 export const metadata = {
   title: `Weather | redvelo.site`,
   description: `Checkout the weather details for any place!`,
@@ -41,6 +43,7 @@ export const metadata = {
 };
 
 const DEFAULT_LOCATION = {
+  id: 'scranton',
   place_name: 'Scranton',
   coordinates: [-75.665245, 41.411835],
   place_locality: 'Pennsylvania, United States.',
@@ -138,5 +141,4 @@ const Home = async ({ params: searchParams }) => {
   );
 };
 
-export const revalidate = 900;
 export default Home;
