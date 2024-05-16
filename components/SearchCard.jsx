@@ -4,29 +4,37 @@
 
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
-import { AnimatePresence, m as motion } from 'framer-motion';
+// import { AnimatePresence, m as motion } from 'framer-motion';
 import { useDebouncedValue } from '@mantine/hooks';
-import { Combobox } from '@headlessui/react';
+// import { Combobox } from '@headlessui/react';
+import {
+  Button,
+  ComboBox,
+  Input,
+  ListBox,
+  ListBoxItem,
+  Popover,
+} from 'react-aria-components';
 import { useRouter } from 'next13-progressbar';
 import { getPlaces } from '@/lib/actions';
 import getTheme from '@/lib/utils/getTheme';
 import useRecentSearch from '@/lib/hooks/useRecentSearch';
 import getLocationPath from '@/lib/utils/getLocationPath';
 
-const variants = {
-  animate: {
-    opacity: 1,
-    scale: 1,
-    transition: { duration: 0.25 },
-  },
-  exit: {
-    opacity: 0,
-  },
-  initial: {
-    opacity: 0,
-    scale: 0.9,
-  },
-};
+// const variants = {
+//   animate: {
+//     opacity: 1,
+//     scale: 1,
+//     transition: { duration: 0.25 },
+//   },
+//   exit: {
+//     opacity: 0,
+//   },
+//   initial: {
+//     opacity: 0,
+//     scale: 0.9,
+//   },
+// };
 
 const colorVariants = {
   hot: 'ui-active:bg-gradient-hot ui-active:text-primary hover:bg-gradient-hot hover:text-primary',
@@ -40,8 +48,6 @@ const SearchCard = ({ weather }) => {
   const [placesList, setPlacesList] = useState([]);
   // Recent search items
   const { searches, addSearch } = useRecentSearch();
-  // Selected combobox item
-  const [selectedPlace, setSelectedPlace] = useState(placesList[0]);
   // Search item
   const [searchInput, setSearchInput] = useState('');
   const [debouncedSearch] = useDebouncedValue(searchInput, 200);
@@ -59,11 +65,62 @@ const SearchCard = ({ weather }) => {
     },
     [debouncedSearch] // Only call effect if debounced search term changes
   );
-
   return (
     <div className="z-10 p-4 card bg-wrapper-dark dark:bg-wrapper-dark/60 dark:backdrop-blur">
       <h3 className="text-primary-dark">Search</h3>
-      <div className="relative my-4">
+      <ComboBox
+        menuTrigger="focus"
+        inputValue={searchInput}
+        onInputChange={setSearchInput}
+        items={placesList}
+        shouldFlip={false}
+        allowsCustomValue
+        aria-label="search place"
+        onFocus={() => {
+          if (searches.length > 0 && searchInput === '') {
+            setPlacesList(searches);
+          }
+        }}
+        onSelectionChange={(placeId) => {
+          const place = placesList.filter((item) => item.id === placeId)[0];
+          addSearch(place);
+          router.push(
+            `/${getLocationPath(place.place_name, place.place_locality)}`,
+            { scroll: false }
+          );
+        }}
+      >
+        <div className="relative w-full mt-2">
+          <Input className="w-full p-2 rounded-l bg-surface dark:bg-surface-dark rounded-r-3xl" />
+          <Button
+            className="absolute inset-y-0 right-0 flex items-center h-10 focus:ring-0 aspect-square"
+            name="Toggle Menu"
+          >
+            <Image
+              src="/assets/icons/chevron-down.png"
+              fill
+              alt="Toggle Menu"
+              sizes="2.5rem"
+            />
+          </Button>
+        </div>
+        <Popover className="max-h-80 overflow-x-hidden w-[--trigger-width] mt-2 rounded-lg shadow bg-surface dark:bg-surface-dark">
+          <ListBox>
+            {(place) => (
+              <ListBoxItem
+                textValue={place.place_name}
+                className={`${colorVariants[theme]} rounded-lg px-2 py-1 cursor-pointer mx-2 first:mt-2 last:mb-2 group`}
+              >
+                <h5>{place.place_name}</h5>
+                <p className="text-secondary dark:text-secondary-dark group-hover:text-secondary ui-active:text-secondary dark:ui-active:text-secondary">
+                  {place.place_address}
+                </p>
+              </ListBoxItem>
+            )}
+          </ListBox>
+        </Popover>
+      </ComboBox>
+      {/* <div className="relative my-4">
         <Combobox
           value={selectedPlace || ''}
           onChange={(place) => {
@@ -145,22 +202,22 @@ const SearchCard = ({ weather }) => {
             </>
           )}
         </Combobox>
-      </div>
+      </div> */}
     </div>
   );
 };
 
-const Option = ({ place, theme }) => (
-  <Combobox.Option
-    key={place.id}
-    value={place}
-    className={`${colorVariants[theme]} rounded-lg px-2 py-1 cursor-pointer mx-2 first:mt-2 last:mb-2 group`}
-  >
-    <h5>{place.place_name}</h5>
-    <p className="text-secondary dark:text-secondary-dark group-hover:text-secondary ui-active:text-secondary dark:ui-active:text-secondary">
-      {place.place_address}
-    </p>
-  </Combobox.Option>
-);
+// const Option = ({ place, theme }) => (
+//   <Combobox.Option
+//     key={place.id}
+//     value={place}
+//     className={`${colorVariants[theme]} rounded-lg px-2 py-1 cursor-pointer mx-2 first:mt-2 last:mb-2 group`}
+//   >
+//     <h5>{place.place_name}</h5>
+//     <p className="text-secondary dark:text-secondary-dark group-hover:text-secondary ui-active:text-secondary dark:ui-active:text-secondary">
+//       {place.place_address}
+//     </p>
+//   </Combobox.Option>
+// );
 
 export default SearchCard;
