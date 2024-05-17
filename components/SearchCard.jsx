@@ -87,42 +87,49 @@ const SearchCard = ({ weather }) => {
           );
         }}
       >
-        <div className="relative w-full mt-2">
-          <Input className="w-full p-2 rounded-l bg-surface dark:bg-surface-dark rounded-r-3xl" />
-          <Button
-            className="absolute inset-y-0 right-0 flex items-center h-10 focus:ring-0 aspect-square"
-            name="Toggle Menu"
-          >
-            <Image
-              src="/assets/icons/chevron-down.png"
-              fill
-              alt="Toggle Menu"
-              sizes="2.5rem"
-            />
-          </Button>
-        </div>
-        <Popover className="w-[--trigger-width] mt-2">
-          <motion.div
-            className="overflow-x-hidden rounded-lg shadow max-h-80 bg-surface dark:bg-surface-dark"
-            variants={variants}
-            initial="initial"
-            animate="animate"
-            exit="exit"
-          >
-            {placesList.length > 0 && searchInput !== '' && (
-              <MyListBox items={placesList} theme={theme} />
-            )}
-            {searches.length > 0 && searchInput === '' && (
-              <MyListBox items={searches} theme={theme} />
-            )}
-          </motion.div>
-        </Popover>
+        {({ isOpen }) => (
+          <>
+            <div className="relative w-full mt-2">
+              <Input className="w-full p-2 rounded-l bg-surface dark:bg-surface-dark rounded-r-3xl" />
+              <Button
+                className="absolute inset-y-0 right-0 flex items-center h-10 focus:ring-0 aspect-square"
+                name="Toggle Menu"
+              >
+                <Image
+                  src="/assets/icons/chevron-down.png"
+                  fill
+                  className={`${
+                    isOpen && 'rotate-180'
+                  } transition-transform duration-200 ease-in-out`}
+                  alt="Toggle Menu"
+                  sizes="2.5rem"
+                />
+              </Button>
+            </div>
+            <Popover className="w-[--trigger-width] mt-2 ">
+              <motion.div
+                className="overflow-x-hidden rounded-lg shadow max-h-80 bg-surface dark:bg-surface-dark"
+                variants={variants}
+                initial="initial"
+                animate="animate"
+                exit="exit"
+              >
+                {placesList.length > 0 && searchInput !== '' && (
+                  <CustomListBox items={placesList} theme={theme} />
+                )}
+                {searches.length > 0 && searchInput === '' && (
+                  <CustomListBox items={searches} theme={theme} />
+                )}
+              </motion.div>
+            </Popover>
+          </>
+        )}
       </ComboBox>
     </div>
   );
 };
 
-const MyListBox = ({ items, theme }) => (
+const CustomListBox = ({ items, theme }) => (
   <ListBox items={items}>
     {(item) => (
       <ListBoxItem
