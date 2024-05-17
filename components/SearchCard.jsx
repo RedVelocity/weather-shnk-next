@@ -5,7 +5,7 @@
 
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
-// import { AnimatePresence, m as motion } from 'framer-motion';
+import { m as motion } from 'framer-motion';
 import { useDebouncedValue } from '@mantine/hooks';
 // import { Combobox } from '@headlessui/react';
 import {
@@ -22,20 +22,20 @@ import getTheme from '@/lib/utils/getTheme';
 import useRecentSearch from '@/lib/hooks/useRecentSearch';
 import getLocationPath from '@/lib/utils/getLocationPath';
 
-// const variants = {
-//   animate: {
-//     opacity: 1,
-//     scale: 1,
-//     transition: { duration: 0.25 },
-//   },
-//   exit: {
-//     opacity: 0,
-//   },
-//   initial: {
-//     opacity: 0,
-//     scale: 0.9,
-//   },
-// };
+const variants = {
+  animate: {
+    opacity: 1,
+    scale: 1,
+    transition: { duration: 0.25 },
+  },
+  exit: {
+    opacity: 0,
+  },
+  initial: {
+    opacity: 0,
+    scale: 0.9,
+  },
+};
 
 const colorVariants = {
   hot: 'rac-focus:bg-gradient-hot rac-focus:text-primary hover:bg-gradient-hot hover:text-primary',
@@ -101,15 +101,21 @@ const SearchCard = ({ weather }) => {
             />
           </Button>
         </div>
-        <Popover className="w-[--trigger-width] mt-2 rounded-lg shadow bg-surface dark:bg-surface-dark">
-          <div className="overflow-x-hidden max-h-80">
+        <Popover className="w-[--trigger-width] mt-2">
+          <motion.div
+            className="overflow-x-hidden rounded-lg shadow max-h-80 bg-surface dark:bg-surface-dark"
+            variants={variants}
+            initial="initial"
+            animate="animate"
+            exit="exit"
+          >
             {placesList.length > 0 && searchInput !== '' && (
               <MyListBox items={placesList} theme={theme} />
             )}
             {searches.length > 0 && searchInput === '' && (
               <MyListBox items={searches} theme={theme} />
             )}
-          </div>
+          </motion.div>
         </Popover>
       </ComboBox>
     </div>
