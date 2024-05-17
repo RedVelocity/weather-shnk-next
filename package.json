@@ -1,6 +1,6 @@
 {
   "name": "weather-shnk-next",
-  "version": "14.15.0",
+  "version": "14.15.1",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -14,8 +14,6 @@
     "git:major": "npm run lint && npm --no-git-tag-version --no-commit-hooks version major && git add -A && git commit -m"
   },
   "dependencies": {
-    "@headlessui/react": "^1.7.18",
-    "@headlessui/tailwindcss": "^0.2.0",
     "@mantine/hooks": "^7.4.1",
     "browserslist": "latest",
     "dayjs": "^1.10.4",
@@ -31,7 +29,8 @@
     "react-aria-components": "^1.2.0",
     "react-dom": "^18.2.0",
     "react-leaflet": "^4.2.1",
-    "sharp": "^0.32.6"
+    "sharp": "^0.32.6",
+    "tailwindcss-react-aria-components": "^1.1.2"
   },
   "devDependencies": {
     "@next/bundle-analyzer": "^12.0.7",

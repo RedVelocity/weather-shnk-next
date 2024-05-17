@@ -18,5 +18,5 @@ module.exports = {
     },
   },
   // eslint-disable-next-line global-require
-  plugins: [require('@headlessui/tailwindcss')],
+  plugins: [require('tailwindcss-react-aria-components')({ prefix: 'rac' })],
 };
