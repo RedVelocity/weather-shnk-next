@@ -7,7 +7,6 @@ import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import { m as motion } from 'framer-motion';
 import { useDebouncedValue } from '@mantine/hooks';
-// import { Combobox } from '@headlessui/react';
 import {
   Button,
   ComboBox,
@@ -77,6 +76,7 @@ const SearchCard = ({ weather }) => {
         allowsCustomValue
         aria-label="search place"
         onSelectionChange={(placeId) => {
+          if (placeId === null) return;
           const place =
             placesList.find((item) => item.id === placeId) ||
             searches.find((item) => item.id === placeId);
